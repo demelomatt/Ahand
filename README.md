@@ -10,6 +10,7 @@ Documentação:
         https://docs.python.org/3/
     Tesseract OCR:
         https://tesseract-ocr.github.io/
+        https://tesseract-ocr.github.io/tessdoc/Downloads
     fitz library:
         https://documentation.help/PyMuPDF/tutorial.html
         https://documentation.help/PyMuPDF/document.html
