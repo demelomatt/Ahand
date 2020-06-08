@@ -21,7 +21,8 @@ Documentação:
         https://pillow.readthedocs.io/en/stable/
     Python native libraries:
         https://docs.python.org/3/library/
-    PyInstaller:
-        http://www.pyinstaller.org/
-    Inno Setup:
-        https://jrsoftware.org/isinfo.php
+    Compilar:
+        PyInstaller:
+            http://www.pyinstaller.org/
+        Inno Setup:
+            https://jrsoftware.org/isinfo.php
