@@ -186,16 +186,21 @@ def runMain(): # Função que engloba as principais funções
     print("Processos concluídos com sucesso.")
 
 # Verificar se diretórios existem
-directoryBoolean = 0
 try:
-    createDirectory(username + "\\Onedrive\\Desktop\\\Ahand\\")
-except:
-    createDirectory(username + "\\Onedrive\\Área de Trabalho\\Ahand\\")
-    directoryBoolean = 1
-if directoryBoolean == 0:
     rootDirectory = username + "\\Onedrive\\Desktop\\\Ahand\\"
-else:
-    rootDirectory = username + "\\Onedrive\\Área de Trabalho\\Ahand\\"
+    createDirectory(rootDirectory)
+except:
+    try:
+        rootDirectory = username + "\\Onedrive\\Área de Trabalho\\Ahand\\"
+        createDirectory(rootDirectory)
+    except:
+        try:
+            rootDirectory = username + "\\Desktop\\Ahand\\"
+            createDirectory(rootDirectory)
+        except:
+            rootDirectory = username + "\\Área de Trabalho\\Ahand\\"
+            createDirectory(rootDirectory)
+            
 inputDirectory = rootDirectory + "input\\"
 outputDirectory = rootDirectory + "output\\"
 
