@@ -1,11 +1,3 @@
-################################################################################
-##
-## BY: WANDERSON M.PIMENTA
-## PROJECT MADE WITH: Qt Designer and PySide2
-## V: 1.0.0
-##
-################################################################################
-
 import sys
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -118,10 +110,14 @@ class MainWindow(QMainWindow):
         ########################################################################
 
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(0,QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.pushButton_add.clicked.connect(lambda: UIFunctions.insertRow(self))
+        self.ui.pushButton_add.clicked.connect(lambda: UIFunctions.insertRow(self,self.ui.tableWidget.rowCount(),0,str(self.ui.tableWidget.rowCount())))
         self.ui.pushButton_delete.clicked.connect(lambda: UIFunctions.deleteRow(self))
         self.ui.pushButton_save.clicked.connect(lambda: UIFunctions.saveData(self))
 
+        UIFunctions.insertRow(self,0,0,"")
+        UIFunctions.insertRow(self,0,1,"Se encontrar",False)
+        UIFunctions.insertRow(self,0,2,"Mover para",False)
+        UIFunctions.insertRow(self,self.ui.tableWidget.rowCount(),0,str(self.ui.tableWidget.rowCount()))
         ## ==> END ##
 
         ########################################################################
