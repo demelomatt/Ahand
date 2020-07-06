@@ -110,14 +110,23 @@ class MainWindow(QMainWindow):
         ########################################################################
 
         self.ui.tableWidget.horizontalHeader().setSectionResizeMode(0,QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.pushButton_add.clicked.connect(lambda: UIFunctions.insertRow(self,self.ui.tableWidget.rowCount(),0,str(self.ui.tableWidget.rowCount())))
+        self.ui.pushButton_add.clicked.connect(lambda: UIFunctions.launchRow(self,self.ui.tableWidget.rowCount(),0,str(self.ui.tableWidget.rowCount())))
         self.ui.pushButton_delete.clicked.connect(lambda: UIFunctions.deleteRow(self))
         self.ui.pushButton_save.clicked.connect(lambda: UIFunctions.saveData(self))
+        
+        
+        UIFunctions.launchRow(self,0,0,"")
+        UIFunctions.launchRow(self,0,1,"Se encontrar",False)
+        UIFunctions.launchRow(self,0,2,"Mover para",False)
+        AppFunctions.initDBConnection(self)
+        AppFunctions.createDBTable(self)
+        UIFunctions.loadData(self)
+        AppFunctions.closeDB(self)
 
-        UIFunctions.insertRow(self,0,0,"")
-        UIFunctions.insertRow(self,0,1,"Se encontrar",False)
-        UIFunctions.insertRow(self,0,2,"Mover para",False)
-        UIFunctions.insertRow(self,self.ui.tableWidget.rowCount(),0,str(self.ui.tableWidget.rowCount()))
+        
+        
+        
+
         ## ==> END ##
 
         ########################################################################
@@ -190,6 +199,10 @@ class MainWindow(QMainWindow):
     ########################################################################
     def keyPressEvent(self, event):
         print('Key: ' + str(event.key()) + ' | Text Press: ' + str(event.text()))
+        print(self.ui.tableWidget.currentRow)
+
+
+
     ## ==> END ##
 
     ## EVENT ==> RESIZE EVENT
