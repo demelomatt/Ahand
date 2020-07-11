@@ -1,5 +1,6 @@
+print("")
 # Bibliotecas externas
-import pytesseract,fitz
+import pytesseract,fitz, winshell
 from PIL import Image
 # Bibliotecas nativas do Python
 import os, shutil, re, datetime, zipfile, csv, codecs
@@ -66,7 +67,7 @@ def searchAndExport(): # Pesquisar por palavras dentro de PDF e mover arquivo ca
     
     def inputData(): # Importar dados através de arquivo CSV
         global groups, keywordsByGroup, keywords
-        csvFile = codecs.open("C:\\Program Files (x86)\\Ahand\\keywords.csv", encoding = "utf-8") 
+        csvFile = codecs.open("keywords.csv", encoding = "utf-8") 
         reader = csv.reader(csvFile) 
         list_of_rows = list(reader)
         groups = list_of_rows[0]
@@ -177,7 +178,7 @@ def moveFiles(fromPath,toPath): # Mover arquivos
 
 def createDirectory(path): # Criar diretórios se não existirem
     if not os.path.exists(path):
-        os.mkdir(path)
+        os.makedirs(path)
 
 def runMain(): # Função que engloba as principais funções
     ocrPdf(inputDirectory)
@@ -186,21 +187,10 @@ def runMain(): # Função que engloba as principais funções
     print("Processos concluídos com sucesso.")
 
 # Verificar se diretórios existem
-try:
-    rootDirectory = username + "\\Onedrive\\Desktop\\\Ahand\\"
-    createDirectory(rootDirectory)
-except:
-    try:
-        rootDirectory = username + "\\Onedrive\\Área de Trabalho\\Ahand\\"
-        createDirectory(rootDirectory)
-    except:
-        try:
-            rootDirectory = username + "\\Desktop\\Ahand\\"
-            createDirectory(rootDirectory)
-        except:
-            rootDirectory = username + "\\Área de Trabalho\\Ahand\\"
-            createDirectory(rootDirectory)
-            
+desktop = winshell.desktop()
+rootDirectory = desktop + "\\Ahand\\"
+createDirectory(rootDirectory)
+
 inputDirectory = rootDirectory + "input\\"
 outputDirectory = rootDirectory + "output\\"
 
