@@ -1,9 +1,13 @@
 ## ==> GUI FILE
 #from main import *
-import sqlite3
+
+# Bibliotecas nativas
+import sqlite3, os, shutil
+# Bibliotecas externas
 from PyPDF2 import PdfFileWriter, PdfFileReader
-import os
-import shutil
+from PIL import Image
+from pdf2image import convert_from_path 
+import pytesseract
 
 class DataBase():
 
@@ -56,40 +60,58 @@ class PDFfunctions():
         #outputDir = os.path.dirname(paths[0])
         #outputFile = os.path.basename(paths[0])
         #output = outputPath = os.path.join(outputDir,outputFile)
-        counter = 0
+        counterFiles = 0
         for path in paths:
             pdf_reader = PdfFileReader(path)
-            counter+= 1
+            counterFiles+= 1
             for page in range(pdf_reader.getNumPages()):
                 # Add each page to the writer object
                 pdf_writer.addPage(pdf_reader.getPage(page))
-
         # Write out the merged PDF
         PDFfunctions.createDirectory(self,os.path.split(output)[0])
         with open(output, 'wb') as out:
             pdf_writer.write(out)
 
     def mergeBatch(self,rootDirectory,outputDirectory,suffix):
-        counter = 0
+        counterFiles = 0
         ext = ".pdf"
         listPdfFiles = (os.listdir(rootDirectory))
         for subdir in listPdfFiles:
-            counter = 0
+            counterFiles = 0
             files = []
             path = os.path.join(rootDirectory,subdir)
             for file in os.listdir(path):
-                if file.endswith(".pdf"):
-                    counter+=1
+                if file.endswith(ext):
+                    counterFiles+=1
                     files.append(os.path.join(path,file))
-            if counter != 0:
+            if counterFiles != 0:
                 output = os.path.join(outputDirectory,subdir) + suffix + ext
                 PDFfunctions.merge(self,files,output)
 
-PDF = PDFfunctions
-#PDF.mergeBatch(PDFfunctions,"E:\\OneDrive\\Documentos\\GitHub\\Ahand\\root","E:\\OneDrive\\Documentos\\GitHub\\Ahand\\output"," - MERGED")
-        
-    
-
-
-
-    
+    def ocrPDF(self,paths,output,suffix):
+        print("Carregando...")
+        ext = ".pdf"
+        counterFiles = 0
+        pytesseract.pytesseract.tesseract_cmd = "tesseract\\tesseract"
+        for path in paths:
+            counterPages = 1
+            splitext = os.path.splitext(path)[0]
+            basename = os.path.basename(splitext)
+            finalName = output + "\\" + basename + suffix
+            pages = convert_from_path(path,150,poppler_path="poppler\\bin")
+            counterFiles+=1
+            for page in pages:
+                print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages,len(pages),counterFiles,len(paths)))
+                if counterPages == 1:
+                    fileName = finalName
+                else:
+                    fileName = output + "\\." + basename + "-page" +str(counterPages)
+                page.save(fileName + '.jpg') 
+                pdfOcr = pytesseract.image_to_pdf_or_hocr(fileName + '.jpg', lang = "por")
+                with open(fileName + ext,"w+b") as f:
+                    f.write(pdfOcr)
+                os.remove(fileName + ".jpg")
+                if counterPages !=1:
+                    PDFfunctions.merge(self,[finalName + ext, fileName + ext],finalName + ext)
+                    os.remove(fileName + ext)
+                counterPages += 1
