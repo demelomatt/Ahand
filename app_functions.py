@@ -9,6 +9,15 @@ from PIL import Image
 from pdf2image import convert_from_path 
 import pytesseract
 
+from io import StringIO
+import re
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfdocument import PDFDocument
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.pdfpage import PDFPage
+from pdfminer.pdfparser import PDFParser
+
 class DataBase():
 
     def __init__(self,path,tableName):
@@ -45,17 +54,17 @@ class DataBase():
 
 class PDFfunctions():
 
-    def moveFiles(self,fromPath,toPath): # Mover arquivos
+    def moveFiles(fromPath,toPath): # Mover arquivos
         if not os.path.exists(toPath):    
             shutil.move(fromPath,toPath)
         if os.path.exists(fromPath):
             os.remove(fromPath)
 
-    def createDirectory(self,path): # Criar diretórios se não existirem
+    def createDirectory(path): # Criar diretórios se não existirem
         if not os.path.exists(path):
             os.makedirs(path)
 
-    def merge(self,paths, output):
+    def merge(paths, outputFile):
         pdf_writer = PdfFileWriter()
         #outputDir = os.path.dirname(paths[0])
         #outputFile = os.path.basename(paths[0])
@@ -68,11 +77,12 @@ class PDFfunctions():
                 # Add each page to the writer object
                 pdf_writer.addPage(pdf_reader.getPage(page))
         # Write out the merged PDF
-        PDFfunctions.createDirectory(self,os.path.split(output)[0])
-        with open(output, 'wb') as out:
+        PDFfunctions.createDirectory(os.path.split(outputFile)[0])
+        with open(outputFile, 'wb') as out:
             pdf_writer.write(out)
+            out.close()
 
-    def mergeBatch(self,rootDirectory,outputDirectory,suffix):
+    def mergeBatch(rootDirectory,outputDirectory,suffix):
         counterFiles = 0
         ext = ".pdf"
         listPdfFiles = (os.listdir(rootDirectory))
@@ -85,33 +95,65 @@ class PDFfunctions():
                     counterFiles+=1
                     files.append(os.path.join(path,file))
             if counterFiles != 0:
-                output = os.path.join(outputDirectory,subdir) + suffix + ext
-                PDFfunctions.merge(self,files,output)
+                outputDirectory = os.path.join(outputDirectory,subdir) + suffix + ext
+                PDFfunctions.merge(files,outputDirectory)
 
-    def ocrPDF(self,paths,output,suffix):
+
+    def ocrPDF(paths,outputDirectory,suffix,dpi=200):
         print("Carregando...")
-        ext = ".pdf"
         counterFiles = 0
+        ext = ".pdf"
         pytesseract.pytesseract.tesseract_cmd = "tesseract\\tesseract"
         for path in paths:
             counterPages = 1
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext)
-            finalName = output + "\\" + basename + suffix
-            pages = convert_from_path(path,150,poppler_path="poppler\\bin")
+            finalName = outputDirectory + "\\" + basename + suffix
+            pages = convert_from_path(path,dpi,poppler_path="poppler\\bin")
             counterFiles+=1
             for page in pages:
                 print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages,len(pages),counterFiles,len(paths)))
                 if counterPages == 1:
                     fileName = finalName
                 else:
-                    fileName = output + "\\." + basename + "-page" +str(counterPages)
-                page.save(fileName + '.jpg') 
-                pdfOcr = pytesseract.image_to_pdf_or_hocr(fileName + '.jpg', lang = "por")
-                with open(fileName + ext,"w+b") as f:
+                    fileName = outputDirectory + "\\." + basename + "-page" +str(counterPages)
+                pdfName = fileName + ext
+                imgName = fileName + '.jpg'
+                page.save(imgName,'JPEG') 
+                pdfOcr = pytesseract.image_to_pdf_or_hocr(imgName, lang = "por")
+                with open(pdfName,"w+b") as f:
                     f.write(pdfOcr)
-                os.remove(fileName + ".jpg")
+                    f.close()
+                os.remove(imgName)
                 if counterPages !=1:
-                    PDFfunctions.merge(self,[finalName + ext, fileName + ext],finalName + ext)
-                    os.remove(fileName + ext)
+                    PDFfunctions.merge([finalName + ext, fileName + ext],finalName + ext)
+                    os.remove(pdfName)
                 counterPages += 1
+
+    def regex(string,ascii=False,ignoreSpaces=False):
+        pass
+
+    def searchPattern(paths,outputDirectory,moveFullFile=False,folderNotFound=True):
+        keywords = ["Campinas","Ribeirão Preto","São José do Rio Preto"]
+        output_string = None
+        for path in paths:
+            with open(path, 'rb') as in_file:
+                parser = PDFParser(in_file)
+                doc = PDFDocument(parser)
+                rsrcmgr = PDFResourceManager()
+                device = None
+                interpreter = None
+                for page in PDFPage.create_pages(doc):
+                    output_string = StringIO()
+                    device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
+                    interpreter = PDFPageInterpreter(rsrcmgr, device)
+                    interpreter.process_page(page)
+                    text = output_string.getvalue()
+                    for keyword in keywords:
+                        if re.search(keyword,text,re.IGNORECASE):
+                            print("Palavra {} encontrada.".format(keyword))
+                        else:
+                            print("Palavra {} não encontrada.".format(keyword))
+                    output_string.close()
+                    device.close()
+                in_file.close()
