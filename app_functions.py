@@ -10,6 +10,7 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 from PIL import Image
 from pdf2image import convert_from_path 
 import pytesseract
+
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfdocument import PDFDocument
@@ -125,29 +126,41 @@ class PDFfunctions():
         # Retorna o nome final do arquivo.
         return finalName
 
+    
+
     def extractPages(paths,pages,outputDirectory,name):
+    # Extrair páginas indicadas de PDF.
+    # paths recebe os caminhos dos arquivos a trabalhar.
+    # pages recebe as páginas a serem exportadas ou "allpages" para extrair todas as páginas.
+    # outputDirectory recebe o diretório de saída do arquivo.
+    # name são os parâmetros da função rename ou então uma string. 
+
+        # Para cada arquivo.
         for path in paths:
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext)
+
+            # Abrir arquivo.
             with open(path, 'rb') as infile:
                 pdf_reader = PdfFileReader(infile)
                 pdf_writer = PdfFileWriter()
                 totalPages = pdf_reader.getNumPages()
-                allPages = False
+                allpages = False
                 pages = pages
-                if pages[0] == "allPages":
+                if pages[0] == "allpages":
                     pages = range(totalPages)
-                    allPages = True
-
+                    allpages = True
+                
+                #Para cada página do arquivo.
                 for page in pages:
-                    if not allPages:
+                    if not allpages:
                         page -= 1
                     else:
-                        pages = list(["allPages"])
+                        pages = list(["allpages"]) #string para lista
 
+                    # Exportar página.
                     pdf_writer = PdfFileWriter()
                     pdf_writer.addPage(pdf_reader.getPage(page))
-
                     outputFile = PDFfunctions.rename(name,outputDirectory,basename,page)
 
                     with open(outputFile, 'wb') as outfile:
@@ -155,61 +168,89 @@ class PDFfunctions():
                         outfile.close()
 
     def extractAfter(paths,pages,outputDirectory,name):
-        pagesLength = len(pages)
+    # Extrair páginas de arquivo PDF até a sequência indicada. 
+    # paths recebe os caminhos dos arquivos a trabalhar.
+    # pages recebe as páginas a serem exportadas. Ex: [3,7]. Irá gerar três arquivos. Da página 1 até a 3, da 4 até a 7, e de 7 ao número total de páginas do arquivo.
+    # outputDirectory recebe o diretório de saída do arquivo.
+    # name são os parâmetros da função rename ou então uma string. 
+
+        # Tamanho da lista.
+        pagesLength = len(pages) 
         pages.append(pagesLength)
+
+        # Para cada arquivo.
         for path in paths:
-            ignorePages = []
-            pageNumber = []
+            ignorePages = [] # Ignorar páginas que já foram importadas.
+            pageNumber = [] # Lista com os números da página.
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext)
+
+            #Abrir arquivo.
             with open(path, 'rb') as infile:
                 pdf_reader = PdfFileReader(infile)
                 pdf_writer = PdfFileWriter()
                 totalPages = pdf_reader.getNumPages()
                 pages[pagesLength] = totalPages
 
+                # Para cada página do arquivo.
                 for page in pages:
                     pdf_writer = PdfFileWriter()
                     pageNumber.clear()
+
+                    # Para cada número dentro do intervalo da página.
                     for number in range(page):
                         if number not in ignorePages:
                             pdf_writer.addPage(pdf_reader.getPage(number))
                             ignorePages.append(number)
                             pageNumber.append(number)
+
+                    # Exportar páginas.
                     outputFile = PDFfunctions.rename(name,outputDirectory,basename,pageNumber)
-                    
-                    
                     with open(outputFile, 'wb') as outfile:
                         pdf_writer.write(outfile)
                         outfile.close()
 
     def extractEach(paths,n,outputDirectory,name):
-        m = n
+    # Extrair páginas a cada n páginas. 
+    # paths recebe os caminhos dos arquivos a trabalhar.
+    # n recebe o padrão em que as páginas serão exportadas. Ex: 2. A cada 2 páginas, o documento será divido. (2,4,6,8)...
+    # name são os parâmetros da função rename ou então uma string. 
+
+        m = n # Salva o número de m
+
+        # Para cada arquivo.
         for path in paths:
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext)
             ignorePages = []
             pageNumber = []
-            n = m
+            n = m # Reseta o valor de n
+
+            # Abrir arquivo.
             with open(path, 'rb') as infile:
                 pdf_reader = PdfFileReader(infile)
                 pdf_writer = PdfFileWriter()
                 totalPages = pdf_reader.getNumPages()
 
+                # Enquanto n for menor ou igual o total de páginas do arquivo.
                 while n <= totalPages:
                     pdf_writer = PdfFileWriter()
                     pageNumber.clear()
+
+                    # Para cada página no intervalo de n.
                     for page in range(n):
-                        
                         if page not in ignorePages:
                             pdf_writer.addPage(pdf_reader.getPage(page))
                             ignorePages.append(page)
                             pageNumber.append(page)
+
+                    # Salvar arquivo.
                     outputFile = PDFfunctions.rename(name,outputDirectory,basename,pageNumber)
                     with open(outputFile, 'wb') as outfile:
                         pdf_writer.write(outfile)
                         outfile.close()
 
+                    # Verifica se o loop deve reiniciar ou continuar.
                     if n == totalPages:
                         break
                     elif n+m <= totalPages:
