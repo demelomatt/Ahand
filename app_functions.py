@@ -2,7 +2,7 @@
 #from main import *
 
 # Bibliotecas nativas
-import sqlite3, os, shutil, datetime, re
+import sqlite3, os, shutil, datetime, time, re, unicodedata
 from io import StringIO
 
 # Bibliotecas externas
@@ -361,8 +361,25 @@ class PDFfunctions():
                     os.remove(pdfName) # Arquivo auxiliar removido.
                 counterPages += 1
 
-    def regex(string,ascii=False,ignoreSpaces=False):
-        pass
+    def regex(string,ascii=False,ignoreSpaces=False,ignorePunctuation=False):
+        # Remover caracteres especiais e espaços do texto.
+        # string recebe o texto.
+        # ascii recebe boolean indicando se caracteres especiais devem ser ignorados na pesquisa.
+        # ignoreSpaces recebe boolean indicando se espaços devem ser ignorados na pesquisa.
+        # ignorePunctuation recebe boolean indicando se pontuação devem ser ignorados na pesquisa.
+
+        if ascii:
+            string = unicodedata.normalize('NFD', string)
+            string = string.encode('ascii', 'ignore')
+            string = string.decode("utf-8")
+
+        if ignoreSpaces:
+            string = re.sub('[ ]+', '', string)
+
+        if ignorePunctuation:
+            string = re.sub(r"[.,;!?:-]+", '', string)
+
+        return string
 
     def searchPattern(paths,outputDirectory,moveFullFile=False,folderNotFound=True):
     # Procurar por padrões dentro de um arquivo PDF.
@@ -371,11 +388,12 @@ class PDFfunctions():
     # moveFullFile indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
     # folderNotFound indica se será criada uma pasta para mover os arquivos não encontrados.
 
-        keywords = []
+        keywords = ["Pero Vaz de Caminha"]
         output_string = None
         
         # Para cada arquivo.
         for path in paths:
+            counterPages = 0
             with open(path, 'rb') as in_file:
                 parser = PDFParser(in_file)
                 doc = PDFDocument(parser)
@@ -383,8 +401,9 @@ class PDFfunctions():
                 device = None
                 interpreter = None
 
-                # Para cada página.
+                # Para cada página do arquivo.
                 for page in PDFPage.create_pages(doc):
+                    counterPages += 1
                     output_string = StringIO()
                     device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
                     interpreter = PDFPageInterpreter(rsrcmgr, device)
@@ -393,10 +412,17 @@ class PDFfunctions():
                     
                     # Para cada palavra.
                     for keyword in keywords:
+                        #  Se encontrar palavra no arquivo.
                         if re.search(keyword,text,re.IGNORECASE):
-                            print("Palavra {} encontrada.".format(keyword))
-                        else:
-                            print("Palavra {} não encontrada.".format(keyword))
+                            print("Palavra {} encontrada na página {}.".format(keyword,counterPages))
+                            #  Verifica se soumente as páginas ou o arquivo será movido.
+                            print(text)
+                            if not moveFullFile:
+                                break
+                            else:
+                                text = PDFfunctions.regex(text,True,False,False)
+                                print(text)
+                                return
 
                 # Fecha os objetos abertos.
                     output_string.close()
