@@ -361,7 +361,7 @@ class PDFfunctions():
                     os.remove(pdfName) # Arquivo auxiliar removido.
                 counterPages += 1
 
-    def regex(string,ascii=False,ignoreSpaces=False,ignorePunctuation=False):
+    def regex(string,keyword,ascii=False,ignoreSpaces=False,ignorePunctuation=False):
         # Remover caracteres especiais e espaços do texto.
         # string recebe o texto.
         # ascii recebe boolean indicando se caracteres especiais devem ser ignorados na pesquisa.
@@ -372,28 +372,39 @@ class PDFfunctions():
             string = unicodedata.normalize('NFD', string)
             string = string.encode('ascii', 'ignore')
             string = string.decode("utf-8")
+            keyword = unicodedata.normalize('NFD', keyword)
+            keyword = keyword.encode('ascii', 'ignore')
+            keyword = keyword.decode("utf-8")
 
         if ignoreSpaces:
             string = re.sub('[ ]+', '', string)
+            keyword = re.sub('[ ]+', '', keyword)
 
         if ignorePunctuation:
-            string = re.sub(r"[.,;!?:-]+", '', string)
+            string = re.sub(r"[.,;/!?:-]+", '', string)
+            keyword = re.sub(r"[.,;/!?:-]+", '', keyword)
 
-        return string
+        return string, keyword
 
-    def searchPattern(paths,outputDirectory,moveFullFile=False,folderNotFound=True):
+    def searchPattern(paths,outputDirectory,moveFullFile=False,allWords=False,folderNotFound=True):
     # Procurar por padrões dentro de um arquivo PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # outputDirectory recebe o diretório de saída do arquivo.
-    # moveFullFile indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
-    # folderNotFound indica se será criada uma pasta para mover os arquivos não encontrados.
+    # moveFullFile é um boolean que indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
+    # allWords é um boolean que indica se todas as palavras da lista devem estar no arquivo/página.
+    # folderNotFound é um boolean que indica se será criada uma pasta para mover os arquivos não encontrados.
 
-        keywords = ["Pero Vaz de Caminha"]
+        keywords = [] # Lista com as palavras para pesquisar dentro do arquivo.
         output_string = None
-        
+        counterFiles = 0
         # Para cada arquivo.
         for path in paths:
-            counterPages = 0
+            counterFiles += 1  # Contador para quantidade de arquivos.
+            fileFoundedList = [] # Reseta a lista com as palavras encontradas dentro do arquivo.
+            counterPages = 0 # Reseta o contador para quantidade de páginas do arquivo.
+            export = False # Reseta a variável que verifica se o arquivo deve ser movido.
+
+            # Abrir arquivo
             with open(path, 'rb') as in_file:
                 parser = PDFParser(in_file)
                 doc = PDFDocument(parser)
@@ -403,6 +414,10 @@ class PDFfunctions():
 
                 # Para cada página do arquivo.
                 for page in PDFPage.create_pages(doc):
+                    if export:
+                        break
+                    pageFoundedList = [] # Reseta a lista com as palavras encontradas dentro de uma página.
+                    #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
                     counterPages += 1
                     output_string = StringIO()
                     device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
@@ -412,17 +427,38 @@ class PDFfunctions():
                     
                     # Para cada palavra.
                     for keyword in keywords:
-                        #  Se encontrar palavra no arquivo.
-                        if re.search(keyword,text,re.IGNORECASE):
-                            print("Palavra {} encontrada na página {}.".format(keyword,counterPages))
-                            #  Verifica se soumente as páginas ou o arquivo será movido.
-                            print(text)
-                            if not moveFullFile:
-                                break
+                        founded = False # Resetar variável
+                        #counterKeywords += 1
+                        oldKeyword = keyword # Salva a palavra antiga antes da modificação.
+                        text,keyword = PDFfunctions.regex(text,keyword,True,True,True)
+                        #print(text)
+                        
+                        # Se todas as palavras da lista devem estar no arquivo/página.
+                        if allWords:
+                            if re.search(keyword,text,re.IGNORECASE):
+                                if (keyword not in fileFoundedList) and (moveFullFile): # Se palavra foi encontrada adicionar em uma lista para os arquivos caso moveFullFile seja verdadeiro.
+                                    fileFoundedList.append(keyword)
+                                elif (keyword not in pageFoundedList) and (not moveFullFile): # Se palavra foi encontrada adicionar em uma lista para as páginas caso moveFullFile seja falso.
+                                    pageFoundedList.append(keyword)
+                                print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
+                        
+                        # Se somente uma das palavras deve estar no arquivo/página.
+                        else:
+                            if re.search(keyword,text,re.IGNORECASE):
+                                print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
+                                founded = True # Se uma das palavras foi encontrada dentro da página.
+
+                        # Se uma das palavras for encontrada / ou se todas as palavras foram encontradas dentro de um arquivo / ou se todas as palavras foram encontradas dentro de uma página.
+                        if founded or (len(fileFoundedList) == len(keywords)) or (len(pageFoundedList) == len(keywords)):
+                            
+                            # Verifica se somente as páginas ou todo o arquivo será movido.
+                            if moveFullFile:
+                                print("Exportar arquivo e prosseguir para próximo arquivo.")
+                                export = True
+                                break # prosseguir para o próximo arquivo
                             else:
-                                text = PDFfunctions.regex(text,True,False,False)
-                                print(text)
-                                return
+                                print("Exportar página e prosseguir para próxima página.")
+                                break # prosseguir para próxima página
 
                 # Fecha os objetos abertos.
                     output_string.close()
