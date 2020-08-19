@@ -2,7 +2,7 @@
 #from main import *
 
 # Bibliotecas nativas
-import sqlite3, os, shutil, datetime, time, re, unicodedata
+import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs
 from io import StringIO
 
 # Bibliotecas externas
@@ -10,6 +10,7 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 from PIL import Image
 from pdf2image import convert_from_path 
 import pytesseract
+from PySide2.QtWidgets import QFileDialog
 
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -43,24 +44,42 @@ class DataBase():
 
     def createDBTable(self):
         # Criar tabela..
-        query = ''' CREATE TABLE IF NOT EXISTS {} (
-                    ID integer, IF text, DO text
+        query = ''' CREATE TABLE IF NOT EXISTS "{}" (
+                    "Column0" integer, "Column1" text, "Column2" text
                     );  '''.format(self.tableName)
         self.executeQuery(query)
         self.dbConnection.commit()
 
     def deleteDBtable(self):
         # Deletar tabela.
-        query = ''' DROP TABLE IF EXISTS {} '''.format(self.tableName)
+        query = ''' DROP TABLE IF EXISTS "{}" '''.format(self.tableName)
         self.executeQuery(query)
         self.dbConnection.commit()
 
     def insertRowInDB(self,rowData):
         # Inserir registro no banco de dados.
-        query = ''' INSERT INTO {} ('ID','IF','DO') VALUES (?,?,?) '''.format(self.tableName)
-        self.executeQuery(query,rowData)
+        query = ''' INSERT INTO "{}" VALUES {} '''.format(self.tableName,rowData)
+        self.executeQuery(query)
         self.dbConnection.commit()
 
+    def insertColumnInDB(self):
+        # Inserir coluna no banco de dados.
+        columnName = "Column" + str(self.loadData()[1] + 1)
+        query = '''ALTER TABLE "{}" ADD "{}" text'''.format(self.tableName,columnName)
+        self.executeQuery(query)
+        self.dbConnection.commit()
+
+    def loadData(self):
+        query = "SELECT * FROM {}".format(self.tableName)
+        result = self.executeQuery(query)
+        columnCount = 0
+        rowCount = 0
+        for row_number, row_data in enumerate(result):
+            rowCount = row_number
+            for column_number, column_data in enumerate(row_data):
+                columnCount = column_number
+        return rowCount, columnCount
+        
 
 class PDFfunctions():
 # Classe para agrupar as funções dos arquivos PDF.
@@ -313,6 +332,26 @@ class PDFfunctions():
                 outpuDirectory = os.path.join(outputRootDirectory,subdir) + "_"
                 PDFfunctions.merge(files,outpuDirectory,name)
 
+    
+    def getKeywords(self,dbPath,tableName,searchColumn,moveColumn):
+        # Colunas com as palavras a serem pesquisadas e coluna onde as pastas serão criadas.
+        # dbPath recebe o diretório do banco de dados.
+        # tableName recebe o nome da tabela do banco de dados.
+        # searchColumn recebe as colunas com as palavras a serem pesquisadas.
+        # moveColumn recebe coluna onde as pastas serão criadas.
+
+        delimiter = "&"
+        lista = searchColumn.split(delimiter)
+        print(lista)
+        test = lista[0].split("-")
+        print(test[0])
+
+        DB = DataBase(dbPath,tableName)
+        query = ''' SELECT "{}" FROM {} '''.format(searchColumn,tableName)
+        result = DB.executeQuery(query)
+        for row in result:
+            print(row)
+        
     def ocrPDF(paths,outputDirectory,suffix,dpi=200):
     # Escanear arquivos PDF (extrair texto).
     # paths recebe os caminhos dos arquivos a trabalhar.
@@ -464,3 +503,11 @@ class PDFfunctions():
                     output_string.close()
                     device.close()
                 in_file.close()
+
+    def fileDialog(self,ext):
+        # Retorna o caminho do arquivo
+        # ext recebe a extensão do arquivo
+
+        filename = QFileDialog.getOpenFileName(self, 'Abrir arquivo', 
+   'c:\\',ext + "files (*." + ext + ")")
+        return filename[0]
