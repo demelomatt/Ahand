@@ -17,8 +17,11 @@ class UIFunctions(MainWindow):
     ## ==> GLOBALS
     GLOBAL_STATE = 0
     GLOBAL_TITLE_BAR = True
-    tableWidgetIndex = []
-    deletedTables = []
+    tableWidgetObjects = [] # Lista com todos objetos tableWidget criados.
+    deletedTables = [] # Lista com os índices das tabelas deletadas.
+    outputName = ''
+    outputPath = ''
+    inputPaths = []
 
     ########################################################################
     ## START - GUI FUNCTIONS
@@ -128,6 +131,8 @@ class UIFunctions(MainWindow):
             self.ui.layout_menus.addWidget(button)
         else:
             self.ui.layout_menu_bottom.addWidget(button)
+            self.ui.layout_menu_bottom.setAlignment(Qt.AlignBottom|Qt.AlignVCenter)
+
 
     ## ==> SELECT/DESELECT MENU
     ########################################################################
@@ -157,6 +162,20 @@ class UIFunctions(MainWindow):
     def labelPage(self, text):
         newText = '| ' + text.upper()
         self.ui.label_top_info_2.setText(newText)
+
+    ## ==> BUTTONS FUNCTIONS
+
+    def buttonSelectPdfFiles(self):
+        UIFunctions.inputPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
+        self.ui.label_feedback.setText("{} arquivos selecionados.".format(len(UIFunctions.inputPaths)))
+        print(UIFunctions.inputPaths)
+
+    def buttonSelectOutputPath(self,lineEdit):
+        UIFunctions.outputPath = QFileDialog.getExistingDirectory(self,'Selecionar pasta de saída',QtCore.QDir.currentPath(),QFileDialog.DontUseNativeDialog)
+        lineEdit.setText(UIFunctions.outputPath)
+        print(UIFunctions.outputPath)
+        
+
 
     ########################################################################
     ## END - GUI FUNCTIONS
@@ -224,7 +243,7 @@ class UIFunctions(MainWindow):
             totalTables = self.ui.tabWidget.count() # Total de tabelas
         tabWidgetName = "Tab" + str(totalTables + 1) 
         tableWidgetName = "self.ui.TabWidget" + str(totalTables + 1)
-        UIFunctions.tableWidgetIndex.insert(currentTabIndex, tableWidgetName)
+        UIFunctions.tableWidgetObjects.insert(currentTabIndex, tableWidgetName)
         
         # TabWidget
         self.ui.tab = QWidget()
@@ -232,8 +251,8 @@ class UIFunctions(MainWindow):
         self.ui.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
 
         # TableWidget
-        UIFunctions.tableWidgetIndex[currentTabIndex] = QTableWidget(self.ui.tab)
-        UIFunctions.tableWidgetIndex[currentTabIndex].setStyleSheet(u"QTableWidget {	\n"
+        UIFunctions.tableWidgetObjects[currentTabIndex] = QTableWidget(self.ui.tab)
+        UIFunctions.tableWidgetObjects[currentTabIndex].setStyleSheet(u"QTableWidget {	\n"
 "	background-color: rgb(39, 44, 54);\n"
 "	padding: 10px;\n"
 "	border-radius: 5px;\n"
@@ -288,61 +307,25 @@ class UIFunctions(MainWindow):
 "    border: 1px solid rgb(44, 49, 60);\n"
 "}\n"
 "")
-        UIFunctions.tableWidgetIndex[currentTabIndex].setFrameShape(QFrame.StyledPanel)
-        UIFunctions.tableWidgetIndex[currentTabIndex].setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-        UIFunctions.tableWidgetIndex[currentTabIndex].setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
-        UIFunctions.tableWidgetIndex[currentTabIndex].setRowCount(15)
-        UIFunctions.tableWidgetIndex[currentTabIndex].setColumnCount(15)
+        UIFunctions.tableWidgetObjects[currentTabIndex].setFrameShape(QFrame.StyledPanel)
+        UIFunctions.tableWidgetObjects[currentTabIndex].setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
+        UIFunctions.tableWidgetObjects[currentTabIndex].setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
+        UIFunctions.tableWidgetObjects[currentTabIndex].setRowCount(15)
+        UIFunctions.tableWidgetObjects[currentTabIndex].setColumnCount(15)
 
-        self.ui.horizontalLayout_Table.addWidget(UIFunctions.tableWidgetIndex[currentTabIndex])
+        self.ui.horizontalLayout_Table.addWidget(UIFunctions.tableWidgetObjects[currentTabIndex])
 
         self.ui.tabWidget.addTab(self.ui.tab, tabWidgetName)
         self.ui.tabWidget.setCurrentIndex(totalTables) # Ir para a tabela criada
-
-    def extractIntFromString(self,string):
-        result = int(re.search(r'\d+', string)[0]) - 1
-        return result
 
     def deleteTab(self):
         # Deletar tabela
         currentTabIndex = self.ui.tabWidget.currentIndex()
         tabWidgetName = self.ui.tabWidget.tabText(currentTabIndex)
         self.ui.tabWidget.removeTab(currentTabIndex)
-        tabIndex = UIFunctions.extractIntFromString(self,tabWidgetName)
-        UIFunctions.deletedTables.append(tabIndex)
-
-    def addRow(self):
-        currentTabIndex = self.ui.tabWidget.currentIndex()
-        tabWidgetName = self.ui.tabWidget.tabText(currentTabIndex)
-        tabIndex = UIFunctions.extractIntFromString(self,tabWidgetName)
-
-        rowCount =  UIFunctions.tableWidgetIndex[tabIndex].rowCount()
-        UIFunctions.tableWidgetIndex[tabIndex].insertRow(rowCount)
-
-    def deleteRow(self):
-        currentTabIndex = self.ui.tabWidget.currentIndex()
-        tabWidgetName = self.ui.tabWidget.tabText(currentTabIndex)
-        tabIndex = UIFunctions.extractIntFromString(self,tabWidgetName)
-
-        rowCount =  UIFunctions.tableWidgetIndex[tabIndex].rowCount()
-        UIFunctions.tableWidgetIndex[tabIndex].removeRow(rowCount - 1)
-
-    def addColumn(self):
-        currentTabIndex = self.ui.tabWidget.currentIndex()
-        tabWidgetName = self.ui.tabWidget.tabText(currentTabIndex)
-        tabIndex = UIFunctions.extractIntFromString(self,tabWidgetName)
-
-        columnCount =  UIFunctions.tableWidgetIndex[tabIndex].columnCount()
-        UIFunctions.tableWidgetIndex[tabIndex].insertColumn(columnCount)
-
-    def deleteColumn(self):
-        currentTabIndex = self.ui.tabWidget.currentIndex()
-        tabWidgetName = self.ui.tabWidget.tabText(currentTabIndex)
-        tabIndex = UIFunctions.extractIntFromString(self,tabWidgetName)
-        columnCount =  UIFunctions.tableWidgetIndex[tabIndex].columnCount()
-        UIFunctions.tableWidgetIndex[tabIndex].removeColumn(columnCount - 1)
-
-    # Ignorar
+        UIFunctions.deletedTables.append(currentTabIndex)
+        self.ui.horizontalLayout_Table.removeWidget(UIFunctions.tableWidgetObjects[currentTabIndex])
+        UIFunctions.tableWidgetObjects.pop(currentTabIndex)
 
     def importFromCSV(self):
         # Importar dados de arquivo csv
@@ -352,50 +335,3 @@ class UIFunctions(MainWindow):
         list_of_rows = list(reader)
         print(list_of_rows[0])
         print(list_of_rows[1])
-
-    def setItem(self,row,column,item):
-        self.ui.tableWidget.setItem(row,column,item)
-
-    def launchRow(self,row,column,text,addRow=True):
-        rowcount = self.ui.tableWidget.rowCount()
-        if addRow:
-            UIFunctions.addRow(self,rowcount)
-        item = QtWidgets.QTableWidgetItem()
-        UIFunctions.setItem(self,row,column,item)
-        item.setText(QCoreApplication.translate("MainWindow", text, None));
-        item.setTextAlignment(Qt.AlignCenter)
-        item.setFlags(QtCore.Qt.ItemIsEditable)
-
-    def saveData(self,dbPath,tableName):
-        DB = DataBase(dbPath,tableName)
-        rowCount = self.ui.tableWidget.rowCount()
-        columnCount = self.ui.tableWidget.columnCount()
-        DB.deleteDBtable()
-        DB.createDBTable()
-        for row in range(rowCount):
-            rowData = []
-            for column in range(columnCount):
-                widgetItem =  self.ui.tableWidget.item(row,column)
-                if widgetItem and widgetItem.text():
-                    rowData.append(widgetItem.text())
-            if row:
-                try:
-                    DB.insertRowInDB(rowData)
-                except:
-                    pass
-        DB.closeDB()
-        
-    def loadData(self,dbPath,tableName):
-        DB = DataBase(dbPath,tableName)
-        query = "SELECT * FROM {}".format(tableName)
-        result = DB.executeQuery(query)
-        for row_number, row_data in enumerate(result):
-            UIFunctions.addRow(self, row_number + 1)
-            for column_number, column_data in enumerate(row_data):
-                if not isinstance(column_data, int):
-                    UIFunctions.setItem(self,row_number + 1,column_number,QtWidgets.QTableWidgetItem(str(column_data)))
-                else:
-                    UIFunctions.launchRow(self,row_number + 1,column_number, str(column_data) ,False)
-
-        while self.ui.tableWidget.rowCount() <= 16:
-            UIFunctions.launchRow(self,self.ui.tableWidget.rowCount(),0,str(self.ui.tableWidget.rowCount()))      

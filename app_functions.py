@@ -1,8 +1,8 @@
-## ==> GUI FILE
-#from main import *
+from main import *
+from ui_main import *
 
 # Bibliotecas nativas
-import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs
+import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs, winsound
 from io import StringIO
 
 # Bibliotecas externas
@@ -11,6 +11,7 @@ from PIL import Image
 from pdf2image import convert_from_path 
 import pytesseract
 from PySide2.QtWidgets import QFileDialog
+from PySide2 import QtCore,QtWidgets
 
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -79,7 +80,6 @@ class DataBase():
             for column_number, column_data in enumerate(row_data):
                 columnCount = column_number
         return rowCount, columnCount
-        
 
 class PDFfunctions():
 # Classe para agrupar as funções dos arquivos PDF.
@@ -126,7 +126,7 @@ class PDFfunctions():
         time = delimiter.join([hour,minutes,seconds])
 
         # Atribuição de chaves-valor.
-        dic = {"year":year,"month":month,"day":day,"time":time,"page":page,"basename":basename,"group":group,"keywords":keywords}
+        dic = {"#year":year,"#month":month,"#day":day,"#time":time,"#page":page,"#basename":basename,"#group":group,"#keywords":keywords}
 
         for argument in arguments:
             # Transforma lista do parâmetro keywords em string.
@@ -140,12 +140,13 @@ class PDFfunctions():
                 except:
                     name.append(argument)
 
+        if name == []:
+            name.append(basename)
+
         name = delimiter.join(name) # Junta o delimitador "_" ao nome.
-        finalName = outputDirectory + name + ext 
+        finalName = outputDirectory + "/" + name + ext 
         # Retorna o nome final do arquivo.
         return finalName
-
-    
 
     def extractPages(paths,pages,outputDirectory,name):
     # Extrair páginas indicadas de PDF.
@@ -302,6 +303,8 @@ class PDFfunctions():
         with open(outputFile, 'wb') as out:
             pdf_writer.write(out)
             out.close()
+
+        winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
 
     def mergeBatch(rootDirectory,outputRootDirectory,name):
     # Juntar vários arquivos PDF contidos dentro de subpastas.
@@ -504,10 +507,5 @@ class PDFfunctions():
                     device.close()
                 in_file.close()
 
-    def fileDialog(self,ext):
-        # Retorna o caminho do arquivo
-        # ext recebe a extensão do arquivo
 
-        filename = QFileDialog.getOpenFileName(self, 'Abrir arquivo', 
-   'c:\\',ext + "files (*." + ext + ")")
-        return filename[0]
+    

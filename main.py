@@ -50,10 +50,13 @@ class MainWindow(QMainWindow):
 
         ## ==> ADD CUSTOM MENUS
         self.ui.stackedWidget.setMinimumWidth(20)
-        UIFunctions.addNewMenu(self, "Home", "pushButton_home", "url(:/16x16/icons/16x16/cil-home.png)", True)
-        UIFunctions.addNewMenu(self, "Scan", "pushButton_scan", "url(:/16x16/icons/16x16/cil-user-follow.png)", True)
-        UIFunctions.addNewMenu(self, "Search Patterns", "pushButton_search", "url(:/16x16/icons/16x16/cil-find-in-page.png)", True)
-        UIFunctions.addNewMenu(self, "Custom Widgets", "pushButton_widgets", "url(:/16x16/icons/16x16/cil-equalizer.png)", False)
+        UIFunctions.addNewMenu(self, "Mesclar", "pushButton_home", "url(:/20x20/icons/20x20/merge.png)", True)
+        UIFunctions.addNewMenu(self, "Extrair", "pushButton_extract", "url(:/20x20/icons/20x20/split.png)", True)
+        UIFunctions.addNewMenu(self, "Escanear", "pushButton_scan", "url(:/20x20/icons/20x20/scanner.png)", True)
+        UIFunctions.addNewMenu(self, "Procurar padrões", "pushButton_search", "url(:/20x20/icons/20x20/search.png)", True)
+        UIFunctions.addNewMenu(self, "Créditos", "pushButton_credits", "url(:/20x20/icons/20x20/info.png)",isTopMenu = False)
+        UIFunctions.addNewMenu(self, "Ajuda", "pushButton_help", "url(:/20x20/icons/20x20/question.png)",isTopMenu = False)
+
         ## ==> END ##
 
         # START MENU => SELECTION
@@ -92,11 +95,10 @@ class MainWindow(QMainWindow):
 
         ## ==> LOAD DEFINITIONS
         ########################################################################
-        
         ## ==> END ##
 
         # PRIMEIRA EXECUÇÃO
-        UIFunctions.addTab(self)
+        #UIFunctions.addTab(self)
         ## ==> END ##
 
         ########################################################################
@@ -105,16 +107,15 @@ class MainWindow(QMainWindow):
         #                                                                      #
         
         # LABEL
-        self.ui.label_feedback.clear()
+        #self.ui.label_feedback.clear()
+        self.ui.label_feedback.setText("Procurando pela palavra Empresa Paulista de Televisão S/A na página 1/10 do PDF 2/7")
 
         # BUTTON
         self.ui.pushButton_deleteTable.clicked.connect(lambda: UIFunctions.deleteTab(self))
         self.ui.pushButton_addTable.clicked.connect(lambda: UIFunctions.addTab(self))
-        self.ui.pushButton_addrow.clicked.connect(lambda: UIFunctions.addRow(self))
-        self.ui.pushButton_deleterow.clicked.connect(lambda: UIFunctions.deleteRow(self))
-        self.ui.pushButton_addcolumn.clicked.connect(lambda: UIFunctions.addColumn(self))
-        self.ui.pushButton_deletecolumn.clicked.connect(lambda: UIFunctions.deleteColumn(self))
-        self.ui.pushButton_importCSV.clicked.connect(lambda: UIFunctions.importFromCSV(self))
+        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self))
+        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: UIFunctions.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_merge))
+        self.ui.pushButton_run_merge.clicked.connect(lambda: PDFfunctions.merge(UIFunctions.inputPaths,UIFunctions.outputPath,self.ui.lineEdit_filename_merge.text()))
         
         ########################################################################
 
@@ -144,12 +145,19 @@ class MainWindow(QMainWindow):
         if pushButton_Widget.objectName() == "pushButton_home":
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
             UIFunctions.resetStyle(self, "pushButton_home")
-            UIFunctions.labelPage(self, "Home")
+            UIFunctions.labelPage(self, "Mesclar")
+            pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+
+        # PAGE EXTRACT
+        if pushButton_Widget.objectName() == "pushButton_extract":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.page_extract)
+            UIFunctions.resetStyle(self, "pushButton_extract")
+            UIFunctions.labelPage(self, "Extrair")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
 
         # PAGE SCAN
         if pushButton_Widget.objectName() == "pushButton_scan":
-            self.ui.stackedWidget.setCurrentWidget(self.ui.page_scanner)
+            self.ui.stackedWidget.setCurrentWidget(self.ui.page_ocr)
             UIFunctions.resetStyle(self, "pushButton_scan")
             UIFunctions.labelPage(self, "Escanear")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
@@ -160,7 +168,20 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_search")
             UIFunctions.labelPage(self, "Procurar padrões")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
-            self.ui.label_top_info_1.setText("Organizar arquivos PDF procurando por expressões regulares.")
+
+        # PAGE  SEARCH CREDITS
+        if pushButton_Widget.objectName() == "pushButton_credits":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.page_credits)
+            UIFunctions.resetStyle(self, "pushButton_credits")
+            UIFunctions.labelPage(self, "Créditos")
+            pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+
+        # PAGE  SEARCH HELP
+        if pushButton_Widget.objectName() == "pushButton_help":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.page_help)
+            UIFunctions.resetStyle(self, "pushButton_help")
+            UIFunctions.labelPage(self, "Ajuda")
+            pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
             
     ## ==> END ##
 
