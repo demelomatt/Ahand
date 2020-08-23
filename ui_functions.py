@@ -1,9 +1,15 @@
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+
+
 import re
 ## ==> GUI FILE
-from main import *
+from ui_main import Ui_MainWindow
+from ui_styles import Style
 
 ## ==> APP FUNCTIONS
-from app_functions import *
 
 ## ==> GLOBALS
 GLOBAL_STATE = 0
@@ -12,16 +18,13 @@ GLOBAL_TITLE_BAR = True
 ## ==> COUT INITIAL MENU
 count = 1
 
-class UIFunctions(MainWindow):
+class UIFunctions(Ui_MainWindow):
     
     ## ==> GLOBALS
     GLOBAL_STATE = 0
     GLOBAL_TITLE_BAR = True
     tableWidgetObjects = [] # Lista com todos objetos tableWidget criados.
     deletedTables = [] # Lista com os índices das tabelas deletadas.
-    outputName = ''
-    outputPath = ''
-    inputPaths = []
 
     ########################################################################
     ## START - GUI FUNCTIONS
@@ -163,17 +166,7 @@ class UIFunctions(MainWindow):
         newText = '| ' + text.upper()
         self.ui.label_top_info_2.setText(newText)
 
-    ## ==> BUTTONS FUNCTIONS
-
-    def buttonSelectPdfFiles(self):
-        UIFunctions.inputPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
-        self.ui.label_feedback.setText("{} arquivos selecionados.".format(len(UIFunctions.inputPaths)))
-        print(UIFunctions.inputPaths)
-
-    def buttonSelectOutputPath(self,lineEdit):
-        UIFunctions.outputPath = QFileDialog.getExistingDirectory(self,'Selecionar pasta de saída',QtCore.QDir.currentPath(),QFileDialog.DontUseNativeDialog)
-        lineEdit.setText(UIFunctions.outputPath)
-        print(UIFunctions.outputPath)
+    
         
 
 
@@ -327,11 +320,13 @@ class UIFunctions(MainWindow):
         self.ui.horizontalLayout_Table.removeWidget(UIFunctions.tableWidgetObjects[currentTabIndex])
         UIFunctions.tableWidgetObjects.pop(currentTabIndex)
 
-    def importFromCSV(self):
-        # Importar dados de arquivo csv
-        csvPath = PDFfunctions.fileDialog(self,"csv")
-        csvFile = codecs.open(csvPath)
-        reader = csv.reader(csvFile)
-        list_of_rows = list(reader)
-        print(list_of_rows[0])
-        print(list_of_rows[1])
+    def showDialog(self,text,title="Erro ao executar aplicação.",icon=QMessageBox.Critical,buttons=QMessageBox.Ok):
+        msgBox = QMessageBox()
+        msgBox.setIcon(icon)
+        msgBox.setText(text)
+        msgBox.setWindowTitle(title)
+        msgBox.setStandardButtons(buttons)
+        value = msgBox.exec()
+        if value == buttons:
+            return value
+    

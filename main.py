@@ -12,9 +12,11 @@ from ui_main import Ui_MainWindow
 from ui_styles import Style
 
 # IMPORT FUNCTIONS
-from ui_functions import *
+from ui_functions import UIFunctions
+from connect_functions import *
 
 class MainWindow(QMainWindow):
+
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -107,18 +109,17 @@ class MainWindow(QMainWindow):
         #                                                                      #
         
         # LABEL
-        #self.ui.label_feedback.clear()
-        self.ui.label_feedback.setText("Procurando pela palavra Empresa Paulista de Televisão S/A na página 1/10 do PDF 2/7")
+        self.ui.label_feedback.clear()
 
-        # BUTTON
+        #BUTTONS
         self.ui.pushButton_deleteTable.clicked.connect(lambda: UIFunctions.deleteTab(self))
         self.ui.pushButton_addTable.clicked.connect(lambda: UIFunctions.addTab(self))
-        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self))
-        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: UIFunctions.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_merge))
-        self.ui.pushButton_run_merge.clicked.connect(lambda: PDFfunctions.merge(UIFunctions.inputPaths,UIFunctions.outputPath,self.ui.lineEdit_filename_merge.text()))
-        
+        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
+        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: Connect.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_merge))
+        self.ui.pushButton_run_merge.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.merge(PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())'))
         ########################################################################
-
+        
+        
         ## ==> QTableWidget PARAMETERS
         ########################################################################
 
@@ -131,8 +132,9 @@ class MainWindow(QMainWindow):
 
         ## SHOW ==> MAIN WINDOW
         ########################################################################
-        self.show()
+    
         ## ==> END ##
+
 
     ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
@@ -234,4 +236,5 @@ if __name__ == "__main__":
     QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
     QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
     window = MainWindow()
+    window.show()
     sys.exit(app.exec_())

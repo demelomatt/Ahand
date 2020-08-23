@@ -1,6 +1,3 @@
-from main import *
-from ui_main import *
-
 # Bibliotecas nativas
 import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs, winsound
 from io import StringIO
@@ -10,8 +7,10 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 from PIL import Image
 from pdf2image import convert_from_path 
 import pytesseract
-from PySide2.QtWidgets import QFileDialog
-from PySide2 import QtCore,QtWidgets
+
+from ui_main import Ui_MainWindow
+from main import *
+from main import MainWindow
 
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -83,6 +82,10 @@ class DataBase():
 
 class PDFfunctions():
 # Classe para agrupar as funções dos arquivos PDF.
+    
+    outputName = ''
+    outputPath = ''
+    inputPaths = []
 
     def moveFiles(fromPath,toPath): 
     # Mover arquivos. Informar caminho de origem e caminho de destino.
@@ -128,6 +131,8 @@ class PDFfunctions():
         # Atribuição de chaves-valor.
         dic = {"#year":year,"#month":month,"#day":day,"#time":time,"#page":page,"#basename":basename,"#group":group,"#keywords":keywords}
 
+        arguments = arguments.split(",") # Transformar argumentos em lista
+
         for argument in arguments:
             # Transforma lista do parâmetro keywords em string.
             if argument == "keywords":
@@ -136,12 +141,9 @@ class PDFfunctions():
             # Adiciona argumentos ao nome.
             else:
                 try:
-                    name.append(dic[argument])
+                    name.append(dic[re.sub('[ ]+', '', argument)]) # Remover espaços e procurar palavra no dicionário
                 except:
                     name.append(argument)
-
-        if name == []:
-            name.append(basename)
 
         name = delimiter.join(name) # Junta o delimitador "_" ao nome.
         finalName = outputDirectory + "/" + name + ext 
@@ -284,6 +286,14 @@ class PDFfunctions():
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string.
 
+        if outputDirectory == '':
+            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            return
+
+        if len(paths) <= 1:
+            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 2 arquivos para mesclar.")
+            return
+
         pdf_writer = PdfFileWriter() # Escrever em PDF.
 
         # Para cada arquivo.
@@ -304,13 +314,23 @@ class PDFfunctions():
             pdf_writer.write(out)
             out.close()
 
+        ui = Ui_MainWindow()
+        ui.label_feedback.setText("Arquivos mesclados com sucesso.")
+        window = MainWindow()
+        window.show()
+
         winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
 
+
+        
     def mergeBatch(rootDirectory,outputRootDirectory,name):
     # Juntar vários arquivos PDF contidos dentro de subpastas.
     # rootDirectory recebe o diretório raiz onde estão as subpastas.
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string.
+
+
+
 
         counterFiles = 0 # contador para o número de arquivos encontrados.
         listPdfFiles = []
@@ -507,5 +527,15 @@ class PDFfunctions():
                     device.close()
                 in_file.close()
 
+    def importFromCSV(self):
+        # Importar dados de arquivo csv
+        csvPath = PDFfunctions.fileDialog(self,"csv")
+        csvFile = codecs.open(csvPath)
+        reader = csv.reader(csvFile)
+        list_of_rows = list(reader)
+        print(list_of_rows[0])
+        print(list_of_rows[1])
 
-    
+
+
+

@@ -735,10 +735,37 @@ class Ui_MainWindow(object):
         self.frame_input_merge.setStyleSheet(u"border: 0px;")
         self.frame_input_merge.setFrameShape(QFrame.StyledPanel)
         self.frame_input_merge.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_19 = QHBoxLayout(self.frame_input_merge)
-        self.horizontalLayout_19.setSpacing(0)
-        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
-        self.horizontalLayout_19.setContentsMargins(5, 5, 0, 5)
+        self.gridLayout = QGridLayout(self.frame_input_merge)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(5, 5, 0, 5)
+        self.pushButton_selectFiles_merge = QPushButton(self.frame_input_merge)
+        self.pushButton_selectFiles_merge.setObjectName(u"pushButton_selectFiles_merge")
+        self.pushButton_selectFiles_merge.setMinimumSize(QSize(0, 30))
+        self.pushButton_selectFiles_merge.setMaximumSize(QSize(160, 16777215))
+        font4 = QFont()
+        font4.setFamily(u"Segoe UI")
+        font4.setPointSize(9)
+        self.pushButton_selectFiles_merge.setFont(font4)
+        self.pushButton_selectFiles_merge.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 5px;	\n"
+"	background-color:#2E3342;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        icon3 = QIcon()
+        icon3.addFile(u":/20x20/icons/20x20/cil-file.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_selectFiles_merge.setIcon(icon3)
+        self.pushButton_selectFiles_merge.setIconSize(QSize(18, 18))
+
+        self.gridLayout.addWidget(self.pushButton_selectFiles_merge, 0, 1, 1, 1)
+
         self.pushButton_run_merge = QPushButton(self.frame_input_merge)
         self.pushButton_run_merge.setObjectName(u"pushButton_run_merge")
         self.pushButton_run_merge.setMaximumSize(QSize(40, 30))
@@ -756,37 +783,19 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        icon3 = QIcon()
-        icon3.addFile(u":/20x20/icons/20x20/cil-media-play.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_run_merge.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/20x20/icons/20x20/cil-media-play.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_run_merge.setIcon(icon4)
         self.pushButton_run_merge.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_19.addWidget(self.pushButton_run_merge)
+        self.gridLayout.addWidget(self.pushButton_run_merge, 0, 0, 1, 1)
 
-        self.pushButton_selectFiles_merge = QPushButton(self.frame_input_merge)
-        self.pushButton_selectFiles_merge.setObjectName(u"pushButton_selectFiles_merge")
-        self.pushButton_selectFiles_merge.setMinimumSize(QSize(0, 30))
-        self.pushButton_selectFiles_merge.setMaximumSize(QSize(160, 16777215))
-        self.pushButton_selectFiles_merge.setFont(font3)
-        self.pushButton_selectFiles_merge.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 5px;	\n"
-"	background-color:#2E3342;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-        icon4 = QIcon()
-        icon4.addFile(u":/20x20/icons/20x20/cil-file.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_selectFiles_merge.setIcon(icon4)
-        self.pushButton_selectFiles_merge.setIconSize(QSize(18, 18))
+        self.label_files_selected_merge = QLabel(self.frame_input_merge)
+        self.label_files_selected_merge.setObjectName(u"label_files_selected_merge")
+        self.label_files_selected_merge.setFont(font)
+        self.label_files_selected_merge.setStyleSheet(u"color: rgb(122, 127, 135);")
 
-        self.horizontalLayout_19.addWidget(self.pushButton_selectFiles_merge)
+        self.gridLayout.addWidget(self.label_files_selected_merge, 1, 1, 1, 1, Qt.AlignHCenter)
 
 
         self.horizontalLayout_23.addWidget(self.frame_input_merge, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -930,36 +939,35 @@ class Ui_MainWindow(object):
         self.frame_input_mergebatch.setStyleSheet(u"border: 0px;")
         self.frame_input_mergebatch.setFrameShape(QFrame.StyledPanel)
         self.frame_input_mergebatch.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_21 = QHBoxLayout(self.frame_input_mergebatch)
-        self.horizontalLayout_21.setSpacing(0)
-        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.horizontalLayout_21.setContentsMargins(5, 5, 0, 5)
-        self.pushButton_run_mergebatch = QPushButton(self.frame_input_mergebatch)
-        self.pushButton_run_mergebatch.setObjectName(u"pushButton_run_mergebatch")
-        self.pushButton_run_mergebatch.setMaximumSize(QSize(40, 30))
-        self.pushButton_run_mergebatch.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 5px;	\n"
-"	background-color:#2E3342;\n"
+        self.gridLayout_6 = QGridLayout(self.frame_input_mergebatch)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.gridLayout_6.setContentsMargins(5, 5, 0, 5)
+        self.lineEdit = QLineEdit(self.frame_input_mergebatch)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setMinimumSize(QSize(0, 30))
+        self.lineEdit.setMaximumSize(QSize(160, 16777215))
+        self.lineEdit.setFont(font)
+        self.lineEdit.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
 "}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
+"QLineEdit:hover {\n"
 "	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
 "}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
 "}")
-        self.pushButton_run_mergebatch.setIcon(icon3)
-        self.pushButton_run_mergebatch.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_21.addWidget(self.pushButton_run_mergebatch)
+        self.gridLayout_6.addWidget(self.lineEdit, 1, 1, 1, 1)
 
         self.pushButton_selectFiles_mergebatch = QPushButton(self.frame_input_mergebatch)
         self.pushButton_selectFiles_mergebatch.setObjectName(u"pushButton_selectFiles_mergebatch")
         self.pushButton_selectFiles_mergebatch.setMinimumSize(QSize(160, 30))
         self.pushButton_selectFiles_mergebatch.setMaximumSize(QSize(150, 16777215))
-        self.pushButton_selectFiles_mergebatch.setFont(font3)
+        self.pushButton_selectFiles_mergebatch.setFont(font4)
         self.pushButton_selectFiles_mergebatch.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -976,7 +984,29 @@ class Ui_MainWindow(object):
         self.pushButton_selectFiles_mergebatch.setIcon(icon5)
         self.pushButton_selectFiles_mergebatch.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_21.addWidget(self.pushButton_selectFiles_mergebatch)
+        self.gridLayout_6.addWidget(self.pushButton_selectFiles_mergebatch, 0, 1, 1, 1)
+
+        self.pushButton_run_mergebatch = QPushButton(self.frame_input_mergebatch)
+        self.pushButton_run_mergebatch.setObjectName(u"pushButton_run_mergebatch")
+        self.pushButton_run_mergebatch.setMinimumSize(QSize(40, 30))
+        self.pushButton_run_mergebatch.setMaximumSize(QSize(40, 30))
+        self.pushButton_run_mergebatch.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 5px;	\n"
+"	background-color:#2E3342;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.pushButton_run_mergebatch.setIcon(icon4)
+        self.pushButton_run_mergebatch.setIconSize(QSize(18, 18))
+
+        self.gridLayout_6.addWidget(self.pushButton_run_mergebatch, 0, 0, 1, 1)
 
 
         self.horizontalLayout_24.addWidget(self.frame_input_mergebatch, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -1137,10 +1167,32 @@ class Ui_MainWindow(object):
         self.frame_input_extract.setStyleSheet(u"border: 0px;")
         self.frame_input_extract.setFrameShape(QFrame.StyledPanel)
         self.frame_input_extract.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_22 = QHBoxLayout(self.frame_input_extract)
-        self.horizontalLayout_22.setSpacing(0)
-        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.horizontalLayout_22.setContentsMargins(5, 5, 0, 5)
+        self.gridLayout_2 = QGridLayout(self.frame_input_extract)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(5, 5, 0, 5)
+        self.pushButton_selectFiles_extract = QPushButton(self.frame_input_extract)
+        self.pushButton_selectFiles_extract.setObjectName(u"pushButton_selectFiles_extract")
+        self.pushButton_selectFiles_extract.setMinimumSize(QSize(0, 30))
+        self.pushButton_selectFiles_extract.setMaximumSize(QSize(160, 16777215))
+        self.pushButton_selectFiles_extract.setFont(font4)
+        self.pushButton_selectFiles_extract.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 5px;	\n"
+"	background-color:#2E3342;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.pushButton_selectFiles_extract.setIcon(icon3)
+        self.pushButton_selectFiles_extract.setIconSize(QSize(18, 18))
+
+        self.gridLayout_2.addWidget(self.pushButton_selectFiles_extract, 0, 1, 1, 1)
+
         self.pushButton_run_extract = QPushButton(self.frame_input_extract)
         self.pushButton_run_extract.setObjectName(u"pushButton_run_extract")
         self.pushButton_run_extract.setMaximumSize(QSize(40, 30))
@@ -1157,33 +1209,17 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.pushButton_run_extract.setIcon(icon3)
+        self.pushButton_run_extract.setIcon(icon4)
         self.pushButton_run_extract.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_22.addWidget(self.pushButton_run_extract)
+        self.gridLayout_2.addWidget(self.pushButton_run_extract, 0, 0, 1, 1)
 
-        self.pushButton_selectFiles_extract = QPushButton(self.frame_input_extract)
-        self.pushButton_selectFiles_extract.setObjectName(u"pushButton_selectFiles_extract")
-        self.pushButton_selectFiles_extract.setMinimumSize(QSize(0, 30))
-        self.pushButton_selectFiles_extract.setMaximumSize(QSize(160, 16777215))
-        self.pushButton_selectFiles_extract.setFont(font3)
-        self.pushButton_selectFiles_extract.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 5px;	\n"
-"	background-color:#2E3342;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-        self.pushButton_selectFiles_extract.setIcon(icon4)
-        self.pushButton_selectFiles_extract.setIconSize(QSize(18, 18))
+        self.label_files_selected_extract = QLabel(self.frame_input_extract)
+        self.label_files_selected_extract.setObjectName(u"label_files_selected_extract")
+        self.label_files_selected_extract.setFont(font)
+        self.label_files_selected_extract.setStyleSheet(u"color: rgb(122, 127, 135);")
 
-        self.horizontalLayout_22.addWidget(self.pushButton_selectFiles_extract)
+        self.gridLayout_2.addWidget(self.label_files_selected_extract, 1, 1, 1, 1, Qt.AlignHCenter)
 
 
         self.horizontalLayout_25.addWidget(self.frame_input_extract, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -1301,12 +1337,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_26 = QVBoxLayout(self.frame_lineEdit_extract)
         self.verticalLayout_26.setObjectName(u"verticalLayout_26")
         self.verticalLayout_26.setContentsMargins(5, 9, 5, 5)
-        self.lineEdit_extractPages = QLineEdit(self.frame_lineEdit_extract)
-        self.lineEdit_extractPages.setObjectName(u"lineEdit_extractPages")
-        self.lineEdit_extractPages.setMinimumSize(QSize(0, 30))
-        self.lineEdit_extractPages.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_extractPages.setFont(font)
-        self.lineEdit_extractPages.setStyleSheet(u"QLineEdit {\n"
+        self.label_pages = QLabel(self.frame_lineEdit_extract)
+        self.label_pages.setObjectName(u"label_pages")
+        font5 = QFont()
+        font5.setFamily(u"Segoe UI")
+        font5.setPointSize(11)
+        self.label_pages.setFont(font5)
+
+        self.verticalLayout_26.addWidget(self.label_pages)
+
+        self.lineEdit_intPages = QLineEdit(self.frame_lineEdit_extract)
+        self.lineEdit_intPages.setObjectName(u"lineEdit_intPages")
+        self.lineEdit_intPages.setMinimumSize(QSize(0, 30))
+        self.lineEdit_intPages.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_intPages.setFont(font)
+        self.lineEdit_intPages.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
 "	border: 2px solid rgb(27, 29, 35);\n"
@@ -1320,7 +1365,7 @@ class Ui_MainWindow(object):
 "	border: 2px solid rgb(85, 170, 255);\n"
 "}")
 
-        self.verticalLayout_26.addWidget(self.lineEdit_extractPages, 0, Qt.AlignTop)
+        self.verticalLayout_26.addWidget(self.lineEdit_intPages, 0, Qt.AlignTop)
 
 
         self.horizontalLayout_26.addWidget(self.frame_lineEdit_extract, 0, Qt.AlignTop)
@@ -1335,10 +1380,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setContentsMargins(5, 5, 5, 5)
         self.checkBox_extractPages = QCheckBox(self.frame_checkBox_extract)
         self.checkBox_extractPages.setObjectName(u"checkBox_extractPages")
-        font4 = QFont()
-        font4.setFamily(u"Segoe UI")
-        font4.setPointSize(9)
-        self.checkBox_extractPages.setFont(font4)
+        self.checkBox_extractPages.setFont(font)
         self.checkBox_extractPages.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1351,7 +1393,7 @@ class Ui_MainWindow(object):
 
         self.checkBox_extractAfter = QCheckBox(self.frame_checkBox_extract)
         self.checkBox_extractAfter.setObjectName(u"checkBox_extractAfter")
-        self.checkBox_extractAfter.setFont(font4)
+        self.checkBox_extractAfter.setFont(font)
         self.checkBox_extractAfter.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1364,7 +1406,7 @@ class Ui_MainWindow(object):
 
         self.checkBox_extractEach = QCheckBox(self.frame_checkBox_extract)
         self.checkBox_extractEach.setObjectName(u"checkBox_extractEach")
-        self.checkBox_extractEach.setFont(font4)
+        self.checkBox_extractEach.setFont(font)
         self.checkBox_extractEach.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1376,7 +1418,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.addWidget(self.checkBox_extractEach)
 
 
-        self.horizontalLayout_26.addWidget(self.frame_checkBox_extract, 0, Qt.AlignHCenter|Qt.AlignTop)
+        self.horizontalLayout_26.addWidget(self.frame_checkBox_extract, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
         self.verticalLayout_23.addWidget(self.frame_extract_pages, 0, Qt.AlignHCenter|Qt.AlignVCenter)
@@ -1443,10 +1485,9 @@ class Ui_MainWindow(object):
         self.frame_input_ocr.setStyleSheet(u"border: 0px;")
         self.frame_input_ocr.setFrameShape(QFrame.StyledPanel)
         self.frame_input_ocr.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_29 = QHBoxLayout(self.frame_input_ocr)
-        self.horizontalLayout_29.setSpacing(0)
-        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
-        self.horizontalLayout_29.setContentsMargins(0, 5, 0, 0)
+        self.gridLayout_5 = QGridLayout(self.frame_input_ocr)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.gridLayout_5.setContentsMargins(0, 5, 0, 0)
         self.pushButton_run_ocr = QPushButton(self.frame_input_ocr)
         self.pushButton_run_ocr.setObjectName(u"pushButton_run_ocr")
         self.pushButton_run_ocr.setMaximumSize(QSize(40, 30))
@@ -1464,16 +1505,16 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.pushButton_run_ocr.setIcon(icon3)
+        self.pushButton_run_ocr.setIcon(icon4)
         self.pushButton_run_ocr.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_29.addWidget(self.pushButton_run_ocr)
+        self.gridLayout_5.addWidget(self.pushButton_run_ocr, 0, 0, 1, 1)
 
         self.pushButton_selectFiles_ocr = QPushButton(self.frame_input_ocr)
         self.pushButton_selectFiles_ocr.setObjectName(u"pushButton_selectFiles_ocr")
         self.pushButton_selectFiles_ocr.setMinimumSize(QSize(160, 30))
         self.pushButton_selectFiles_ocr.setMaximumSize(QSize(150, 16777215))
-        self.pushButton_selectFiles_ocr.setFont(font3)
+        self.pushButton_selectFiles_ocr.setFont(font4)
         self.pushButton_selectFiles_ocr.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1487,27 +1528,42 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.pushButton_selectFiles_ocr.setIcon(icon4)
+        self.pushButton_selectFiles_ocr.setIcon(icon3)
         self.pushButton_selectFiles_ocr.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_29.addWidget(self.pushButton_selectFiles_ocr)
+        self.gridLayout_5.addWidget(self.pushButton_selectFiles_ocr, 0, 1, 1, 1)
+
+        self.label_files_selected_scan = QLabel(self.frame_input_ocr)
+        self.label_files_selected_scan.setObjectName(u"label_files_selected_scan")
+        self.label_files_selected_scan.setFont(font)
+        self.label_files_selected_scan.setStyleSheet(u"color: rgb(122, 127, 135);")
+
+        self.gridLayout_5.addWidget(self.label_files_selected_scan, 1, 1, 1, 1, Qt.AlignHCenter)
 
 
         self.verticalLayout_28.addWidget(self.frame_input_ocr, 0, Qt.AlignLeft|Qt.AlignTop)
 
         self.frame_dpi = QFrame(self.frame_left_ocr)
         self.frame_dpi.setObjectName(u"frame_dpi")
+        self.frame_dpi.setMinimumSize(QSize(0, 50))
+        self.frame_dpi.setFont(font3)
         self.frame_dpi.setFrameShape(QFrame.StyledPanel)
         self.frame_dpi.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_30 = QVBoxLayout(self.frame_dpi)
-        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
-        self.verticalLayout_30.setContentsMargins(9, 0, 9, 5)
-        self.lineEdit_dpi = QLineEdit(self.frame_dpi)
-        self.lineEdit_dpi.setObjectName(u"lineEdit_dpi")
-        self.lineEdit_dpi.setMinimumSize(QSize(0, 30))
-        self.lineEdit_dpi.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_dpi.setFont(font4)
-        self.lineEdit_dpi.setStyleSheet(u"QLineEdit {\n"
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_dpi)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(9, 0, 9, 5)
+        self.label_intDpi = QLabel(self.frame_dpi)
+        self.label_intDpi.setObjectName(u"label_intDpi")
+        self.label_intDpi.setFont(font)
+
+        self.horizontalLayout_9.addWidget(self.label_intDpi, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+
+        self.lineEdit_intDpi = QLineEdit(self.frame_dpi)
+        self.lineEdit_intDpi.setObjectName(u"lineEdit_intDpi")
+        self.lineEdit_intDpi.setMinimumSize(QSize(0, 23))
+        self.lineEdit_intDpi.setMaximumSize(QSize(50, 16777215))
+        self.lineEdit_intDpi.setFont(font4)
+        self.lineEdit_intDpi.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
 "	border: 2px solid rgb(27, 29, 35);\n"
@@ -1521,10 +1577,10 @@ class Ui_MainWindow(object):
 "	border: 2px solid rgb(85, 170, 255);\n"
 "}")
 
-        self.verticalLayout_30.addWidget(self.lineEdit_dpi)
+        self.horizontalLayout_9.addWidget(self.lineEdit_intDpi, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
-        self.verticalLayout_28.addWidget(self.frame_dpi)
+        self.verticalLayout_28.addWidget(self.frame_dpi, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
 
         self.horizontalLayout_28.addWidget(self.frame_left_ocr, 0, Qt.AlignTop)
@@ -1612,7 +1668,7 @@ class Ui_MainWindow(object):
         self.formLayout_6.setWidget(3, QFormLayout.FieldRole, self.label_tags_ocr)
 
 
-        self.horizontalLayout_28.addWidget(self.frame_output_ocr, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+        self.horizontalLayout_28.addWidget(self.frame_output_ocr, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
         self.verticalLayout_27.addWidget(self.frame_top_page_ocr)
@@ -1625,9 +1681,10 @@ class Ui_MainWindow(object):
         self.page_search.setObjectName(u"page_search")
         self.verticalLayout_12 = QVBoxLayout(self.page_search)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(-1, 9, -1, -1)
+        self.verticalLayout_12.setContentsMargins(14, 9, 9, -1)
         self.frame_search = QFrame(self.page_search)
         self.frame_search.setObjectName(u"frame_search")
+        self.frame_search.setMinimumSize(QSize(867, 0))
         self.frame_search.setFrameShape(QFrame.StyledPanel)
         self.frame_search.setFrameShadow(QFrame.Raised)
         self.verticalLayout_18 = QVBoxLayout(self.frame_search)
@@ -1656,7 +1713,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.frame_top_page.sizePolicy().hasHeightForWidth())
         self.frame_top_page.setSizePolicy(sizePolicy5)
-        self.frame_top_page.setMinimumSize(QSize(830, 0))
+        self.frame_top_page.setMinimumSize(QSize(867, 0))
         self.frame_top_page.setMaximumSize(QSize(16777215, 16777215))
         self.frame_top_page.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
@@ -1669,7 +1726,7 @@ class Ui_MainWindow(object):
         self.frame_input = QFrame(self.frame_top_page)
         self.frame_input.setObjectName(u"frame_input")
         self.frame_input.setMinimumSize(QSize(160, 0))
-        self.frame_input.setMaximumSize(QSize(160, 16777215))
+        self.frame_input.setMaximumSize(QSize(16777215, 16777215))
         self.frame_input.setFont(font3)
         self.frame_input.setStyleSheet(u"border: 0px;")
         self.frame_input.setFrameShape(QFrame.StyledPanel)
@@ -1681,7 +1738,7 @@ class Ui_MainWindow(object):
         self.pushButton_selectFiles.setObjectName(u"pushButton_selectFiles")
         self.pushButton_selectFiles.setMinimumSize(QSize(160, 30))
         self.pushButton_selectFiles.setMaximumSize(QSize(160, 16777215))
-        self.pushButton_selectFiles.setFont(font3)
+        self.pushButton_selectFiles.setFont(font4)
         self.pushButton_selectFiles.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1695,10 +1752,17 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.pushButton_selectFiles.setIcon(icon4)
+        self.pushButton_selectFiles.setIcon(icon3)
         self.pushButton_selectFiles.setIconSize(QSize(18, 18))
 
-        self.verticalLayout_14.addWidget(self.pushButton_selectFiles, 0, Qt.AlignRight|Qt.AlignVCenter)
+        self.verticalLayout_14.addWidget(self.pushButton_selectFiles)
+
+        self.label_files_selected_search = QLabel(self.frame_input)
+        self.label_files_selected_search.setObjectName(u"label_files_selected_search")
+        self.label_files_selected_search.setFont(font)
+        self.label_files_selected_search.setStyleSheet(u"color: rgb(122, 127, 135);")
+
+        self.verticalLayout_14.addWidget(self.label_files_selected_search, 0, Qt.AlignHCenter)
 
 
         self.horizontalLayout_13.addWidget(self.frame_input, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -1875,7 +1939,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.addWidget(self.frame_checkBox_, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
-        self.verticalLayout_18.addWidget(self.frame_top_page, 0, Qt.AlignHCenter)
+        self.verticalLayout_18.addWidget(self.frame_top_page, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
         self.verticalLayout_12.addWidget(self.frame_search, 0, Qt.AlignHCenter)
@@ -1886,11 +1950,12 @@ class Ui_MainWindow(object):
         self.frame_content_page.setFrameShape(QFrame.StyledPanel)
         self.frame_content_page.setFrameShadow(QFrame.Raised)
         self.verticalLayout_13 = QVBoxLayout(self.frame_content_page)
+        self.verticalLayout_13.setSpacing(16)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(5, 9, 5, 5)
+        self.verticalLayout_13.setContentsMargins(5, 5, 5, 5)
         self.frame_middle = QFrame(self.frame_content_page)
         self.frame_middle.setObjectName(u"frame_middle")
-        self.frame_middle.setMinimumSize(QSize(830, 0))
+        self.frame_middle.setMinimumSize(QSize(867, 0))
         self.frame_middle.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
 "\n"
@@ -1988,7 +2053,7 @@ class Ui_MainWindow(object):
         self.comboBox_configs.setObjectName(u"comboBox_configs")
         self.comboBox_configs.setMinimumSize(QSize(0, 30))
         self.comboBox_configs.setMaximumSize(QSize(150, 16777215))
-        self.comboBox_configs.setFont(font3)
+        self.comboBox_configs.setFont(font4)
         self.comboBox_configs.setStyleSheet(u"QComboBox {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2047,10 +2112,10 @@ class Ui_MainWindow(object):
         self.comboBox_operator.setObjectName(u"comboBox_operator")
         self.comboBox_operator.setMinimumSize(QSize(0, 30))
         self.comboBox_operator.setMaximumSize(QSize(16777215, 16777215))
-        font5 = QFont()
-        font5.setFamily(u"Segoe UI")
-        font5.setPointSize(8)
-        self.comboBox_operator.setFont(font5)
+        font6 = QFont()
+        font6.setFamily(u"Segoe UI")
+        font6.setPointSize(8)
+        self.comboBox_operator.setFont(font6)
         self.comboBox_operator.setStyleSheet(u"QComboBox{\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -2094,12 +2159,12 @@ class Ui_MainWindow(object):
         self.label_else = QLabel(self.frame_keywords)
         self.label_else.setObjectName(u"label_else")
         self.label_else.setMaximumSize(QSize(16777215, 16777215))
-        font6 = QFont()
-        font6.setFamily(u"Segoe UI")
-        font6.setPointSize(10)
-        font6.setBold(False)
-        font6.setWeight(50)
-        self.label_else.setFont(font6)
+        font7 = QFont()
+        font7.setFamily(u"Segoe UI")
+        font7.setPointSize(10)
+        font7.setBold(False)
+        font7.setWeight(50)
+        self.label_else.setFont(font7)
         self.label_else.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_else.setAlignment(Qt.AlignCenter)
 
@@ -2108,7 +2173,7 @@ class Ui_MainWindow(object):
         self.lineEdit_moveto = QLineEdit(self.frame_keywords)
         self.lineEdit_moveto.setObjectName(u"lineEdit_moveto")
         self.lineEdit_moveto.setMinimumSize(QSize(200, 30))
-        self.lineEdit_moveto.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_moveto.setMaximumSize(QSize(220, 16777215))
         self.lineEdit_moveto.setFont(font)
         self.lineEdit_moveto.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
@@ -2130,7 +2195,7 @@ class Ui_MainWindow(object):
         self.lineEdit_else = QLineEdit(self.frame_keywords)
         self.lineEdit_else.setObjectName(u"lineEdit_else")
         self.lineEdit_else.setMinimumSize(QSize(200, 30))
-        self.lineEdit_else.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_else.setMaximumSize(QSize(220, 16777215))
         self.lineEdit_else.setFont(font)
         self.lineEdit_else.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
@@ -2152,20 +2217,30 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.addWidget(self.frame_keywords)
 
 
-        self.verticalLayout_13.addWidget(self.frame_middle, 0, Qt.AlignHCenter)
+        self.verticalLayout_13.addWidget(self.frame_middle, 0, Qt.AlignHCenter|Qt.AlignTop)
 
-        self.frame_tab_hbuttons = QFrame(self.frame_content_page)
-        self.frame_tab_hbuttons.setObjectName(u"frame_tab_hbuttons")
-        self.frame_tab_hbuttons.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_tab_hbuttons.setStyleSheet(u"border:0px;")
-        self.frame_tab_hbuttons.setFrameShape(QFrame.StyledPanel)
-        self.frame_tab_hbuttons.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_17 = QHBoxLayout(self.frame_tab_hbuttons)
-        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.horizontalLayout_17.setContentsMargins(23, 9, 5, 0)
-        self.pushButton_addTable = QPushButton(self.frame_tab_hbuttons)
+        self.frame_tab = QFrame(self.frame_content_page)
+        self.frame_tab.setObjectName(u"frame_tab")
+        self.frame_tab.setStyleSheet(u"background-color:#343A4B;\n"
+"border-radius: 7px;\n"
+"\n"
+"")
+        self.frame_tab.setFrameShape(QFrame.StyledPanel)
+        self.frame_tab.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_7 = QVBoxLayout(self.frame_tab)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(9, 3, 9, 9)
+        self.frame_vbuttons = QFrame(self.frame_tab)
+        self.frame_vbuttons.setObjectName(u"frame_vbuttons")
+        self.frame_vbuttons.setFrameShape(QFrame.StyledPanel)
+        self.frame_vbuttons.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_vbuttons)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 5, 0, 0)
+        self.pushButton_addTable = QPushButton(self.frame_vbuttons)
         self.pushButton_addTable.setObjectName(u"pushButton_addTable")
         self.pushButton_addTable.setMinimumSize(QSize(40, 30))
+        self.pushButton_addTable.setMaximumSize(QSize(40, 16777215))
         self.pushButton_addTable.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2184,11 +2259,12 @@ class Ui_MainWindow(object):
         self.pushButton_addTable.setIcon(icon9)
         self.pushButton_addTable.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_17.addWidget(self.pushButton_addTable)
+        self.horizontalLayout_11.addWidget(self.pushButton_addTable)
 
-        self.pushButton_deleteTable = QPushButton(self.frame_tab_hbuttons)
+        self.pushButton_deleteTable = QPushButton(self.frame_vbuttons)
         self.pushButton_deleteTable.setObjectName(u"pushButton_deleteTable")
         self.pushButton_deleteTable.setMinimumSize(QSize(40, 30))
+        self.pushButton_deleteTable.setMaximumSize(QSize(40, 16777215))
         self.pushButton_deleteTable.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2205,19 +2281,11 @@ class Ui_MainWindow(object):
         self.pushButton_deleteTable.setIcon(icon8)
         self.pushButton_deleteTable.setIconSize(QSize(18, 18))
 
-        self.horizontalLayout_17.addWidget(self.pushButton_deleteTable)
+        self.horizontalLayout_11.addWidget(self.pushButton_deleteTable)
 
 
-        self.verticalLayout_13.addWidget(self.frame_tab_hbuttons, 0, Qt.AlignLeft)
+        self.verticalLayout_7.addWidget(self.frame_vbuttons, 0, Qt.AlignLeft)
 
-        self.frame_tab = QFrame(self.frame_content_page)
-        self.frame_tab.setObjectName(u"frame_tab")
-        self.frame_tab.setStyleSheet(u"border:0px;")
-        self.frame_tab.setFrameShape(QFrame.StyledPanel)
-        self.frame_tab.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_15 = QHBoxLayout(self.frame_tab)
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.horizontalLayout_15.setContentsMargins(25, 0, 0, 0)
         self.tabWidget = QTabWidget(self.frame_tab)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setFont(font3)
@@ -2314,7 +2382,7 @@ class Ui_MainWindow(object):
         self.tab_2.setStyleSheet(u"")
         self.tabWidget.addTab(self.tab_2, "")
 
-        self.horizontalLayout_15.addWidget(self.tabWidget)
+        self.verticalLayout_7.addWidget(self.tabWidget)
 
 
         self.verticalLayout_13.addWidget(self.frame_tab)
@@ -2346,15 +2414,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_16 = QVBoxLayout(self.frame_bottom)
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.verticalLayout_16.setContentsMargins(5, 0, 5, 9)
-        self.label_feedback = QLabel(self.frame_bottom)
+        self.verticalLayout_16.setContentsMargins(30, 0, 0, 0)
+        Ui_MainWindow.label_feedback = QLabel(self.frame_bottom)
         self.label_feedback.setObjectName(u"label_feedback")
         self.label_feedback.setMinimumSize(QSize(0, 30))
         self.label_feedback.setMaximumSize(QSize(16777215, 16777215))
-        font7 = QFont()
-        font7.setFamily(u"Segoe UI")
-        font7.setPointSize(11)
-        self.label_feedback.setFont(font7)
+        self.label_feedback.setFont(font5)
 
         self.verticalLayout_16.addWidget(self.label_feedback, 0, Qt.AlignTop)
 
@@ -2465,41 +2530,48 @@ class Ui_MainWindow(object):
         self.label_top_info_1.setText(QCoreApplication.translate("MainWindow", u"Giving you a hand for automation.", None))
         self.label_top_info_2.setText(QCoreApplication.translate("MainWindow", u"| HOME", None))
         self.label_description_merge.setText(QCoreApplication.translate("MainWindow", u"MESCLAR ARQUIVOS PDF", None))
-        self.pushButton_run_merge.setText("")
         self.pushButton_selectFiles_merge.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
+        self.pushButton_run_merge.setText("")
+        self.label_files_selected_merge.setText(QCoreApplication.translate("MainWindow", u"0 arquivos selecionados.", None))
         self.pushButton_outputPath_merge.setText("")
         self.lineEdit_outputPath_merge.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_merge.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo", None))
         self.label_tags_merge.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time #basename", None))
         self.label_description_mergebatch.setText(QCoreApplication.translate("MainWindow", u"MESCLAR ARQUIVOS PDF DE UM DIRET\u00d3RIO", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Diret\u00f3rio raiz", None))
+        self.pushButton_selectFiles_mergebatch.setText(QCoreApplication.translate("MainWindow", u"Abrir diret\u00f3rio", None))
         self.pushButton_run_mergebatch.setText("")
-        self.pushButton_selectFiles_mergebatch.setText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio raiz", None))
         self.lineEdit_filename_mergebatch.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo", None))
         self.label_tags_mergebatch.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time", None))
         self.pushButton_outputPath_mergebatch.setText("")
         self.lineEdit_outputPath_mergebatch.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.label_description_extract.setText(QCoreApplication.translate("MainWindow", u"EXTRAIR P\u00c1GINAS", None))
-        self.pushButton_run_extract.setText("")
         self.pushButton_selectFiles_extract.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
+        self.pushButton_run_extract.setText("")
+        self.label_files_selected_extract.setText(QCoreApplication.translate("MainWindow", u"0 arquivos selecionados.", None))
         self.pushButton_outputPath_extract.setText("")
         self.lineEdit_outputPath_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo", None))
         self.label_tags_extract.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day\n"
 "#time #page #basename", None))
-        self.lineEdit_extractPages.setPlaceholderText(QCoreApplication.translate("MainWindow", u"P\u00e1ginas.  Ex: 3,8,12", None))
+        self.label_pages.setText(QCoreApplication.translate("MainWindow", u"P\u00e1ginas", None))
+        self.lineEdit_intPages.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: 3,8,12", None))
         self.checkBox_extractPages.setText(QCoreApplication.translate("MainWindow", u"Todas as p\u00e1ginas indicadas", None))
         self.checkBox_extractAfter.setText(QCoreApplication.translate("MainWindow", u"Dividir nas p\u00e1ginas indicadas", None))
         self.checkBox_extractEach.setText(QCoreApplication.translate("MainWindow", u"A cada n p\u00e1ginas", None))
         self.label_description_ocr.setText(QCoreApplication.translate("MainWindow", u"ESCANEAR ARQUIVOS PDF", None))
         self.pushButton_run_ocr.setText("")
         self.pushButton_selectFiles_ocr.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
-        self.lineEdit_dpi.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DPI: 200", None))
+        self.label_files_selected_scan.setText(QCoreApplication.translate("MainWindow", u"0 arquivos selecionados.", None))
+        self.label_intDpi.setText(QCoreApplication.translate("MainWindow", u"DPI:", None))
+        self.lineEdit_intDpi.setPlaceholderText(QCoreApplication.translate("MainWindow", u"200", None))
         self.pushButton_outputPath_ocr.setText("")
         self.lineEdit_outputPath_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo", None))
         self.label_tags_ocr.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time #basename", None))
         self.label_description_search.setText(QCoreApplication.translate("MainWindow", u"ORGANIZAR ARQUIVOS PDF PROCURANDO POR EXPRESS\u00d5ES REGULARES", None))
         self.pushButton_selectFiles.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
+        self.label_files_selected_search.setText(QCoreApplication.translate("MainWindow", u"0 arquivos selecionados.", None))
         self.pushButton_outputPath.setText("")
         self.label_tags.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time\n"
 "#page #basename #group #keywords", None))
