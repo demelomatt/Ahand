@@ -1736,10 +1736,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_19">
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
+                               <layout class="QGridLayout" name="gridLayout">
                                 <property name="leftMargin">
                                  <number>5</number>
                                 </property>
@@ -1752,7 +1749,57 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                 <property name="bottomMargin">
                                  <number>5</number>
                                 </property>
-                                <item>
+                                <item row="0" column="1">
+                                 <widget class="QPushButton" name="pushButton_selectFiles_merge">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>0</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>160</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>9</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QPushButton {
+	border: 2px solid rgb(64, 71, 88);
+	border-radius: 5px;	
+	background-color:#2E3342;
+}
+QPushButton:hover {
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>Selecionar arquivos</string>
+                                  </property>
+                                  <property name="icon">
+                                   <iconset resource="../Simple_PySide_Base/files.qrc">
+                                    <normaloff>:/20x20/icons/20x20/cil-file.png</normaloff>:/20x20/icons/20x20/cil-file.png</iconset>
+                                  </property>
+                                  <property name="iconSize">
+                                   <size>
+                                    <width>18</width>
+                                    <height>18</height>
+                                   </size>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_merge">
                                   <property name="maximumSize">
                                    <size>
@@ -1793,52 +1840,19 @@ QPushButton:pressed {
                                   </property>
                                  </widget>
                                 </item>
-                                <item>
-                                 <widget class="QPushButton" name="pushButton_selectFiles_merge">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>160</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
+                                <item row="1" column="1" alignment="Qt::AlignHCenter">
+                                 <widget class="QLabel" name="label_files_selected_merge">
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
+                                    <pointsize>10</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
-                                   <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
+                                   <string notr="true">color: rgb(122, 127, 135);</string>
                                   </property>
                                   <property name="text">
-                                   <string>Selecionar arquivos</string>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../Simple_PySide_Base/files.qrc">
-                                    <normaloff>:/20x20/icons/20x20/cil-file.png</normaloff>:/20x20/icons/20x20/cil-file.png</iconset>
-                                  </property>
-                                  <property name="iconSize">
-                                   <size>
-                                    <width>18</width>
-                                    <height>18</height>
-                                   </size>
+                                   <string>0 arquivos selecionados.</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -2177,10 +2191,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_21">
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
+                               <layout class="QGridLayout" name="gridLayout_6">
                                 <property name="leftMargin">
                                  <number>5</number>
                                 </property>
@@ -2193,8 +2204,104 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                 <property name="bottomMargin">
                                  <number>5</number>
                                 </property>
-                                <item>
+                                <item row="1" column="1">
+                                 <widget class="QLineEdit" name="lineEdit">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>0</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>160</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>10</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QLineEdit {
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	padding-left: 10px;
+}
+QLineEdit:hover {
+	border: 2px solid rgb(85, 170, 255);
+	border: 2px solid rgb(91, 101, 124);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(85, 170, 255);
+}</string>
+                                  </property>
+                                  <property name="placeholderText">
+                                   <string>Diretório raiz</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="1">
+                                 <widget class="QPushButton" name="pushButton_selectFiles_mergebatch">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>160</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>150</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>9</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QPushButton {
+	border: 2px solid rgb(64, 71, 88);
+	border-radius: 5px;	
+	background-color:#2E3342;
+}
+QPushButton:hover {
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>Abrir diretório</string>
+                                  </property>
+                                  <property name="icon">
+                                   <iconset resource="../Simple_PySide_Base/files.qrc">
+                                    <normaloff>:/20x20/icons/20x20/cil-folder.png</normaloff>:/20x20/icons/20x20/cil-folder.png</iconset>
+                                  </property>
+                                  <property name="iconSize">
+                                   <size>
+                                    <width>18</width>
+                                    <height>18</height>
+                                   </size>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_mergebatch">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>40</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
                                   <property name="maximumSize">
                                    <size>
                                     <width>40</width>
@@ -2222,55 +2329,6 @@ QPushButton:pressed {
                                   <property name="icon">
                                    <iconset resource="../Simple_PySide_Base/files.qrc">
                                     <normaloff>:/20x20/icons/20x20/cil-media-play.png</normaloff>:/20x20/icons/20x20/cil-media-play.png</iconset>
-                                  </property>
-                                  <property name="iconSize">
-                                   <size>
-                                    <width>18</width>
-                                    <height>18</height>
-                                   </size>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="pushButton_selectFiles_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>160</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>150</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Segoe UI</family>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Selecionar diretório raiz</string>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../Simple_PySide_Base/files.qrc">
-                                    <normaloff>:/20x20/icons/20x20/cil-folder.png</normaloff>:/20x20/icons/20x20/cil-folder.png</iconset>
                                   </property>
                                   <property name="iconSize">
                                    <size>
@@ -2667,10 +2725,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_22">
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
+                               <layout class="QGridLayout" name="gridLayout_2">
                                 <property name="leftMargin">
                                  <number>5</number>
                                 </property>
@@ -2683,7 +2738,57 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                 <property name="bottomMargin">
                                  <number>5</number>
                                 </property>
-                                <item>
+                                <item row="0" column="1">
+                                 <widget class="QPushButton" name="pushButton_selectFiles_extract">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>0</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>160</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>9</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QPushButton {
+	border: 2px solid rgb(64, 71, 88);
+	border-radius: 5px;	
+	background-color:#2E3342;
+}
+QPushButton:hover {
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>Selecionar arquivos</string>
+                                  </property>
+                                  <property name="icon">
+                                   <iconset resource="../Simple_PySide_Base/files.qrc">
+                                    <normaloff>:/20x20/icons/20x20/cil-file.png</normaloff>:/20x20/icons/20x20/cil-file.png</iconset>
+                                  </property>
+                                  <property name="iconSize">
+                                   <size>
+                                    <width>18</width>
+                                    <height>18</height>
+                                   </size>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_extract">
                                   <property name="maximumSize">
                                    <size>
@@ -2721,52 +2826,19 @@ QPushButton:pressed {
                                   </property>
                                  </widget>
                                 </item>
-                                <item>
-                                 <widget class="QPushButton" name="pushButton_selectFiles_extract">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>160</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
+                                <item row="1" column="1" alignment="Qt::AlignHCenter">
+                                 <widget class="QLabel" name="label_files_selected_extract">
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
+                                    <pointsize>10</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
-                                   <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
+                                   <string notr="true">color: rgb(122, 127, 135);</string>
                                   </property>
                                   <property name="text">
-                                   <string>Selecionar arquivos</string>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../Simple_PySide_Base/files.qrc">
-                                    <normaloff>:/20x20/icons/20x20/cil-file.png</normaloff>:/20x20/icons/20x20/cil-file.png</iconset>
-                                  </property>
-                                  <property name="iconSize">
-                                   <size>
-                                    <width>18</width>
-                                    <height>18</height>
-                                   </size>
+                                   <string>0 arquivos selecionados.</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -3034,8 +3106,21 @@ border-radius: 7px;
                              <property name="bottomMargin">
                               <number>5</number>
                              </property>
+                             <item>
+                              <widget class="QLabel" name="label_pages">
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Páginas</string>
+                               </property>
+                              </widget>
+                             </item>
                              <item alignment="Qt::AlignTop">
-                              <widget class="QLineEdit" name="lineEdit_extractPages">
+                              <widget class="QLineEdit" name="lineEdit_intPages">
                                <property name="minimumSize">
                                 <size>
                                  <width>0</width>
@@ -3070,14 +3155,14 @@ QLineEdit:focus {
 }</string>
                                </property>
                                <property name="placeholderText">
-                                <string>Páginas.  Ex: 3,8,12</string>
+                                <string>Ex: 3,8,12</string>
                                </property>
                               </widget>
                              </item>
                             </layout>
                            </widget>
                           </item>
-                          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                            <widget class="QFrame" name="frame_checkBox_extract">
                             <property name="styleSheet">
                              <string notr="true">border:0px</string>
@@ -3106,7 +3191,7 @@ QLineEdit:focus {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3128,7 +3213,7 @@ QCheckBox::indicator:checked {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3150,7 +3235,7 @@ QCheckBox::indicator:checked {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3345,10 +3430,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_29">
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
+                               <layout class="QGridLayout" name="gridLayout_5">
                                 <property name="leftMargin">
                                  <number>0</number>
                                 </property>
@@ -3361,7 +3443,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                 <property name="bottomMargin">
                                  <number>0</number>
                                 </property>
-                                <item>
+                                <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_ocr">
                                   <property name="maximumSize">
                                    <size>
@@ -3402,7 +3484,7 @@ QPushButton:pressed {
                                   </property>
                                  </widget>
                                 </item>
-                                <item>
+                                <item row="0" column="1">
                                  <widget class="QPushButton" name="pushButton_selectFiles_ocr">
                                   <property name="minimumSize">
                                    <size>
@@ -3419,6 +3501,7 @@ QPushButton:pressed {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
+                                    <pointsize>9</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -3451,18 +3534,45 @@ QPushButton:pressed {
                                   </property>
                                  </widget>
                                 </item>
+                                <item row="1" column="1" alignment="Qt::AlignHCenter">
+                                 <widget class="QLabel" name="label_files_selected_scan">
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>10</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">color: rgb(122, 127, 135);</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>0 arquivos selecionados.</string>
+                                  </property>
+                                 </widget>
+                                </item>
                                </layout>
                               </widget>
                              </item>
-                             <item>
+                             <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
                               <widget class="QFrame" name="frame_dpi">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>50</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                </font>
+                               </property>
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_30">
+                               <layout class="QHBoxLayout" name="horizontalLayout_9">
                                 <property name="leftMargin">
                                  <number>9</number>
                                 </property>
@@ -3475,17 +3585,30 @@ QPushButton:pressed {
                                 <property name="bottomMargin">
                                  <number>5</number>
                                 </property>
-                                <item>
-                                 <widget class="QLineEdit" name="lineEdit_dpi">
+                                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                                 <widget class="QLabel" name="label_intDpi">
+                                  <property name="font">
+                                   <font>
+                                    <family>Segoe UI</family>
+                                    <pointsize>10</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>DPI:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                                 <widget class="QLineEdit" name="lineEdit_intDpi">
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>30</height>
+                                    <height>23</height>
                                    </size>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>16777215</width>
+                                    <width>50</width>
                                     <height>16777215</height>
                                    </size>
                                   </property>
@@ -3511,7 +3634,7 @@ QLineEdit:focus {
 }</string>
                                   </property>
                                   <property name="placeholderText">
-                                   <string>DPI: 200</string>
+                                   <string>200</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -3521,7 +3644,7 @@ QLineEdit:focus {
                             </layout>
                            </widget>
                           </item>
-                          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
                            <widget class="QFrame" name="frame_output_ocr">
                             <property name="minimumSize">
                              <size>
@@ -3716,11 +3839,23 @@ QLineEdit:focus {
                   </widget>
                   <widget class="QWidget" name="page_search">
                    <layout class="QVBoxLayout" name="verticalLayout_12">
+                    <property name="leftMargin">
+                     <number>14</number>
+                    </property>
                     <property name="topMargin">
+                     <number>9</number>
+                    </property>
+                    <property name="rightMargin">
                      <number>9</number>
                     </property>
                     <item alignment="Qt::AlignHCenter">
                      <widget class="QFrame" name="frame_search">
+                      <property name="minimumSize">
+                       <size>
+                        <width>867</width>
+                        <height>0</height>
+                       </size>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -3779,7 +3914,7 @@ QLineEdit:focus {
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignHCenter">
+                       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
                         <widget class="QFrame" name="frame_top_page">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -3789,7 +3924,7 @@ QLineEdit:focus {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>830</width>
+                           <width>867</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -3833,7 +3968,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                             </property>
                             <property name="maximumSize">
                              <size>
-                              <width>160</width>
+                              <width>16777215</width>
                               <height>16777215</height>
                              </size>
                             </property>
@@ -3864,7 +3999,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                              <property name="bottomMargin">
                               <number>5</number>
                              </property>
-                             <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+                             <item>
                               <widget class="QPushButton" name="pushButton_selectFiles">
                                <property name="minimumSize">
                                 <size>
@@ -3881,6 +4016,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
+                                 <pointsize>9</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3910,6 +4046,22 @@ QPushButton:pressed {
                                  <width>18</width>
                                  <height>18</height>
                                 </size>
+                               </property>
+                              </widget>
+                             </item>
+                             <item alignment="Qt::AlignHCenter">
+                              <widget class="QLabel" name="label_files_selected_search">
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(122, 127, 135);</string>
+                               </property>
+                               <property name="text">
+                                <string>0 arquivos selecionados.</string>
                                </property>
                               </widget>
                              </item>
@@ -4311,11 +4463,14 @@ QCheckBox::indicator:checked {
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_13">
+                       <property name="spacing">
+                        <number>16</number>
+                       </property>
                        <property name="leftMargin">
                         <number>5</number>
                        </property>
                        <property name="topMargin">
-                        <number>9</number>
+                        <number>5</number>
                        </property>
                        <property name="rightMargin">
                         <number>5</number>
@@ -4323,11 +4478,11 @@ QCheckBox::indicator:checked {
                        <property name="bottomMargin">
                         <number>5</number>
                        </property>
-                       <item alignment="Qt::AlignHCenter">
+                       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
                         <widget class="QFrame" name="frame_middle">
                          <property name="minimumSize">
                           <size>
-                           <width>830</width>
+                           <width>867</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -4536,6 +4691,7 @@ QPushButton:pressed {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
+                                 <pointsize>9</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4784,7 +4940,7 @@ QLineEdit:focus {
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>16777215</width>
+                                 <width>220</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
@@ -4827,7 +4983,7 @@ QLineEdit:focus {
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>16777215</width>
+                                 <width>220</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
@@ -4863,119 +5019,13 @@ QLineEdit:focus {
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignLeft">
-                        <widget class="QFrame" name="frame_tab_hbuttons">
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">border:0px;</string>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_17">
-                          <property name="leftMargin">
-                           <number>23</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>9</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>5</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                          <item>
-                           <widget class="QPushButton" name="pushButton_addTable">
-                            <property name="minimumSize">
-                             <size>
-                              <width>40</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                            <property name="icon">
-                             <iconset resource="../Simple_PySide_Base/files.qrc">
-                              <normaloff>:/20x20/icons/20x20/cil-library-add.png</normaloff>:/20x20/icons/20x20/cil-library-add.png</iconset>
-                            </property>
-                            <property name="iconSize">
-                             <size>
-                              <width>18</width>
-                              <height>18</height>
-                             </size>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QPushButton" name="pushButton_deleteTable">
-                            <property name="minimumSize">
-                             <size>
-                              <width>40</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                            <property name="icon">
-                             <iconset resource="../Simple_PySide_Base/files.qrc">
-                              <normaloff>:/20x20/icons/20x20/cil-trash.png</normaloff>:/20x20/icons/20x20/cil-trash.png</iconset>
-                            </property>
-                            <property name="iconSize">
-                             <size>
-                              <width>18</width>
-                              <height>18</height>
-                             </size>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
                        <item>
                         <widget class="QFrame" name="frame_tab">
                          <property name="styleSheet">
-                          <string notr="true">border:0px;</string>
+                          <string notr="true">background-color:#343A4B;
+border-radius: 7px;
+
+</string>
                          </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
@@ -4983,19 +5033,131 @@ QPushButton:pressed {
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_15">
+                         <layout class="QVBoxLayout" name="verticalLayout_7">
                           <property name="leftMargin">
-                           <number>25</number>
+                           <number>9</number>
                           </property>
                           <property name="topMargin">
-                           <number>0</number>
+                           <number>3</number>
                           </property>
                           <property name="rightMargin">
-                           <number>0</number>
+                           <number>9</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>0</number>
+                           <number>9</number>
                           </property>
+                          <item alignment="Qt::AlignLeft">
+                           <widget class="QFrame" name="frame_vbuttons">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_11">
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>5</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QPushButton" name="pushButton_addTable">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>40</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>40</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton {
+	border: 2px solid rgb(64, 71, 88);
+	border-radius: 5px;	
+	background-color:#2E3342;
+}
+QPushButton:hover {
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="../Simple_PySide_Base/files.qrc">
+                                 <normaloff>:/20x20/icons/20x20/cil-library-add.png</normaloff>:/20x20/icons/20x20/cil-library-add.png</iconset>
+                               </property>
+                               <property name="iconSize">
+                                <size>
+                                 <width>18</width>
+                                 <height>18</height>
+                                </size>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QPushButton" name="pushButton_deleteTable">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>40</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>40</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton {
+	border: 2px solid rgb(64, 71, 88);
+	border-radius: 5px;	
+	background-color:#2E3342;
+}
+QPushButton:hover {
+	background-color: rgb(85, 170, 255);
+	border: 2px solid rgb(85, 170, 255);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="../Simple_PySide_Base/files.qrc">
+                                 <normaloff>:/20x20/icons/20x20/cil-trash.png</normaloff>:/20x20/icons/20x20/cil-trash.png</iconset>
+                               </property>
+                               <property name="iconSize">
+                                <size>
+                                 <width>18</width>
+                                 <height>18</height>
+                                </size>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
                           <item>
                            <widget class="QTabWidget" name="tabWidget">
                             <property name="font">
@@ -5006,6 +5168,7 @@ QPushButton:pressed {
                             <property name="styleSheet">
                              <string notr="true">QTabBar::tab {
     background: rgb(39, 44, 54);
+	color: rgb(255, 255, 255);
 }
 
 QTabBar::tab:hover {
@@ -5014,6 +5177,8 @@ QTabBar::tab:hover {
 
 QTabBar::tab:selected {
 	background-color: rgb(85, 170, 255);
+	color: rgb(0, 0, 0);
+	
 }
 </string>
                             </property>
@@ -5142,11 +5307,73 @@ QHeaderView::section:vertical
                                  <bool>true</bool>
                                 </property>
                                 <property name="rowCount">
-                                 <number>0</number>
+                                 <number>50</number>
                                 </property>
                                 <property name="columnCount">
-                                 <number>0</number>
+                                 <number>12</number>
                                 </property>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <row/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
+                                <column/>
                                </widget>
                               </item>
                              </layout>
@@ -5201,16 +5428,16 @@ QHeaderView::section:vertical
                     <number>0</number>
                    </property>
                    <property name="leftMargin">
-                    <number>5</number>
+                    <number>30</number>
                    </property>
                    <property name="topMargin">
                     <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>5</number>
+                    <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>9</number>
+                    <number>0</number>
                    </property>
                    <item alignment="Qt::AlignTop">
                     <widget class="QLabel" name="label_feedback">

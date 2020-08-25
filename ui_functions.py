@@ -23,8 +23,6 @@ class UIFunctions(Ui_MainWindow):
     ## ==> GLOBALS
     GLOBAL_STATE = 0
     GLOBAL_TITLE_BAR = True
-    tableWidgetObjects = [] # Lista com todos objetos tableWidget criados.
-    deletedTables = [] # Lista com os índices das tabelas deletadas.
 
     ########################################################################
     ## START - GUI FUNCTIONS
@@ -125,7 +123,6 @@ class UIFunctions(Ui_MainWindow):
         button.setLayoutDirection(Qt.LeftToRight)
         button.setFont(font)
         button.setStyleSheet(Style.style_bt_standard.replace('ICON_REPLACE', icon))
-
         button.setText(name)
         button.setToolTip(name)
         button.clicked.connect(self.Button)
@@ -165,10 +162,6 @@ class UIFunctions(Ui_MainWindow):
     def labelPage(self, text):
         newText = '| ' + text.upper()
         self.ui.label_top_info_2.setText(newText)
-
-    
-        
-
 
     ########################################################################
     ## END - GUI FUNCTIONS
@@ -223,104 +216,14 @@ class UIFunctions(Ui_MainWindow):
 
     ## ==> TABLE FUNCTIONS
         ########################################################################
-
-    def addTab(self):
-        # Adicionar nova tabela ao tabWidget
-
-        currentTabIndex = self.ui.tabWidget.currentIndex() + 1
-        if UIFunctions.deletedTables != []:
-            # Se existem tabelas deletadas
-            totalTables = min(UIFunctions.deletedTables) # Pegar o índice mínimo
-            UIFunctions.deletedTables.remove(totalTables) # Remover índice
-        else:
-            totalTables = self.ui.tabWidget.count() # Total de tabelas
-        tabWidgetName = "Tab" + str(totalTables + 1) 
-        tableWidgetName = "self.ui.TabWidget" + str(totalTables + 1)
-        UIFunctions.tableWidgetObjects.insert(currentTabIndex, tableWidgetName)
-        
-        # TabWidget
-        self.ui.tab = QWidget()
-        self.ui.horizontalLayout_Table = QHBoxLayout(self.ui.tab)
-        self.ui.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
-
-        # TableWidget
-        UIFunctions.tableWidgetObjects[currentTabIndex] = QTableWidget(self.ui.tab)
-        UIFunctions.tableWidgetObjects[currentTabIndex].setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item{\n"
-"	border-color: rgb(44, 49, 60);\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(85, 170, 255);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-""
-                        "QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(81, 255, 0);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderView::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"")
-        UIFunctions.tableWidgetObjects[currentTabIndex].setFrameShape(QFrame.StyledPanel)
-        UIFunctions.tableWidgetObjects[currentTabIndex].setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-        UIFunctions.tableWidgetObjects[currentTabIndex].setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
-        UIFunctions.tableWidgetObjects[currentTabIndex].setRowCount(15)
-        UIFunctions.tableWidgetObjects[currentTabIndex].setColumnCount(15)
-
-        self.ui.horizontalLayout_Table.addWidget(UIFunctions.tableWidgetObjects[currentTabIndex])
-
-        self.ui.tabWidget.addTab(self.ui.tab, tabWidgetName)
-        self.ui.tabWidget.setCurrentIndex(totalTables) # Ir para a tabela criada
-
+    
     def deleteTab(self):
         # Deletar tabela
         currentTabIndex = self.ui.tabWidget.currentIndex()
-        tabWidgetName = self.ui.tabWidget.tabText(currentTabIndex)
         self.ui.tabWidget.removeTab(currentTabIndex)
-        UIFunctions.deletedTables.append(currentTabIndex)
-        self.ui.horizontalLayout_Table.removeWidget(UIFunctions.tableWidgetObjects[currentTabIndex])
-        UIFunctions.tableWidgetObjects.pop(currentTabIndex)
 
     def showDialog(self,text,title="Erro ao executar aplicação.",icon=QMessageBox.Critical,buttons=QMessageBox.Ok):
+        # Qwidget para abrir diálogo de seleção de arquivos e armazenar o caminho
         msgBox = QMessageBox()
         msgBox.setIcon(icon)
         msgBox.setText(text)

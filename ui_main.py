@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'GUI_BASE.ui'
+## Form generated from reading UI file 'GUI_BASE2.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.0
 ##
@@ -1681,10 +1681,10 @@ class Ui_MainWindow(object):
         self.page_search.setObjectName(u"page_search")
         self.verticalLayout_12 = QVBoxLayout(self.page_search)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(14, 9, 9, -1)
+        self.verticalLayout_12.setContentsMargins(30, 9, 30, 5)
         self.frame_search = QFrame(self.page_search)
         self.frame_search.setObjectName(u"frame_search")
-        self.frame_search.setMinimumSize(QSize(867, 0))
+        self.frame_search.setMinimumSize(QSize(830, 0))
         self.frame_search.setFrameShape(QFrame.StyledPanel)
         self.frame_search.setFrameShadow(QFrame.Raised)
         self.verticalLayout_18 = QVBoxLayout(self.frame_search)
@@ -1713,8 +1713,8 @@ class Ui_MainWindow(object):
         sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.frame_top_page.sizePolicy().hasHeightForWidth())
         self.frame_top_page.setSizePolicy(sizePolicy5)
-        self.frame_top_page.setMinimumSize(QSize(867, 0))
-        self.frame_top_page.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_top_page.setMinimumSize(QSize(0, 0))
+        self.frame_top_page.setMaximumSize(QSize(830, 16777215))
         self.frame_top_page.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
 "border-top: 3px solid rgb(85, 170, 255);")
@@ -1952,10 +1952,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_13 = QVBoxLayout(self.frame_content_page)
         self.verticalLayout_13.setSpacing(16)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout_13.setContentsMargins(5, 5, 5, 0)
         self.frame_middle = QFrame(self.frame_content_page)
         self.frame_middle.setObjectName(u"frame_middle")
-        self.frame_middle.setMinimumSize(QSize(867, 0))
+        self.frame_middle.setMinimumSize(QSize(830, 0))
         self.frame_middle.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
 "\n"
@@ -1967,17 +1967,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setContentsMargins(5, 5, 5, 5)
         self.frame_config = QFrame(self.frame_middle)
         self.frame_config.setObjectName(u"frame_config")
-        self.frame_config.setMaximumSize(QSize(300, 16777215))
+        self.frame_config.setMaximumSize(QSize(16777215, 16777215))
         self.frame_config.setStyleSheet(u"border:0px;")
         self.frame_config.setFrameShape(QFrame.StyledPanel)
         self.frame_config.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_18 = QHBoxLayout(self.frame_config)
+        self.horizontalLayout_18.setSpacing(10)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.horizontalLayout_18.setContentsMargins(-1, -1, -1, 5)
         self.pushButton_run = QPushButton(self.frame_config)
         self.pushButton_run.setObjectName(u"pushButton_run")
         self.pushButton_run.setMinimumSize(QSize(40, 30))
-        self.pushButton_run.setMaximumSize(QSize(16777215, 16777215))
+        self.pushButton_run.setMaximumSize(QSize(40, 16777215))
         self.pushButton_run.setFont(font3)
         self.pushButton_run.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
@@ -2002,7 +2003,7 @@ class Ui_MainWindow(object):
         self.pushButton_save = QPushButton(self.frame_config)
         self.pushButton_save.setObjectName(u"pushButton_save")
         self.pushButton_save.setMinimumSize(QSize(40, 30))
-        self.pushButton_save.setMaximumSize(QSize(16777215, 16777215))
+        self.pushButton_save.setMaximumSize(QSize(40, 16777215))
         self.pushButton_save.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2026,7 +2027,7 @@ class Ui_MainWindow(object):
         self.pushButton_delete = QPushButton(self.frame_config)
         self.pushButton_delete.setObjectName(u"pushButton_delete")
         self.pushButton_delete.setMinimumSize(QSize(40, 30))
-        self.pushButton_delete.setMaximumSize(QSize(16777215, 16777215))
+        self.pushButton_delete.setMaximumSize(QSize(40, 16777215))
         self.pushButton_delete.setFont(font3)
         self.pushButton_delete.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
@@ -2074,6 +2075,13 @@ class Ui_MainWindow(object):
         self.comboBox_configs.setFrame(True)
 
         self.horizontalLayout_18.addWidget(self.comboBox_configs)
+
+        self.label_subtitles = QLabel(self.frame_config)
+        self.label_subtitles.setObjectName(u"label_subtitles")
+        self.label_subtitles.setFont(font)
+        self.label_subtitles.setStyleSheet(u"color: rgb(112, 117, 125);")
+
+        self.horizontalLayout_18.addWidget(self.label_subtitles)
 
 
         self.verticalLayout_19.addWidget(self.frame_config)
@@ -2217,14 +2225,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.addWidget(self.frame_keywords)
 
 
-        self.verticalLayout_13.addWidget(self.frame_middle, 0, Qt.AlignHCenter|Qt.AlignTop)
+        self.verticalLayout_13.addWidget(self.frame_middle, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
         self.frame_tab = QFrame(self.frame_content_page)
         self.frame_tab.setObjectName(u"frame_tab")
         self.frame_tab.setStyleSheet(u"background-color:#343A4B;\n"
-"border-radius: 7px;\n"
-"\n"
-"")
+"border-radius: 7px;")
         self.frame_tab.setFrameShape(QFrame.StyledPanel)
         self.frame_tab.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.frame_tab)
@@ -2236,7 +2242,7 @@ class Ui_MainWindow(object):
         self.frame_vbuttons.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_11 = QHBoxLayout(self.frame_vbuttons)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.horizontalLayout_11.setContentsMargins(0, 5, 0, 0)
+        self.horizontalLayout_11.setContentsMargins(0, 5, 0, 5)
         self.pushButton_addTable = QPushButton(self.frame_vbuttons)
         self.pushButton_addTable.setObjectName(u"pushButton_addTable")
         self.pushButton_addTable.setMinimumSize(QSize(40, 30))
@@ -2288,19 +2294,25 @@ class Ui_MainWindow(object):
 
         self.tabWidget = QTabWidget(self.frame_tab)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setFont(font3)
+        self.tabWidget.setFont(font4)
         self.tabWidget.setStyleSheet(u"QTabBar::tab {\n"
 "    background: rgb(39, 44, 54);\n"
+"	color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "QTabBar::tab:hover {\n"
 "	background-color: rgb(57, 65, 80);\n"
+"	color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "QTabBar::tab:selected {\n"
 "	background-color: rgb(85, 170, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"	\n"
 "}\n"
 "")
+        self.tabWidget.setTabPosition(QTabWidget.North)
+        self.tabWidget.setTabShape(QTabWidget.Triangular)
         self.tabWidget.setElideMode(Qt.ElideNone)
         self.tabWidget.setUsesScrollButtons(True)
         self.tabWidget.setDocumentMode(True)
@@ -2313,74 +2325,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_Table = QHBoxLayout(self.tab)
         self.horizontalLayout_Table.setObjectName(u"horizontalLayout_Table")
         self.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
-        self.tableWidget = QTableWidget(self.tab)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: rgb(39, 44, 54);\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"QHeaderView::section{\n"
-"	Background-color: rgb(39, 44, 54);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 60);\n"
-"	border-style: none;\n"
-"    border-bottom: 1px solid rgb(44, 49, 60);\n"
-"    border-right: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"QHeaderView::section:horizontal\n"
-"{\n"
-"    border: 1px solid rgb(32, 34, 42);\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 3px;\n"
-"	border-top-left-radius: 7px;\n"
-"    border-top-right-radius: 7px;\n"
-"}\n"
-"QHeaderVi"
-                        "ew::section:vertical\n"
-"{\n"
-"    border: 1px solid rgb(44, 49, 60);\n"
-"}\n"
-"\n"
-"")
-        self.tableWidget.setFrameShape(QFrame.StyledPanel)
-        self.tableWidget.setAutoScroll(True)
-        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.tableWidget.setTabKeyNavigation(True)
-        self.tableWidget.setProperty("showDropIndicator", True)
-        self.tableWidget.setDragDropOverwriteMode(True)
-        self.tableWidget.setAlternatingRowColors(False)
-        self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
-        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectItems)
-        self.tableWidget.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
-        self.tableWidget.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
-        self.tableWidget.setShowGrid(True)
-        self.tableWidget.setRowCount(0)
-        self.tableWidget.setColumnCount(0)
-
-        self.horizontalLayout_Table.addWidget(self.tableWidget)
+        
 
         self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.tab_2.setStyleSheet(u"")
-        self.tabWidget.addTab(self.tab_2, "")
 
         self.verticalLayout_7.addWidget(self.tabWidget)
 
@@ -2415,7 +2362,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.verticalLayout_16.setContentsMargins(30, 0, 0, 0)
-        Ui_MainWindow.label_feedback = QLabel(self.frame_bottom)
+        self.label_feedback = QLabel(self.frame_bottom)
         self.label_feedback.setObjectName(u"label_feedback")
         self.label_feedback.setMinimumSize(QSize(0, 30))
         self.label_feedback.setMaximumSize(QSize(16777215, 16777215))
@@ -2588,19 +2535,20 @@ class Ui_MainWindow(object):
         self.comboBox_configs.setItemText(0, QCoreApplication.translate("MainWindow", u"Nova configura\u00e7\u00e3o", None))
 
         self.comboBox_configs.setCurrentText(QCoreApplication.translate("MainWindow", u"Nova configura\u00e7\u00e3o", None))
-        self.label_moveto.setText(QCoreApplication.translate("MainWindow", u"Mover para", None))
-        self.label_search.setText(QCoreApplication.translate("MainWindow", u"Procurar por", None))
+        self.label_subtitles.setText(QCoreApplication.translate("MainWindow", u"Nome_da_tabela:N\u00famero_da_coluna", None))
+        self.label_moveto.setText(QCoreApplication.translate("MainWindow", u"Mover para pasta", None))
+        self.label_search.setText(QCoreApplication.translate("MainWindow", u"Procurar por express\u00f5es", None))
         self.comboBox_operator.setItemText(0, QCoreApplication.translate("MainWindow", u"OU", None))
         self.comboBox_operator.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
 
-        self.lineEdit_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Tab1:1,Tab2:3", None))
-        self.label_else.setText(QCoreApplication.translate("MainWindow", u"Se n\u00e3o encontrar mover para", None))
-        self.lineEdit_moveto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Tab1:2", None))
-        self.lineEdit_else.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: No matches found", None))
+        self.lineEdit_search.setText("")
+        self.lineEdit_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Banco de dados:1,Banco de dados:2", None))
+        self.label_else.setText(QCoreApplication.translate("MainWindow", u"Se n\u00e3o encontrar mover para pasta", None))
+        self.lineEdit_moveto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Banco de dados:2", None))
+        self.lineEdit_else.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: N\u00e3o encontrado", None))
         self.pushButton_addTable.setText("")
         self.pushButton_deleteTable.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         self.label_feedback.setText(QCoreApplication.translate("MainWindow", u"Pesquisando por palavra...", None))
         self.label_credits.setText(QCoreApplication.translate("MainWindow", u"https://github.com/demelomatt", None))
         self.label_version.setText(QCoreApplication.translate("MainWindow", u"v1.1.0", None))

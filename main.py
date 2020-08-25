@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
+    
         ########################################################################
         ## START - WINDOW ATTRIBUTES
         ########################################################################
@@ -100,7 +100,7 @@ class MainWindow(QMainWindow):
         ## ==> END ##
 
         # PRIMEIRA EXECUÇÃO
-        #UIFunctions.addTab(self)
+        UIFunctions.deleteTab(self)
         ## ==> END ##
 
         ########################################################################
@@ -112,13 +112,23 @@ class MainWindow(QMainWindow):
         self.ui.label_feedback.clear()
 
         #BUTTONS
-        self.ui.pushButton_deleteTable.clicked.connect(lambda: UIFunctions.deleteTab(self))
-        self.ui.pushButton_addTable.clicked.connect(lambda: UIFunctions.addTab(self))
+
+        self.ui.pushButton_deleteTable.clicked.connect(lambda: UIFunctions.deleteTab(self)) # Deletar tabela
+        self.ui.pushButton_addTable.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.importFromCSV(self)')) # Adicionar tabela
+
+        # Função merge
+
         self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
         self.ui.pushButton_outputPath_merge.clicked.connect(lambda: Connect.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_merge))
         self.ui.pushButton_run_merge.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.merge(PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())'))
-        ########################################################################
         
+        # Função ocr
+        
+        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_ocr,self.ui.label_files_selected_scan))
+        self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: Connect.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_ocr))
+        self.ui.pushButton_run_ocr.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.ocrPDF(PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi.text())'))
+        
+        ########################################################################
         
         ## ==> QTableWidget PARAMETERS
         ########################################################################
@@ -129,16 +139,10 @@ class MainWindow(QMainWindow):
         #                                                                      #
         ############################## ---/--/--- ##############################
 
-
-        ## SHOW ==> MAIN WINDOW
-        ########################################################################
-    
-        ## ==> END ##
-
-
     ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
     ########################################################################
+
     def Button(self):
         # GET BT CLICKED
         pushButton_Widget = self.sender()
@@ -171,7 +175,7 @@ class MainWindow(QMainWindow):
             UIFunctions.labelPage(self, "Procurar padrões")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
 
-        # PAGE  SEARCH CREDITS
+        # PAGE CREDITS
         if pushButton_Widget.objectName() == "pushButton_credits":
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_credits)
             UIFunctions.resetStyle(self, "pushButton_credits")

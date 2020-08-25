@@ -1,5 +1,5 @@
 # Bibliotecas nativas
-import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs, winsound
+import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs
 from io import StringIO
 
 # Bibliotecas externas
@@ -80,7 +80,7 @@ class DataBase():
                 columnCount = column_number
         return rowCount, columnCount
 
-class PDFfunctions():
+class PDFfunctions(MainWindow):
 # Classe para agrupar as funções dos arquivos PDF.
     
     outputName = ''
@@ -314,23 +314,13 @@ class PDFfunctions():
             pdf_writer.write(out)
             out.close()
 
-        ui = Ui_MainWindow()
-        ui.label_feedback.setText("Arquivos mesclados com sucesso.")
-        window = MainWindow()
-        window.show()
-
         winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
-
-
         
     def mergeBatch(rootDirectory,outputRootDirectory,name):
     # Juntar vários arquivos PDF contidos dentro de subpastas.
     # rootDirectory recebe o diretório raiz onde estão as subpastas.
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string.
-
-
-
 
         counterFiles = 0 # contador para o número de arquivos encontrados.
         listPdfFiles = []
@@ -375,20 +365,28 @@ class PDFfunctions():
         for row in result:
             print(row)
         
-    def ocrPDF(paths,outputDirectory,suffix,dpi=200):
+    def ocrPDF(paths,outputDirectory,name,dpi):
     # Escanear arquivos PDF (extrair texto).
     # paths recebe os caminhos dos arquivos a trabalhar.
     # outputDirectory recebe o diretório de saída do arquivo.
     # suffix recebe a string que procede o nome dos arquivos.
     # dpi recebe um int com a qualidade em dpi da página extraída.
+        ui = Ui_MainWindow
 
-        print("Carregando...")
+        if outputDirectory == '':
+            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            return
+
+        if len(paths) == 0:
+            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para escanear.")
+            return
+
         counterFiles = 0
         pytesseract.pytesseract.tesseract_cmd = "tesseract\\tesseract" # Caminho do tesseract.
 
         # Para cada arquivo.
         for path in paths:
-            counterPages = 1
+            counterPages = 0
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext) # Nome do arquivo sem extensão e diretório.
             pages = convert_from_path(path,dpi,poppler_path="poppler\\bin") # biblioteca pdf2img
@@ -396,17 +394,18 @@ class PDFfunctions():
 
             # Para cada página do arquivo.
             for page in pages:
-                print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages,len(pages),counterFiles,len(paths)))
+
+                print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages + 1,len(pages),counterFiles,len(paths)))
                 # Verifica se é a primeira página do arquivo. Se for, esse será o nome do arquivo final.
-                if counterPages == 1:
-                    finalName = PDFfunctions.rename(["basename",suffix],outputDirectory,basename)
+                if not counterPages:
+                    finalName = PDFfunctions.rename(name,outputDirectory,basename)
                     pdfName = finalName
                 # Esse será o nome das outras páginas.
                 else:
-                    pdfName = PDFfunctions.rename(["basename","page"],outputDirectory,basename,counterPages)
+                    pdfName = PDFfunctions.rename(name + ",#page",outputDirectory,basename,counterPages)
                 
                 # Salva a página do arquivo PDF em uma imagem JPEG.
-                imgName = PDFfunctions.rename(["basename","page"],outputDirectory,basename,counterPages,".jpg")
+                imgName = PDFfunctions.rename(name + ",#page",outputDirectory,basename,counterPages,".jpg")
                 page.save(imgName,'JPEG')
 
                 # Tesseract extrai o texto da imagem e converte para um arquivo PDF.
@@ -418,10 +417,12 @@ class PDFfunctions():
 
                 # Verifica se é a primeira página do arquivo.
                 # Se não for, o pdf será juntado com o primeiro pdf.
-                if counterPages !=1:
-                    PDFfunctions.merge([finalName,pdfName],outputDirectory,["basename"])
+                if counterPages:
+                    PDFfunctions.merge([finalName,pdfName],outputDirectory,name)
                     os.remove(pdfName) # Arquivo auxiliar removido.
                 counterPages += 1
+
+        winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
 
     def regex(string,keyword,ascii=False,ignoreSpaces=False,ignorePunctuation=False):
         # Remover caracteres especiais e espaços do texto.
@@ -529,13 +530,115 @@ class PDFfunctions():
 
     def importFromCSV(self):
         # Importar dados de arquivo csv
-        csvPath = PDFfunctions.fileDialog(self,"csv")
-        csvFile = codecs.open(csvPath)
-        reader = csv.reader(csvFile)
-        list_of_rows = list(reader)
-        print(list_of_rows[0])
-        print(list_of_rows[1])
 
+        fileDialog = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
 
+        # Para cada arquivo
+        for path in fileDialog:
+            csvPath = "".join(path)
+            # Verificar codificação
+            try:
+                csvFile = codecs.open(csvPath, encoding = "utf-8")
+                dialect = csv.Sniffer().sniff(csvFile.read(), delimiters=";,") # Verificar delimitadores
+            except:
+                csvFile = codecs.open(csvPath)
+                dialect = csv.Sniffer().sniff(csvFile.read(), delimiters=";,")
+            csvFile.seek(0)
+            reader = csv.reader(csvFile, dialect) # Ler dados
+            list_of_rows = list(reader) # Salvar dados
 
+            # Total de linhas
+            # Ignorar linhas com espaço
+            rowNumber = 0
+            for row in list_of_rows: 
+                if row[0] != "":
+                    rowNumber += 1
+            columnNumber = len(list_of_rows[0]) # Número de colunas
+            
+            # Nome da tabela
+            splitext = os.path.splitext(csvPath)[0]
+            basename = os.path.basename(splitext)
+            tableName = basename
 
+            currentTabIndex = self.ui.tabWidget.currentIndex() + 1 # Tabela atual
+            totalTables = self.ui.tabWidget.count() # Total de tabelas
+
+            # Criar tabela
+            # TabWidget
+            self.ui.tab = QWidget()
+            self.ui.horizontalLayout_Table = QHBoxLayout(self.ui.tab)
+            self.ui.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
+
+            # TableWidget
+            tableWidgt = QTableWidget(self.ui.tab)
+            tableWidgt.setStyleSheet(u"QTableWidget {	\n"
+    "	background-color: rgb(39, 44, 54);\n"
+    "	padding: 10px;\n"
+    "	border-radius: 5px;\n"
+    "	gridline-color: rgb(44, 49, 60);\n"
+    "	border-bottom: 1px solid rgb(44, 49, 60);\n"
+    "}\n"
+    "QScrollBar:horizontal {\n"
+    "    border: none;\n"
+    "    background: rgb(52, 59, 72);\n"
+    "    height: 14px;\n"
+    "    margin: 0px 21px 0 21px;\n"
+    "	border-radius: 0px;\n"
+    "}\n"
+    " QScrollBar:vertical {\n"
+    "	border: none;\n"
+    "    background: rgb(52, 59, 72);\n"
+    "    width: 14px;\n"
+    "    margin: 21px 0 21px 0;\n"
+    "	border-radius: 0px;\n"
+    " }\n"
+    "QHeaderView::section{\n"
+    "	Background-color: rgb(39, 44, 54);\n"
+    "	max-width: 30px;\n"
+    "	border: 1px solid rgb(44, 49, 60);\n"
+    "	border-style: none;\n"
+    "    border-bottom: 1px solid rgb(44, 49, 60);\n"
+    "    border-right: 1px solid rgb(44, 49, 60);\n"
+    "}\n"
+    "QHeaderView::section:horizontal\n"
+    "{\n"
+    "    border: 1px solid rgb(32, 34, 42);\n"
+    "	background-color: rgb(27, 29, 35);\n"
+    "	padding: 3px;\n"
+    "	border-top-left-radius: 7px;\n"
+    "    border-top-right-radius: 7px;\n"
+    "}\n"
+    "QHeaderVi"
+                            "ew::section:vertical\n"
+    "{\n"
+    "    border: 1px solid rgb(44, 49, 60);\n"
+    "}\n"
+    "\n"
+    "")
+            tableWidgt.setFrameShape(QFrame.StyledPanel)
+            tableWidgt.setAutoScroll(True)
+            tableWidgt.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            tableWidgt.setTabKeyNavigation(True)
+            tableWidgt.setProperty("showDropIndicator", True)
+            tableWidgt.setDragDropOverwriteMode(True)
+            tableWidgt.setAlternatingRowColors(False)
+            tableWidgt.setSelectionMode(QAbstractItemView.ExtendedSelection)
+            tableWidgt.setSelectionBehavior(QAbstractItemView.SelectItems)
+            tableWidgt.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
+            tableWidgt.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
+            tableWidgt.setShowGrid(True)
+            tableWidgt.setRowCount(rowNumber)
+            tableWidgt.setColumnCount(columnNumber)
+
+            self.ui.horizontalLayout_Table.addWidget(tableWidgt)
+
+            self.ui.tabWidget.addTab(self.ui.tab, tableName)
+            self.ui.tabWidget.setCurrentIndex(totalTables) # Ir para a tabela criada
+
+            # Para cada linha do arquivo
+            for row_key, row_data in (enumerate(list_of_rows)):
+                # Para cada coluna da linha
+                for column_key, column_data in (enumerate(row_data)):
+                    # Escrever item
+                    tableWidgt.setItem(row_key,column_key,QtWidgets.QTableWidgetItem(str(column_data)))
+        return 
