@@ -1,17 +1,19 @@
-# Bibliotecas nativas
-import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs
-from io import StringIO
-
-# Bibliotecas externas
-from PyPDF2 import PdfFileWriter, PdfFileReader
-from PIL import Image
-from pdf2image import convert_from_path 
-import pytesseract
-
+# Importar arquivos
 from ui_main import Ui_MainWindow
 from main import *
 from main import MainWindow
 
+# Bibliotecas nativas
+import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs, zipfile
+from io import StringIO
+
+# Bibliotecas externas
+from PyPDF2 import PdfFileWriter, PdfFileReader # PDF
+from PIL import Image # IMAGE
+from pdf2image import convert_from_path # PDF2IMAGE
+import pytesseract # TESSERACT
+
+    #pdfminer
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfdocument import PDFDocument
@@ -87,21 +89,19 @@ class PDFfunctions(MainWindow):
     outputPath = ''
     inputPaths = []
 
-    def moveFiles(fromPath,toPath): 
+    def moveFiles(self,fromPath,toPath): 
     # Mover arquivos. Informar caminho de origem e caminho de destino.
-
         if not os.path.exists(toPath):    
             shutil.move(fromPath,toPath)
         if os.path.exists(fromPath):
             os.remove(fromPath)
 
-    def createDirectory(path): 
+    def createDirectory(self,path): 
     # Criar diretório informado caso ele não exista.
-
         if not os.path.exists(path):
             os.makedirs(path)
 
-    def rename(arguments,outputDirectory,basename='',page=0,ext='.pdf',keywords='',group=''):
+    def rename(self,arguments,outputDirectory,basename='',page=0,ext='.pdf',keywords='',group=''):
     # Renomear arquivos PDF. arguments deve receber algum dos parâmetros em dic ou então uma string.
     # outputDirectory recebe o diretório de saída do arquivo.
     # basename recebe o nome do arquivo sem a extensão e diretório.
@@ -135,8 +135,9 @@ class PDFfunctions(MainWindow):
 
         for argument in arguments:
             # Transforma lista do parâmetro keywords em string.
-            if argument == "keywords":
+            if argument == "#keywords":
                 for keyword in keywords:
+                    keyword = PDFfunctions.regex(self,keyword,keyword,False,False,True)[0]
                     name.append(keyword)
             # Adiciona argumentos ao nome.
             else:
@@ -144,13 +145,17 @@ class PDFfunctions(MainWindow):
                     name.append(dic[re.sub('[ ]+', '', argument)]) # Remover espaços e procurar palavra no dicionário
                 except:
                     name.append(argument)
+                
+        # Se o nome for vazio, recebe a tag basename
+        if name == [] or name[0] == '':
+            name[0] = basename
 
         name = delimiter.join(name) # Junta o delimitador "_" ao nome.
         finalName = outputDirectory + "/" + name + ext 
         # Retorna o nome final do arquivo.
         return finalName
 
-    def extractPages(paths,pages,outputDirectory,name):
+    def extractPages(self,paths,pages,outputDirectory,name):
     # Extrair páginas indicadas de PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # pages recebe as páginas a serem exportadas ou "allpages" para extrair todas as páginas.
@@ -183,13 +188,17 @@ class PDFfunctions(MainWindow):
                     # Exportar página.
                     pdf_writer = PdfFileWriter()
                     pdf_writer.addPage(pdf_reader.getPage(page))
-                    outputFile = PDFfunctions.rename(name,outputDirectory,basename,page)
+
+                    if not name:
+                        outputFile = outputDirectory
+                    else:
+                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
 
                     with open(outputFile, 'wb') as outfile:
                         pdf_writer.write(outfile)
                         outfile.close()
 
-    def extractAfter(paths,pages,outputDirectory,name):
+    def extractAfter(self,paths,pages,outputDirectory,name):
     # Extrair páginas de arquivo PDF até a sequência indicada. 
     # paths recebe os caminhos dos arquivos a trabalhar.
     # pages recebe as páginas a serem exportadas. Ex: [3,7]. Irá gerar três arquivos. Da página 1 até a 3, da 4 até a 7, e de 7 ao número total de páginas do arquivo.
@@ -227,12 +236,12 @@ class PDFfunctions(MainWindow):
                             pageNumber.append(number)
 
                     # Exportar páginas.
-                    outputFile = PDFfunctions.rename(name,outputDirectory,basename,pageNumber)
+                    outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pageNumber)
                     with open(outputFile, 'wb') as outfile:
                         pdf_writer.write(outfile)
                         outfile.close()
 
-    def extractEach(paths,n,outputDirectory,name):
+    def extractEach(self,paths,n,outputDirectory,name):
     # Extrair páginas a cada n páginas. 
     # paths recebe os caminhos dos arquivos a trabalhar.
     # n recebe o padrão em que as páginas serão exportadas. Ex: 2. A cada 2 páginas, o documento será divido. (2,4,6,8)...
@@ -267,7 +276,7 @@ class PDFfunctions(MainWindow):
                             pageNumber.append(page)
 
                     # Salvar arquivo.
-                    outputFile = PDFfunctions.rename(name,outputDirectory,basename,pageNumber)
+                    outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pageNumber)
                     with open(outputFile, 'wb') as outfile:
                         pdf_writer.write(outfile)
                         outfile.close()
@@ -280,7 +289,7 @@ class PDFfunctions(MainWindow):
                     else:
                         n = totalPages
 
-    def merge(paths, outputDirectory, name):
+    def merge(self,paths, outputDirectory, name):
     # Juntar vários arquivos PDF em um único arquivo.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # outputDirectory recebe o diretório de saída do arquivo.
@@ -288,11 +297,11 @@ class PDFfunctions(MainWindow):
 
         if outputDirectory == '':
             UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
-            return
+            return 0
 
         if len(paths) <= 1:
             UIFunctions.showDialog(UIFunctions,"Selecione ao menos 2 arquivos para mesclar.")
-            return
+            return 0
 
         pdf_writer = PdfFileWriter() # Escrever em PDF.
 
@@ -301,7 +310,7 @@ class PDFfunctions(MainWindow):
             pdf_reader = PdfFileReader(path) # Ler PDF.
             splitext = os.path.splitext(paths[0])[0]
             basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
-            outputFile = PDFfunctions.rename(name,outputDirectory,basename) # Retorna o nome final do arquivo.
+            outputFile = PDFfunctions.rename(self,name,outputDirectory,basename) # Retorna o nome final do arquivo.
 
             # Para cada página do arquivo.
             for page in range(pdf_reader.getNumPages()):
@@ -309,14 +318,13 @@ class PDFfunctions(MainWindow):
                 pdf_writer.addPage(pdf_reader.getPage(page))
 
         # Salva o PDF mesclado.
-        PDFfunctions.createDirectory(os.path.split(outputFile)[0])
+        PDFfunctions.createDirectory(self,os.path.split(outputFile)[0])
         with open(outputFile, 'wb') as out:
             pdf_writer.write(out)
             out.close()
-
-        winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
+        return 1
         
-    def mergeBatch(rootDirectory,outputRootDirectory,name):
+    def mergeBatch(self,rootDirectory,outputRootDirectory,name):
     # Juntar vários arquivos PDF contidos dentro de subpastas.
     # rootDirectory recebe o diretório raiz onde estão as subpastas.
     # outputDirectory recebe o diretório de saída do arquivo.
@@ -343,43 +351,22 @@ class PDFfunctions(MainWindow):
         # Se existirem arquivos PDF, eles serão juntados em um único arquivo.
             if counterFiles != 0:
                 outpuDirectory = os.path.join(outputRootDirectory,subdir) + "_"
-                PDFfunctions.merge(files,outpuDirectory,name)
-
-    
-    def getKeywords(self,dbPath,tableName,searchColumn,moveColumn):
-        # Colunas com as palavras a serem pesquisadas e coluna onde as pastas serão criadas.
-        # dbPath recebe o diretório do banco de dados.
-        # tableName recebe o nome da tabela do banco de dados.
-        # searchColumn recebe as colunas com as palavras a serem pesquisadas.
-        # moveColumn recebe coluna onde as pastas serão criadas.
-
-        delimiter = "&"
-        lista = searchColumn.split(delimiter)
-        print(lista)
-        test = lista[0].split("-")
-        print(test[0])
-
-        DB = DataBase(dbPath,tableName)
-        query = ''' SELECT "{}" FROM {} '''.format(searchColumn,tableName)
-        result = DB.executeQuery(query)
-        for row in result:
-            print(row)
+                PDFfunctions.merge(self,files,outpuDirectory,name)
         
-    def ocrPDF(paths,outputDirectory,name,dpi):
+    def ocrPDF(self,paths,outputDirectory,name,dpi):
     # Escanear arquivos PDF (extrair texto).
     # paths recebe os caminhos dos arquivos a trabalhar.
     # outputDirectory recebe o diretório de saída do arquivo.
-    # suffix recebe a string que procede o nome dos arquivos.
+    # name são os parâmetros da função rename ou então uma string.
     # dpi recebe um int com a qualidade em dpi da página extraída.
-        ui = Ui_MainWindow
 
         if outputDirectory == '':
             UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
-            return
+            return 0
 
-        if len(paths) == 0:
+        if not len(paths):
             UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para escanear.")
-            return
+            return 0
 
         counterFiles = 0
         pytesseract.pytesseract.tesseract_cmd = "tesseract\\tesseract" # Caminho do tesseract.
@@ -398,14 +385,13 @@ class PDFfunctions(MainWindow):
                 print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages + 1,len(pages),counterFiles,len(paths)))
                 # Verifica se é a primeira página do arquivo. Se for, esse será o nome do arquivo final.
                 if not counterPages:
-                    finalName = PDFfunctions.rename(name,outputDirectory,basename)
+                    finalName = PDFfunctions.rename(self,name,outputDirectory,basename)
                     pdfName = finalName
                 # Esse será o nome das outras páginas.
                 else:
-                    pdfName = PDFfunctions.rename(name + ",#page",outputDirectory,basename,counterPages)
-                
+                    pdfName = PDFfunctions.rename(self,"#basename,#page",outputDirectory,basename,counterPages)
                 # Salva a página do arquivo PDF em uma imagem JPEG.
-                imgName = PDFfunctions.rename(name + ",#page",outputDirectory,basename,counterPages,".jpg")
+                imgName = PDFfunctions.rename(self, "#basename,#page",outputDirectory,basename,counterPages,".jpg")
                 page.save(imgName,'JPEG')
 
                 # Tesseract extrai o texto da imagem e converte para um arquivo PDF.
@@ -418,20 +404,20 @@ class PDFfunctions(MainWindow):
                 # Verifica se é a primeira página do arquivo.
                 # Se não for, o pdf será juntado com o primeiro pdf.
                 if counterPages:
-                    PDFfunctions.merge([finalName,pdfName],outputDirectory,name)
+                    PDFfunctions.merge(self,[finalName,pdfName],outputDirectory,'#basename')
                     os.remove(pdfName) # Arquivo auxiliar removido.
                 counterPages += 1
+        return 1
 
-        winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
 
-    def regex(string,keyword,ascii=False,ignoreSpaces=False,ignorePunctuation=False):
+    def regex(self,string,keyword,IsAscii,ignoreSpaces,ignorePunctuation):
         # Remover caracteres especiais e espaços do texto.
         # string recebe o texto.
         # ascii recebe boolean indicando se caracteres especiais devem ser ignorados na pesquisa.
         # ignoreSpaces recebe boolean indicando se espaços devem ser ignorados na pesquisa.
         # ignorePunctuation recebe boolean indicando se pontuação devem ser ignorados na pesquisa.
 
-        if ascii:
+        if IsAscii:
             string = unicodedata.normalize('NFD', string)
             string = string.encode('ascii', 'ignore')
             string = string.decode("utf-8")
@@ -449,23 +435,64 @@ class PDFfunctions(MainWindow):
 
         return string, keyword
 
-    def searchPattern(paths,outputDirectory,moveFullFile=False,allWords=False,folderNotFound=True):
+    def searchPattern(self,paths,outputDirectory,name):
     # Procurar por padrões dentro de um arquivo PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # outputDirectory recebe o diretório de saída do arquivo.
-    # moveFullFile é um boolean que indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
-    # allWords é um boolean que indica se todas as palavras da lista devem estar no arquivo/página.
-    # folderNotFound é um boolean que indica se será criada uma pasta para mover os arquivos não encontrados.
 
-        keywords = [] # Lista com as palavras para pesquisar dentro do arquivo.
+        if outputDirectory == '':
+            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            return 0
+
+        if not len(paths):
+            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para procurar por expressões.")
+            return 0
+
+        if self.ui.lineEdit_keywords_search.text() == '':
+            UIFunctions.showDialog(UIFunctions,"Nenhum dado foi passado para pesquisar dentro do arquivo.")
+            return 0
+
+        if self.ui.lineEdit_moveto_search.text() == '':
+            UIFunctions.showDialog(UIFunctions,"Nenhuma pasta foi indicada para exportar.")
+            return 0
+
+    
+        keywords = []
+        ignoreFirstPage = Ui_MainWindow.checkBox_ignoreFirstPage_search.checkState()        
+        tableKeywordsColumn = int(Ui_MainWindow.lineEdit_keywords_search.text()) - 1 # Lista com as palavras para pesquisar dentro do arquivo.
+        tablecurrentIndex = Ui_MainWindow.tabWidget.currentIndex()
+        tableKeywordsName = Ui_MainWindow.tabWidget.tabText(tablecurrentIndex)
+
+        tableMoveToColumn = int(Ui_MainWindow.lineEdit_moveto_search.text()) - 1
+
+        tableWidgetObject = "tableWidget " + tableKeywordsName
+        tableWidgt = self.findChild(QTableWidget, tableWidgetObject)
+
+        try:
+            totalRows = tableWidgt.rowCount()
+        except:
+            UIFunctions.showDialog(UIFunctions,"Nenhuma tabela foi importada.")
+            return 0
+
+        #listKeywordslineEdit = strKeywordslineEdit.split(':')
+        #tableKeywordsName = listKewoyrdslineEdit[0]
+        
+        # Verificar se alguma linha deve ser ignorada
+        for i in range(totalRows):
+            if not (ignoreFirstPage and not i):
+                keywords.append(tableWidgt.item(i,tableKeywordsColumn).text())
+        
         output_string = None
         counterFiles = 0
+
         # Para cada arquivo.
         for path in paths:
             counterFiles += 1  # Contador para quantidade de arquivos.
             fileFoundedList = [] # Reseta a lista com as palavras encontradas dentro do arquivo.
             counterPages = 0 # Reseta o contador para quantidade de páginas do arquivo.
             export = False # Reseta a variável que verifica se o arquivo deve ser movido.
+            splitext = os.path.splitext(path)[0]
+            basename = os.path.basename(splitext)
 
             # Abrir arquivo
             with open(path, 'rb') as in_file:
@@ -476,61 +503,103 @@ class PDFfunctions(MainWindow):
                 interpreter = None
 
                 # Para cada página do arquivo.
-                for page in PDFPage.create_pages(doc):
-                    if export:
-                        break
-                    pageFoundedList = [] # Reseta a lista com as palavras encontradas dentro de uma página.
-                    #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
-                    counterPages += 1
-                    output_string = StringIO()
-                    device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
-                    interpreter = PDFPageInterpreter(rsrcmgr, device)
-                    interpreter.process_page(page)
-                    text = output_string.getvalue()
-                    
-                    # Para cada palavra.
-                    for keyword in keywords:
-                        founded = False # Resetar variável
-                        #counterKeywords += 1
-                        oldKeyword = keyword # Salva a palavra antiga antes da modificação.
-                        text,keyword = PDFfunctions.regex(text,keyword,True,True,True)
-                        #print(text)
+                try:
+                    for page in PDFPage.create_pages(doc):
+                        if export:
+                            break
+                        pageFoundedList = [] # Reseta a lista com as palavras encontradas dentro de uma página.
+                        #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
+                        counterPages += 1
+                        output_string = StringIO()
+                        device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
+                        interpreter = PDFPageInterpreter(rsrcmgr, device)
+                        interpreter.process_page(page)
+                        text = output_string.getvalue()
                         
-                        # Se todas as palavras da lista devem estar no arquivo/página.
-                        if allWords:
-                            if re.search(keyword,text,re.IGNORECASE):
-                                if (keyword not in fileFoundedList) and (moveFullFile): # Se palavra foi encontrada adicionar em uma lista para os arquivos caso moveFullFile seja verdadeiro.
-                                    fileFoundedList.append(keyword)
-                                elif (keyword not in pageFoundedList) and (not moveFullFile): # Se palavra foi encontrada adicionar em uma lista para as páginas caso moveFullFile seja falso.
-                                    pageFoundedList.append(keyword)
-                                print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
-                        
-                        # Se somente uma das palavras deve estar no arquivo/página.
-                        else:
-                            if re.search(keyword,text,re.IGNORECASE):
-                                print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
-                                founded = True # Se uma das palavras foi encontrada dentro da página.
-
-                        # Se uma das palavras for encontrada / ou se todas as palavras foram encontradas dentro de um arquivo / ou se todas as palavras foram encontradas dentro de uma página.
-                        if founded or (len(fileFoundedList) == len(keywords)) or (len(pageFoundedList) == len(keywords)):
+                        # Para cada palavra.
+                        for rowNumber, keyword in enumerate(keywords):
+                            founded = False # Resetar variável
+                            #counterKeywords += 1
+                            oldKeyword = keyword # Salva a palavra antiga antes da modificação.
+                            IsAscii = Ui_MainWindow.checkBox_ignoreSpecialChar_search.checkState()
+                            ignoreSpaces = Ui_MainWindow.checkBox_ignoreSpaces_search.checkState()
+                            ignorePontuation = Ui_MainWindow.checkBox_ignorePontuation_search.checkState()
+                            text,keyword = PDFfunctions.regex(self,text,keyword,IsAscii,ignoreSpaces,ignorePontuation)
                             
-                            # Verifica se somente as páginas ou todo o arquivo será movido.
-                            if moveFullFile:
-                                print("Exportar arquivo e prosseguir para próximo arquivo.")
-                                export = True
-                                break # prosseguir para o próximo arquivo
+                            moveFullFile = Ui_MainWindow.checkBox_onlyPages_search.checkState() # moveFullFile é um boolean que indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
+                            operator = Ui_MainWindow.comboBox_operator_search.currentText() # operator é uma lista que indica se todas (E) as palavras da lista devem estar no arquivo/página (OU) somente alguma delas.
+                            # Se todas as palavras da lista devem estar no arquivo/página.
+                            if operator == "E":
+                                if re.search(keyword,text,re.IGNORECASE):
+                                    if (keyword not in fileFoundedList) and (moveFullFile): # Se palavra foi encontrada adicionar em uma lista para os arquivos caso moveFullFile seja verdadeiro.
+                                        fileFoundedList.append(keyword)
+                                    elif (keyword not in pageFoundedList) and (not moveFullFile): # Se palavra foi encontrada adicionar em uma lista para as páginas caso moveFullFile seja falso.
+                                        pageFoundedList.append(keyword)
+                                    print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
+                            
+                            # Se somente uma das palavras deve estar no arquivo/página.
                             else:
-                                print("Exportar página e prosseguir para próxima página.")
-                                break # prosseguir para próxima página
+                                if re.search(keyword,text,re.IGNORECASE):
+                                    print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
+                                    founded = True # Se uma das palavras foi encontrada dentro da página.
+
+                            # Se uma das palavras for encontrada / ou se todas as palavras foram encontradas dentro de um arquivo / ou se todas as palavras foram encontradas dentro de uma página.
+                            if founded or (len(fileFoundedList) == len(keywords)) or (len(pageFoundedList) == len(keywords)):
+                                # Verifica se somente as páginas ou todo o arquivo será movido.
+                                if not moveFullFile:
+                                    print("Exportar arquivo e prosseguir para próximo arquivo.")
+                                    folder = tableWidgt.item(rowNumber,tableMoveToColumn).text()
+                                    outputDirectory = outputDirectory + "/" + folder
+                                    PDFfunctions.createDirectory(self,outputDirectory)
+                                    finalName = PDFfunctions.rename(self,name,outputDirectory,basename,counterPages,'.pdf',fileFoundedList,folder)
+                                    in_file.close()
+                                    PDFfunctions.moveFiles(self,path,finalName)
+                                    export = True
+                                    break # prosseguir para o próximo arquivo
+                                else:
+                                    print("Exportar página e prosseguir para próxima página.")
+                                    folder = tableWidgt.item(rowNumber,tableMoveToColumn).text()
+                                    finalOutputDirectory = outputDirectory + "/" + folder
+                                    PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                    finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,".pdf",[oldKeyword],folder)
+                                    #in_file.close()
+                                    PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
+                                    break # prosseguir para próxima página
+
+                            # Se nenhuma das palavras foi encontrada na página/arquivo
+                            else:
+                                folderNotFound = Ui_MainWindow.lineEdit_else_search.text()
+                                if folderNotFound != '' and rowNumber + 1 == len(keywords):
+                                    if not moveFullFile:
+                                        print("Nenhuma expressão encontrada neste arquivo. Exportar para folderNotFound.")
+                                        finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
+                                        PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                        finalName = finalOutputDirectory + basename + ".pdf"
+                                        in_file.close()
+                                        PDFfunctions.moveFiles(self,path,finalName)
+                                        export = True
+                                        break # prosseguir para o próximo arquivo
+                                    else:
+                                        print("Nenhuma expressão encontrada nesta página. Exportar para folderNotFound.")
+                                        finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
+                                        PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                        finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
+                                        #in_file.close()
+                                        PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
+                                        break # prosseguir para próxima página
+                except Exception as e:
+                    print(e)
+                    pass
 
                 # Fecha os objetos abertos.
                     output_string.close()
                     device.close()
                 in_file.close()
+        return 1
+
 
     def importFromCSV(self):
         # Importar dados de arquivo csv
-
         fileDialog = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
 
         # Para cada arquivo
@@ -571,6 +640,7 @@ class PDFfunctions(MainWindow):
 
             # TableWidget
             tableWidgt = QTableWidget(self.ui.tab)
+            tableWidgt.setObjectName("tableWidget " + tableName)
             tableWidgt.setStyleSheet(u"QTableWidget {	\n"
     "	background-color: rgb(39, 44, 54);\n"
     "	padding: 10px;\n"
@@ -642,3 +712,38 @@ class PDFfunctions(MainWindow):
                     # Escrever item
                     tableWidgt.setItem(row_key,column_key,QtWidgets.QTableWidgetItem(str(column_data)))
         return 
+
+    def zipCompress(self,rootDirectory,outputDirectory,name): 
+        # Compactar arquivos em ZIP
+        # rootDirectory recebe o diretório raiz onde estão as subpastas.
+        # outputDirectory recebe o diretório de saída do arquivo.
+        # name são os parâmetros da função rename ou então uma string.
+
+        if outputDirectory == '':
+            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            return 0
+
+        if rootDirectory == '':
+            UIFunctions.showDialog(UIFunctions,"O diretório raiz não foi selecionado.")
+            return 0
+
+        # Pasta raiz, subpastas e arquivos
+        for root, subdirs, files in os.walk(rootDirectory):
+            # Para cada pasta
+            for subdir in subdirs:
+                counterPDF = []
+                zipFilename = PDFfunctions.rename(self,name,outputDirectory,subdir,ext='.zip') # Nome do arquivo ZIP
+                fullPath = root + "/" + subdir + "/" # Pasta raiz + subpasta
+                for file in os.listdir(fullPath): # Para cada arquivo da subpasta
+                    if file.endswith(".pdf"): # Se é pdf
+                        counterPDF.append(os.path.basename(file)) # Adicionar paga exportar
+                if len(counterPDF):
+                    createZipFile = zipfile.ZipFile(zipFilename, "w") # Criar ZIP
+                    for pdf in counterPDF:
+                        createZipFile.write(fullPath + file, pdf) # Escrever
+                    createZipFile.close() # Fechar
+
+        return 1
+
+
+        

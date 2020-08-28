@@ -257,6 +257,7 @@
     <file>icons/16x16/search.png</file>
     <file>icons/16x16/split.png</file>
     <file>icons/16x16/ahand.png</file>
+    <file>icons/16x16/zip.png</file>
 
   </qresource>
   <qresource prefix="24x24">
@@ -270,6 +271,7 @@
     <file>icons/24x24/search.png</file>
     <file>icons/24x24/split.png</file>
     <file>icons/24x24/ahand.png</file>
+    <file>icons/24x24/zip.png</file>
   </qresource>
   <qresource prefix="20x20">
     <file>icons/20x20/cil-3d.png</file>
@@ -445,5 +447,6 @@
     <file>icons/20x20/search.png</file>
     <file>icons/20x20/split.png</file>
     <file>icons/20x20/ahand.png</file>
+    <file>icons/20x20/zip.png</file>
   </qresource>
 </RCC>

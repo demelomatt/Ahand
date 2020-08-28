@@ -1,19 +1,17 @@
-import sys
-import platform
+# Importar arquivos
+from ui_main import Ui_MainWindow
+from ui_styles import Style
+from ui_functions import UIFunctions
+from connect_functions import *
+
+# Bibliotecas nativas
+import sys, platform
+
+# Bibliotecas externas
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
-
-# GUI FILE
-from ui_main import Ui_MainWindow
-
-# IMPORT QSS CUSTOM
-from ui_styles import Style
-
-# IMPORT FUNCTIONS
-from ui_functions import UIFunctions
-from connect_functions import *
 
 class MainWindow(QMainWindow):
 
@@ -52,21 +50,21 @@ class MainWindow(QMainWindow):
 
         ## ==> ADD CUSTOM MENUS
         self.ui.stackedWidget.setMinimumWidth(20)
-        UIFunctions.addNewMenu(self, "Mesclar", "pushButton_home", "url(:/20x20/icons/20x20/merge.png)", True)
+        UIFunctions.addNewMenu(self, "Mesclar", "pushButton_merge", "url(:/20x20/icons/20x20/merge.png)", True)
         UIFunctions.addNewMenu(self, "Extrair", "pushButton_extract", "url(:/20x20/icons/20x20/split.png)", True)
         UIFunctions.addNewMenu(self, "Escanear", "pushButton_scan", "url(:/20x20/icons/20x20/scanner.png)", True)
+        UIFunctions.addNewMenu(self, "Compactar", "pushButton_zip", "url(:/20x20/icons/20x20/zip.png)", True)
         UIFunctions.addNewMenu(self, "Procurar padrões", "pushButton_search", "url(:/20x20/icons/20x20/search.png)", True)
         UIFunctions.addNewMenu(self, "Créditos", "pushButton_credits", "url(:/20x20/icons/20x20/info.png)",isTopMenu = False)
         UIFunctions.addNewMenu(self, "Ajuda", "pushButton_help", "url(:/20x20/icons/20x20/question.png)",isTopMenu = False)
-
         ## ==> END ##
 
         # START MENU => SELECTION
-        UIFunctions.selectStandardMenu(self, "pushButton_home")
+        UIFunctions.selectStandardMenu(self, "pushButton_merge")
         ## ==> END ##
 
         ## ==> START PAGE
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_merge)
         ## ==> END ##
 
         ## ==> MOVE WINDOW / MAXIMIZE / RESTORE
@@ -113,21 +111,30 @@ class MainWindow(QMainWindow):
 
         #BUTTONS
 
-        self.ui.pushButton_deleteTable.clicked.connect(lambda: UIFunctions.deleteTab(self)) # Deletar tabela
-        self.ui.pushButton_addTable.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.importFromCSV(self)')) # Adicionar tabela
+        self.ui.pushButton_deleteTable_search.clicked.connect(lambda: UIFunctions.deleteTab(self)) # Deletar tabela
+        self.ui.pushButton_addTable_search.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.importFromCSV(self)')) # Adicionar tabela
 
         # Função merge
-
         self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
-        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: Connect.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_merge))
-        self.ui.pushButton_run_merge.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.merge(PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())'))
+        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_merge,"Abrir diretório de saída"))
+        self.ui.pushButton_run_merge.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.merge(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())'))
         
         # Função ocr
+        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_ocr))
+        self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
+        self.ui.pushButton_run_ocr.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.ocrPDF(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi_ocr.text())'))
         
-        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_ocr,self.ui.label_files_selected_scan))
-        self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: Connect.buttonSelectOutputPath(self,self.ui.lineEdit_outputPath_ocr))
-        self.ui.pushButton_run_ocr.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.ocrPDF(PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi.text())'))
+        # Função zip
+        self.ui.pushButton_selectRootDirectory_zip.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_rootDirectory_zip,"Abrir diretório raíz"))
+        self.ui.pushButton_outputPath_zip.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_zip,"Abrir diretório de saída"))
+        self.ui.pushButton_run_zip.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.zipCompress(self,self.ui.lineEdit_rootDirectory_zip.text(),self.ui.lineEdit_outputPath_zip.text(),self.ui.lineEdit_filename_zip.text())'))
         
+        # Função search patterns
+    
+        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_search))
+        self.ui.pushButton_outputPath_search.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
+        self.ui.pushButton_run_search.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.searchPattern(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_search.text(),self.ui.lineEdit_filename_search.text())'))
+
         ########################################################################
         
         ## ==> QTableWidget PARAMETERS
@@ -148,9 +155,9 @@ class MainWindow(QMainWindow):
         pushButton_Widget = self.sender()
 
         # PAGE MERGE
-        if pushButton_Widget.objectName() == "pushButton_home":
-            self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
-            UIFunctions.resetStyle(self, "pushButton_home")
+        if pushButton_Widget.objectName() == "pushButton_merge":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.page_merge)
+            UIFunctions.resetStyle(self, "pushButton_merge")
             UIFunctions.labelPage(self, "Mesclar")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
 
@@ -166,6 +173,13 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_ocr)
             UIFunctions.resetStyle(self, "pushButton_scan")
             UIFunctions.labelPage(self, "Escanear")
+            pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+
+        # PAGE ZIP
+        if pushButton_Widget.objectName() == "pushButton_zip":
+            self.ui.stackedWidget.setCurrentWidget(self.ui.page_zip)
+            UIFunctions.resetStyle(self, "pushButton_zip")
+            UIFunctions.labelPage(self, "Compactar")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
 
         # PAGE  SEARCH PATTERNS
@@ -188,7 +202,6 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_help")
             UIFunctions.labelPage(self, "Ajuda")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
-            
     ## ==> END ##
 
     ########################################################################
@@ -218,7 +231,6 @@ class MainWindow(QMainWindow):
     ########################################################################
     def keyPressEvent(self, event):
         print('Key: ' + str(event.key()) + ' | Text Press: ' + str(event.text()))
-        print(self.ui.tableWidget.currentRow)
     ## ==> END ##
 
     ## EVENT ==> RESIZE EVENT

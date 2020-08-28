@@ -1,13 +1,15 @@
+# Importar arquivos
+from ui_main import Ui_MainWindow
+from ui_styles import Style
+
+# Bibliotecas nativas
+import re
+
+# Bibliotecas externas
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
-
-
-import re
-## ==> GUI FILE
-from ui_main import Ui_MainWindow
-from ui_styles import Style
 
 ## ==> APP FUNCTIONS
 
@@ -133,7 +135,6 @@ class UIFunctions(Ui_MainWindow):
             self.ui.layout_menu_bottom.addWidget(button)
             self.ui.layout_menu_bottom.setAlignment(Qt.AlignBottom|Qt.AlignVCenter)
 
-
     ## ==> SELECT/DESELECT MENU
     ########################################################################
     ## ==> SELECT
@@ -166,7 +167,6 @@ class UIFunctions(Ui_MainWindow):
     ########################################################################
     ## END - GUI FUNCTIONS
     ########################################################################
-
 
     ########################################################################
     ## START - GUI DEFINITIONS
@@ -213,9 +213,6 @@ class UIFunctions(Ui_MainWindow):
 
         ## SHOW ==> CLOSE APPLICATION
         self.ui.pushButton_close.clicked.connect(lambda: self.close())
-
-    ## ==> TABLE FUNCTIONS
-        ########################################################################
     
     def deleteTab(self):
         # Deletar tabela
