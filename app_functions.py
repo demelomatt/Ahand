@@ -155,6 +155,39 @@ class PDFfunctions(MainWindow):
         # Retorna o nome final do arquivo.
         return finalName
 
+    def extract(self,paths,pages,outputDirectory,name):
+
+        
+
+        if outputDirectory == '':
+            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            return 0
+
+        if not len(paths):
+            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para extrair páginas.")
+            return 0
+
+        if pages == '':
+            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 página para extrair.")
+            return 0
+
+        pages = pages.split(",")
+
+        if name == "":
+            name = "#basename,#page"
+
+        if self.ui.checkBox_extractPages.checkState():
+            PDFfunctions.extractPages(self,paths,pages,outputDirectory,name)
+            return 1
+
+        if self.ui.checkBox_extractAfter.checkState():
+            PDFfunctions.extractAfter(self,paths,pages,outputDirectory,name)
+            return 1
+
+        if self.ui.checkBox_extractEach.checkState():
+            PDFfunctions.extractEach(self,paths,pages[0],outputDirectory,name)
+            return 1
+
     def extractPages(self,paths,pages,outputDirectory,name):
     # Extrair páginas indicadas de PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
@@ -181,6 +214,7 @@ class PDFfunctions(MainWindow):
                 #Para cada página do arquivo.
                 for page in pages:
                     if not allpages:
+                        page = int(page)
                         page -= 1
                     else:
                         pages = list(["allpages"]) #string para lista
@@ -189,14 +223,14 @@ class PDFfunctions(MainWindow):
                     pdf_writer = PdfFileWriter()
                     pdf_writer.addPage(pdf_reader.getPage(page))
 
-                    if not name:
-                        outputFile = outputDirectory
-                    else:
-                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
+                    outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
 
                     with open(outputFile, 'wb') as outfile:
                         pdf_writer.write(outfile)
                         outfile.close()
+
+
+
 
     def extractAfter(self,paths,pages,outputDirectory,name):
     # Extrair páginas de arquivo PDF até a sequência indicada. 
@@ -225,6 +259,7 @@ class PDFfunctions(MainWindow):
 
                 # Para cada página do arquivo.
                 for page in pages:
+                    page = int(page)
                     pdf_writer = PdfFileWriter()
                     pageNumber.clear()
 
@@ -247,7 +282,7 @@ class PDFfunctions(MainWindow):
     # n recebe o padrão em que as páginas serão exportadas. Ex: 2. A cada 2 páginas, o documento será divido. (2,4,6,8)...
     # name são os parâmetros da função rename ou então uma string. 
 
-        m = n # Salva o número de m
+        m = int(n) # Salva o número de m
 
         # Para cada arquivo.
         for path in paths:
@@ -323,35 +358,6 @@ class PDFfunctions(MainWindow):
             pdf_writer.write(out)
             out.close()
         return 1
-        
-    def mergeBatch(self,rootDirectory,outputRootDirectory,name):
-    # Juntar vários arquivos PDF contidos dentro de subpastas.
-    # rootDirectory recebe o diretório raiz onde estão as subpastas.
-    # outputDirectory recebe o diretório de saída do arquivo.
-    # name são os parâmetros da função rename ou então uma string.
-
-        counterFiles = 0 # contador para o número de arquivos encontrados.
-        listPdfFiles = []
-
-        # Retorna para listPdfFiles as subpastas dentro de rootDirectory.
-        for amount in os.listdir(rootDirectory):
-            if os.path.isdir(os.path.join(rootDirectory,amount)):
-                listPdfFiles.append(amount)
-
-        # Retorna para files todos os arquivos pdf contidos dentro da subpasta.
-        for subdir in listPdfFiles:
-            counterFiles = 0
-            files = [] 
-            path = os.path.join(rootDirectory,subdir)
-            for file in os.listdir(path):
-                if file.endswith(".pdf"):
-                    counterFiles+=1
-                    files.append(os.path.join(path,file))
-
-        # Se existirem arquivos PDF, eles serão juntados em um único arquivo.
-            if counterFiles != 0:
-                outpuDirectory = os.path.join(outputRootDirectory,subdir) + "_"
-                PDFfunctions.merge(self,files,outpuDirectory,name)
         
     def ocrPDF(self,paths,outputDirectory,name,dpi):
     # Escanear arquivos PDF (extrair texto).

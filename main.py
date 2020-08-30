@@ -99,6 +99,18 @@ class MainWindow(QMainWindow):
 
         # PRIMEIRA EXECUÇÃO
         UIFunctions.deleteTab(self)
+        UIFunctions.deleteTab(self)
+
+        self.ui.checkBox_onlyPages_search.setChecked(True)
+        self.ui.checkBox_ignoreSpecialChar_search.setChecked(True)
+        self.ui.checkBox_extractPages.setChecked(True)
+
+        # Exclusive checkbox
+        checkboxGroup = QButtonGroup(self)
+        checkboxGroup.addButton(self.ui.checkBox_extractPages)
+        checkboxGroup.addButton(self.ui.checkBox_extractAfter)
+        checkboxGroup.addButton(self.ui.checkBox_extractEach)
+
         ## ==> END ##
 
         ########################################################################
@@ -130,10 +142,18 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_run_zip.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.zipCompress(self,self.ui.lineEdit_rootDirectory_zip.text(),self.ui.lineEdit_outputPath_zip.text(),self.ui.lineEdit_filename_zip.text())'))
         
         # Função search patterns
-    
         self.ui.pushButton_selectFiles_search.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_search))
         self.ui.pushButton_outputPath_search.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
         self.ui.pushButton_run_search.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.searchPattern(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_search.text(),self.ui.lineEdit_filename_search.text())'))
+
+        # Função extract
+        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_extract))
+        self.ui.pushButton_outputPath_extract.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
+        self.ui.pushButton_run_extract.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.extract(self,PDFfunctions.inputPaths,self.ui.lineEdit_intPages_extract.text(),self.ui.lineEdit_outputPath_extract.text(),self.ui.lineEdit_filename_extract.text())'))
+
+        # Checkbox
+
+
 
         ########################################################################
         

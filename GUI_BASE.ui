@@ -1543,7 +1543,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>4</number>
+                   <number>1</number>
                   </property>
                   <widget class="QWidget" name="page_merge">
                    <layout class="QVBoxLayout" name="verticalLayout_24">
@@ -1675,7 +1675,7 @@ QPushButton:pressed {
                             <property name="minimumSize">
                              <size>
                               <width>630</width>
-                              <height>0</height>
+                              <height>140</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -2050,488 +2050,6 @@ QPushButton:pressed {
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                        <widget class="QFrame" name="frame_mergebatch">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_17">
-                          <property name="leftMargin">
-                           <number>5</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>5</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>5</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>5</number>
-                          </property>
-                          <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                           <widget class="QFrame" name="frame_description_mergebatch">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>0</height>
-                             </size>
-                            </property>
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_20">
-                             <property name="leftMargin">
-                              <number>5</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>5</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>5</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>5</number>
-                             </property>
-                             <item alignment="Qt::AlignLeft">
-                              <widget class="QLabel" name="label_description_mergebatch">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>0</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
-                                 <weight>75</weight>
-                                 <bold>true</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true"/>
-                               </property>
-                               <property name="text">
-                                <string>MESCLAR ARQUIVOS PDF DE UM DIRETÓRIO</string>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QFrame" name="frame_top_page_mergebatch">
-                            <property name="minimumSize">
-                             <size>
-                              <width>630</width>
-                              <height>0</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>16777215</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">background-color:#343A4B;
-border-radius: 7px;
-border-top: 3px solid rgb(85, 170, 255);</string>
-                            </property>
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_24">
-                             <property name="leftMargin">
-                              <number>5</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>5</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>5</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>5</number>
-                             </property>
-                             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-                              <widget class="QFrame" name="frame_input_mergebatch">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>230</width>
-                                 <height>0</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">border: 0px;</string>
-                               </property>
-                               <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
-                               </property>
-                               <property name="frameShadow">
-                                <enum>QFrame::Raised</enum>
-                               </property>
-                               <layout class="QGridLayout" name="gridLayout_6">
-                                <property name="leftMargin">
-                                 <number>5</number>
-                                </property>
-                                <property name="topMargin">
-                                 <number>5</number>
-                                </property>
-                                <property name="rightMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="bottomMargin">
-                                 <number>5</number>
-                                </property>
-                                <item row="1" column="1">
-                                 <widget class="QLineEdit" name="lineEdit_rootDirectory_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>180</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QLineEdit {
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding-left: 10px;
-}
-QLineEdit:hover {
-	border: 2px solid rgb(85, 170, 255);
-	border: 2px solid rgb(91, 101, 124);
-}
-QLineEdit:focus {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                                  </property>
-                                  <property name="placeholderText">
-                                   <string>Diretório raiz</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="0" column="1">
-                                 <widget class="QPushButton" name="pushButton_selectRootDirectory_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>180</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>150</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Segoe UI</family>
-                                    <pointsize>9</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Abrir diretório raiz</string>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../Simple_PySide_Base/files.qrc">
-                                    <normaloff>:/20x20/icons/20x20/cil-folder.png</normaloff>:/20x20/icons/20x20/cil-folder.png</iconset>
-                                  </property>
-                                  <property name="iconSize">
-                                   <size>
-                                    <width>18</width>
-                                    <height>18</height>
-                                   </size>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="0" column="0">
-                                 <widget class="QPushButton" name="pushButton_run_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>40</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>40</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                                  </property>
-                                  <property name="text">
-                                   <string/>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../Simple_PySide_Base/files.qrc">
-                                    <normaloff>:/20x20/icons/20x20/cil-media-play.png</normaloff>:/20x20/icons/20x20/cil-media-play.png</iconset>
-                                  </property>
-                                  <property name="iconSize">
-                                   <size>
-                                    <width>18</width>
-                                    <height>18</height>
-                                   </size>
-                                  </property>
-                                 </widget>
-                                </item>
-                               </layout>
-                              </widget>
-                             </item>
-                             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-                              <widget class="QFrame" name="frame_output_mergebatch">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>371</width>
-                                 <height>115</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">border: 0px;</string>
-                               </property>
-                               <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
-                               </property>
-                               <property name="frameShadow">
-                                <enum>QFrame::Raised</enum>
-                               </property>
-                               <layout class="QFormLayout" name="formLayout_4">
-                                <property name="leftMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="topMargin">
-                                 <number>5</number>
-                                </property>
-                                <property name="rightMargin">
-                                 <number>5</number>
-                                </property>
-                                <property name="bottomMargin">
-                                 <number>5</number>
-                                </property>
-                                <item row="1" column="1">
-                                 <widget class="QLineEdit" name="lineEdit_filename_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>250</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>16777215</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QLineEdit {
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding-left: 10px;
-}
-QLineEdit:hover {
-	border: 2px solid rgb(85, 170, 255);
-	border: 2px solid rgb(91, 101, 124);
-}
-QLineEdit:focus {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                                  </property>
-                                  <property name="placeholderText">
-                                   <string>Nome do arquivo: #basename</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="3" column="1">
-                                 <widget class="QLabel" name="label_tags_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>16777215</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">color: rgb(112, 117, 125);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Tags disponíveis: #year #month #day #time #basename</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="0" column="0">
-                                 <widget class="QPushButton" name="pushButton_outputPath_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>40</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QPushButton {
-	border: 2px solid rgb(64, 71, 88);
-	border-radius: 5px;	
-	background-color:#2E3342;
-}
-QPushButton:hover {
-	background-color: rgb(85, 170, 255);
-	border: 2px solid rgb(85, 170, 255);
-}
-QPushButton:pressed {	
-	background-color: rgb(35, 40, 49);
-	border: 2px solid rgb(43, 50, 61);
-}</string>
-                                  </property>
-                                  <property name="text">
-                                   <string/>
-                                  </property>
-                                  <property name="icon">
-                                   <iconset resource="../Simple_PySide_Base/files.qrc">
-                                    <normaloff>:/20x20/icons/20x20/cil-folder.png</normaloff>:/20x20/icons/20x20/cil-folder.png</iconset>
-                                  </property>
-                                  <property name="iconSize">
-                                   <size>
-                                    <width>18</width>
-                                    <height>18</height>
-                                   </size>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="0" column="1">
-                                 <widget class="QLineEdit" name="lineEdit_outputPath_mergebatch">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>250</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>16777215</width>
-                                    <height>16777215</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">QLineEdit {
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding-left: 10px;
-}
-QLineEdit:hover {
-	border: 2px solid rgb(85, 170, 255);
-	border: 2px solid rgb(91, 101, 124);
-}
-QLineEdit:focus {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                                  </property>
-                                  <property name="placeholderText">
-                                   <string>Selecionar diretório de saída</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                               </layout>
-                              </widget>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -2664,7 +2182,7 @@ QLineEdit:focus {
                             <property name="minimumSize">
                              <size>
                               <width>630</width>
-                              <height>0</height>
+                              <height>140</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -2995,7 +2513,7 @@ QLineEdit:focus {
 }</string>
                                   </property>
                                   <property name="placeholderText">
-                                   <string>Nome do arquivo: #basename</string>
+                                   <string>Nome do arquivo: #basename,#page</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -3042,7 +2560,7 @@ QLineEdit:focus {
                          <property name="minimumSize">
                           <size>
                            <width>630</width>
-                           <height>100</height>
+                           <height>110</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -3344,8 +2862,8 @@ QCheckBox::indicator:checked {
                         <widget class="QFrame" name="frame_top_page_ocr">
                          <property name="minimumSize">
                           <size>
-                           <width>0</width>
-                           <height>0</height>
+                           <width>630</width>
+                           <height>140</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -3906,8 +3424,8 @@ QLineEdit:focus {
                         <widget class="QFrame" name="frame_top_page_zip">
                          <property name="minimumSize">
                           <size>
-                           <width>646</width>
-                           <height>0</height>
+                           <width>630</width>
+                           <height>140</height>
                           </size>
                          </property>
                          <property name="maximumSize">

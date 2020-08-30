@@ -47,6 +47,7 @@ class Connect(Ui_MainWindow):
     def buttonRun(self,appFunction):
         # Executar uma função da classe PDFFunctions
         # Função necessária pois não é possível importar essa classe no arquivo principal
+
         try:
             functionValue =  eval(appFunction)
         except Exception as e:
