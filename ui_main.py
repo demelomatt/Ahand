@@ -810,7 +810,7 @@ class Ui_MainWindow(object):
         self.formLayout_3 = QFormLayout(self.frame_output_merge)
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.formLayout_3.setContentsMargins(0, 5, 5, 5)
-        self.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_outputPath_merge.setObjectName(u"lineEdit_outputPath_merge")
         self.lineEdit_outputPath_merge.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_merge.setMaximumSize(QSize(320, 16777215))
@@ -831,7 +831,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_merge)
 
-        self.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_filename_merge.setObjectName(u"lineEdit_filename_merge")
         self.lineEdit_filename_merge.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_merge.setMaximumSize(QSize(320, 16777215))
@@ -1349,7 +1349,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.label_intDpi_ocr, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
+        Ui_MainWindow.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
         self.lineEdit_intDpi_ocr.setObjectName(u"lineEdit_intDpi_ocr")
         self.lineEdit_intDpi_ocr.setMinimumSize(QSize(0, 23))
         self.lineEdit_intDpi_ocr.setMaximumSize(QSize(50, 16777215))
@@ -1407,7 +1407,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_ocr)
 
-        self.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_outputPath_ocr.setObjectName(u"lineEdit_outputPath_ocr")
         self.lineEdit_outputPath_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_ocr.setMaximumSize(QSize(320, 16777215))
@@ -1428,7 +1428,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_ocr)
 
-        self.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_filename_ocr.setObjectName(u"lineEdit_filename_ocr")
         self.lineEdit_filename_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_ocr.setMaximumSize(QSize(320, 16777215))
@@ -1868,7 +1868,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setHorizontalSpacing(20)
         self.gridLayout_4.setContentsMargins(9, 5, 9, 5)
-        self.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpecialChar_search.setObjectName(u"checkBox_ignoreSpecialChar_search")
         self.checkBox_ignoreSpecialChar_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreSpecialChar_search.setFont(font4)
@@ -1883,7 +1883,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreSpecialChar_search, 1, 0, 1, 1)
 
-        self.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_onlyPages_search.setObjectName(u"checkBox_onlyPages_search")
         self.checkBox_onlyPages_search.setMinimumSize(QSize(0, 20))
         self.checkBox_onlyPages_search.setFont(font4)
@@ -1897,7 +1897,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_onlyPages_search, 0, 0, 1, 1)
 
-        self.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignorePontuation_search.setObjectName(u"checkBox_ignorePontuation_search")
         self.checkBox_ignorePontuation_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignorePontuation_search.setFont(font4)
@@ -1911,7 +1911,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignorePontuation_search, 2, 0, 1, 1)
 
-        self.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpaces_search.setObjectName(u"checkBox_ignoreSpaces_search")
         self.checkBox_ignoreSpaces_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreSpaces_search.setFont(font4)
@@ -1925,7 +1925,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreSpaces_search, 0, 1, 1, 1)
 
-        self.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreFirstPage_search.setObjectName(u"checkBox_ignoreFirstPage_search")
         self.checkBox_ignoreFirstPage_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreFirstPage_search.setFont(font4)
@@ -2118,7 +2118,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.label_keywords_search, 1, 1, 1, 1)
 
-        self.comboBox_operator_search = QComboBox(self.frame_keywords)
+        Ui_MainWindow.comboBox_operator_search = QComboBox(self.frame_keywords)
         self.comboBox_operator_search.addItem("")
         self.comboBox_operator_search.addItem("")
         self.comboBox_operator_search.setObjectName(u"comboBox_operator_search")
@@ -2147,7 +2147,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.comboBox_operator_search, 0, 0, 1, 1)
 
-        self.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
         self.lineEdit_keywords_search.setObjectName(u"lineEdit_keywords_search")
         self.lineEdit_keywords_search.setMinimumSize(QSize(0, 30))
         self.lineEdit_keywords_search.setMaximumSize(QSize(16777215, 16777215))
@@ -2182,7 +2182,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.label_else_search, 1, 3, 1, 1)
 
-        self.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
         self.lineEdit_moveto_search.setObjectName(u"lineEdit_moveto_search")
         self.lineEdit_moveto_search.setMinimumSize(QSize(200, 30))
         self.lineEdit_moveto_search.setMaximumSize(QSize(220, 16777215))
@@ -2204,7 +2204,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.lineEdit_moveto_search, 0, 2, 1, 1)
 
-        self.lineEdit_else_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_else_search = QLineEdit(self.frame_keywords)
         self.lineEdit_else_search.setObjectName(u"lineEdit_else_search")
         self.lineEdit_else_search.setMinimumSize(QSize(200, 30))
         self.lineEdit_else_search.setMaximumSize(QSize(220, 16777215))
@@ -2296,7 +2296,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.frame_vbuttons, 0, Qt.AlignLeft)
 
-        self.tabWidget = QTabWidget(self.frame_tab)
+        Ui_MainWindow.tabWidget = QTabWidget(self.frame_tab)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setFont(font4)
         self.tabWidget.setStyleSheet(u"QTabBar::tab {\n"

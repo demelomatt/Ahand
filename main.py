@@ -2,7 +2,8 @@
 from ui_main import Ui_MainWindow
 from ui_styles import Style
 from ui_functions import UIFunctions
-from connect_functions import *
+from worker import *
+from app_functions import PDFfunctions
 
 # Bibliotecas nativas
 import sys, platform
@@ -15,10 +16,12 @@ from PySide2.QtWidgets import *
 
 class MainWindow(QMainWindow):
 
-    def __init__(self):
-        QMainWindow.__init__(self)
+
+    def __init__(self,parent=None):
+        super(MainWindow,self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.worker = Worker()
     
         ########################################################################
         ## START - WINDOW ATTRIBUTES
@@ -124,36 +127,34 @@ class MainWindow(QMainWindow):
         #BUTTONS
 
         self.ui.pushButton_deleteTable_search.clicked.connect(lambda: UIFunctions.deleteTab(self)) # Deletar tabela
-        self.ui.pushButton_addTable_search.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.importFromCSV(self)')) # Adicionar tabela
+        self.ui.pushButton_addTable_search.clicked.connect(self.processData) # Adicionar tabela
 
         # Função merge
-        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
-        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_merge,"Abrir diretório de saída"))
-        self.ui.pushButton_run_merge.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.merge(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())'))
+        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
+        self.ui.pushButton_outputPath_merge.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_merge,"Abrir diretório de saída"))
+        self.ui.pushButton_run_merge.clicked.connect(self.processData)
         
         # Função ocr
-        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_ocr))
-        self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
-        self.ui.pushButton_run_ocr.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.ocrPDF(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi_ocr.text())'))
+        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_ocr))
+        self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
+        self.ui.pushButton_run_ocr.clicked.connect(self.processData)
         
         # Função zip
-        self.ui.pushButton_selectRootDirectory_zip.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_rootDirectory_zip,"Abrir diretório raíz"))
-        self.ui.pushButton_outputPath_zip.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_zip,"Abrir diretório de saída"))
-        self.ui.pushButton_run_zip.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.zipCompress(self,self.ui.lineEdit_rootDirectory_zip.text(),self.ui.lineEdit_outputPath_zip.text(),self.ui.lineEdit_filename_zip.text())'))
+        self.ui.pushButton_selectRootDirectory_zip.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_rootDirectory_zip,"Abrir diretório raíz"))
+        self.ui.pushButton_outputPath_zip.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_zip,"Abrir diretório de saída"))
+        self.ui.pushButton_run_zip.clicked.connect(self.processData)
         
         # Função search patterns
-        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_search))
-        self.ui.pushButton_outputPath_search.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
-        self.ui.pushButton_run_search.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.searchPattern(self,PDFfunctions.inputPaths,self.ui.lineEdit_outputPath_search.text(),self.ui.lineEdit_filename_search.text())'))
+        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_search))
+        self.ui.pushButton_outputPath_search.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
+        self.ui.pushButton_run_search.clicked.connect(self.processData)
 
         # Função extract
-        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: Connect.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_extract))
-        self.ui.pushButton_outputPath_extract.clicked.connect(lambda: Connect.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
-        self.ui.pushButton_run_extract.clicked.connect(lambda: Connect.buttonRun(self,'PDFfunctions.extract(self,PDFfunctions.inputPaths,self.ui.lineEdit_intPages_extract.text(),self.ui.lineEdit_outputPath_extract.text(),self.ui.lineEdit_filename_extract.text())'))
+        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_extract))
+        self.ui.pushButton_outputPath_extract.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
+        self.ui.pushButton_run_extract.clicked.connect(self.processData)
 
         # Checkbox
-
-
 
         ########################################################################
         
@@ -165,6 +166,11 @@ class MainWindow(QMainWindow):
         ## END --------------- WIDGETS FUNCTIONS/PARAMETERS ----------------- ##
         #                                                                      #
         ############################## ---/--/--- ##############################
+
+    def processData(self):
+
+        #Worker.sender = self.sender().objectName()
+        Worker.run(self)
 
     ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS
