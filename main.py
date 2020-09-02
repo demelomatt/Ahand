@@ -2,8 +2,8 @@
 from ui_main import Ui_MainWindow
 from ui_styles import Style
 from ui_functions import UIFunctions
-from worker import *
-from app_functions import PDFfunctions
+from worker import Worker
+from app_functions import PDFfunctions, DataBase
 
 # Bibliotecas nativas
 import sys, platform
@@ -14,8 +14,8 @@ from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTi
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
+# Classes
 class MainWindow(QMainWindow):
-
 
     def __init__(self,parent=None):
         super(MainWindow,self).__init__(parent)
@@ -100,7 +100,7 @@ class MainWindow(QMainWindow):
         ########################################################################
         ## ==> END ##
 
-        # PRIMEIRA EXECUÇÃO
+        # FIRST EXECUTION
         UIFunctions.deleteTab(self)
         UIFunctions.deleteTab(self)
 
@@ -108,12 +108,19 @@ class MainWindow(QMainWindow):
         self.ui.checkBox_ignoreSpecialChar_search.setChecked(True)
         self.ui.checkBox_extractPages.setChecked(True)
 
-        # Exclusive checkbox
+            # Exclusive checkbox
         checkboxGroup = QButtonGroup(self)
         checkboxGroup.addButton(self.ui.checkBox_extractPages)
         checkboxGroup.addButton(self.ui.checkBox_extractAfter)
         checkboxGroup.addButton(self.ui.checkBox_extractEach)
 
+            # COMBOBOX
+        dbComboBox = DataBase('database.db',"comboBox_configs_search")
+        query = "SELECT value FROM {} WHERE key=?".format(dbComboBox.tableName)
+        result = dbComboBox.cursor.execute(query,['Ui_MainWindow.comboBox_configs_search'])
+        valuesColumn = result.fetchone()
+
+        self.ui.comboBox_configs_search.addItems(valuesColumn)
         ## ==> END ##
 
         ########################################################################
@@ -124,38 +131,44 @@ class MainWindow(QMainWindow):
         # LABEL
         self.ui.label_feedback.clear()
 
-        #BUTTONS
-
+        # SIGNALS
         self.ui.pushButton_deleteTable_search.clicked.connect(lambda: UIFunctions.deleteTab(self)) # Deletar tabela
         self.ui.pushButton_addTable_search.clicked.connect(self.processData) # Adicionar tabela
 
-        # Função merge
+            # merge function
         self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
         self.ui.pushButton_outputPath_merge.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_merge,"Abrir diretório de saída"))
         self.ui.pushButton_run_merge.clicked.connect(self.processData)
         
-        # Função ocr
+            # ocr function
         self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_ocr))
         self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
         self.ui.pushButton_run_ocr.clicked.connect(self.processData)
         
-        # Função zip
+            # zip function
         self.ui.pushButton_selectRootDirectory_zip.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_rootDirectory_zip,"Abrir diretório raíz"))
         self.ui.pushButton_outputPath_zip.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_zip,"Abrir diretório de saída"))
         self.ui.pushButton_run_zip.clicked.connect(self.processData)
         
-        # Função search patterns
+            # search patterns function
         self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_search))
         self.ui.pushButton_outputPath_search.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
         self.ui.pushButton_run_search.clicked.connect(self.processData)
 
-        # Função extract
+            # extract function
         self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_extract))
         self.ui.pushButton_outputPath_extract.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
         self.ui.pushButton_run_extract.clicked.connect(self.processData)
+        ## ==> END ##
 
-        # Checkbox
+        # Database
+        self.ui.pushButton_save_search.clicked.connect(lambda: PDFfunctions.saveData(self))
+        self.ui.pushButton_delete_search.clicked.connect(lambda: PDFfunctions.deleteData(self))
 
+        # ComboBox
+        self.ui.comboBox_configs_search.currentIndexChanged.connect(lambda: PDFfunctions.loadData(self))
+
+        
         ########################################################################
         
         ## ==> QTableWidget PARAMETERS

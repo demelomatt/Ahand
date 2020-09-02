@@ -1811,7 +1811,7 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(3, QFormLayout.FieldRole, self.label_tags_search)
 
-        self.lineEdit_outputPath_search = QLineEdit(self.frame_output)
+        Ui_MainWindow.lineEdit_outputPath_search = QLineEdit(self.frame_output)
         self.lineEdit_outputPath_search.setObjectName(u"lineEdit_outputPath_search")
         self.lineEdit_outputPath_search.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_search.setMaximumSize(QSize(16777215, 16777215))
@@ -1832,7 +1832,7 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_search)
 
-        self.lineEdit_filename_search = QLineEdit(self.frame_output)
+        Ui_MainWindow.lineEdit_filename_search = QLineEdit(self.frame_output)
         self.lineEdit_filename_search.setObjectName(u"lineEdit_filename_search")
         self.lineEdit_filename_search.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_search.setMaximumSize(QSize(16777215, 16777215))
@@ -2053,7 +2053,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_18.addWidget(self.pushButton_delete_search)
 
-        self.comboBox_configs_search = QComboBox(self.frame_config)
+        Ui_MainWindow.comboBox_configs_search = QComboBox(self.frame_config)
         self.comboBox_configs_search.addItem("")
         self.comboBox_configs_search.setObjectName(u"comboBox_configs_search")
         self.comboBox_configs_search.setMinimumSize(QSize(0, 30))

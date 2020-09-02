@@ -3,7 +3,7 @@ from ui_main import Ui_MainWindow
 from ui_styles import Style
 
 # Bibliotecas nativas
-import re
+import os
 
 # Bibliotecas externas
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -20,8 +20,8 @@ GLOBAL_TITLE_BAR = True
 ## ==> COUT INITIAL MENU
 count = 1
 
+# Classes
 class UIFunctions(Ui_MainWindow):
-
 
     ## ==> GLOBALS
     GLOBAL_STATE = 0
