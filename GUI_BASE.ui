@@ -1559,7 +1559,7 @@ QPushButton:pressed {
                     <property name="bottomMargin">
                      <number>9</number>
                     </property>
-                    <item alignment="Qt::AlignTop">
+                    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
                      <widget class="QFrame" name="frame_home">
                       <property name="minimumSize">
                        <size>
@@ -1595,8 +1595,14 @@ QPushButton:pressed {
                        <property name="bottomMargin">
                         <number>5</number>
                        </property>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QFrame" name="frame_merge">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>0</height>
+                          </size>
+                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -1605,16 +1611,16 @@ QPushButton:pressed {
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_10">
                           <property name="leftMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="topMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="rightMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
                            <widget class="QFrame" name="frame_description_merge">
@@ -1643,7 +1649,7 @@ QPushButton:pressed {
                              <property name="bottomMargin">
                               <number>5</number>
                              </property>
-                             <item alignment="Qt::AlignLeft">
+                             <item alignment="Qt::AlignHCenter">
                               <widget class="QLabel" name="label_description_merge">
                                <property name="minimumSize">
                                 <size>
@@ -1654,7 +1660,7 @@ QPushButton:pressed {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                  <weight>75</weight>
                                  <bold>true</bold>
                                 </font>
@@ -1670,12 +1676,12 @@ QPushButton:pressed {
                             </layout>
                            </widget>
                           </item>
-                          <item>
+                          <item alignment="Qt::AlignHCenter">
                            <widget class="QFrame" name="frame_top_page_merge">
                             <property name="minimumSize">
                              <size>
-                              <width>630</width>
-                              <height>140</height>
+                              <width>690</width>
+                              <height>150</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -1696,14 +1702,17 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                              <enum>QFrame::Raised</enum>
                             </property>
                             <layout class="QHBoxLayout" name="horizontalLayout_23">
+                             <property name="spacing">
+                              <number>20</number>
+                             </property>
                              <property name="leftMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="topMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="rightMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="bottomMargin">
                               <number>5</number>
@@ -1712,7 +1721,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                               <widget class="QFrame" name="frame_input_merge">
                                <property name="minimumSize">
                                 <size>
-                                 <width>230</width>
+                                 <width>0</width>
                                  <height>0</height>
                                 </size>
                                </property>
@@ -1738,7 +1747,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                </property>
                                <layout class="QGridLayout" name="gridLayout">
                                 <property name="leftMargin">
-                                 <number>5</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>5</number>
@@ -1748,6 +1757,9 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                 </property>
                                 <property name="bottomMargin">
                                  <number>5</number>
+                                </property>
+                                <property name="horizontalSpacing">
+                                 <number>6</number>
                                 </property>
                                 <item row="0" column="1">
                                  <widget class="QPushButton" name="pushButton_selectFiles_merge">
@@ -1759,14 +1771,14 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>160</width>
+                                    <width>16777215</width>
                                     <height>16777215</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>9</pointsize>
+                                    <pointsize>10</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -1801,6 +1813,12 @@ QPushButton:pressed {
                                 </item>
                                 <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_merge">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>40</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
                                   <property name="maximumSize">
                                    <size>
                                     <width>40</width>
@@ -1845,7 +1863,7 @@ QPushButton:pressed {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -1884,13 +1902,13 @@ QPushButton:pressed {
                                </property>
                                <layout class="QFormLayout" name="formLayout_3">
                                 <property name="leftMargin">
-                                 <number>0</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>5</number>
                                 </property>
                                 <property name="rightMargin">
-                                 <number>5</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="bottomMargin">
                                  <number>5</number>
@@ -1905,14 +1923,14 @@ QPushButton:pressed {
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>320</width>
+                                    <width>360</width>
                                     <height>16777215</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -1939,20 +1957,20 @@ QLineEdit:focus {
                                  <widget class="QLineEdit" name="lineEdit_filename_merge">
                                   <property name="minimumSize">
                                    <size>
-                                    <width>0</width>
+                                    <width>330</width>
                                     <height>30</height>
                                    </size>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>320</width>
+                                    <width>360</width>
                                     <height>16777215</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -1992,14 +2010,14 @@ QLineEdit:focus {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>11</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
                                    <string notr="true">color: rgb(112, 117, 125);</string>
                                   </property>
                                   <property name="text">
-                                   <string>Tags disponíveis: #year #month #day #time #basename</string>
+                                   <string>Tags disponíveis:#year #month #day #time #basename</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -2084,6 +2102,9 @@ QPushButton:pressed {
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_23">
+                       <property name="spacing">
+                        <number>20</number>
+                       </property>
                        <property name="leftMargin">
                         <number>5</number>
                        </property>
@@ -2112,16 +2133,16 @@ QPushButton:pressed {
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_20">
                           <property name="leftMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="topMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="rightMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="bottomMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
                            <widget class="QFrame" name="frame_description_extract">
@@ -2161,7 +2182,7 @@ QPushButton:pressed {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                  <weight>75</weight>
                                  <bold>true</bold>
                                 </font>
@@ -2181,8 +2202,8 @@ QPushButton:pressed {
                            <widget class="QFrame" name="frame_top_page_extract">
                             <property name="minimumSize">
                              <size>
-                              <width>630</width>
-                              <height>140</height>
+                              <width>690</width>
+                              <height>150</height>
                              </size>
                             </property>
                             <property name="maximumSize">
@@ -2204,13 +2225,13 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                             </property>
                             <layout class="QHBoxLayout" name="horizontalLayout_25">
                              <property name="leftMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
                              </property>
                              <property name="rightMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="bottomMargin">
                               <number>5</number>
@@ -2245,13 +2266,13 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                </property>
                                <layout class="QGridLayout" name="gridLayout_2">
                                 <property name="leftMargin">
-                                 <number>5</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>5</number>
                                 </property>
                                 <property name="rightMargin">
-                                 <number>0</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="bottomMargin">
                                  <number>5</number>
@@ -2266,14 +2287,14 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>160</width>
+                                    <width>169</width>
                                     <height>16777215</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>9</pointsize>
+                                    <pointsize>10</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -2308,6 +2329,12 @@ QPushButton:pressed {
                                 </item>
                                 <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_extract">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>40</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
                                   <property name="maximumSize">
                                    <size>
                                     <width>40</width>
@@ -2349,7 +2376,7 @@ QPushButton:pressed {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -2388,13 +2415,13 @@ QPushButton:pressed {
                                </property>
                                <layout class="QFormLayout" name="formLayout_5">
                                 <property name="leftMargin">
-                                 <number>0</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>5</number>
                                 </property>
                                 <property name="rightMargin">
-                                 <number>5</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="bottomMargin">
                                  <number>5</number>
@@ -2441,7 +2468,7 @@ QPushButton:pressed {
                                  <widget class="QLineEdit" name="lineEdit_outputPath_extract">
                                   <property name="minimumSize">
                                    <size>
-                                    <width>320</width>
+                                    <width>360</width>
                                     <height>30</height>
                                    </size>
                                   </property>
@@ -2454,7 +2481,7 @@ QPushButton:pressed {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -2494,7 +2521,7 @@ QLineEdit:focus {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -2513,7 +2540,7 @@ QLineEdit:focus {
 }</string>
                                   </property>
                                   <property name="placeholderText">
-                                   <string>Nome do arquivo: #basename,#page</string>
+                                   <string>Nome do arquivo: #basename,#pages</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -2534,7 +2561,7 @@ QLineEdit:focus {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>11</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -2542,7 +2569,7 @@ QLineEdit:focus {
                                   </property>
                                   <property name="text">
                                    <string>Tags disponíveis: #year #month #day
-#time #page #basename</string>
+#time #pages #basename</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -2555,12 +2582,12 @@ QLineEdit:focus {
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QFrame" name="frame_extract_pages">
                          <property name="minimumSize">
                           <size>
-                           <width>630</width>
-                           <height>110</height>
+                           <width>690</width>
+                           <height>130</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -2630,6 +2657,8 @@ border-radius: 7px;
                                 <font>
                                  <family>Segoe UI</family>
                                  <pointsize>11</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
                                 </font>
                                </property>
                                <property name="text">
@@ -2654,7 +2683,7 @@ border-radius: 7px;
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -2693,13 +2722,13 @@ QLineEdit:focus {
                             </property>
                             <layout class="QVBoxLayout" name="verticalLayout_25">
                              <property name="leftMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
                              </property>
                              <property name="rightMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="bottomMargin">
                               <number>5</number>
@@ -2719,7 +2748,8 @@ QLineEdit:focus {
 }
 QCheckBox::indicator:checked {
 	border: 2px solid rgb(85, 170, 255);
-}</string>
+}
+</string>
                                </property>
                                <property name="text">
                                 <string>Todas as páginas indicadas</string>
@@ -2744,7 +2774,7 @@ QCheckBox::indicator:checked {
 }</string>
                                </property>
                                <property name="text">
-                                <string>Dividir nas páginas indicadas</string>
+                                <string>Dividir no intervalo indicado</string>
                                </property>
                               </widget>
                              </item>
@@ -2793,16 +2823,16 @@ QCheckBox::indicator:checked {
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_27">
                        <property name="leftMargin">
-                        <number>5</number>
+                        <number>9</number>
                        </property>
                        <property name="topMargin">
-                        <number>5</number>
+                        <number>9</number>
                        </property>
                        <property name="rightMargin">
-                        <number>5</number>
+                        <number>9</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>5</number>
+                        <number>9</number>
                        </property>
                        <item>
                         <widget class="QFrame" name="frame_description_ocr">
@@ -2842,7 +2872,7 @@ QCheckBox::indicator:checked {
                             <property name="font">
                              <font>
                               <family>Segoe UI</family>
-                              <pointsize>10</pointsize>
+                              <pointsize>11</pointsize>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -2862,13 +2892,13 @@ QCheckBox::indicator:checked {
                         <widget class="QFrame" name="frame_top_page_ocr">
                          <property name="minimumSize">
                           <size>
-                           <width>630</width>
-                           <height>140</height>
+                           <width>690</width>
+                           <height>150</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>650</width>
                            <height>16777215</height>
                           </size>
                          </property>
@@ -2885,13 +2915,13 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_28">
                           <property name="leftMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="topMargin">
                            <number>5</number>
                           </property>
                           <property name="rightMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="bottomMargin">
                            <number>5</number>
@@ -2950,19 +2980,25 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                </property>
                                <layout class="QGridLayout" name="gridLayout_5">
                                 <property name="leftMargin">
-                                 <number>0</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="topMargin">
                                  <number>5</number>
                                 </property>
                                 <property name="rightMargin">
-                                 <number>0</number>
+                                 <number>9</number>
                                 </property>
                                 <property name="bottomMargin">
-                                 <number>0</number>
+                                 <number>5</number>
                                 </property>
                                 <item row="0" column="0">
                                  <widget class="QPushButton" name="pushButton_run_ocr">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>40</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
                                   <property name="maximumSize">
                                    <size>
                                     <width>40</width>
@@ -3006,20 +3042,20 @@ QPushButton:pressed {
                                  <widget class="QPushButton" name="pushButton_selectFiles_ocr">
                                   <property name="minimumSize">
                                    <size>
-                                    <width>160</width>
+                                    <width>169</width>
                                     <height>30</height>
                                    </size>
                                   </property>
                                   <property name="maximumSize">
                                    <size>
-                                    <width>150</width>
+                                    <width>16777215</width>
                                     <height>16777215</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>9</pointsize>
+                                    <pointsize>10</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -3057,7 +3093,7 @@ QPushButton:pressed {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>10</pointsize>
+                                    <pointsize>12</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -3092,10 +3128,10 @@ QPushButton:pressed {
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_9">
                                 <property name="leftMargin">
-                                 <number>9</number>
+                                 <number>14</number>
                                 </property>
                                 <property name="topMargin">
-                                 <number>0</number>
+                                 <number>14</number>
                                 </property>
                                 <property name="rightMargin">
                                  <number>9</number>
@@ -3133,7 +3169,7 @@ QPushButton:pressed {
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
-                                    <pointsize>9</pointsize>
+                                    <pointsize>10</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -3166,7 +3202,7 @@ QLineEdit:focus {
                            <widget class="QFrame" name="frame_output_ocr">
                             <property name="minimumSize">
                              <size>
-                              <width>0</width>
+                              <width>428</width>
                               <height>0</height>
                              </size>
                             </property>
@@ -3187,13 +3223,13 @@ QLineEdit:focus {
                             </property>
                             <layout class="QFormLayout" name="formLayout_6">
                              <property name="leftMargin">
-                              <number>0</number>
+                              <number>9</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
                              </property>
                              <property name="rightMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="bottomMargin">
                               <number>5</number>
@@ -3246,14 +3282,14 @@ QPushButton:pressed {
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>320</width>
+                                 <width>360</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3286,14 +3322,14 @@ QLineEdit:focus {
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>320</width>
+                                 <width>360</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3333,14 +3369,14 @@ QLineEdit:focus {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
                                 <string notr="true">color: rgb(112, 117, 125);</string>
                                </property>
                                <property name="text">
-                                <string>Tags disponíveis: #year #month #day #time #basename</string>
+                                <string>Tags disponíveis:#year #month #day #time #basename</string>
                                </property>
                               </widget>
                              </item>
@@ -3404,7 +3440,7 @@ QLineEdit:focus {
                             <property name="font">
                              <font>
                               <family>Segoe UI</family>
-                              <pointsize>10</pointsize>
+                              <pointsize>11</pointsize>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -3424,13 +3460,13 @@ QLineEdit:focus {
                         <widget class="QFrame" name="frame_top_page_zip">
                          <property name="minimumSize">
                           <size>
-                           <width>630</width>
-                           <height>140</height>
+                           <width>690</width>
+                           <height>150</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>750</width>
                            <height>16777215</height>
                           </size>
                          </property>
@@ -3447,13 +3483,13 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_29">
                           <property name="leftMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="topMargin">
                            <number>5</number>
                           </property>
                           <property name="rightMargin">
-                           <number>5</number>
+                           <number>9</number>
                           </property>
                           <property name="bottomMargin">
                            <number>5</number>
@@ -3488,35 +3524,35 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                             </property>
                             <layout class="QGridLayout" name="gridLayout_7">
                              <property name="leftMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
                              </property>
                              <property name="rightMargin">
-                              <number>0</number>
+                              <number>9</number>
                              </property>
                              <property name="bottomMargin">
                               <number>5</number>
                              </property>
-                             <item row="1" column="1">
+                             <item row="1" column="2">
                               <widget class="QLineEdit" name="lineEdit_rootDirectory_zip">
                                <property name="minimumSize">
                                 <size>
-                                 <width>0</width>
+                                 <width>190</width>
                                  <height>30</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>180</width>
+                                 <width>16777215</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3535,29 +3571,17 @@ QLineEdit:focus {
 }</string>
                                </property>
                                <property name="placeholderText">
-                                <string>Diretório raiz</string>
+                                <string>Selecionar diretório raiz</string>
                                </property>
                               </widget>
                              </item>
-                             <item row="0" column="1">
-                              <widget class="QPushButton" name="pushButton_selectRootDirectory_zip">
+                             <item row="1" column="1">
+                              <widget class="QPushButton" name="pushButton_outputPath_zip_2">
                                <property name="minimumSize">
                                 <size>
-                                 <width>160</width>
+                                 <width>40</width>
                                  <height>30</height>
                                 </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>180</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
-                                </font>
                                </property>
                                <property name="styleSheet">
                                 <string notr="true">QPushButton {
@@ -3575,7 +3599,7 @@ QPushButton:pressed {
 }</string>
                                </property>
                                <property name="text">
-                                <string>Abrir diretório</string>
+                                <string/>
                                </property>
                                <property name="icon">
                                 <iconset resource="../Simple_PySide_Base/files.qrc">
@@ -3589,7 +3613,7 @@ QPushButton:pressed {
                                </property>
                               </widget>
                              </item>
-                             <item row="0" column="0">
+                             <item row="1" column="0">
                               <widget class="QPushButton" name="pushButton_run_zip">
                                <property name="minimumSize">
                                 <size>
@@ -3640,13 +3664,13 @@ QPushButton:pressed {
                            <widget class="QFrame" name="frame_output_zip">
                             <property name="minimumSize">
                              <size>
-                              <width>371</width>
+                              <width>432</width>
                               <height>115</height>
                              </size>
                             </property>
                             <property name="maximumSize">
                              <size>
-                              <width>16777215</width>
+                              <width>428</width>
                               <height>16777215</height>
                              </size>
                             </property>
@@ -3661,13 +3685,13 @@ QPushButton:pressed {
                             </property>
                             <layout class="QFormLayout" name="formLayout_7">
                              <property name="leftMargin">
-                              <number>0</number>
+                              <number>9</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
                              </property>
                              <property name="rightMargin">
-                              <number>5</number>
+                              <number>9</number>
                              </property>
                              <property name="bottomMargin">
                               <number>5</number>
@@ -3676,20 +3700,20 @@ QPushButton:pressed {
                               <widget class="QLineEdit" name="lineEdit_filename_zip">
                                <property name="minimumSize">
                                 <size>
-                                 <width>250</width>
+                                 <width>0</width>
                                  <height>30</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>16777215</width>
+                                 <width>360</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3729,7 +3753,7 @@ QLineEdit:focus {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -3737,6 +3761,46 @@ QLineEdit:focus {
                                </property>
                                <property name="text">
                                 <string>Tags disponíveis: #year #month #day #time #basename</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QLineEdit" name="lineEdit_outputPath_zip">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>360</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>360</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>12</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLineEdit {
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	padding-left: 10px;
+}
+QLineEdit:hover {
+	border: 2px solid rgb(85, 170, 255);
+	border: 2px solid rgb(91, 101, 124);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(85, 170, 255);
+}</string>
+                               </property>
+                               <property name="placeholderText">
+                                <string>Selecionar diretório de saída</string>
                                </property>
                               </widget>
                              </item>
@@ -3775,46 +3839,6 @@ QPushButton:pressed {
                                  <width>18</width>
                                  <height>18</height>
                                 </size>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="0" column="1">
-                              <widget class="QLineEdit" name="lineEdit_outputPath_zip">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>250</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLineEdit {
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding-left: 10px;
-}
-QLineEdit:hover {
-	border: 2px solid rgb(85, 170, 255);
-	border: 2px solid rgb(91, 101, 124);
-}
-QLineEdit:focus {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                               </property>
-                               <property name="placeholderText">
-                                <string>Selecionar diretório de saída</string>
                                </property>
                               </widget>
                              </item>
@@ -3896,7 +3920,7 @@ QLineEdit:focus {
                             <property name="font">
                              <font>
                               <family>Segoe UI</family>
-                              <pointsize>10</pointsize>
+                              <pointsize>11</pointsize>
                               <weight>75</weight>
                               <bold>true</bold>
                              </font>
@@ -3909,7 +3933,7 @@ QLineEdit:focus {
                          </layout>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                       <item>
                         <widget class="QFrame" name="frame_top_page">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -3919,7 +3943,7 @@ QLineEdit:focus {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>0</width>
+                           <width>830</width>
                            <height>0</height>
                           </size>
                          </property>
@@ -3957,7 +3981,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                            <widget class="QFrame" name="frame_input">
                             <property name="minimumSize">
                              <size>
-                              <width>160</width>
+                              <width>180</width>
                               <height>0</height>
                              </size>
                             </property>
@@ -3998,7 +4022,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                               <widget class="QPushButton" name="pushButton_selectFiles_search">
                                <property name="minimumSize">
                                 <size>
-                                 <width>160</width>
+                                 <width>169</width>
                                  <height>30</height>
                                 </size>
                                </property>
@@ -4011,7 +4035,7 @@ border-top: 3px solid rgb(85, 170, 255);</string>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4046,10 +4070,16 @@ QPushButton:pressed {
                              </item>
                              <item alignment="Qt::AlignHCenter">
                               <widget class="QLabel" name="label_files_selected_search">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>169</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4063,7 +4093,7 @@ QPushButton:pressed {
                             </layout>
                            </widget>
                           </item>
-                          <item>
+                          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                            <widget class="QFrame" name="frame_output">
                             <property name="minimumSize">
                              <size>
@@ -4073,7 +4103,7 @@ QPushButton:pressed {
                             </property>
                             <property name="maximumSize">
                              <size>
-                              <width>370</width>
+                              <width>300</width>
                               <height>16777215</height>
                              </size>
                             </property>
@@ -4088,7 +4118,7 @@ QPushButton:pressed {
                             </property>
                             <layout class="QFormLayout" name="formLayout">
                              <property name="leftMargin">
-                              <number>9</number>
+                              <number>5</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
@@ -4137,53 +4167,24 @@ QPushButton:pressed {
                                </property>
                               </widget>
                              </item>
-                             <item row="3" column="1">
-                              <widget class="QLabel" name="label_tags_search">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>0</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">color: rgb(112, 117, 125);</string>
-                               </property>
-                               <property name="text">
-                                <string>Tags disponíveis: #year #month #day #time
-#page #basename #group #keywords</string>
-                               </property>
-                              </widget>
-                             </item>
                              <item row="0" column="1">
                               <widget class="QLineEdit" name="lineEdit_outputPath_search">
                                <property name="minimumSize">
                                 <size>
-                                 <width>0</width>
+                                 <width>220</width>
                                  <height>30</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>16777215</width>
+                                 <width>250</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4210,20 +4211,20 @@ QLineEdit:focus {
                               <widget class="QLineEdit" name="lineEdit_filename_search">
                                <property name="minimumSize">
                                 <size>
-                                 <width>0</width>
+                                 <width>230</width>
                                  <height>30</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>16777215</width>
+                                 <width>250</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4246,10 +4247,39 @@ QLineEdit:focus {
                                </property>
                               </widget>
                              </item>
+                             <item row="3" column="1">
+                              <widget class="QLabel" name="label_tags_search">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(112, 117, 125);</string>
+                               </property>
+                               <property name="text">
+                                <string>Tags disponíveis: #year #month #day
+#time #pages #basename</string>
+                               </property>
+                              </widget>
+                             </item>
                             </layout>
                            </widget>
                           </item>
-                          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                          <item alignment="Qt::AlignLeft|Qt::AlignTop">
                            <widget class="QFrame" name="frame_checkBox_">
                             <property name="minimumSize">
                              <size>
@@ -4280,7 +4310,7 @@ QLineEdit:focus {
                             </property>
                             <layout class="QGridLayout" name="gridLayout_4">
                              <property name="leftMargin">
-                              <number>9</number>
+                              <number>5</number>
                              </property>
                              <property name="topMargin">
                               <number>5</number>
@@ -4294,6 +4324,62 @@ QLineEdit:focus {
                              <property name="horizontalSpacing">
                               <number>20</number>
                              </property>
+                             <item row="2" column="0">
+                              <widget class="QCheckBox" name="checkBox_ignorePontuation_search">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QCheckBox::indicator {
+   border: 2px solid rgb(64, 71, 88);
+	border-radius: 9px;
+}
+QCheckBox::indicator:checked {
+	border: 2px solid rgb(85, 170, 255);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>Ignorar pontuação</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QCheckBox" name="checkBox_ignoreFirstPage_search">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QCheckBox::indicator {
+   border: 2px solid rgb(64, 71, 88);
+	border-radius: 9px;
+}
+QCheckBox::indicator:checked {
+	border: 2px solid rgb(85, 170, 255);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>Ignorar primeira linha</string>
+                               </property>
+                              </widget>
+                             </item>
                              <item row="1" column="0">
                               <widget class="QCheckBox" name="checkBox_ignoreSpecialChar_search">
                                <property name="minimumSize">
@@ -4305,7 +4391,7 @@ QLineEdit:focus {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4336,7 +4422,7 @@ QCheckBox::indicator:checked {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4353,34 +4439,6 @@ QCheckBox::indicator:checked {
                                </property>
                               </widget>
                              </item>
-                             <item row="2" column="0">
-                              <widget class="QCheckBox" name="checkBox_ignorePontuation_search">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>20</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QCheckBox::indicator {
-   border: 2px solid rgb(64, 71, 88);
-	border-radius: 9px;
-}
-QCheckBox::indicator:checked {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                               </property>
-                               <property name="text">
-                                <string>Ignorar pontuação</string>
-                               </property>
-                              </widget>
-                             </item>
                              <item row="0" column="1">
                               <widget class="QCheckBox" name="checkBox_ignoreSpaces_search">
                                <property name="minimumSize">
@@ -4392,7 +4450,7 @@ QCheckBox::indicator:checked {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
+                                 <pointsize>10</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4406,34 +4464,6 @@ QCheckBox::indicator:checked {
                                </property>
                                <property name="text">
                                 <string>Ignorar espaços</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="1" column="1">
-                              <widget class="QCheckBox" name="checkBox_ignoreFirstPage_search">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>20</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>9</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QCheckBox::indicator {
-   border: 2px solid rgb(64, 71, 88);
-	border-radius: 9px;
-}
-QCheckBox::indicator:checked {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                               </property>
-                               <property name="text">
-                                <string>Ignorar primeira linha</string>
                                </property>
                               </widget>
                              </item>
@@ -4473,12 +4503,18 @@ QCheckBox::indicator:checked {
                        <property name="bottomMargin">
                         <number>0</number>
                        </property>
-                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                       <item alignment="Qt::AlignHCenter">
                         <widget class="QFrame" name="frame_middle">
                          <property name="minimumSize">
                           <size>
                            <width>830</width>
                            <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
                           </size>
                          </property>
                          <property name="styleSheet">
@@ -4506,7 +4542,7 @@ border-radius: 7px;
                           <property name="bottomMargin">
                            <number>5</number>
                           </property>
-                          <item>
+                          <item alignment="Qt::AlignLeft">
                            <widget class="QFrame" name="frame_config">
                             <property name="maximumSize">
                              <size>
@@ -4728,22 +4764,6 @@ QComboBox QAbstractItemView {
                                </item>
                               </widget>
                              </item>
-                             <item>
-                              <widget class="QLabel" name="label_subtitles_search">
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">color: rgb(112, 117, 125);</string>
-                               </property>
-                               <property name="text">
-                                <string>Nome_da_tabela:Número_da_coluna</string>
-                               </property>
-                              </widget>
-                             </item>
                             </layout>
                            </widget>
                           </item>
@@ -4772,6 +4792,31 @@ QComboBox QAbstractItemView {
                               <number>9</number>
                              </property>
                              <item row="1" column="2">
+                              <widget class="QLabel" name="label_else_search">
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(112, 117, 125);</string>
+                               </property>
+                               <property name="text">
+                                <string>Se não encontrar mover para pasta</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
                               <widget class="QLabel" name="label_moveto_search">
                                <property name="maximumSize">
                                 <size>
@@ -4782,7 +4827,7 @@ QComboBox QAbstractItemView {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4796,7 +4841,7 @@ QComboBox QAbstractItemView {
                                </property>
                               </widget>
                              </item>
-                             <item row="1" column="1">
+                             <item row="1" column="0">
                               <widget class="QLabel" name="label_keywords_search">
                                <property name="minimumSize">
                                 <size>
@@ -4813,7 +4858,7 @@ QComboBox QAbstractItemView {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>11</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4828,56 +4873,6 @@ QComboBox QAbstractItemView {
                               </widget>
                              </item>
                              <item row="0" column="0">
-                              <widget class="QComboBox" name="comboBox_operator_search">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>8</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QComboBox{
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding: 5px;
-	padding-left: 10px;
-}
-QComboBox:hover{
-	border: 2px solid rgb(64, 71, 88);
-}
-QComboBox QAbstractItemView {
-	color: rgb(85, 170, 255);	
-	background-color: rgb(27, 29, 35);
-	padding: 10px;
-	selection-background-color: rgb(39, 44, 54);
-}F</string>
-                               </property>
-                               <item>
-                                <property name="text">
-                                 <string>OU</string>
-                                </property>
-                               </item>
-                               <item>
-                                <property name="text">
-                                 <string>E</string>
-                                </property>
-                               </item>
-                              </widget>
-                             </item>
-                             <item row="0" column="1">
                               <widget class="QLineEdit" name="lineEdit_keywords_search">
                                <property name="minimumSize">
                                 <size>
@@ -4894,7 +4889,7 @@ QComboBox QAbstractItemView {
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4916,38 +4911,51 @@ QLineEdit:focus {
                                 <string/>
                                </property>
                                <property name="placeholderText">
-                                <string>Ex: Banco de dados:1,Banco de dados:2</string>
+                                <string>Ex: Tabela1:1, Tabela2:1</string>
                                </property>
                               </widget>
                              </item>
-                             <item row="1" column="3">
-                              <widget class="QLabel" name="label_else_search">
+                             <item row="0" column="2">
+                              <widget class="QLineEdit" name="lineEdit_else_search">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>200</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>16777215</width>
+                                 <width>240</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
-                                 <weight>50</weight>
-                                 <bold>false</bold>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
-                                <string notr="true">color: rgb(112, 117, 125);</string>
+                                <string notr="true">QLineEdit {
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	padding-left: 10px;
+}
+QLineEdit:hover {
+	border: 2px solid rgb(85, 170, 255);
+	border: 2px solid rgb(91, 101, 124);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(85, 170, 255);
+}</string>
                                </property>
-                               <property name="text">
-                                <string>Se não encontrar mover para pasta</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
+                               <property name="placeholderText">
+                                <string>Ex: Não encontrado</string>
                                </property>
                               </widget>
                              </item>
-                             <item row="0" column="2">
+                             <item row="0" column="1">
                               <widget class="QLineEdit" name="lineEdit_moveto_search">
                                <property name="minimumSize">
                                 <size>
@@ -4957,14 +4965,14 @@ QLineEdit:focus {
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>220</width>
+                                 <width>240</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
                                  <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
+                                 <pointsize>12</pointsize>
                                 </font>
                                </property>
                                <property name="styleSheet">
@@ -4986,47 +4994,7 @@ QLineEdit:focus {
                                 <bool>false</bool>
                                </property>
                                <property name="placeholderText">
-                                <string>Ex: Banco de dados:2</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="0" column="3">
-                              <widget class="QLineEdit" name="lineEdit_else_search">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>200</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>220</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Segoe UI</family>
-                                 <pointsize>10</pointsize>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLineEdit {
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding-left: 10px;
-}
-QLineEdit:hover {
-	border: 2px solid rgb(85, 170, 255);
-	border: 2px solid rgb(91, 101, 124);
-}
-QLineEdit:focus {
-	border: 2px solid rgb(85, 170, 255);
-}</string>
-                               </property>
-                               <property name="placeholderText">
-                                <string>Ex: Não encontrado</string>
+                                <string>Ex: Tabela1:2</string>
                                </property>
                               </widget>
                              </item>
@@ -5426,8 +5394,6 @@ QHeaderView::section:vertical
                  </widget>
                 </item>
                </layout>
-               <zorder>frame_bottom</zorder>
-               <zorder>stackedWidget</zorder>
               </widget>
              </item>
              <item>
