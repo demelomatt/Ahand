@@ -864,7 +864,7 @@ class PDFfunctions():
                 if len(counterPDF):
                     createZipFile = zipfile.ZipFile(zipFilename, "w") # Criar ZIP
                     for pdf in counterPDF:
-                        createZipFile.write(fullPath + file, pdf) # Escrever
+                        createZipFile.write(fullPath + pdf,pdf) # Escrever
                     createZipFile.close() # Fechar
 
         return 1
