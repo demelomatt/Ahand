@@ -106,6 +106,10 @@ class MainWindow(QMainWindow):
 
         self.ui.checkBox_onlyPages_search.setChecked(True)
         self.ui.checkBox_ignoreSpecialChar_search.setChecked(True)
+        self.ui.checkBox_ignorePontuation_search.setChecked(True)
+        
+        self.ui.checkBox_ignoreSpaces_search.setChecked(True)
+        self.ui.checkBox_ignoreFirstPage_search.setChecked(True)
         self.ui.checkBox_extractPages.setChecked(True)
 
             # Exclusive checkbox
@@ -113,14 +117,8 @@ class MainWindow(QMainWindow):
         checkboxGroup.addButton(self.ui.checkBox_extractPages)
         checkboxGroup.addButton(self.ui.checkBox_extractAfter)
         checkboxGroup.addButton(self.ui.checkBox_extractEach)
+        
 
-            # COMBOBOX
-        dbComboBox = DataBase('database.db',"comboBox_configs_search")
-        query = "SELECT value FROM {} WHERE key=?".format(dbComboBox.tableName)
-        result = dbComboBox.cursor.execute(query,['Ui_MainWindow.comboBox_configs_search'])
-        valuesColumn = result.fetchone()
-
-        self.ui.comboBox_configs_search.addItems(valuesColumn)
         ## ==> END ##
 
         ########################################################################
@@ -161,14 +159,6 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_run_extract.clicked.connect(self.processData)
         ## ==> END ##
 
-        # Database
-        self.ui.pushButton_save_search.clicked.connect(lambda: PDFfunctions.saveData(self))
-        self.ui.pushButton_delete_search.clicked.connect(lambda: PDFfunctions.deleteData(self))
-
-        # ComboBox
-        self.ui.comboBox_configs_search.currentIndexChanged.connect(lambda: PDFfunctions.loadData(self))
-
-        
         ########################################################################
         
         ## ==> QTableWidget PARAMETERS
