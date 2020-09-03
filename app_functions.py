@@ -221,7 +221,7 @@ class PDFfunctions():
                     name.append(item)
                 except:
                     # Adicionar string ao nome
-                    if not re.match(r":", argument):
+                    if not re.findall(r":", argument):
                         name.append(argument)
                 
         # Se o nome for vazio, recebe a tag basename
@@ -886,7 +886,9 @@ class PDFfunctions():
                 PdfInputName.append(path)
 
         if pageID == 0:
-            Ui_MainWindow.lineEdit_filename_merge.setText(os.path.basename(PdfInputName[0]))
+            splitext = os.path.splitext(PdfInputName[0])[0]
+            basename = os.path.basename(splitext)
+            Ui_MainWindow.lineEdit_filename_merge.setText(basename)
         
         label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
         lineEdit_output.setText(os.path.dirname(pdfPath[0]))
