@@ -235,27 +235,30 @@ class UIFunctions(Ui_MainWindow):
         if value == buttons:
             return value
 
-    def buttonSelectPdfFiles(self,lineEditFilename,label):
-        # Selecionar arquivos PDF e salvar caminho
-        # lineEdit recebe o QWidget lineEdit para armazenar o nome do arquivo sem a extensão
-        # label recebe o QWidget para armazenar a quantidade de arquivos selecionados
-
-        # Abre arquivos e salva caminho 
-        UIFunctions.inputPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
-        # Setar texto
-        label.setText("{} arquivos selecionados.".format(len(UIFunctions.inputPaths)))
-        # Verificar se o lineEdit receberá algum nome
-        if lineEditFilename:
-            try:
-                splitext = os.path.splitext(UIFunctions.inputPaths[0])[0]
-                basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
-                lineEditFilename.setText(basename)
-            except:
-                pass
-
     def buttonSelectPath(self,lineEditOutput,msg):
         # Selecionar pasta de saída e salvar caminho
         # lineEditOutput recebe o QWidget lineEdit para armazenar o caminho do diretório
         # msg recebe a mensagem a ser exibida ao abrir diálogo
 
         lineEditOutput.setText(QFileDialog.getExistingDirectory(self,msg,QtCore.QDir.currentPath(),QFileDialog.DontUseNativeDialog))
+
+    def buttonSelectPdfFiles(self,lineEditFilename,lineEdit_output,label,PdfInputName):
+        # Selecionar arquivos PDF e salvar caminho
+        # lineEdit recebe o QWidget lineEdit para armazenar o nome do arquivo sem a extensão
+        # label recebe o QWidget para armazenar a quantidade de arquivos selecionados
+
+        # Abre arquivos e salva caminho 
+        PdfInputName.clear()
+        PdfInputName = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
+        # Setar texto
+        label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
+        lineEdit_output.setText(os.path.dirname(PdfInputName[0]))
+        # Verificar se o lineEdit receberá algum nome
+        if lineEditFilename:
+            try:
+                splitext = os.path.splitext(PdfInputName[0])[0]
+                basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
+                lineEditFilename.setText(basename)
+            except:
+                pass
+        

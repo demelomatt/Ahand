@@ -23,7 +23,7 @@ from pdfminer.high_level import extract_pages
 
 # Variáveis globais
 
-
+# Classes
 class DataBase():
 # Classe para manipular banco de dados.
 
@@ -78,6 +78,11 @@ class PDFfunctions():
 # Classe para agrupar as funções dos arquivos PDF.
     data = []
     csvPaths = []
+    inputPdfPaths_ocr = []
+    inputPdfPaths_merge = []
+    inputPdfPaths_extract = []
+    inputPdfPaths_zip = []
+    inputPdfPaths_search = []
 
     def saveData(self):
         DB = DataBase('database.db',Ui_MainWindow.comboBox_configs_search.currentText())
@@ -704,10 +709,10 @@ class PDFfunctions():
                 in_file.close()
         return 1
 
-    def importFromCSV(self,csvPaths):
+    def importFromCSV(self):
         # Importar dados de arquivo csv
-        PDFfunctions.csvPaths = csvPaths
-        
+        csvPaths = PDFfunctions.csvPaths
+
         # Para cada arquivo
         for path in csvPaths:
             csvPath = "".join(path)
@@ -840,7 +845,7 @@ class PDFfunctions():
                 zipFilename = PDFfunctions.rename(self,name,outputDirectory,subdir,ext='.zip') # Nome do arquivo ZIP
                 fullPath = root + "/" + subdir + "/" # Pasta raiz + subpasta
                 for file in os.listdir(fullPath): # Para cada arquivo da subpasta
-                    if file.endswith(".pdf"): # Se é pdf
+                    if file.endswith(".pdf") or file.endswith(".PDF"): # Se é pdf
                         counterPDF.append(os.path.basename(file)) # Adicionar paga exportar
                 if len(counterPDF):
                     createZipFile = zipfile.ZipFile(zipFilename, "w") # Criar ZIP
@@ -849,3 +854,39 @@ class PDFfunctions():
                     createZipFile.close() # Fechar
 
         return 1
+
+    
+    def dropPdf(self,pdfPath):
+        pageID = Ui_MainWindow.stackedWidget.currentIndex()
+        if pageID == 0:
+            label = Ui_MainWindow.label_files_selected_merge
+            PdfInputName = PDFfunctions.inputPdfPaths_merge
+            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_merge
+        elif pageID == 1:
+            label = Ui_MainWindow.label_files_selected_extract
+            PdfInputName = PDFfunctions.inputPdfPaths_extract
+            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_extract
+
+        elif pageID == 2:
+            label = Ui_MainWindow.label_files_selected_ocr
+            PdfInputName = PDFfunctions.inputPdfPaths_ocr
+            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_ocr
+        
+        elif pageID == 4:
+            label = Ui_MainWindow.label_files_selected_search
+            PdfInputName = PDFfunctions.inputPdfPaths_search
+            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_search
+
+        else:
+            return
+
+        PdfInputName.clear()
+        for path in pdfPath:
+            if path not in PdfInputName:
+                PdfInputName.append(path)
+
+        if pageID == 0:
+            Ui_MainWindow.lineEdit_filename_merge.setText(os.path.basename(PdfInputName[0]))
+        
+        label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
+        lineEdit_output.setText(os.path.dirname(pdfPath[0]))

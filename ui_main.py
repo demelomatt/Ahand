@@ -669,7 +669,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(5, 5, 5, 5)
-        self.stackedWidget = QStackedWidget(self.frame_content)
+        Ui_MainWindow.stackedWidget = QStackedWidget(self.frame_content)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setStyleSheet(u"background: transparent;")
         self.page_merge = QWidget()
@@ -796,7 +796,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.pushButton_run_merge, 0, 0, 1, 1)
 
-        self.label_files_selected_merge = QLabel(self.frame_input_merge)
+        Ui_MainWindow.label_files_selected_merge = QLabel(self.frame_input_merge)
         self.label_files_selected_merge.setObjectName(u"label_files_selected_merge")
         font5 = QFont()
         font5.setFamily(u"Segoe UI")
@@ -819,7 +819,7 @@ class Ui_MainWindow(object):
         self.formLayout_3 = QFormLayout(self.frame_output_merge)
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.formLayout_3.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_outputPath_merge.setObjectName(u"lineEdit_outputPath_merge")
         self.lineEdit_outputPath_merge.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_merge.setMaximumSize(QSize(360, 16777215))
@@ -840,7 +840,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_merge)
 
-        self.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_filename_merge.setObjectName(u"lineEdit_filename_merge")
         self.lineEdit_filename_merge.setMinimumSize(QSize(330, 30))
         self.lineEdit_filename_merge.setMaximumSize(QSize(360, 16777215))
@@ -1019,7 +1019,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.pushButton_run_extract, 0, 0, 1, 1)
 
-        self.label_files_selected_extract = QLabel(self.frame_input_extract)
+        Ui_MainWindow.label_files_selected_extract = QLabel(self.frame_input_extract)
         self.label_files_selected_extract.setObjectName(u"label_files_selected_extract")
         self.label_files_selected_extract.setFont(font5)
         self.label_files_selected_extract.setStyleSheet(u"color: rgb(122, 127, 135);")
@@ -1060,7 +1060,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_extract)
 
-        self.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
+        Ui_MainWindow.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_outputPath_extract.setObjectName(u"lineEdit_outputPath_extract")
         self.lineEdit_outputPath_extract.setMinimumSize(QSize(360, 30))
         self.lineEdit_outputPath_extract.setMaximumSize(QSize(16777215, 16777215))
@@ -1337,7 +1337,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_5.addWidget(self.pushButton_selectFiles_ocr, 0, 1, 1, 1)
 
-        self.label_files_selected_ocr = QLabel(self.frame_input_ocr)
+        Ui_MainWindow.label_files_selected_ocr = QLabel(self.frame_input_ocr)
         self.label_files_selected_ocr.setObjectName(u"label_files_selected_ocr")
         self.label_files_selected_ocr.setFont(font5)
         self.label_files_selected_ocr.setStyleSheet(u"color: rgb(122, 127, 135);")
@@ -1420,7 +1420,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_ocr)
 
-        self.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_outputPath_ocr.setObjectName(u"lineEdit_outputPath_ocr")
         self.lineEdit_outputPath_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_ocr.setMaximumSize(QSize(360, 16777215))
@@ -1772,7 +1772,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_14.addWidget(self.pushButton_selectFiles_search)
 
-        self.label_files_selected_search = QLabel(self.frame_input)
+        Ui_MainWindow.label_files_selected_search = QLabel(self.frame_input)
         self.label_files_selected_search.setObjectName(u"label_files_selected_search")
         self.label_files_selected_search.setMinimumSize(QSize(169, 0))
         self.label_files_selected_search.setFont(font5)

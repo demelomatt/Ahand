@@ -25,22 +25,23 @@ class Worker(QThread):
         # MULTITHREADING
 
         if self.sender().objectName() == 'pushButton_run_ocr':
-            functionValue = PDFfunctions.ocrPDF(self,UIFunctions.inputPaths,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi_ocr.text())
+            functionValue = PDFfunctions.ocrPDF(self,PDFfunctions.inputPdfPaths_ocr,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi_ocr.text())
 
         elif self.sender().objectName() == 'pushButton_run_merge':
-            functionValue = PDFfunctions.merge(self,UIFunctions.inputPaths,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())
+            functionValue = PDFfunctions.merge(self,PDFfunctions.inputPdfPaths_merge,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())
 
         elif self.sender().objectName() == 'pushButton_run_extract':
-            functionValue = PDFfunctions.extract(self,UIFunctions.inputPaths,self.ui.lineEdit_intPages_extract.text(),self.ui.lineEdit_outputPath_extract.text(),self.ui.lineEdit_filename_extract.text())
+            functionValue = PDFfunctions.extract(self,PDFfunctions.inputPdfPaths_extract,self.ui.lineEdit_intPages_extract.text(),self.ui.lineEdit_outputPath_extract.text(),self.ui.lineEdit_filename_extract.text())
 
         elif self.sender().objectName() == 'pushButton_run_zip':
             functionValue = PDFfunctions.zipCompress(self,self.ui.lineEdit_rootDirectory_zip.text(),self.ui.lineEdit_outputPath_zip.text(),self.ui.lineEdit_filename_zip.text())
 
         elif self.sender().objectName() == 'pushButton_addTable_search':
-            functionValue = PDFfunctions.importFromCSV(self,QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0])
+            PDFfunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
+            functionValue = PDFfunctions.importFromCSV(self)
         
         else:
-            functionValue = PDFfunctions.searchPattern(self,UIFunctions.inputPaths,self.ui.lineEdit_outputPath_search.text(),self.ui.lineEdit_filename_search.text())
+            functionValue = PDFfunctions.searchPattern(self,PDFfunctions.inputPdfPaths_search,self.ui.lineEdit_outputPath_search.text(),self.ui.lineEdit_filename_search.text())
 
         if functionValue:
             winsound.PlaySound('alert.wav',winsound.SND_FILENAME)

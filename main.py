@@ -6,7 +6,7 @@ from worker import Worker
 from app_functions import PDFfunctions, DataBase
 
 # Bibliotecas nativas
-import sys, platform
+import sys, platform, os
 
 # Bibliotecas externas
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -22,6 +22,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.worker = Worker()
+
+        self.setAcceptDrops(True)
     
         ########################################################################
         ## START - WINDOW ATTRIBUTES
@@ -134,12 +136,12 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_addTable_search.clicked.connect(self.processData) # Adicionar tabela
 
             # merge function
-        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.label_files_selected_merge))
+        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.lineEdit_outputPath_merge,self.ui.label_files_selected_merge,PDFfunctions.inputPdfPaths_merge))
         self.ui.pushButton_outputPath_merge.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_merge,"Abrir diretório de saída"))
         self.ui.pushButton_run_merge.clicked.connect(self.processData)
         
             # ocr function
-        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_ocr))
+        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.lineEdit_outputPath_ocr,self.ui.label_files_selected_ocr,PDFfunctions.inputPdfPaths_ocr))
         self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
         self.ui.pushButton_run_ocr.clicked.connect(self.processData)
         
@@ -149,12 +151,12 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_run_zip.clicked.connect(self.processData)
         
             # search patterns function
-        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_search))
+        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.lineEdit_outputPath_search,self.ui.label_files_selected_search,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_search.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
         self.ui.pushButton_run_search.clicked.connect(self.processData)
 
             # extract function
-        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.label_files_selected_extract))
+        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.lineEdit_outputPath_extract,self.ui.label_files_selected_extract,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_extract.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
         self.ui.pushButton_run_extract.clicked.connect(self.processData)
         ## ==> END ##
@@ -189,6 +191,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_merge")
             UIFunctions.labelPage(self, "Mesclar")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
 
         # PAGE EXTRACT
         if pushButton_Widget.objectName() == "pushButton_extract":
@@ -196,6 +199,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_extract")
             UIFunctions.labelPage(self, "Extrair")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
 
         # PAGE SCAN
         if pushButton_Widget.objectName() == "pushButton_scan":
@@ -203,6 +207,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_scan")
             UIFunctions.labelPage(self, "Escanear")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
 
         # PAGE ZIP
         if pushButton_Widget.objectName() == "pushButton_zip":
@@ -210,6 +215,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_zip")
             UIFunctions.labelPage(self, "Compactar")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
 
         # PAGE  SEARCH PATTERNS
         if pushButton_Widget.objectName() == "pushButton_search":
@@ -217,6 +223,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_search")
             UIFunctions.labelPage(self, "Procurar padrões")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
 
         # PAGE CREDITS
         if pushButton_Widget.objectName() == "pushButton_credits":
@@ -224,6 +231,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_credits")
             UIFunctions.labelPage(self, "Créditos")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
 
         # PAGE  SEARCH HELP
         if pushButton_Widget.objectName() == "pushButton_help":
@@ -231,12 +239,30 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, "pushButton_help")
             UIFunctions.labelPage(self, "Ajuda")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
+            UIFunctions.inputPaths = []
     ## ==> END ##
 
     ########################################################################
     ## START ==> APP EVENTS
     ########################################################################
 
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasUrls():
+            pdfPaths = []
+            for url in event.mimeData().urls():
+                path = str(url.toLocalFile())
+                if os.path.isfile(path) and (path.endswith(".pdf") or path.endswith(".PDF")):
+                    event.acceptProposedAction()
+                    pdfPaths.append(path)
+
+                elif os.path.isfile(path) and (path.endswith(".csv") or path.endswith(".CSV")):
+                    event.acceptProposedAction()
+                    PDFfunctions.csvPaths = [path]
+                    PDFfunctions.importFromCSV(self)
+
+            if pdfPaths != []:
+                PDFfunctions.dropPdf(self,pdfPaths)
+                    
     ## EVENT ==> MOUSE DOUBLE CLICK
     ########################################################################
     def eventFilter(self, watched, event):
