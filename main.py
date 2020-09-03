@@ -120,7 +120,6 @@ class MainWindow(QMainWindow):
         checkboxGroup.addButton(self.ui.checkBox_extractAfter)
         checkboxGroup.addButton(self.ui.checkBox_extractEach)
         
-
         ## ==> END ##
 
         ########################################################################

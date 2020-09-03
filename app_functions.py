@@ -441,7 +441,8 @@ class PDFfunctions():
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string.
     # dpi recebe um int com a qualidade em dpi da página extraída.
-
+        start_time=  time.time()
+    
         if outputDirectory == '':
             UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
             return 0
@@ -471,9 +472,9 @@ class PDFfunctions():
                     pdfName = finalName
                 # Esse será o nome das outras páginas.
                 else:
-                    pdfName = PDFfunctions.rename(self,"#basename,#page",outputDirectory,basename,counterPages)
+                    pdfName = PDFfunctions.rename(self,"#basename,#pages",outputDirectory,basename,counterPages)
                 # Salva a página do arquivo PDF em uma imagem JPEG.
-                imgName = PDFfunctions.rename(self, "#basename,#page",outputDirectory,basename,counterPages,".jpg")
+                imgName = PDFfunctions.rename(self, "#basename,#pages",outputDirectory,basename,counterPages,".jpg")
                 page.save(imgName,'JPEG')
 
                 # Tesseract extrai o texto da imagem e converte para um arquivo PDF.
@@ -489,6 +490,7 @@ class PDFfunctions():
                     PDFfunctions.merge(self,[finalName,pdfName],outputDirectory,'#basename')
                     os.remove(pdfName) # Arquivo auxiliar removido.
                 counterPages += 1
+        print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
         return 1
 
 
