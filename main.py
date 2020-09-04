@@ -140,7 +140,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_run_merge.clicked.connect(self.processData)
         
             # ocr function
-        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.lineEdit_outputPath_ocr,self.ui.label_files_selected_ocr,PDFfunctions.inputPdfPaths_ocr))
+        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_ocr,self.ui.lineEdit_outputPath_ocr,self.ui.label_files_selected_ocr,PDFfunctions.inputPdfPaths_ocr))
         self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
         self.ui.pushButton_run_ocr.clicked.connect(self.processData)
         
@@ -150,12 +150,12 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_run_zip.clicked.connect(self.processData)
         
             # search patterns function
-        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.lineEdit_outputPath_search,self.ui.label_files_selected_search,PDFfunctions.inputPdfPaths_zip))
+        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_search,self.ui.lineEdit_outputPath_search,self.ui.label_files_selected_search,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_search.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
         self.ui.pushButton_run_search.clicked.connect(self.processData)
 
             # extract function
-        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,0,self.ui.lineEdit_outputPath_extract,self.ui.label_files_selected_extract,PDFfunctions.inputPdfPaths_zip))
+        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_extract,self.ui.lineEdit_outputPath_extract,self.ui.label_files_selected_extract,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_extract.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
         self.ui.pushButton_run_extract.clicked.connect(self.processData)
         ## ==> END ##

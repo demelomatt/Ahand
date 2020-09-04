@@ -441,7 +441,7 @@ class PDFfunctions():
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string.
     # dpi recebe um int com a qualidade em dpi da página extraída.
-        start_time=  time.time()
+        
     
         if outputDirectory == '':
             UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
@@ -456,40 +456,42 @@ class PDFfunctions():
 
         # Para cada arquivo.
         for path in paths:
+            start_time=  time.time()
             counterPages = 0
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext) # Nome do arquivo sem extensão e diretório.
-            pages = convert_from_path(path,dpi,poppler_path="poppler\\bin") # biblioteca pdf2img
+            
+            pages = convert_from_path(path,200,poppler_path="poppler\\bin",fmt="jpeg",use_pdftocairo = True) # biblioteca pdf2img
+            print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
             counterFiles+=1
 
             # Para cada página do arquivo.
             for page in pages:
-
+                start_time=  time.time()
                 print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages + 1,len(pages),counterFiles,len(paths)))
-                # Verifica se é a primeira página do arquivo. Se for, esse será o nome do arquivo final.
                 if not counterPages:
                     finalName = PDFfunctions.rename(self,name,outputDirectory,basename)
                     pdfName = finalName
                 # Esse será o nome das outras páginas.
                 else:
                     pdfName = PDFfunctions.rename(self,"#basename,#pages",outputDirectory,basename,counterPages)
+                    
+                # Verifica se é a primeira página do arquivo. Se for, esse será o nome do arquivo final.
+            
                 # Salva a página do arquivo PDF em uma imagem JPEG.
-                imgName = PDFfunctions.rename(self, "#basename,#pages",outputDirectory,basename,counterPages,".jpg")
-                page.save(imgName,'JPEG')
 
                 # Tesseract extrai o texto da imagem e converte para um arquivo PDF.
-                pdfOcr = pytesseract.image_to_pdf_or_hocr(imgName, lang = "por+eng")
+                pdfOcr = pytesseract.image_to_pdf_or_hocr(page, lang = "por+eng")
                 with open(pdfName,"w+b") as f:
                     f.write(pdfOcr)
                     f.close()
-                os.remove(imgName) # Imagem removida.
 
-                # Verifica se é a primeira página do arquivo.
-                # Se não for, o pdf será juntado com o primeiro pdf.
                 if counterPages:
                     PDFfunctions.merge(self,[finalName,pdfName],outputDirectory,'#basename')
                     os.remove(pdfName) # Arquivo auxiliar removido.
+
                 counterPages += 1
+                print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
         print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
         return 1
 
@@ -864,20 +866,25 @@ class PDFfunctions():
             label = Ui_MainWindow.label_files_selected_merge
             PdfInputName = PDFfunctions.inputPdfPaths_merge
             lineEdit_output = Ui_MainWindow.lineEdit_outputPath_merge
+            lineEdit_filename = Ui_MainWindow.lineEdit_filename_merge
+
         elif pageID == 1:
             label = Ui_MainWindow.label_files_selected_extract
             PdfInputName = PDFfunctions.inputPdfPaths_extract
             lineEdit_output = Ui_MainWindow.lineEdit_outputPath_extract
+            lineEdit_filename = Ui_MainWindow.lineEdit_filename_extract
 
         elif pageID == 2:
             label = Ui_MainWindow.label_files_selected_ocr
             PdfInputName = PDFfunctions.inputPdfPaths_ocr
             lineEdit_output = Ui_MainWindow.lineEdit_outputPath_ocr
+            lineEdit_filename = Ui_MainWindow.lineEdit_filename_ocr
         
         elif pageID == 4:
             label = Ui_MainWindow.label_files_selected_search
             PdfInputName = PDFfunctions.inputPdfPaths_search
             lineEdit_output = Ui_MainWindow.lineEdit_outputPath_search
+            lineEdit_filename = Ui_MainWindow.lineEdit_filename_search
 
         else:
             return
@@ -887,10 +894,15 @@ class PDFfunctions():
             if path not in PdfInputName:
                 PdfInputName.append(path)
 
-        if pageID == 0:
-            splitext = os.path.splitext(PdfInputName[0])[0]
-            basename = os.path.basename(splitext)
-            Ui_MainWindow.lineEdit_filename_merge.setText(basename)
+        splitext = os.path.splitext(PdfInputName[0])[0]
+        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
+
+        if len(PdfInputName) == 1 and pageID:
+            lineEdit_filename.setText(basename)
+        elif not pageID:
+            lineEdit_filename.setText(basename)
+        else:
+            lineEdit_filename.setText("")
         
         label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
         lineEdit_output.setText(os.path.dirname(pdfPath[0]))

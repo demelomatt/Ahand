@@ -1441,7 +1441,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_ocr)
 
-        self.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_filename_ocr.setObjectName(u"lineEdit_filename_ocr")
         self.lineEdit_filename_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_ocr.setMaximumSize(QSize(360, 16777215))

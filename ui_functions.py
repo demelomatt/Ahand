@@ -242,7 +242,7 @@ class UIFunctions(Ui_MainWindow):
 
         lineEditOutput.setText(QFileDialog.getExistingDirectory(self,msg,QtCore.QDir.currentPath(),QFileDialog.DontUseNativeDialog))
 
-    def buttonSelectPdfFiles(self,lineEditFilename,lineEdit_output,label,PdfInputName):
+    def buttonSelectPdfFiles(self,lineEdit_filename,lineEdit_output,label,PdfInputName):
         # Selecionar arquivos PDF e salvar caminho
         # lineEdit recebe o QWidget lineEdit para armazenar o nome do arquivo sem a extensão
         # label recebe o QWidget para armazenar a quantidade de arquivos selecionados
@@ -254,11 +254,15 @@ class UIFunctions(Ui_MainWindow):
         label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
         lineEdit_output.setText(os.path.dirname(PdfInputName[0]))
         # Verificar se o lineEdit receberá algum nome
-        if lineEditFilename:
-            try:
-                splitext = os.path.splitext(PdfInputName[0])[0]
-                basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
-                lineEditFilename.setText(basename)
-            except:
-                pass
+        pageID = self.ui.stackedWidget.currentIndex()
+        splitext = os.path.splitext(PdfInputName[0])[0]
+        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
+
+        if len(PdfInputName) == 1 and pageID:
+            lineEdit_filename.setText(basename)
+        elif not pageID:
+            lineEdit_filename.setText(basename)
+        else:
+            lineEdit_filename.setText("")
+
         
