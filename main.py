@@ -267,13 +267,14 @@ class MainWindow(QMainWindow):
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
             pdfPaths = []
+            pageID = Ui_MainWindow.stackedWidget.currentIndex()
             for url in event.mimeData().urls():
                 path = str(url.toLocalFile())
                 if os.path.isfile(path) and (path.endswith(".pdf") or path.endswith(".PDF")):
                     event.acceptProposedAction()
                     pdfPaths.append(path)
 
-                elif os.path.isfile(path) and (path.endswith(".csv") or path.endswith(".CSV")):
+                elif os.path.isfile(path) and ((path.endswith(".csv") or path.endswith(".CSV")) and pageID ==4):
                     event.acceptProposedAction()
                     PDFfunctions.csvPaths = [path]
                     PDFfunctions.importFromCSV(self)

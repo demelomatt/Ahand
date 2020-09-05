@@ -1610,7 +1610,7 @@ class Ui_MainWindow(object):
         self.formLayout_7 = QFormLayout(self.frame_output_zip)
         self.formLayout_7.setObjectName(u"formLayout_7")
         self.formLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
+        Ui_MainWindow.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
         self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
         self.lineEdit_filename_zip.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_zip.setMaximumSize(QSize(360, 16777215))
