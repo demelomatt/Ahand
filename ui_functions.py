@@ -224,17 +224,6 @@ class UIFunctions(Ui_MainWindow):
         currentTabIndex = self.ui.tabWidget.currentIndex()
         self.ui.tabWidget.removeTab(currentTabIndex)
 
-    def showDialog(self,text,title="Erro ao executar aplicação.",icon=QMessageBox.Critical,buttons=QMessageBox.Ok):
-        # Qwidget para abrir diálogo de seleção de arquivos e armazenar o caminho
-        msgBox = QMessageBox()
-        msgBox.setIcon(icon)
-        msgBox.setText(text)
-        msgBox.setWindowTitle(title)
-        msgBox.setStandardButtons(buttons)
-        value = msgBox.exec()
-        if value == buttons:
-            return value
-
     def buttonSelectPath(self,lineEditOutput,msg):
         # Selecionar pasta de saída e salvar caminho
         # lineEditOutput recebe o QWidget lineEdit para armazenar o caminho do diretório
@@ -252,17 +241,25 @@ class UIFunctions(Ui_MainWindow):
         PdfInputName = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
         # Setar texto
         label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
-        lineEdit_output.setText(os.path.dirname(PdfInputName[0]))
-        # Verificar se o lineEdit receberá algum nome
-        pageID = self.ui.stackedWidget.currentIndex()
-        splitext = os.path.splitext(PdfInputName[0])[0]
-        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
+        try:
+            lineEdit_output.setText(os.path.dirname(PdfInputName[0]))
+        
+            # Verificar se o lineEdit receberá algum nome
+            pageID = self.ui.stackedWidget.currentIndex()
+            
+            splitext = os.path.splitext(PdfInputName[0])[0]
+            basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
 
-        if len(PdfInputName) == 1 and pageID:
-            lineEdit_filename.setText(basename)
-        elif not pageID:
-            lineEdit_filename.setText(basename)
-        else:
-            lineEdit_filename.setText("")
+            if len(PdfInputName) == 1 and pageID:
+                lineEdit_filename.setText(basename)
+            elif not pageID:
+                lineEdit_filename.setText(basename)
+            else:
+                lineEdit_filename.setText("")
+
+        except:
+            pass
+
+
 
         

@@ -21,6 +21,13 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 from pdfminer.high_level import extract_pages
 
+import winsound
+
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 # Variáveis globais
 
 # Classes
@@ -74,8 +81,14 @@ class DataBase():
         self.executeQuery(query)
         self.dbConnection.commit()
 
-class PDFfunctions():
+class PDFfunctions(QThread):
 # Classe para agrupar as funções dos arquivos PDF.
+
+    def __init__(self,parent=None):
+        QThread.__init__(self)
+        self.ui = Ui_MainWindow()
+
+    sender = None
     data = []
     csvPaths = []
     inputPdfPaths_ocr = []
@@ -83,6 +96,31 @@ class PDFfunctions():
     inputPdfPaths_extract = []
     inputPdfPaths_zip = []
     inputPdfPaths_search = []
+    
+    def __del__(self):
+        self.wait()
+
+    def run(self):
+        # Executar uma função da classe PDFFunctions
+
+        if self.sender == 'pushButton_run_ocr':
+            functionValue = PDFfunctions.ocrPDF(self,PDFfunctions.inputPdfPaths_ocr,self.ui.lineEdit_outputPath_ocr.text(),self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi_ocr.text())
+
+        elif self.sender == 'pushButton_run_merge':
+            functionValue = PDFfunctions.merge(self,PDFfunctions.inputPdfPaths_merge,self.ui.lineEdit_outputPath_merge.text(),self.ui.lineEdit_filename_merge.text())
+
+        elif self.sender == 'pushButton_run_extract':
+            functionValue = PDFfunctions.extract(self,PDFfunctions.inputPdfPaths_extract,self.ui.lineEdit_intPages_extract.text(),self.ui.lineEdit_outputPath_extract.text(),self.ui.lineEdit_filename_extract.text())
+
+        elif self.sender == 'pushButton_run_zip':
+            functionValue = PDFfunctions.zipCompress(self,self.ui.lineEdit_rootDirectory_zip.text(),self.ui.lineEdit_outputPath_zip.text(),self.ui.lineEdit_filename_zip.text())
+            
+        else:
+            functionValue = PDFfunctions.searchPattern(self,PDFfunctions.inputPdfPaths_search,self.ui.lineEdit_outputPath_search.text(),self.ui.lineEdit_filename_search.text())
+
+        if functionValue:
+            winsound.PlaySound('alert.wav',winsound.SND_FILENAME)
+        return
 
     def saveData(self):
         DB = DataBase('database.db',Ui_MainWindow.comboBox_configs_search.currentText())
@@ -236,16 +274,20 @@ class PDFfunctions():
     def extract(self,paths,pages,outputDirectory,name):
 
         if outputDirectory == '':
-            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            self.emit(SIGNAL('dialog(QString)'), "O diretório de saída não foi selecionado.")
             return 0
 
         if not len(paths):
-            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para extrair páginas.")
+            self.emit(SIGNAL('dialog(QString)'), "Selecione ao menos 1 arquivo para extrair páginas.")
             return 0
 
         if pages == '':
-            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 página para extrair.")
+            self.emit(SIGNAL('dialog(QString)'), "Selecione ao menos 1 página para extrair.")
             return 0
+
+        feedbackMsg = feedbackMsg = "Extraindo páginas..."
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+        start_time = time.time()
 
         pages = pages.split(",")
 
@@ -254,15 +296,16 @@ class PDFfunctions():
 
         if Ui_MainWindow.checkBox_extractPages.checkState():
             PDFfunctions.extractPages(self,paths,pages,outputDirectory,name)
-            return 1
 
         if Ui_MainWindow.checkBox_extractAfter.checkState():
             PDFfunctions.extractAfter(self,paths,pages,outputDirectory,name)
-            return 1
 
         if Ui_MainWindow.checkBox_extractEach.checkState():
             PDFfunctions.extractEach(self,paths,pages[0],outputDirectory,name)
-            return 1
+
+        feedbackMsg = feedbackMsg = "Páginas extraídas em %.2f segundos." % (time.time() - start_time)
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+        return 1
 
     def extractPages(self,paths,pages,outputDirectory,name):
     # Extrair páginas indicadas de PDF.
@@ -404,15 +447,19 @@ class PDFfunctions():
     # Juntar vários arquivos PDF em um único arquivo.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # outputDirectory recebe o diretório de saída do arquivo.
-    # name são os parâmetros da função rename ou então uma string.
+    # name são os parâmetros da função rename ou então uma string
 
         if outputDirectory == '':
-            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            self.emit(SIGNAL('dialog(QString)'), "O diretório de saída não foi selecionado.")
             return 0
 
         if len(paths) <= 1:
-            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 2 arquivos para mesclar.")
+            self.emit(SIGNAL('dialog(QString)'), "Selecione ao menos 2 arquivos para mesclar.")
             return 0
+        
+        start_time = time.time()
+        feedbackMsg = feedbackMsg = "Mesclando arquivos..."
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
 
         pdf_writer = PdfFileWriter() # Escrever em PDF.
 
@@ -433,6 +480,8 @@ class PDFfunctions():
         with open(outputFile, 'wb') as out:
             pdf_writer.write(out)
             out.close()
+        feedbackMsg = feedbackMsg = "Arquivos mesclados em %.2f segundos." % (time.time() - start_time)
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
         return 1
         
     def ocrPDF(self,paths,outputDirectory,name,dpi):
@@ -441,14 +490,13 @@ class PDFfunctions():
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string.
     # dpi recebe um int com a qualidade em dpi da página extraída.
-        
     
         if outputDirectory == '':
-            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            self.emit(SIGNAL('dialog(QString)'), "O diretório de saída não foi selecionado.")
             return 0
 
         if not len(paths):
-            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para escanear.")
+            self.emit(SIGNAL('dialog(QString)'), "Selecione ao menos 1 arquivo para escanear.")
             return 0
 
         counterFiles = 0
@@ -462,13 +510,14 @@ class PDFfunctions():
             basename = os.path.basename(splitext) # Nome do arquivo sem extensão e diretório.
             
             pages = convert_from_path(path,200,poppler_path="poppler\\bin",fmt="jpeg",use_pdftocairo = True) # biblioteca pdf2img
-            print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
+            
             counterFiles+=1
 
             # Para cada página do arquivo.
             for page in pages:
-                start_time=  time.time()
-                print("Convertendo página {}/{} do arquivo {}/{}.".format(counterPages + 1,len(pages),counterFiles,len(paths)))
+                feedbackMsg = "Convertendo página {}/{} do arquivo {}/{}...".format(counterPages + 1,len(pages),counterFiles,len(paths))
+                self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+        
                 if not counterPages:
                     finalName = PDFfunctions.rename(self,name,outputDirectory,basename)
                     pdfName = finalName
@@ -491,8 +540,9 @@ class PDFfunctions():
                     os.remove(pdfName) # Arquivo auxiliar removido.
 
                 counterPages += 1
-                print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
-        print("--- Executado em %.2f segundos ---" % (time.time() - start_time))
+
+        feedbackMsg = "Arquivos convertidos com sucesso em %.2f segundos." % (time.time() - start_time)
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
         return 1
 
 
@@ -533,20 +583,22 @@ class PDFfunctions():
         # Verificar se há dados vazios
 
         if outputDirectory == '':
-            UIFunctions.showDialog(UIFunctions,"O diretório de saída não foi selecionado.")
+            self.emit(SIGNAL('dialog(QString)'), "O diretório de saída não foi selecionado.")
             return 0
 
         if not len(paths):
-            UIFunctions.showDialog(UIFunctions,"Selecione ao menos 1 arquivo para procurar por expressões.")
+            self.emit(SIGNAL('dialog(QString)'), "Selecione ao menos 1 arquivo para procurar por expressões.")
             return 0
 
         if Ui_MainWindow.lineEdit_keywords_search.text() == '':
-            UIFunctions.showDialog(UIFunctions,"Nenhum dado foi passado para pesquisar dentro do arquivo.")
+            self.emit(SIGNAL('dialog(QString)'), "Nenhum dado foi passado para pesquisar dentro do arquivo.")
             return 0
 
         if Ui_MainWindow.lineEdit_moveto_search.text() == '':
-            UIFunctions.showDialog(UIFunctions,"Nenhuma pasta foi indicada para exportar.")
+            self.emit(SIGNAL('dialog(QString)'), "Nenhuma pasta foi indicada para exportar.")
             return 0
+
+        start_time = time.time()
 
         ignoreFirstPage = Ui_MainWindow.checkBox_ignoreFirstPage_search.checkState()  
 
@@ -653,7 +705,9 @@ class PDFfunctions():
                                     
                                     # Pesquisar por palavra
                                     if re.search(keyword,text,re.IGNORECASE):
-                                        print("Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles))
+                                        feedbackMsg = "Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles)
+                                        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+
                                         # Se a palavra já não foi encontrada
                                         if oldKeyword not in keywordsFound:
                                             keywordsFound.append(oldKeyword) # Adiciona a palavra encontrada a uma lista 
@@ -673,10 +727,13 @@ class PDFfunctions():
                                         PDFfunctions.createDirectory(self,finalOutputDirectory)
                                         finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)
                                         if moveOnlyPages:
-                                            print("Exportar página e prosseguir para próxima página.")
+                                            feedbackMsg = "Exportando página..."
+                                            self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
                                             PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
                                         else:
-                                            print("Exportar arquivo e prosseguir para próximo arquivo.")
+                                            feedbackMsg = "Exportando arquivo..."
+                                            self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+
                                             in_file.close()
                                             PDFfunctions.moveFiles(self,path,finalName)
                                         export = True
@@ -689,19 +746,22 @@ class PDFfunctions():
                                             finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
                                             PDFfunctions.createDirectory(self,finalOutputDirectory)
                                             if moveOnlyPages:
-                                                print("Expressões não encontradas nesta pasta, mover para folderNotFound.")
+                                                feedbackMsg = "Expressões não encontradas nesta página"
+                                                self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
                                                 finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
                                                 PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
                                                 export = True
                                                 break # prosseguir para o próximo arquivo
                                             else:
                                                 if counterPages == totalPages:
-                                                    print("Expressões não encontradas nesta pasta, mover para folderNotFound.")
+                                                    feedbackMsg = "Expressões não encontradas neste arquivo."
+                                                    self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
                                                     finalName = finalOutputDirectory + basename + ".pdf"
                                                     in_file.close()
                                                     PDFfunctions.moveFiles(self,path,finalName)
                                                     export = True
                                                     break # prosseguir para o próximo arquivo
+
                                                 
                 except Exception as e:
                     print(e)
@@ -711,6 +771,9 @@ class PDFfunctions():
                     output_string.close()
                     device.close()
                 in_file.close()
+
+        feedbackMsg = feedbackMsg = "Pesquisa concluída em %.2f segundos." % (time.time() - start_time)
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
         return 1
 
     def importFromCSV(self):
@@ -906,3 +969,7 @@ class PDFfunctions():
         
         label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
         lineEdit_output.setText(os.path.dirname(pdfPath[0]))
+
+    def buttonSelectCsvFiles(self):
+        PDFfunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
+        functionValue = PDFfunctions.importFromCSV(self)

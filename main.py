@@ -2,7 +2,6 @@
 from ui_main import Ui_MainWindow
 from ui_styles import Style
 from ui_functions import UIFunctions
-from worker import Worker
 from app_functions import PDFfunctions, DataBase
 
 # Bibliotecas nativas
@@ -10,7 +9,7 @@ import sys, platform, os
 
 # Bibliotecas externas
 from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, SIGNAL)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
@@ -21,7 +20,7 @@ class MainWindow(QMainWindow):
         super(MainWindow,self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.worker = Worker()
+        self.worker = PDFfunctions()
 
         self.setAcceptDrops(True)
     
@@ -132,7 +131,7 @@ class MainWindow(QMainWindow):
 
         # SIGNALS
         self.ui.pushButton_deleteTable_search.clicked.connect(lambda: UIFunctions.deleteTab(self)) # Deletar tabela
-        self.ui.pushButton_addTable_search.clicked.connect(self.processData) # Adicionar tabela
+        self.ui.pushButton_addTable_search.clicked.connect(lambda: PDFfunctions.buttonSelectCsvFiles(self)) # Adicionar tabela
 
             # merge function
         self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.lineEdit_outputPath_merge,self.ui.label_files_selected_merge,PDFfunctions.inputPdfPaths_merge))
@@ -158,6 +157,11 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_extract,self.ui.lineEdit_outputPath_extract,self.ui.label_files_selected_extract,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_extract.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
         self.ui.pushButton_run_extract.clicked.connect(self.processData)
+
+        # Feedback
+        self.connect(self.worker, SIGNAL("feedback(QString)"), self.setFeedbackText)
+        self.connect(self.worker, SIGNAL("dialog(QString)"), self.showDialog)
+
         ## ==> END ##
 
         ########################################################################
@@ -171,10 +175,25 @@ class MainWindow(QMainWindow):
         #                                                                      #
         ############################## ---/--/--- ##############################
 
-    def processData(self):
+    
+    def setFeedbackText(self,text):
+        self.ui.label_feedback.setText(text)
 
-        #Worker.sender = self.sender().objectName()
-        Worker.run(self)
+    def processData(self):
+        self.worker
+        PDFfunctions.sender = self.sender().objectName()
+        self.worker.start()
+
+    def showDialog(self,text,title="Erro ao executar aplicação.",icon=QMessageBox.Critical,buttons=QMessageBox.Ok):
+        # Qwidget para abrir diálogo de seleção de arquivos e armazenar o caminho
+        msgBox = QMessageBox()
+        msgBox.setIcon(icon)
+        msgBox.setText(text)
+        msgBox.setWindowTitle(title)
+        msgBox.setStandardButtons(buttons)
+        value = msgBox.exec()
+        if value == buttons:
+            return value
 
     ########################################################################
     ## MENUS ==> DYNAMIC MENUS FUNCTIONS

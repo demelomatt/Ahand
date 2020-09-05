@@ -1081,7 +1081,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_extract)
 
-        self.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
+        Ui_MainWindow.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_filename_extract.setObjectName(u"lineEdit_filename_extract")
         self.lineEdit_filename_extract.setMinimumSize(QSize(320, 30))
         self.lineEdit_filename_extract.setMaximumSize(QSize(16777215, 16777215))
@@ -1148,7 +1148,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_26.addWidget(self.label_pages_extract)
 
-        self.lineEdit_intPages_extract = QLineEdit(self.frame_lineEdit_extract)
+        Ui_MainWindow.lineEdit_intPages_extract = QLineEdit(self.frame_lineEdit_extract)
         self.lineEdit_intPages_extract.setObjectName(u"lineEdit_intPages_extract")
         self.lineEdit_intPages_extract.setMinimumSize(QSize(0, 30))
         self.lineEdit_intPages_extract.setMaximumSize(QSize(16777215, 16777215))
@@ -1362,7 +1362,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.label_intDpi_ocr, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
+        Ui_MainWindow.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
         self.lineEdit_intDpi_ocr.setObjectName(u"lineEdit_intDpi_ocr")
         self.lineEdit_intDpi_ocr.setMinimumSize(QSize(0, 23))
         self.lineEdit_intDpi_ocr.setMaximumSize(QSize(50, 16777215))
@@ -1533,7 +1533,7 @@ class Ui_MainWindow(object):
         self.gridLayout_7 = QGridLayout(self.frame_input_zip)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.gridLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
+        Ui_MainWindow.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
         self.lineEdit_rootDirectory_zip.setObjectName(u"lineEdit_rootDirectory_zip")
         self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(190, 30))
         self.lineEdit_rootDirectory_zip.setMaximumSize(QSize(16777215, 16777215))
@@ -1640,7 +1640,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_7.setWidget(3, QFormLayout.FieldRole, self.label_tags_zip)
 
-        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
+        Ui_MainWindow.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
         self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
         self.lineEdit_outputPath_zip.setMinimumSize(QSize(360, 30))
         self.lineEdit_outputPath_zip.setMaximumSize(QSize(360, 16777215))
@@ -2349,7 +2349,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.verticalLayout_16.setContentsMargins(30, 0, 0, 0)
-        self.label_feedback = QLabel(self.frame_bottom)
+        Ui_MainWindow.label_feedback = QLabel(self.frame_bottom)
         self.label_feedback.setObjectName(u"label_feedback")
         self.label_feedback.setMinimumSize(QSize(0, 30))
         self.label_feedback.setMaximumSize(QSize(16777215, 16777215))
