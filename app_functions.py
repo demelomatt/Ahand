@@ -151,7 +151,7 @@ class PDFfunctions(QThread):
                     functionValue = PDFfunctions.searchPattern(self,inputPdfPaths,lineEdit_outputPath,self.ui.lineEdit_filename_search.text())
             
         except Exception as e:
-            if e == "'NoneType' object has no attribute 'rowCount'":
+            if str(e) == "'NoneType' object has no attribute 'rowCount'":
                 self.emit(SIGNAL('dialog(QString)'), "Remova os espaços entre as vírgulas no campo 'Procurar por Expressões'")
                 
             else:
@@ -675,117 +675,119 @@ class PDFfunctions(QThread):
                 interpreter = None
 
                 # Para cada página do arquivo.
-
-                for page in PDFPage.create_pages(doc):
-                    if moveOnlyPages:
-                        queryFound = []
-                        keywordsFound = []
-                        export = False # Reseta a variável que verifica se a página foi exportada
-                    
-                    rowIDs = [] # Reseta a lista que a armazena o nome da tabela e a linha onde a palavra foi encontrada
-                    
-                    if export:
-                        break
-                    
-                    #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
-                    counterPages += 1
-                    output_string = StringIO()
-                    device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
-                    interpreter = PDFPageInterpreter(rsrcmgr, device)
-                    interpreter.process_page(page)
-                    text = output_string.getvalue()
-
-                    # Para cada query a ser executada
-                    for query in queryKeywordList:
-                        # Se as palavras da query ainda não foram encontradas
-                        if query not in queryFound:
-                            
-                            keywords = [] # Reseta a lista das palavras a pesquisar
-                            if export:
-                                break
-                            # Recebe o nome da lineEdit e extrai o nome da tabela e coluna com as palavras a serem pesquisadas
-                            # Localiza a tabela com o nome dado
-                            tableKeywordList = query.split(":")
-                            tableName = tableKeywordList[0]
-                            columnID = int(tableKeywordList[1]) - 1
-                            tableWidgetObject = "tableWidget " + tableName
-                            tableWidgt = Ui_MainWindow.tabWidget.findChild(QTableWidget, tableWidgetObject)
-                            totalRows = tableWidgt.rowCount() # Total de linhas
-
-                            # Verificar se alguma linha deve ser ignorada
-                            for i in range(totalRows):
-                                if not (ignoreFirstPage and not i):
-                                    keywords.append(tableWidgt.item(i,columnID).text())
+                try:
+                    for page in PDFPage.create_pages(doc):
+                        if moveOnlyPages:
+                            queryFound = []
+                            keywordsFound = []
+                            export = False # Reseta a variável que verifica se a página foi exportada
                         
-                        # Para cada palavra.
-                            for rowNumber, keyword in enumerate(keywords):
+                        rowIDs = [] # Reseta a lista que a armazena o nome da tabela e a linha onde a palavra foi encontrada
+                        
+                        if export:
+                            break
+                        
+                        #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
+                        counterPages += 1
+                        output_string = StringIO()
+                        device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
+                        interpreter = PDFPageInterpreter(rsrcmgr, device)
+                        interpreter.process_page(page)
+                        text = output_string.getvalue()
 
-                                # Verifica se a primeira linha deve ser ignorada. Se sim, é adicionado + 1
-                                if ignoreFirstPage:
-                                    rowId = rowNumber + 1
-                                else:
-                                    rowId = rowNumber
-                                    
-                                #counterKeywords += 1
-                                oldKeyword = keyword # Salva a palavra antiga antes da modificação.
-                                IsAscii = Ui_MainWindow.checkBox_ignoreSpecialChar_search.checkState()
-                                ignoreSpaces = Ui_MainWindow.checkBox_ignoreSpaces_search.checkState()
-                                ignorePontuation = Ui_MainWindow.checkBox_ignorePontuation_search.checkState()
-                                text,keyword = PDFfunctions.regex(self,text,keyword,IsAscii,ignoreSpaces,ignorePontuation)
+                        # Para cada query a ser executada
+                        for query in queryKeywordList:
+                            # Se as palavras da query ainda não foram encontradas
+                            if query not in queryFound:
                                 
-                                # Pesquisar por palavra
-                                if re.search(keyword,text,re.IGNORECASE):
-                                    feedbackMsg = "Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles)
-                                    self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-
-                                    # Se a palavra já não foi encontrada
-                                    if oldKeyword not in keywordsFound:
-                                        keywordsFound.append(oldKeyword) # Adiciona a palavra encontrada a uma lista 
-                                        queryFound.append(query) # Adiciona a query executada a uma lista para que não seja repetida
-                                        rowIDs.append(tableName + ":" + str(rowId)) # Adiciona o nome da tabela e linha onde foi encontrada a palavra em uma lista
-                                    
-                                    # Verifica qual é a linha da tabela que contém o nome da pasta para qual será exportada
-                                    if tableName == tableNameMoveToColumn:
-                                        rowIDMoveToColumn = rowId
-
-                                # Se todas as querys foram executadas e foi encontrado palavras
-                                if len(keywordsFound) == len(queryKeywordList):
-                                    # Verifica se somente as páginas ou todo o arquivo será movido.
-                                    folder = tableWidgtMoveTo.item(rowIDMoveToColumn,columnIDMoveToColumn).text() # Nome da pasta
-                                    folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
-                                    finalOutputDirectory = outputDirectory + "/" + folder # Caminho do diretório
-                                    PDFfunctions.createDirectory(self,finalOutputDirectory)
-                                    finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)
-                                    if moveOnlyPages:
-                                        PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
-                                    else:
-                                        in_file.close()
-                                        PDFfunctions.moveFiles(self,path,finalName)
-                                    export = True
+                                keywords = [] # Reseta a lista das palavras a pesquisar
+                                if export:
                                     break
+                                # Recebe o nome da lineEdit e extrai o nome da tabela e coluna com as palavras a serem pesquisadas
+                                # Localiza a tabela com o nome dado
+                                tableKeywordList = query.split(":")
+                                tableName = tableKeywordList[0]
+                                columnID = int(tableKeywordList[1]) - 1
+                                tableWidgetObject = "tableWidget " + tableName
+                                tableWidgt = Ui_MainWindow.tabWidget.findChild(QTableWidget, tableWidgetObject)
+                                totalRows = tableWidgt.rowCount() # Total de linhas
+
+                                # Verificar se alguma linha deve ser ignorada
+                                for i in range(totalRows):
+                                    if not (ignoreFirstPage and not i):
+                                        keywords.append(tableWidgt.item(i,columnID).text())
+                            
+                            # Para cada palavra.
+                                for rowNumber, keyword in enumerate(keywords):
+
+                                    # Verifica se a primeira linha deve ser ignorada. Se sim, é adicionado + 1
+                                    if ignoreFirstPage:
+                                        rowId = rowNumber + 1
+                                    else:
+                                        rowId = rowNumber
                                         
-                                # Se nenhuma das palavras foi encontrada na página/arquivo
-                                else:
-                                    folderNotFound = Ui_MainWindow.lineEdit_else_search.text().lstrip().rstrip()
-                                    if (folderNotFound != '' and (rowId == len(keywords) and query == queryKeywordList[-1])):
-                                        finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
+                                    #counterKeywords += 1
+                                    oldKeyword = keyword # Salva a palavra antiga antes da modificação.
+                                    IsAscii = Ui_MainWindow.checkBox_ignoreSpecialChar_search.checkState()
+                                    ignoreSpaces = Ui_MainWindow.checkBox_ignoreSpaces_search.checkState()
+                                    ignorePontuation = Ui_MainWindow.checkBox_ignorePontuation_search.checkState()
+                                    text,keyword = PDFfunctions.regex(self,text,keyword,IsAscii,ignoreSpaces,ignorePontuation)
+                                    
+                                    # Pesquisar por palavra
+                                    if re.search(keyword,text,re.IGNORECASE):
+                                        feedbackMsg = "Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles)
+                                        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+
+                                        # Se a palavra já não foi encontrada
+                                        if oldKeyword not in keywordsFound:
+                                            keywordsFound.append(oldKeyword) # Adiciona a palavra encontrada a uma lista 
+                                            queryFound.append(query) # Adiciona a query executada a uma lista para que não seja repetida
+                                            rowIDs.append(tableName + ":" + str(rowId)) # Adiciona o nome da tabela e linha onde foi encontrada a palavra em uma lista
+                                        
+                                        # Verifica qual é a linha da tabela que contém o nome da pasta para qual será exportada
+                                        if tableName == tableNameMoveToColumn:
+                                            rowIDMoveToColumn = rowId
+
+                                    # Se todas as querys foram executadas e foi encontrado palavras
+                                    if len(keywordsFound) == len(queryKeywordList):
+                                        # Verifica se somente as páginas ou todo o arquivo será movido.
+                                        folder = tableWidgtMoveTo.item(rowIDMoveToColumn,columnIDMoveToColumn).text() # Nome da pasta
+                                        folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
+                                        finalOutputDirectory = outputDirectory + "/" + folder # Caminho do diretório
                                         PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                        finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)
                                         if moveOnlyPages:
-                                            feedbackMsg = "Expressões não encontradas nesta página"
-                                            self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-                                            finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
                                             PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
-                                            export = True
-                                            break # prosseguir para o próximo arquivo
                                         else:
-                                            if counterPages == totalPages:
-                                                feedbackMsg = "Expressões não encontradas neste arquivo."
+                                            in_file.close()
+                                            PDFfunctions.moveFiles(self,path,finalName)
+                                        export = True
+                                        break
+                                            
+                                    # Se nenhuma das palavras foi encontrada na página/arquivo
+                                    else:
+                                        folderNotFound = Ui_MainWindow.lineEdit_else_search.text().lstrip().rstrip()
+                                        if (folderNotFound != '' and (rowId == len(keywords) and query == queryKeywordList[-1])):
+                                            finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
+                                            PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                            if moveOnlyPages:
+                                                feedbackMsg = "Expressões não encontradas nesta página"
                                                 self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-                                                finalName = finalOutputDirectory + basename + ".pdf"
-                                                in_file.close()
-                                                PDFfunctions.moveFiles(self,path,finalName)
+                                                finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
+                                                PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
                                                 export = True
-                                                break # prosseguir para o próximo arquivo       
+                                                break # prosseguir para o próximo arquivo
+                                            else:
+                                                if counterPages == totalPages:
+                                                    feedbackMsg = "Expressões não encontradas neste arquivo."
+                                                    self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+                                                    finalName = finalOutputDirectory + basename + ".pdf"
+                                                    in_file.close()
+                                                    PDFfunctions.moveFiles(self,path,finalName)
+                                                    export = True
+                                                    break # prosseguir para o próximo arquivo   
+                except:
+                    pass    
 
                 # Fecha os objetos abertos.
                     output_string.close()
