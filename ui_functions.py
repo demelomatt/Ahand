@@ -11,8 +11,6 @@ from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTi
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-## ==> APP FUNCTIONS
-
 ## ==> GLOBALS
 GLOBAL_STATE = 0
 GLOBAL_TITLE_BAR = True
@@ -256,10 +254,5 @@ class UIFunctions(Ui_MainWindow):
                 lineEdit_filename.setText(basename)
             else:
                 lineEdit_filename.setText("")
-
         except:
             pass
-
-
-
-        

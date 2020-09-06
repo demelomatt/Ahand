@@ -1,16 +1,16 @@
 # Importar arquivos
 from ui_main import Ui_MainWindow
-from ui_functions import *
+from ui_functions import UIFunctions
 
 # Bibliotecas nativas
-import sqlite3, os, shutil, datetime, time, re, unicodedata, csv, codecs, zipfile
+import os, shutil, datetime, time, re, unicodedata, csv, codecs, zipfile
 from io import StringIO
 
 # Bibliotecas externas
 from PyPDF2 import PdfFileWriter, PdfFileReader # PDF
 from PIL import Image # IMAGE
 from pdf2image import convert_from_path # PDF2IMAGE
-import pytesseract # TESSERACT
+import pytesseract, winsound
 
     #pdfminer
 from pdfminer.converter import TextConverter
@@ -21,65 +21,11 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 from pdfminer.high_level import extract_pages
 
-import winsound
-
+    #pyside
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-
-# Variáveis globais
-
-# Classes
-class DataBase():
-# Classe para manipular banco de dados.
-
-    def __init__(self,path,tableName):
-        # Iniciar banco de dados.
-
-        self.dbConnection = sqlite3.connect(path)
-        self.cursor = self.dbConnection.cursor()
-        self.tableName = tableName
-
-    def commitDB(self):
-        # Comitar mudanças.
-        self.dbConnection.commit()
-
-    def closeDB(self):
-        # Fechar banco de dados.
-        self.dbConnection.close()
-        
-    def executeQuery(self,query,rowData=''):
-        # Executar uma query.
-        result = self.cursor.execute(query,rowData)
-        return result
-
-    def createDBTable(self):
-        # Criar tabela..
-        query = ''' CREATE TABLE IF NOT EXISTS "{}" (
-                    "key" text, "value" text
-                    );  '''.format(self.tableName)
-        self.executeQuery(query)
-        self.dbConnection.commit()
-
-    def deleteDBtable(self):
-        # Deletar tabela.
-        query = ''' DROP TABLE IF EXISTS "{}" '''.format(self.tableName)
-        self.executeQuery(query)
-        self.dbConnection.commit()
-
-    def insertRowInDB(self,rowData):
-        # Inserir registro no banco de dados.
-        query = 'INSERT INTO "{}"(key,value) VALUES (?,?)'.format(self.tableName)
-        self.executeQuery(query,rowData)
-        self.dbConnection.commit()
-
-    def insertColumnInDB(self):
-        # Inserir coluna no banco de dados.
-        columnName = "Column" + str(self.loadData()[1] + 1)
-        query = '''ALTER TABLE "{}" ADD "{}" text'''.format(self.tableName,columnName)
-        self.executeQuery(query)
-        self.dbConnection.commit()
 
 class PDFfunctions(QThread):
 # Classe para agrupar as funções dos arquivos PDF.
@@ -191,74 +137,56 @@ class PDFfunctions(QThread):
 
         return 1
 
+        def dropPdf(self,pdfPath):
+        pageID = self.ui.stackedWidget.currentIndex()
+        if pageID == 0:
+            label = self.ui.label_files_selected_merge
+            PdfInputName = PDFfunctions.inputPdfPaths_merge
+            lineEdit_output = self.ui.lineEdit_outputPath_merge
+            lineEdit_filename = self.ui.lineEdit_filename_merge
 
-    def saveData(self):
-        DB = DataBase('database.db',Ui_MainWindow.comboBox_configs_search.currentText())
-        DB.deleteDBtable()
-        DB.createDBTable()
-        PDFfunctions.data = [] 
-        PDFfunctions.data.append(['Ui_MainWindow.checkBox_onlyPages_search',str(Ui_MainWindow.checkBox_onlyPages_search.isChecked())])
-        PDFfunctions.data.append(['Ui_MainWindow.checkBox_ignoreSpecialChar_search',str(Ui_MainWindow.checkBox_ignoreSpecialChar_search.isChecked())])
-        PDFfunctions.data.append(['Ui_MainWindow.checkBox_ignorePontuation_search',str(Ui_MainWindow.checkBox_ignorePontuation_search.isChecked())])
-        PDFfunctions.data.append(['Ui_MainWindow.checkBox_ignoreSpaces_search',str(Ui_MainWindow.checkBox_ignoreSpaces_search.isChecked())])
-        PDFfunctions.data.append(['Ui_MainWindow.checkBox_ignoreFirstPage_search',str(Ui_MainWindow.checkBox_ignoreFirstPage_search.isChecked())])
-        PDFfunctions.data.append(['Ui_MainWindow.lineEdit_filename_search',str(Ui_MainWindow.lineEdit_filename_search.text())])
-        PDFfunctions.data.append(['Ui_MainWindow.lineEdit_keywords_search',str(Ui_MainWindow.lineEdit_keywords_search.text())])
-        PDFfunctions.data.append(['Ui_MainWindow.lineEdit_moveto_search',str(Ui_MainWindow.lineEdit_moveto_search.text())])
-        PDFfunctions.data.append(['Ui_MainWindow.lineEdit_else_search',str(Ui_MainWindow.lineEdit_else_search.text())])
-        PDFfunctions.data.append(['Ui_MainWindow.lineEdit_outputPath_search',str(Ui_MainWindow.lineEdit_outputPath_search.text())])
+        elif pageID == 1:
+            label = self.ui.label_files_selected_extract
+            PdfInputName = PDFfunctions.inputPdfPaths_extract
+            lineEdit_output = self.ui.lineEdit_outputPath_extract
+            lineEdit_filename = self.ui.lineEdit_filename_extract
 
-        totalItems = Ui_MainWindow.comboBox_configs_search.count()
-        itemIndex = 0
-        itemsListName = []
+        elif pageID == 2:
+            label = self.ui.label_files_selected_ocr
+            PdfInputName = PDFfunctions.inputPdfPaths_ocr
+            lineEdit_output = self.ui.lineEdit_outputPath_ocr
+            lineEdit_filename = self.ui.lineEdit_filename_ocr
+        
+        elif pageID == 4:
+            label = self.ui.label_files_selected_search
+            PdfInputName = PDFfunctions.inputPdfPaths_search
+            lineEdit_output = self.ui.lineEdit_outputPath_search
+            lineEdit_filename = self.ui.lineEdit_filename_search
 
-        for row in PDFfunctions.data:
-            DB.insertRowInDB(row)
+        else:
+            return
 
-        DB.closeDB()
+        PdfInputName.clear()
+        for path in pdfPath:
+            if path not in PdfInputName:
+                PdfInputName.append(path)
 
-        #Combobox
-        dbComboBox = DataBase('database.db',"comboBox_configs_search")
-        dbComboBox.deleteDBtable()
-        dbComboBox.createDBTable()
+        splitext = os.path.splitext(PdfInputName[0])[0]
+        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
 
-        while itemIndex < totalItems:
-            itemsListName.append(Ui_MainWindow.comboBox_configs_search.itemText(itemIndex))
-            itemIndex+= 1
-        comboBox_configs_search = 'Ui_MainWindow.comboBox_configs_search',str(itemsListName)
-        dbComboBox.insertRowInDB(comboBox_configs_search)
+        if len(PdfInputName) == 1 and pageID:
+            lineEdit_filename.setText(basename)
+        elif not pageID:
+            lineEdit_filename.setText(basename)
+        else:
+            lineEdit_filename.setText("")
+        
+        label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
+        lineEdit_output.setText(os.path.dirname(pdfPath[0]))
 
-    # Inserir registro
-
-    def loadData(self):
-        comboBox_configs_search = Ui_MainWindow.comboBox_configs_search.currentText()
-        if (comboBox_configs_search!= "Nova configuração"):
-            
-            DB = DataBase('database.db',comboBox_configs_search)
-            
-            for rowId, row in enumerate(PDFfunctions.data):
-                column = row[0]
-
-                query = "SELECT value FROM {} WHERE key=?".format(DB.tableName)
-                result = DB.cursor.execute(query,[column])
-                valuesColumn = result.fetchone()
-
-                qtObject = eval(column)
-                if rowId <= 4:
-                    if valuesColumn[0] == 'True':
-                        qtObject.setChecked(True)
-                    else:
-                        qtObject.setChecked(False)
-
-                else :
-                    qtObject.setText(valuesColumn[0])
-
-    def deleteData(self):
-        DB = DataBase('database.db',Ui_MainWindow.comboBox_configs_search.currentText())
-        DB.deleteDBtable()
-        DB.closeDB()
-        currentIndex = Ui_MainWindow.comboBox_configs_search.currentIndex()
-        Ui_MainWindow.comboBox_configs_search.removeItem(currentIndex)
+    def buttonSelectCsvFiles(self):
+        PDFfunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
+        PDFfunctions.importFromCSV(self)
 
     def moveFiles(self,fromPath,toPath): 
     # Mover arquivos. Informar caminho de origem e caminho de destino.
@@ -271,6 +199,36 @@ class PDFfunctions(QThread):
     # Criar diretório informado caso ele não exista.
         if not os.path.exists(path):
             os.makedirs(path)
+
+    def regex(self,string,keyword,IsAscii,ignoreSpaces,ignorePunctuation):
+        # Remover caracteres especiais e espaços do texto.
+        # string recebe o texto.
+        # ascii recebe boolean indicando se caracteres especiais devem ser ignorados na pesquisa.
+        # ignoreSpaces recebe boolean indicando se espaços devem ser ignorados na pesquisa.
+        # ignorePunctuation recebe boolean indicando se pontuação devem ser ignorados na pesquisa.
+
+        if IsAscii:
+            string = unicodedata.normalize('NFD', string)
+            string = string.encode('ascii', 'ignore')
+            string = string.decode("utf-8")
+            keyword = unicodedata.normalize('NFD', keyword)
+            keyword = keyword.encode('ascii', 'ignore')
+            keyword = keyword.decode("utf-8")
+
+        if ignoreSpaces:
+            string = re.sub('[ ]+', '', string)
+            string = string.replace('\n','')
+            string = string.replace('\t','')
+            keyword = re.sub('[ ]+', '', keyword)
+            keyword = keyword.replace('\n','')
+            keyword = keyword.replace('\t','')
+            
+        if ignorePunctuation:
+            string = re.sub(r"[.,;/!?:-]+", '', string)
+            keyword = re.sub(r"[.,;/!?:-]+", '', keyword)
+
+        return string, keyword
+
 
     def rename(self,arguments,outputDirectory,basename='',pages=0,ext='.pdf',keywords='',group='',rowIDs=[]):
     # Renomear arquivos PDF. arguments deve receber algum dos parâmetros em dic ou então uma string.
@@ -316,7 +274,7 @@ class PDFfunctions(QThread):
                     tableName = queryList[0]
                     columnID = int(queryList[1]) - 1
                     tableWidgetObject = "tableWidget " + tableName
-                    tableWidgt = Ui_MainWindow.tabWidget.findChild(QTableWidget, tableWidgetObject)
+                    tableWidgt = self.ui.tabWidget.findChild(QTableWidget, tableWidgetObject)
 
                     for ID in rowIDs:
                         queryrowIDList = ID.split(":")
@@ -352,13 +310,13 @@ class PDFfunctions(QThread):
         if name == "":
             name = "#basename,#pages"
 
-        if Ui_MainWindow.checkBox_extractPages.checkState():
+        if self.ui.checkBox_extractPages.checkState():
             PDFfunctions.extractPages(self,paths,pages,outputDirectory,name)
 
-        if Ui_MainWindow.checkBox_extractAfter.checkState():
+        if self.ui.checkBox_extractAfter.checkState():
             PDFfunctions.extractAfter(self,paths,pages,outputDirectory,name)
 
-        if Ui_MainWindow.checkBox_extractEach.checkState():
+        if self.ui.checkBox_extractEach.checkState():
             PDFfunctions.extractEach(self,paths,pages[0],outputDirectory,name)
 
         feedbackMsg = feedbackMsg = "Páginas extraídas em %.2f segundos." % (time.time() - start_time)
@@ -554,7 +512,7 @@ class PDFfunctions(QThread):
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext) # Nome do arquivo sem extensão e diretório.
             
-            pages = convert_from_path(path,200,poppler_path="poppler\\bin",fmt="jpeg",use_pdftocairo = True) # biblioteca pdf2img
+            pages = convert_from_path(path,200,poppler_path="poppler\\bin",fmt="jpeg",use_pdftocairo=True) # biblioteca pdf2img
             
             counterFiles+=1
 
@@ -590,36 +548,6 @@ class PDFfunctions(QThread):
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
         return 1
 
-
-    def regex(self,string,keyword,IsAscii,ignoreSpaces,ignorePunctuation):
-        # Remover caracteres especiais e espaços do texto.
-        # string recebe o texto.
-        # ascii recebe boolean indicando se caracteres especiais devem ser ignorados na pesquisa.
-        # ignoreSpaces recebe boolean indicando se espaços devem ser ignorados na pesquisa.
-        # ignorePunctuation recebe boolean indicando se pontuação devem ser ignorados na pesquisa.
-
-        if IsAscii:
-            string = unicodedata.normalize('NFD', string)
-            string = string.encode('ascii', 'ignore')
-            string = string.decode("utf-8")
-            keyword = unicodedata.normalize('NFD', keyword)
-            keyword = keyword.encode('ascii', 'ignore')
-            keyword = keyword.decode("utf-8")
-
-        if ignoreSpaces:
-            string = re.sub('[ ]+', '', string)
-            string = string.replace('\n','')
-            string = string.replace('\t','')
-            keyword = re.sub('[ ]+', '', keyword)
-            keyword = keyword.replace('\n','')
-            keyword = keyword.replace('\t','')
-            
-        if ignorePunctuation:
-            string = re.sub(r"[.,;/!?:-]+", '', string)
-            keyword = re.sub(r"[.,;/!?:-]+", '', keyword)
-
-        return string, keyword
-
     def searchPattern(self,paths,outputDirectory,name):
     # Procurar por padrões dentro de um arquivo PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
@@ -631,21 +559,21 @@ class PDFfunctions(QThread):
         feedbackMsg = "Processando..."
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
 
-        ignoreFirstPage = Ui_MainWindow.checkBox_ignoreFirstPage_search.checkState()  
+        ignoreFirstPage = self.ui.checkBox_ignoreFirstPage_search.checkState()  
 
         # Recebe o nome da lineEdit e extrai o nome da tabela e coluna para onde o arquivo será exportado
         # Localiza a tabela com o nome dado
-        queryMoveToColumn = Ui_MainWindow.lineEdit_moveto_search.text().lstrip().rstrip()
+        queryMoveToColumn = self.ui.lineEdit_moveto_search.text().lstrip().rstrip()
         queryMoveToColumnList = queryMoveToColumn.split(",")
         tableMoveToColumnList = queryMoveToColumnList[0].split(":")
         tableNameMoveToColumn = tableMoveToColumnList[0]
         columnIDMoveToColumn = int(tableMoveToColumnList[1]) - 1
         rowIDMoveToColumn = 0
         tableWidgetObjectMoveTo = "tableWidget " + tableNameMoveToColumn
-        tableWidgtMoveTo = Ui_MainWindow.tabWidget.findChild(QTableWidget, tableWidgetObjectMoveTo)
+        tableWidgtMoveTo = self.ui.tabWidget.findChild(QTableWidget, tableWidgetObjectMoveTo)
         
         # Recebe o nome da lineEdit com a query a ser executada e atribui a uma lista
-        queryKeyword = Ui_MainWindow.lineEdit_keywords_search.text().lstrip().rstrip()
+        queryKeyword = self.ui.lineEdit_keywords_search.text().lstrip().rstrip()
         queryKeywordList = queryKeyword.split(",")
 
         output_string = None
@@ -664,7 +592,7 @@ class PDFfunctions(QThread):
             # Verificar quantidade de páginas do arquivo
             pdf_reader = PdfFileReader(path)
             totalPages = pdf_reader.getNumPages()
-            moveOnlyPages = Ui_MainWindow.checkBox_onlyPages_search.checkState() # moveOnlyPages é um boolean que indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
+            moveOnlyPages = self.ui.checkBox_onlyPages_search.checkState() # moveOnlyPages é um boolean que indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
 
             # Abrir arquivo
             with open(path, 'rb') as in_file:
@@ -709,7 +637,7 @@ class PDFfunctions(QThread):
                                 tableName = tableKeywordList[0]
                                 columnID = int(tableKeywordList[1]) - 1
                                 tableWidgetObject = "tableWidget " + tableName
-                                tableWidgt = Ui_MainWindow.tabWidget.findChild(QTableWidget, tableWidgetObject)
+                                tableWidgt = self.ui.tabWidget.findChild(QTableWidget, tableWidgetObject)
                                 totalRows = tableWidgt.rowCount() # Total de linhas
 
                                 # Verificar se alguma linha deve ser ignorada
@@ -728,9 +656,9 @@ class PDFfunctions(QThread):
                                         
                                     #counterKeywords += 1
                                     oldKeyword = keyword # Salva a palavra antiga antes da modificação.
-                                    IsAscii = Ui_MainWindow.checkBox_ignoreSpecialChar_search.checkState()
-                                    ignoreSpaces = Ui_MainWindow.checkBox_ignoreSpaces_search.checkState()
-                                    ignorePontuation = Ui_MainWindow.checkBox_ignorePontuation_search.checkState()
+                                    IsAscii = self.ui.checkBox_ignoreSpecialChar_search.checkState()
+                                    ignoreSpaces = self.ui.checkBox_ignoreSpaces_search.checkState()
+                                    ignorePontuation = self.ui.checkBox_ignorePontuation_search.checkState()
                                     text,keyword = PDFfunctions.regex(self,text,keyword,IsAscii,ignoreSpaces,ignorePontuation)
                                     
                                     # Pesquisar por palavra
@@ -766,7 +694,7 @@ class PDFfunctions(QThread):
                                             
                                     # Se nenhuma das palavras foi encontrada na página/arquivo
                                     else:
-                                        folderNotFound = Ui_MainWindow.lineEdit_else_search.text().lstrip().rstrip()
+                                        folderNotFound = self.ui.lineEdit_else_search.text().lstrip().rstrip()
                                         if (folderNotFound != '' and (rowId == len(keywords) and query == queryKeywordList[-1])):
                                             finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
                                             PDFfunctions.createDirectory(self,finalOutputDirectory)
@@ -829,16 +757,16 @@ class PDFfunctions(QThread):
             basename = os.path.basename(splitext)
             tableName = basename
 
-            totalTables = Ui_MainWindow.tabWidget.count() # Total de tabelas
+            totalTables = self.ui.tabWidget.count() # Total de tabelas
 
             # Criar tabela
             # TabWidget
-            Ui_MainWindow.tab = QWidget()
-            Ui_MainWindow.horizontalLayout_Table = QHBoxLayout(Ui_MainWindow.tab)
-            Ui_MainWindow.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
+            self.ui.tab = QWidget()
+            self.ui.horizontalLayout_Table = QHBoxLayout(self.ui.tab)
+            self.ui.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
 
             # TableWidget
-            tableWidgt = QTableWidget(Ui_MainWindow.tab)
+            tableWidgt = QTableWidget(self.ui.tab)
             tableWidgt.setObjectName("tableWidget " + tableName)
             tableWidgt.setStyleSheet(u"QTableWidget {	\n"
     "	background-color: rgb(39, 44, 54);\n"
@@ -899,10 +827,10 @@ class PDFfunctions(QThread):
             tableWidgt.setRowCount(rowNumber)
             tableWidgt.setColumnCount(columnNumber)
 
-            Ui_MainWindow.horizontalLayout_Table.addWidget(tableWidgt)
+            self.ui.horizontalLayout_Table.addWidget(tableWidgt)
 
-            Ui_MainWindow.tabWidget.addTab(Ui_MainWindow.tab, tableName)
-            Ui_MainWindow.tabWidget.setCurrentIndex(totalTables) # Ir para a tabela criada
+            self.ui.tabWidget.addTab(self.ui.tab, tableName)
+            self.ui.tabWidget.setCurrentIndex(totalTables) # Ir para a tabela criada
 
             # Para cada linha do arquivo
             for row_key, row_data in (enumerate(list_of_rows)):
@@ -922,7 +850,7 @@ class PDFfunctions(QThread):
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
 
         # Pasta raiz, subpastas e arquivos
-        for root, subdirs, files in os.walk(rootDirectory):
+        for root, subdirs in os.walk(rootDirectory):
             # Para cada pasta
             for subdir in subdirs:
                 counterPDF = []
@@ -939,55 +867,3 @@ class PDFfunctions(QThread):
         feedbackMsg = feedbackMsg = "Arquivos compactados em %.2f segundos." % (time.time() - start_time)
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
         return 1
-
-    
-    def dropPdf(self,pdfPath):
-        pageID = Ui_MainWindow.stackedWidget.currentIndex()
-        if pageID == 0:
-            label = Ui_MainWindow.label_files_selected_merge
-            PdfInputName = PDFfunctions.inputPdfPaths_merge
-            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_merge
-            lineEdit_filename = Ui_MainWindow.lineEdit_filename_merge
-
-        elif pageID == 1:
-            label = Ui_MainWindow.label_files_selected_extract
-            PdfInputName = PDFfunctions.inputPdfPaths_extract
-            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_extract
-            lineEdit_filename = Ui_MainWindow.lineEdit_filename_extract
-
-        elif pageID == 2:
-            label = Ui_MainWindow.label_files_selected_ocr
-            PdfInputName = PDFfunctions.inputPdfPaths_ocr
-            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_ocr
-            lineEdit_filename = Ui_MainWindow.lineEdit_filename_ocr
-        
-        elif pageID == 4:
-            label = Ui_MainWindow.label_files_selected_search
-            PdfInputName = PDFfunctions.inputPdfPaths_search
-            lineEdit_output = Ui_MainWindow.lineEdit_outputPath_search
-            lineEdit_filename = Ui_MainWindow.lineEdit_filename_search
-
-        else:
-            return
-
-        PdfInputName.clear()
-        for path in pdfPath:
-            if path not in PdfInputName:
-                PdfInputName.append(path)
-
-        splitext = os.path.splitext(PdfInputName[0])[0]
-        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
-
-        if len(PdfInputName) == 1 and pageID:
-            lineEdit_filename.setText(basename)
-        elif not pageID:
-            lineEdit_filename.setText(basename)
-        else:
-            lineEdit_filename.setText("")
-        
-        label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
-        lineEdit_output.setText(os.path.dirname(pdfPath[0]))
-
-    def buttonSelectCsvFiles(self):
-        PDFfunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
-        functionValue = PDFfunctions.importFromCSV(self)
