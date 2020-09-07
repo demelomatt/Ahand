@@ -221,6 +221,7 @@ class UIFunctions(Ui_MainWindow):
         # Deletar tabela
         currentTabIndex = self.ui.tabWidget.currentIndex()
         self.ui.tabWidget.removeTab(currentTabIndex)
+        UIFunctions.label_drop_csv(self)
 
     def buttonSelectPath(self,lineEditOutput,msg):
         # Selecionar pasta de saída e salvar caminho
@@ -256,3 +257,23 @@ class UIFunctions(Ui_MainWindow):
                 lineEdit_filename.setText("")
         except:
             pass
+
+    def label_drop_csv(self):
+        if not self.ui.tabWidget.count():
+            
+            self.ui.label_drop_csv = QLabel(self.ui.frame_tab)
+            self.ui.label_drop_csv.setObjectName(u"label_drop_CSV")
+            font8 = QFont()
+            font8.setFamily(u"Segoe UI")
+            font8.setPointSize(12)
+            font8.setBold(True)
+            font8.setWeight(75)
+            self.ui.label_drop_csv.setFont(font8)
+            self.ui.label_drop_csv.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n""color: rgb(112, 117, 125);")
+            
+            self.ui.label_drop_csv.setMinimumSize(QSize(0, 100))
+            self.ui.label_drop_csv.setMaximumSize(QSize(9999, 300))
+
+            self.ui.label_drop_csv.setText("ARRASTE E SOLTE ARQUIVOS CSV AQUI")
+            self.ui.verticalLayout_7.addWidget(self.ui.label_drop_csv,Qt.AlignCenter)
+            self.ui.label_drop_csv.setAlignment(Qt.AlignCenter)

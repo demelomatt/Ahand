@@ -137,28 +137,28 @@ class PDFfunctions(QThread):
 
         return 1
 
-        def dropPdf(self,pdfPath):
+    def dropPdf(self,pdfPath):
         pageID = self.ui.stackedWidget.currentIndex()
         if pageID == 0:
-            label = self.ui.label_files_selected_merge
+            label = self.ui.label_drop_merge
             PdfInputName = PDFfunctions.inputPdfPaths_merge
             lineEdit_output = self.ui.lineEdit_outputPath_merge
             lineEdit_filename = self.ui.lineEdit_filename_merge
 
         elif pageID == 1:
-            label = self.ui.label_files_selected_extract
+            label = self.ui.label_drop_extract
             PdfInputName = PDFfunctions.inputPdfPaths_extract
             lineEdit_output = self.ui.lineEdit_outputPath_extract
             lineEdit_filename = self.ui.lineEdit_filename_extract
 
         elif pageID == 2:
-            label = self.ui.label_files_selected_ocr
+            label = self.ui.label_drop_ocr
             PdfInputName = PDFfunctions.inputPdfPaths_ocr
             lineEdit_output = self.ui.lineEdit_outputPath_ocr
             lineEdit_filename = self.ui.lineEdit_filename_ocr
         
         elif pageID == 4:
-            label = self.ui.label_files_selected_search
+            label = self.ui.label_drop_search
             PdfInputName = PDFfunctions.inputPdfPaths_search
             lineEdit_output = self.ui.lineEdit_outputPath_search
             lineEdit_filename = self.ui.lineEdit_filename_search
@@ -178,11 +178,34 @@ class PDFfunctions(QThread):
             lineEdit_filename.setText(basename)
         elif not pageID:
             lineEdit_filename.setText(basename)
-        else:
-            lineEdit_filename.setText("")
-        
-        label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
         lineEdit_output.setText(os.path.dirname(pdfPath[0]))
+
+        listPdfFiles = []
+        for path in PdfInputName:
+            listPdfFiles.append(os.path.basename(path))
+        stringPdfFiles = ",".join(listPdfFiles)
+        stringPdfFiles = stringPdfFiles.replace(",","\n")
+
+        label.setStyleSheet(u"border-radius: 7px;border: 2px dashed rgb(112, 117, 125);color: rgb(112, 117, 125);")
+        font7 = QFont()
+        font7.setFamily(u"Segoe UI")
+        font7.setPointSize(10)
+        font7.setBold(True)
+        font7.setWeight(75)
+
+        font8 = QFont()
+        font8.setFamily(u"Segoe UI")
+        font8.setPointSize(12)
+        font8.setBold(True)
+        font8.setWeight(75)
+        
+        if pageID == 4:
+            label.setFont(font8)
+            label.setText("{} arquivo(s) selecionado(s).".format(len(PdfInputName)))
+        else:
+            label.setFont(font7)
+            label.setText(stringPdfFiles)
+        
 
     def buttonSelectCsvFiles(self):
         PDFfunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
@@ -229,7 +252,6 @@ class PDFfunctions(QThread):
 
         return string, keyword
 
-
     def rename(self,arguments,outputDirectory,basename='',pages=0,ext='.pdf',keywords='',group='',rowIDs=[]):
     # Renomear arquivos PDF. arguments deve receber algum dos parâmetros em dic ou então uma string.
     # outputDirectory recebe o diretório de saída do arquivo.
@@ -258,7 +280,7 @@ class PDFfunctions(QThread):
         time = delimiter.join([hour,minutes,seconds])
 
         # Atribuição de chaves-valor.
-        dic = {"#year":year,"#month":month,"#day":day,"#time":time,"#pages":pages,"#basename":basename}
+        dic = {"#year":year,"#month":month,"#day":day,"#time":time,"#pages":pages,"#origin":basename}
 
         arguments = arguments.split(",") # Transformar argumentos em lista
 
@@ -728,6 +750,7 @@ class PDFfunctions(QThread):
 
     def importFromCSV(self):
         # Importar dados de arquivo csv
+        self.ui.label_drop_csv.setParent(None)
         csvPaths = PDFfunctions.csvPaths
 
         # Para cada arquivo
@@ -850,7 +873,7 @@ class PDFfunctions(QThread):
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
 
         # Pasta raiz, subpastas e arquivos
-        for root, subdirs in os.walk(rootDirectory):
+        for root, subdirs, files in os.walk(rootDirectory):
             # Para cada pasta
             for subdir in subdirs:
                 counterPDF = []

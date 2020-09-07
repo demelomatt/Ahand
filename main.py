@@ -110,13 +110,7 @@ class MainWindow(QMainWindow):
         
         self.ui.checkBox_ignoreSpaces_search.setChecked(True)
         self.ui.checkBox_ignoreFirstPage_search.setChecked(True)
-        self.ui.checkBox_extractPages.setChecked(True)
 
-            # Exclusive checkbox
-        checkboxGroup = QButtonGroup(self)
-        checkboxGroup.addButton(self.ui.checkBox_extractPages)
-        checkboxGroup.addButton(self.ui.checkBox_extractAfter)
-        checkboxGroup.addButton(self.ui.checkBox_extractEach)
         
         ## ==> END ##
 
@@ -133,12 +127,12 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_addTable_search.clicked.connect(lambda: PDFfunctions.buttonSelectCsvFiles(self)) # Adicionar tabela
 
             # merge function
-        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.lineEdit_outputPath_merge,self.ui.label_files_selected_merge,PDFfunctions.inputPdfPaths_merge))
+        self.ui.pushButton_selectFiles_merge.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_merge,self.ui.lineEdit_outputPath_merge,self.ui.label_drop_merge,PDFfunctions.inputPdfPaths_merge))
         self.ui.pushButton_outputPath_merge.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_merge,"Abrir diretório de saída"))
         self.ui.pushButton_run_merge.clicked.connect(self.processData)
         
             # ocr function
-        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_ocr,self.ui.lineEdit_outputPath_ocr,self.ui.label_files_selected_ocr,PDFfunctions.inputPdfPaths_ocr))
+        self.ui.pushButton_selectFiles_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_ocr,self.ui.lineEdit_outputPath_ocr,self.ui.label_drop_ocr,PDFfunctions.inputPdfPaths_ocr))
         self.ui.pushButton_outputPath_ocr.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_ocr,"Abrir diretório de saída"))
         self.ui.pushButton_run_ocr.clicked.connect(self.processData)
         
@@ -148,12 +142,12 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_run_zip.clicked.connect(self.processData)
         
             # search patterns function
-        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_search,self.ui.lineEdit_outputPath_search,self.ui.label_files_selected_search,PDFfunctions.inputPdfPaths_zip))
+        self.ui.pushButton_selectFiles_search.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_search,self.ui.lineEdit_outputPath_search,self.ui.label_drop_search,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_search.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_search,"Abrir diretório de saída"))
         self.ui.pushButton_run_search.clicked.connect(self.processData)
 
             # extract function
-        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_extract,self.ui.lineEdit_outputPath_extract,self.ui.label_files_selected_extract,PDFfunctions.inputPdfPaths_zip))
+        self.ui.pushButton_selectFiles_extract.clicked.connect(lambda: UIFunctions.buttonSelectPdfFiles(self,self.ui.lineEdit_filename_extract,self.ui.lineEdit_outputPath_extract,self.ui.label_drop_extract,PDFfunctions.inputPdfPaths_zip))
         self.ui.pushButton_outputPath_extract.clicked.connect(lambda: UIFunctions.buttonSelectPath(self,self.ui.lineEdit_outputPath_extract,"Abrir diretório de saída"))
         self.ui.pushButton_run_extract.clicked.connect(self.processData)
 
@@ -280,7 +274,13 @@ class MainWindow(QMainWindow):
 
             if pdfPaths != []:
                 PDFfunctions.dropPdf(self,pdfPaths)
-                    
+    
+    ## EVENT ==> MOUSE CLICK
+    ########################################################################
+    def mousePressEvent(self, event):
+        self.dragPos = event.globalPos()
+    ## ==> END ##
+         
     ########################################################################
     ## END ==> APP EVENTS
     ############################## ---/--/--- ##############################
