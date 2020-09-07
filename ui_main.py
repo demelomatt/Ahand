@@ -1069,12 +1069,13 @@ class Ui_MainWindow(object):
         self.frame_pages_extract.setFrameShadow(QFrame.Raised)
         self.verticalLayout_23 = QVBoxLayout(self.frame_pages_extract)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.verticalLayout_23.setContentsMargins(10, 9, -1, 9)
+        self.verticalLayout_23.setContentsMargins(9, 9, -1, 9)
         self.comboBox_extractPages = QComboBox(self.frame_pages_extract)
         self.comboBox_extractPages.addItem("")
         self.comboBox_extractPages.addItem("")
         self.comboBox_extractPages.setObjectName(u"comboBox_extractPages")
-        self.comboBox_extractPages.setMaximumSize(QSize(190, 33))
+        self.comboBox_extractPages.setMinimumSize(QSize(180, 0))
+        self.comboBox_extractPages.setMaximumSize(QSize(16777215, 33))
         font8 = QFont()
         font8.setFamily(u"Segoe UI")
         font8.setPointSize(9)
@@ -1085,17 +1086,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_23.addWidget(self.comboBox_extractPages)
 
-        self.lineEdit_pages = QLineEdit(self.frame_pages_extract)
-        self.lineEdit_pages.setObjectName(u"lineEdit_pages")
-        self.lineEdit_pages.setMinimumSize(QSize(0, 25))
-        self.lineEdit_pages.setMaximumSize(QSize(190, 16777215))
-        self.lineEdit_pages.setFont(font6)
-        self.lineEdit_pages.setStyleSheet(u"background-color: rgb(27, 29, 35);\n"
+        self.lineEdit_intPages_extract = QLineEdit(self.frame_pages_extract)
+        self.lineEdit_intPages_extract.setObjectName(u"lineEdit_intPages_extract")
+        self.lineEdit_intPages_extract.setMinimumSize(QSize(0, 28))
+        self.lineEdit_intPages_extract.setMaximumSize(QSize(190, 16777215))
+        self.lineEdit_intPages_extract.setFont(font6)
+        self.lineEdit_intPages_extract.setStyleSheet(u"background-color: rgb(27, 29, 35);\n"
 "border-radius: 5px;\n"
 "border: 2px solid rgb(27, 29, 35);\n"
 "padding-left: 10px;")
 
-        self.verticalLayout_23.addWidget(self.lineEdit_pages)
+        self.verticalLayout_23.addWidget(self.lineEdit_intPages_extract)
 
 
         self.verticalLayout_30.addWidget(self.frame_pages_extract, 0, Qt.AlignLeft|Qt.AlignTop)
@@ -1192,7 +1193,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.addWidget(self.frame_top_page_extract, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
-        self.verticalLayout_13.addWidget(self.frame_extract_main, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+        self.verticalLayout_13.addWidget(self.frame_extract_main)
 
         self.frame_drop_extract = QFrame(self.frame_main_extract)
         self.frame_drop_extract.setObjectName(u"frame_drop_extract")
@@ -1485,7 +1486,7 @@ class Ui_MainWindow(object):
         self.label_drop_ocr = QLabel(self.frame_drop_ocr)
         self.label_drop_ocr.setObjectName(u"label_drop_ocr")
         self.label_drop_ocr.setMinimumSize(QSize(680, 0))
-        self.label_drop_ocr.setMaximumSize(QSize(0, 180))
+        self.label_drop_ocr.setMaximumSize(QSize(16777215, 16777215))
         self.label_drop_ocr.setFont(font7)
         self.label_drop_ocr.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
@@ -1500,240 +1501,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_29.addWidget(self.frame_main_ocr, 0, Qt.AlignHCenter|Qt.AlignTop)
 
         self.stackedWidget.addWidget(self.page_ocr)
-        self.page_zip = QWidget()
-        self.page_zip.setObjectName(u"page_zip")
-        self.verticalLayout_8 = QVBoxLayout(self.page_zip)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.frame_main_zip = QFrame(self.page_zip)
-        self.frame_main_zip.setObjectName(u"frame_main_zip")
-        self.frame_main_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_main_zip.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_18 = QVBoxLayout(self.frame_main_zip)
-        self.verticalLayout_18.setSpacing(30)
-        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
-        self.verticalLayout_18.setContentsMargins(5, 5, 5, 5)
-        self.frame_zip = QFrame(self.frame_main_zip)
-        self.frame_zip.setObjectName(u"frame_zip")
-        self.frame_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_zip.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_zip)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.frame_description_zip = QFrame(self.frame_zip)
-        self.frame_description_zip.setObjectName(u"frame_description_zip")
-        self.frame_description_zip.setMinimumSize(QSize(0, 0))
-        self.frame_description_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_description_zip.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_21 = QHBoxLayout(self.frame_description_zip)
-        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.horizontalLayout_21.setContentsMargins(5, 5, 5, 5)
-        self.label_description_zip = QLabel(self.frame_description_zip)
-        self.label_description_zip.setObjectName(u"label_description_zip")
-        self.label_description_zip.setMinimumSize(QSize(0, 0))
-        self.label_description_zip.setFont(font3)
-        self.label_description_zip.setStyleSheet(u"")
-
-        self.horizontalLayout_21.addWidget(self.label_description_zip, 0, Qt.AlignLeft)
-
-
-        self.verticalLayout_6.addWidget(self.frame_description_zip)
-
-        self.frame_top_page_zip = QFrame(self.frame_zip)
-        self.frame_top_page_zip.setObjectName(u"frame_top_page_zip")
-        self.frame_top_page_zip.setMinimumSize(QSize(690, 150))
-        self.frame_top_page_zip.setMaximumSize(QSize(815, 16777215))
-        self.frame_top_page_zip.setStyleSheet(u"background-color:#343A4B;\n"
-"border-radius: 7px;\n"
-"border-top: 3px solid rgb(85, 170, 255);")
-        self.frame_top_page_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_top_page_zip.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_29 = QHBoxLayout(self.frame_top_page_zip)
-        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
-        self.horizontalLayout_29.setContentsMargins(9, 5, 9, 5)
-        self.frame_input_zip = QFrame(self.frame_top_page_zip)
-        self.frame_input_zip.setObjectName(u"frame_input_zip")
-        self.frame_input_zip.setMinimumSize(QSize(0, 0))
-        self.frame_input_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_input_zip.setFont(font4)
-        self.frame_input_zip.setStyleSheet(u"border: 0px;")
-        self.frame_input_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_input_zip.setFrameShadow(QFrame.Raised)
-        self.gridLayout_7 = QGridLayout(self.frame_input_zip)
-        self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.gridLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
-        self.lineEdit_rootDirectory_zip.setObjectName(u"lineEdit_rootDirectory_zip")
-        self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(260, 30))
-        self.lineEdit_rootDirectory_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_rootDirectory_zip.setFont(font5)
-        self.lineEdit_rootDirectory_zip.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.gridLayout_7.addWidget(self.lineEdit_rootDirectory_zip, 1, 2, 1, 1)
-
-        self.pushButton_selectRootDirectory_zip = QPushButton(self.frame_input_zip)
-        self.pushButton_selectRootDirectory_zip.setObjectName(u"pushButton_selectRootDirectory_zip")
-        self.pushButton_selectRootDirectory_zip.setMinimumSize(QSize(40, 30))
-        self.pushButton_selectRootDirectory_zip.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 5px;	\n"
-"	background-color:#2E3342;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-        self.pushButton_selectRootDirectory_zip.setIcon(icon5)
-        self.pushButton_selectRootDirectory_zip.setIconSize(QSize(18, 18))
-
-        self.gridLayout_7.addWidget(self.pushButton_selectRootDirectory_zip, 1, 1, 1, 1)
-
-        self.pushButton_run_zip = QPushButton(self.frame_input_zip)
-        self.pushButton_run_zip.setObjectName(u"pushButton_run_zip")
-        self.pushButton_run_zip.setMinimumSize(QSize(40, 30))
-        self.pushButton_run_zip.setMaximumSize(QSize(40, 30))
-        self.pushButton_run_zip.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 5px;	\n"
-"	background-color:#2E3342;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-        self.pushButton_run_zip.setIcon(icon3)
-        self.pushButton_run_zip.setIconSize(QSize(18, 18))
-
-        self.gridLayout_7.addWidget(self.pushButton_run_zip, 1, 0, 1, 1)
-
-
-        self.horizontalLayout_29.addWidget(self.frame_input_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-        self.frame_output_zip = QFrame(self.frame_top_page_zip)
-        self.frame_output_zip.setObjectName(u"frame_output_zip")
-        self.frame_output_zip.setMinimumSize(QSize(432, 115))
-        self.frame_output_zip.setMaximumSize(QSize(428, 16777215))
-        self.frame_output_zip.setStyleSheet(u"border: 0px;")
-        self.frame_output_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_output_zip.setFrameShadow(QFrame.Raised)
-        self.formLayout_7 = QFormLayout(self.frame_output_zip)
-        self.formLayout_7.setObjectName(u"formLayout_7")
-        self.formLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
-        self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
-        self.lineEdit_filename_zip.setMinimumSize(QSize(0, 30))
-        self.lineEdit_filename_zip.setMaximumSize(QSize(360, 16777215))
-        self.lineEdit_filename_zip.setFont(font5)
-        self.lineEdit_filename_zip.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.formLayout_7.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_zip)
-
-        self.label_tags_zip = QLabel(self.frame_output_zip)
-        self.label_tags_zip.setObjectName(u"label_tags_zip")
-        self.label_tags_zip.setMinimumSize(QSize(0, 30))
-        self.label_tags_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.label_tags_zip.setFont(font6)
-        self.label_tags_zip.setStyleSheet(u"color: rgb(112, 117, 125);")
-
-        self.formLayout_7.setWidget(3, QFormLayout.FieldRole, self.label_tags_zip)
-
-        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
-        self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
-        self.lineEdit_outputPath_zip.setMinimumSize(QSize(360, 30))
-        self.lineEdit_outputPath_zip.setMaximumSize(QSize(360, 16777215))
-        self.lineEdit_outputPath_zip.setFont(font5)
-        self.lineEdit_outputPath_zip.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.formLayout_7.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_zip)
-
-        self.pushButton_outputPath_zip = QPushButton(self.frame_output_zip)
-        self.pushButton_outputPath_zip.setObjectName(u"pushButton_outputPath_zip")
-        self.pushButton_outputPath_zip.setMinimumSize(QSize(40, 30))
-        self.pushButton_outputPath_zip.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 5px;	\n"
-"	background-color:#2E3342;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: rgb(35, 40, 49);\n"
-"	border: 2px solid rgb(43, 50, 61);\n"
-"}")
-        self.pushButton_outputPath_zip.setIcon(icon5)
-        self.pushButton_outputPath_zip.setIconSize(QSize(18, 18))
-
-        self.formLayout_7.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_zip)
-
-
-        self.horizontalLayout_29.addWidget(self.frame_output_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.verticalLayout_6.addWidget(self.frame_top_page_zip, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_18.addWidget(self.frame_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-        self.frame_drop_zip = QFrame(self.frame_main_zip)
-        self.frame_drop_zip.setObjectName(u"frame_drop_zip")
-        self.frame_drop_zip.setMinimumSize(QSize(600, 200))
-        self.frame_drop_zip.setMaximumSize(QSize(690, 16777215))
-        self.frame_drop_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_drop_zip.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_20 = QHBoxLayout(self.frame_drop_zip)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(5, 0, 5, -1)
-
-        self.verticalLayout_18.addWidget(self.frame_drop_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.verticalLayout_8.addWidget(self.frame_main_zip, 0, Qt.AlignTop)
-
-        self.stackedWidget.addWidget(self.page_zip)
         self.page_search = QWidget()
         self.page_search.setObjectName(u"page_search")
         self.verticalLayout_12 = QVBoxLayout(self.page_search)
@@ -2153,7 +1920,7 @@ class Ui_MainWindow(object):
         self.label_drop_search = QLabel(self.frame_drop_search)
         self.label_drop_search.setObjectName(u"label_drop_search")
         self.label_drop_search.setMinimumSize(QSize(0, 60))
-        self.label_drop_search.setMaximumSize(QSize(830, 180))
+        self.label_drop_search.setMaximumSize(QSize(830, 60))
         self.label_drop_search.setFont(font7)
         self.label_drop_search.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
@@ -2339,6 +2106,240 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addWidget(self.frame_tab)
 
         self.stackedWidget.addWidget(self.page_search)
+        self.page_zip = QWidget()
+        self.page_zip.setObjectName(u"page_zip")
+        self.verticalLayout_8 = QVBoxLayout(self.page_zip)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.frame_main_zip = QFrame(self.page_zip)
+        self.frame_main_zip.setObjectName(u"frame_main_zip")
+        self.frame_main_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_main_zip.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.frame_main_zip)
+        self.verticalLayout_18.setSpacing(30)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(5, 5, 5, 5)
+        self.frame_zip = QFrame(self.frame_main_zip)
+        self.frame_zip.setObjectName(u"frame_zip")
+        self.frame_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_zip.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.frame_zip)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.frame_description_zip = QFrame(self.frame_zip)
+        self.frame_description_zip.setObjectName(u"frame_description_zip")
+        self.frame_description_zip.setMinimumSize(QSize(0, 0))
+        self.frame_description_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_description_zip.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_21 = QHBoxLayout(self.frame_description_zip)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.horizontalLayout_21.setContentsMargins(5, 5, 5, 5)
+        self.label_description_zip = QLabel(self.frame_description_zip)
+        self.label_description_zip.setObjectName(u"label_description_zip")
+        self.label_description_zip.setMinimumSize(QSize(0, 0))
+        self.label_description_zip.setFont(font3)
+        self.label_description_zip.setStyleSheet(u"")
+
+        self.horizontalLayout_21.addWidget(self.label_description_zip, 0, Qt.AlignLeft)
+
+
+        self.verticalLayout_6.addWidget(self.frame_description_zip)
+
+        self.frame_top_page_zip = QFrame(self.frame_zip)
+        self.frame_top_page_zip.setObjectName(u"frame_top_page_zip")
+        self.frame_top_page_zip.setMinimumSize(QSize(690, 150))
+        self.frame_top_page_zip.setMaximumSize(QSize(815, 16777215))
+        self.frame_top_page_zip.setStyleSheet(u"background-color:#343A4B;\n"
+"border-radius: 7px;\n"
+"border-top: 3px solid rgb(85, 170, 255);")
+        self.frame_top_page_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_top_page_zip.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.frame_top_page_zip)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.horizontalLayout_29.setContentsMargins(9, 5, 9, 5)
+        self.frame_input_zip = QFrame(self.frame_top_page_zip)
+        self.frame_input_zip.setObjectName(u"frame_input_zip")
+        self.frame_input_zip.setMinimumSize(QSize(0, 0))
+        self.frame_input_zip.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_input_zip.setFont(font4)
+        self.frame_input_zip.setStyleSheet(u"border: 0px;")
+        self.frame_input_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_input_zip.setFrameShadow(QFrame.Raised)
+        self.gridLayout_7 = QGridLayout(self.frame_input_zip)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.gridLayout_7.setContentsMargins(9, 5, 9, 5)
+        self.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
+        self.lineEdit_rootDirectory_zip.setObjectName(u"lineEdit_rootDirectory_zip")
+        self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(260, 30))
+        self.lineEdit_rootDirectory_zip.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_rootDirectory_zip.setFont(font5)
+        self.lineEdit_rootDirectory_zip.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.gridLayout_7.addWidget(self.lineEdit_rootDirectory_zip, 1, 2, 1, 1)
+
+        self.pushButton_selectRootDirectory_zip = QPushButton(self.frame_input_zip)
+        self.pushButton_selectRootDirectory_zip.setObjectName(u"pushButton_selectRootDirectory_zip")
+        self.pushButton_selectRootDirectory_zip.setMinimumSize(QSize(40, 30))
+        self.pushButton_selectRootDirectory_zip.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 5px;	\n"
+"	background-color:#2E3342;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.pushButton_selectRootDirectory_zip.setIcon(icon5)
+        self.pushButton_selectRootDirectory_zip.setIconSize(QSize(18, 18))
+
+        self.gridLayout_7.addWidget(self.pushButton_selectRootDirectory_zip, 1, 1, 1, 1)
+
+        self.pushButton_run_zip = QPushButton(self.frame_input_zip)
+        self.pushButton_run_zip.setObjectName(u"pushButton_run_zip")
+        self.pushButton_run_zip.setMinimumSize(QSize(40, 30))
+        self.pushButton_run_zip.setMaximumSize(QSize(40, 30))
+        self.pushButton_run_zip.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 5px;	\n"
+"	background-color:#2E3342;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.pushButton_run_zip.setIcon(icon3)
+        self.pushButton_run_zip.setIconSize(QSize(18, 18))
+
+        self.gridLayout_7.addWidget(self.pushButton_run_zip, 1, 0, 1, 1)
+
+
+        self.horizontalLayout_29.addWidget(self.frame_input_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+        self.frame_output_zip = QFrame(self.frame_top_page_zip)
+        self.frame_output_zip.setObjectName(u"frame_output_zip")
+        self.frame_output_zip.setMinimumSize(QSize(432, 115))
+        self.frame_output_zip.setMaximumSize(QSize(428, 16777215))
+        self.frame_output_zip.setStyleSheet(u"border: 0px;")
+        self.frame_output_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_output_zip.setFrameShadow(QFrame.Raised)
+        self.formLayout_7 = QFormLayout(self.frame_output_zip)
+        self.formLayout_7.setObjectName(u"formLayout_7")
+        self.formLayout_7.setContentsMargins(9, 5, 9, 5)
+        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
+        self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
+        self.lineEdit_filename_zip.setMinimumSize(QSize(0, 30))
+        self.lineEdit_filename_zip.setMaximumSize(QSize(360, 16777215))
+        self.lineEdit_filename_zip.setFont(font5)
+        self.lineEdit_filename_zip.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.formLayout_7.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_zip)
+
+        self.label_tags_zip = QLabel(self.frame_output_zip)
+        self.label_tags_zip.setObjectName(u"label_tags_zip")
+        self.label_tags_zip.setMinimumSize(QSize(0, 30))
+        self.label_tags_zip.setMaximumSize(QSize(16777215, 16777215))
+        self.label_tags_zip.setFont(font6)
+        self.label_tags_zip.setStyleSheet(u"color: rgb(112, 117, 125);")
+
+        self.formLayout_7.setWidget(3, QFormLayout.FieldRole, self.label_tags_zip)
+
+        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
+        self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
+        self.lineEdit_outputPath_zip.setMinimumSize(QSize(360, 30))
+        self.lineEdit_outputPath_zip.setMaximumSize(QSize(360, 16777215))
+        self.lineEdit_outputPath_zip.setFont(font5)
+        self.lineEdit_outputPath_zip.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.formLayout_7.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_zip)
+
+        self.pushButton_outputPath_zip = QPushButton(self.frame_output_zip)
+        self.pushButton_outputPath_zip.setObjectName(u"pushButton_outputPath_zip")
+        self.pushButton_outputPath_zip.setMinimumSize(QSize(40, 30))
+        self.pushButton_outputPath_zip.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 5px;	\n"
+"	background-color:#2E3342;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: rgb(35, 40, 49);\n"
+"	border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.pushButton_outputPath_zip.setIcon(icon5)
+        self.pushButton_outputPath_zip.setIconSize(QSize(18, 18))
+
+        self.formLayout_7.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_zip)
+
+
+        self.horizontalLayout_29.addWidget(self.frame_output_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.verticalLayout_6.addWidget(self.frame_top_page_zip, 0, Qt.AlignHCenter)
+
+
+        self.verticalLayout_18.addWidget(self.frame_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+        self.frame_drop_zip = QFrame(self.frame_main_zip)
+        self.frame_drop_zip.setObjectName(u"frame_drop_zip")
+        self.frame_drop_zip.setMinimumSize(QSize(600, 200))
+        self.frame_drop_zip.setMaximumSize(QSize(690, 16777215))
+        self.frame_drop_zip.setFrameShape(QFrame.StyledPanel)
+        self.frame_drop_zip.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_20 = QHBoxLayout(self.frame_drop_zip)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.horizontalLayout_20.setContentsMargins(5, 0, 5, -1)
+
+        self.verticalLayout_18.addWidget(self.frame_drop_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.verticalLayout_8.addWidget(self.frame_main_zip, 0, Qt.AlignTop)
+
+        self.stackedWidget.addWidget(self.page_zip)
         self.page_credits = QWidget()
         self.page_credits.setObjectName(u"page_credits")
         self.horizontalLayout_12 = QHBoxLayout(self.page_credits)
@@ -2429,8 +2430,9 @@ class Ui_MainWindow(object):
         self.label_credits = QLabel(self.frame_label_bottom)
         self.label_credits.setObjectName(u"label_credits")
         self.label_credits.setMinimumSize(QSize(0, 20))
-        self.label_credits.setFont(font)
-        self.label_credits.setStyleSheet(u"color: rgb(112, 117, 125);")
+        self.label_credits.setFont(font6)
+        self.label_credits.setStyleSheet(u"")
+        self.label_credits.setOpenExternalLinks(True)
 
         self.horizontalLayout_7.addWidget(self.label_credits, 0, Qt.AlignTop)
 
@@ -2479,7 +2481,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2518,7 +2520,7 @@ class Ui_MainWindow(object):
         self.comboBox_extractPages.setItemText(0, QCoreApplication.translate("MainWindow", u"P\u00e1ginas indicadas", None))
         self.comboBox_extractPages.setItemText(1, QCoreApplication.translate("MainWindow", u"A cada n p\u00e1ginas", None))
 
-        self.lineEdit_pages.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: 3, 3-5", None))
+        self.lineEdit_intPages_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: 3, 3-5", None))
         self.pushButton_outputPath_extract.setText("")
         self.lineEdit_outputPath_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin,#pages", None))
@@ -2535,14 +2537,6 @@ class Ui_MainWindow(object):
         self.lineEdit_filename_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
         self.label_tags_ocr.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis:#year #month #day #time #origin", None))
         self.label_drop_ocr.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
-        self.label_description_zip.setText(QCoreApplication.translate("MainWindow", u"CRIAR FICHEIRO ZIP DE ARQUIVOS PDF DE UM DIRET\u00d3RIO", None))
-        self.lineEdit_rootDirectory_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio raiz", None))
-        self.pushButton_selectRootDirectory_zip.setText("")
-        self.pushButton_run_zip.setText("")
-        self.lineEdit_filename_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
-        self.label_tags_zip.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time #origin", None))
-        self.lineEdit_outputPath_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
-        self.pushButton_outputPath_zip.setText("")
         self.label_description_search.setText(QCoreApplication.translate("MainWindow", u"ORGANIZAR ARQUIVOS PDF PROCURANDO POR EXPRESS\u00d5ES REGULARES", None))
         self.lineEdit_moveto_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Tabela1:2", None))
         self.label_else_search.setText(QCoreApplication.translate("MainWindow", u"Se n\u00e3o encontrar mover para pasta", None))
@@ -2568,6 +2562,14 @@ class Ui_MainWindow(object):
         self.pushButton_deleteTable_search.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.label_description_zip.setText(QCoreApplication.translate("MainWindow", u"CRIAR FICHEIRO ZIP DE ARQUIVOS PDF DE UM DIRET\u00d3RIO", None))
+        self.lineEdit_rootDirectory_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio raiz", None))
+        self.pushButton_selectRootDirectory_zip.setText("")
+        self.pushButton_run_zip.setText("")
+        self.lineEdit_filename_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
+        self.label_tags_zip.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time #origin", None))
+        self.lineEdit_outputPath_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
+        self.pushButton_outputPath_zip.setText("")
         self.plainTextEdit_credits.setPlainText(QCoreApplication.translate("MainWindow", u"Ahand: Giving you a hand for automation.\n"
 "Copyright (C) 2020  Matheus Melo\n"
 "https://github.com/demelomatt\n"
@@ -3284,7 +3286,7 @@ class Ui_MainWindow(object):
 "Program, unless a warranty or assumption of liability accompanies a\n"
 "copy of the Program in return for a fee.", None))
         self.label_feedback.setText(QCoreApplication.translate("MainWindow", u"Pesquisando por palavra...", None))
-        self.label_credits.setText(QCoreApplication.translate("MainWindow", u"https://github.com/demelomatt", None))
+        self.label_credits.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><a href=\"https://github.com/demelomatt/\"><span style=\" color:#70757d;\">https://github.com/demelomatt/</span></a></p></body></html>", None))
         self.label_version.setText(QCoreApplication.translate("MainWindow", u"v1.1.0", None))
     # retranslateUi
 

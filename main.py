@@ -56,8 +56,8 @@ class MainWindow(QMainWindow):
         UIFunctions.addNewMenu(self, "Mesclar", "pushButton_merge", "url(:/20x20/icons/20x20/merge.png)", True)
         UIFunctions.addNewMenu(self, "Extrair", "pushButton_extract", "url(:/20x20/icons/20x20/split.png)", True)
         UIFunctions.addNewMenu(self, "Escanear", "pushButton_scan", "url(:/20x20/icons/20x20/scanner.png)", True)
-        UIFunctions.addNewMenu(self, "Compactar", "pushButton_zip", "url(:/20x20/icons/20x20/zip.png)", True)
         UIFunctions.addNewMenu(self, "Procurar padrões", "pushButton_search", "url(:/20x20/icons/20x20/search.png)", True)
+        UIFunctions.addNewMenu(self, "Compactar", "pushButton_zip", "url(:/20x20/icons/20x20/zip.png)", True)
         UIFunctions.addNewMenu(self, "Créditos", "pushButton_credits", "url(:/20x20/icons/20x20/info.png)",isTopMenu = False)
         UIFunctions.addNewMenu(self, "Ajuda", "pushButton_help", "url(:/20x20/icons/20x20/question.png)",isTopMenu = False)
         ## ==> END ##
@@ -267,7 +267,7 @@ class MainWindow(QMainWindow):
                     event.acceptProposedAction()
                     pdfPaths.append(path)
 
-                elif os.path.isfile(path) and ((path.endswith(".csv") or path.endswith(".CSV")) and pageID ==4):
+                elif os.path.isfile(path) and ((path.endswith(".csv") or path.endswith(".CSV")) and pageID == 3):
                     event.acceptProposedAction()
                     PDFfunctions.csvPaths = [path]
                     PDFfunctions.importFromCSV(self)

@@ -157,7 +157,7 @@ class PDFfunctions(QThread):
             lineEdit_output = self.ui.lineEdit_outputPath_ocr
             lineEdit_filename = self.ui.lineEdit_filename_ocr
         
-        elif pageID == 4:
+        elif pageID == 3:
             label = self.ui.label_drop_search
             PdfInputName = PDFfunctions.inputPdfPaths_search
             lineEdit_output = self.ui.lineEdit_outputPath_search
@@ -186,7 +186,7 @@ class PDFfunctions(QThread):
         stringPdfFiles = ",".join(listPdfFiles)
         stringPdfFiles = stringPdfFiles.replace(",","\n")
 
-        label.setStyleSheet(u"border-radius: 7px;border: 2px dashed rgb(112, 117, 125);color: rgb(112, 117, 125);")
+        label.setStyleSheet(u"border-radius: 7px;border: 2px dashed rgb(112, 117, 125)")
         font7 = QFont()
         font7.setFamily(u"Segoe UI")
         font7.setPointSize(10)
@@ -198,13 +198,16 @@ class PDFfunctions(QThread):
         font8.setPointSize(12)
         font8.setBold(True)
         font8.setWeight(75)
+
+        lenFilesName  = "{} arquivo(s) selecionado(s).".format(len(PdfInputName))
         
-        if pageID == 4:
+        if pageID == 3:
             label.setFont(font8)
-            label.setText("{} arquivo(s) selecionado(s).".format(len(PdfInputName)))
+            label.setText(lenFilesName)
+
         else:
             label.setFont(font7)
-            label.setText(stringPdfFiles)
+            label.setText(lenFilesName + "\n\n" + stringPdfFiles)
         
 
     def buttonSelectCsvFiles(self):
@@ -262,12 +265,13 @@ class PDFfunctions(QThread):
 
         name = []
         delimiter = "_"
-        # Verificar se foi informada somente uma página ou uma lista de páginas. 
-        # Caso seja lista, é retornado o primeiro e o último índice.
         if type(pages) == int:
             pages = str(pages + 1)
         else:
-            pages = str(pages[0] + 1) + "-" + str(pages[-1] + 1)
+            pages = str(pages)
+
+        # Verificar se foi informada somente uma página ou uma lista de páginas. 
+        # Caso seja lista, é retornado o primeiro e o último índice.
 
         # Parâmetros de data.
         dt = datetime.datetime.today()
@@ -323,35 +327,21 @@ class PDFfunctions(QThread):
         return finalName
 
     def extract(self,paths,pages,outputDirectory,name):
-        start_time = time.time()
-        feedbackMsg = feedbackMsg = "Extraindo páginas..."
-        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-        
-        pages = pages.split(",")
-
-        if name == "":
-            name = "#basename,#pages"
-
-        if self.ui.checkBox_extractPages.checkState():
-            PDFfunctions.extractPages(self,paths,pages,outputDirectory,name)
-
-        if self.ui.checkBox_extractAfter.checkState():
-            PDFfunctions.extractAfter(self,paths,pages,outputDirectory,name)
-
-        if self.ui.checkBox_extractEach.checkState():
-            PDFfunctions.extractEach(self,paths,pages[0],outputDirectory,name)
-
-        feedbackMsg = feedbackMsg = "Páginas extraídas em %.2f segundos." % (time.time() - start_time)
-        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-        return 1
-
-    def extractPages(self,paths,pages,outputDirectory,name):
     # Extrair páginas indicadas de PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # pages recebe as páginas a serem exportadas ou "allpages" para extrair todas as páginas.
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string. 
 
+        start_time = time.time()
+        feedbackMsg = feedbackMsg = "Extraindo páginas..."
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+
+        pages = pages.split(",")
+
+        if name == "":
+            name = "#origin,#pages"
+
         # Para cada arquivo.
         for path in paths:
             splitext = os.path.splitext(path)[0]
@@ -362,124 +352,47 @@ class PDFfunctions(QThread):
                 pdf_reader = PdfFileReader(infile)
                 pdf_writer = PdfFileWriter()
                 totalPages = pdf_reader.getNumPages()
-                allpages = False
-                pages = pages
-                if pages[0] == "allpages":
-                    pages = range(totalPages)
-                    allpages = True
+
+                if not self.ui.comboBox_extractPages.currentIndex():
                 
                 #Para cada página do arquivo.
-                for page in pages:
-                    if not allpages:
-                        page = int(page)
-                        page -= 1
-                    else:
-                        pages = list(["allpages"]) #string para lista
+                    for page in pages:
+                        try:
+                            page = int(page)
+                            page -= 1
+                            # Exportar página.
+                            pdf_writer = PdfFileWriter()
+                            pdf_writer.addPage(pdf_reader.getPage(page))
 
-                    # Exportar página.
+                        except:
+                            pageList = page.split("-")
+                            firstPage = int(pageList[0]) - 1
+                            lastPage = int(pageList[1])
+                            pdf_writer = PdfFileWriter()
+                            for number in range(firstPage,lastPage):
+                                pdf_writer.addPage(pdf_reader.getPage(number))
+
+                        if name:
+                            outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
+                        else:
+                            outputFile = outputDirectory
+                else:
+                    page = int(pages[0])
                     pdf_writer = PdfFileWriter()
-                    pdf_writer.addPage(pdf_reader.getPage(page))
-                    
+                    for number in range(0,totalPages,page):
+                        pdf_writer.addPage(pdf_reader.getPage(number))
                     if name:
-                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
+                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pages)
                     else:
                         outputFile = outputDirectory
+            
+                with open(outputFile, 'wb') as outfile:
+                    pdf_writer.write(outfile)
+                    outfile.close()
 
-                    with open(outputFile, 'wb') as outfile:
-                        pdf_writer.write(outfile)
-                        outfile.close()
-
-    def extractAfter(self,paths,pages,outputDirectory,name):
-    # Extrair páginas de arquivo PDF até a sequência indicada. 
-    # paths recebe os caminhos dos arquivos a trabalhar.
-    # pages recebe as páginas a serem exportadas. Ex: [3,7]. Irá gerar três arquivos. Da página 1 até a 3, da 4 até a 7, e de 7 ao número total de páginas do arquivo.
-    # outputDirectory recebe o diretório de saída do arquivo.
-    # name são os parâmetros da função rename ou então uma string. 
-
-        # Tamanho da lista.
-        pagesLength = len(pages) 
-        pages.append(pagesLength)
-
-        # Para cada arquivo.
-        for path in paths:
-            ignorePages = [] # Ignorar páginas que já foram importadas.
-            pageNumber = [] # Lista com os números da página.
-            splitext = os.path.splitext(path)[0]
-            basename = os.path.basename(splitext)
-
-            #Abrir arquivo.
-            with open(path, 'rb') as infile:
-                pdf_reader = PdfFileReader(infile)
-                pdf_writer = PdfFileWriter()
-                totalPages = pdf_reader.getNumPages()
-                pages[pagesLength] = totalPages
-
-                # Para cada página do arquivo.
-                for page in pages:
-                    page = int(page)
-                    pdf_writer = PdfFileWriter()
-                    pageNumber.clear()
-
-                    # Para cada número dentro do intervalo da página.
-                    for number in range(page):
-                        if number not in ignorePages:
-                            pdf_writer.addPage(pdf_reader.getPage(number))
-                            ignorePages.append(number)
-                            pageNumber.append(number)
-
-                    # Exportar páginas.
-                    outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pageNumber)
-                    with open(outputFile, 'wb') as outfile:
-                        pdf_writer.write(outfile)
-                        outfile.close()
-
-    def extractEach(self,paths,n,outputDirectory,name):
-    # Extrair páginas a cada n páginas. 
-    # paths recebe os caminhos dos arquivos a trabalhar.
-    # n recebe o padrão em que as páginas serão exportadas. Ex: 2. A cada 2 páginas, o documento será divido. (2,4,6,8)...
-    # name são os parâmetros da função rename ou então uma string. 
-
-        m = int(n) # Salva o número de m
-
-        # Para cada arquivo.
-        for path in paths:
-            splitext = os.path.splitext(path)[0]
-            basename = os.path.basename(splitext)
-            ignorePages = []
-            pageNumber = []
-            n = m # Reseta o valor de n
-
-            # Abrir arquivo.
-            with open(path, 'rb') as infile:
-                pdf_reader = PdfFileReader(infile)
-                pdf_writer = PdfFileWriter()
-                totalPages = pdf_reader.getNumPages()
-
-                # Enquanto n for menor ou igual o total de páginas do arquivo.
-                while n <= totalPages:
-                    pdf_writer = PdfFileWriter()
-                    pageNumber.clear()
-
-                    # Para cada página no intervalo de n.
-                    for page in range(n):
-                        if page not in ignorePages:
-                            pdf_writer.addPage(pdf_reader.getPage(page))
-                            ignorePages.append(page)
-                            pageNumber.append(page)
-
-                    # Salvar arquivo.
-                    outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pageNumber)
-                    with open(outputFile, 'wb') as outfile:
-                        pdf_writer.write(outfile)
-                        outfile.close()
-
-                    # Verifica se o loop deve reiniciar ou continuar.
-                    if n == totalPages:
-                        break
-                    elif n+m <= totalPages:
-                            n += m
-                    else:
-                        n = totalPages
+        feedbackMsg = feedbackMsg = "Páginas extraídas em %.2f segundos." % (time.time() - start_time)
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+        return 1
 
     def merge(self,paths, outputDirectory, name):
     # Juntar vários arquivos PDF em um único arquivo.
@@ -548,7 +461,7 @@ class PDFfunctions(QThread):
                     pdfName = finalName
                 # Esse será o nome das outras páginas.
                 else:
-                    pdfName = PDFfunctions.rename(self,"#basename,#pages",outputDirectory,basename,counterPages)
+                    pdfName = PDFfunctions.rename(self,"#origin,#pages",outputDirectory,basename,counterPages)
                     
                 # Verifica se é a primeira página do arquivo. Se for, esse será o nome do arquivo final.
             
@@ -561,7 +474,7 @@ class PDFfunctions(QThread):
                     f.close()
 
                 if counterPages:
-                    PDFfunctions.merge(self,[finalName,pdfName],outputDirectory,'#basename')
+                    PDFfunctions.merge(self,[finalName,pdfName],outputDirectory,'#origin')
                     os.remove(pdfName) # Arquivo auxiliar removido.
 
                 counterPages += 1
