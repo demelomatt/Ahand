@@ -441,12 +441,12 @@
     <file>icons/20x20/cil-zoom-in.png</file>
     <file>icons/20x20/cil-zoom-out.png</file>
     <file>icons/20x20/info.png</file>
-    <file>icons/20x20/merge.png</file>
     <file>icons/20x20/question.png</file>
+    <file>icons/20x20/merge.png</file>
     <file>icons/20x20/scanner.png</file>
     <file>icons/20x20/search.png</file>
     <file>icons/20x20/split.png</file>
-    <file>icons/20x20/ahand.png</file>
     <file>icons/20x20/zip.png</file>
+    <file>icons/20x20/ahand.png</file>
   </qresource>
 </RCC>
