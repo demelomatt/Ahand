@@ -818,7 +818,7 @@ class Ui_MainWindow(object):
         self.formLayout_3 = QFormLayout(self.frame_output_merge)
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.formLayout_3.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_outputPath_merge.setObjectName(u"lineEdit_outputPath_merge")
         self.lineEdit_outputPath_merge.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_merge.setMaximumSize(QSize(360, 16777215))
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_merge)
 
-        self.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_filename_merge.setObjectName(u"lineEdit_filename_merge")
         self.lineEdit_filename_merge.setMinimumSize(QSize(330, 30))
         self.lineEdit_filename_merge.setMaximumSize(QSize(360, 16777215))
@@ -1063,46 +1063,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_30.addWidget(self.frame_input_extract, 0, Qt.AlignTop)
 
-        self.frame_pages_extract = QFrame(self.frame_input_left_extract)
-        self.frame_pages_extract.setObjectName(u"frame_pages_extract")
-        self.frame_pages_extract.setFrameShape(QFrame.StyledPanel)
-        self.frame_pages_extract.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_23 = QVBoxLayout(self.frame_pages_extract)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.verticalLayout_23.setContentsMargins(9, 9, -1, 9)
-        self.comboBox_extractPages = QComboBox(self.frame_pages_extract)
-        self.comboBox_extractPages.addItem("")
-        self.comboBox_extractPages.addItem("")
-        self.comboBox_extractPages.setObjectName(u"comboBox_extractPages")
-        self.comboBox_extractPages.setMinimumSize(QSize(180, 0))
-        self.comboBox_extractPages.setMaximumSize(QSize(16777215, 33))
-        font8 = QFont()
-        font8.setFamily(u"Segoe UI")
-        font8.setPointSize(9)
-        self.comboBox_extractPages.setFont(font8)
-        self.comboBox_extractPages.setStyleSheet(u"border: 2px solid rgb(64, 71, 88);\n"
-"border-radius: 5px;	\n"
-"background-color:#2E3342;")
 
-        self.verticalLayout_23.addWidget(self.comboBox_extractPages)
-
-        self.lineEdit_intPages_extract = QLineEdit(self.frame_pages_extract)
-        self.lineEdit_intPages_extract.setObjectName(u"lineEdit_intPages_extract")
-        self.lineEdit_intPages_extract.setMinimumSize(QSize(0, 28))
-        self.lineEdit_intPages_extract.setMaximumSize(QSize(190, 16777215))
-        self.lineEdit_intPages_extract.setFont(font6)
-        self.lineEdit_intPages_extract.setStyleSheet(u"background-color: rgb(27, 29, 35);\n"
-"border-radius: 5px;\n"
-"border: 2px solid rgb(27, 29, 35);\n"
-"padding-left: 10px;")
-
-        self.verticalLayout_23.addWidget(self.lineEdit_intPages_extract)
-
-
-        self.verticalLayout_30.addWidget(self.frame_pages_extract, 0, Qt.AlignLeft|Qt.AlignTop)
-
-
-        self.horizontalLayout_25.addWidget(self.frame_input_left_extract, 0, Qt.AlignVCenter)
+        self.horizontalLayout_25.addWidget(self.frame_input_left_extract, 0, Qt.AlignTop)
 
         self.frame_output_extract = QFrame(self.frame_top_page_extract)
         self.frame_output_extract.setObjectName(u"frame_output_extract")
@@ -1135,7 +1097,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_extract)
 
-        self.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
+        Ui_MainWindow.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_outputPath_extract.setObjectName(u"lineEdit_outputPath_extract")
         self.lineEdit_outputPath_extract.setMinimumSize(QSize(360, 30))
         self.lineEdit_outputPath_extract.setMaximumSize(QSize(16777215, 16777215))
@@ -1156,7 +1118,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_extract)
 
-        self.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
+        Ui_MainWindow.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_filename_extract.setObjectName(u"lineEdit_filename_extract")
         self.lineEdit_filename_extract.setMinimumSize(QSize(360, 30))
         self.lineEdit_filename_extract.setMaximumSize(QSize(16777215, 16777215))
@@ -1194,6 +1156,94 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_13.addWidget(self.frame_extract_main)
+
+        self.frame_options_extract = QFrame(self.frame_main_extract)
+        self.frame_options_extract.setObjectName(u"frame_options_extract")
+        self.frame_options_extract.setMinimumSize(QSize(690, 0))
+        self.frame_options_extract.setStyleSheet(u"background-color:#343A4B;\n"
+"border-radius: 7px;")
+        self.frame_options_extract.setFrameShape(QFrame.StyledPanel)
+        self.frame_options_extract.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_24 = QHBoxLayout(self.frame_options_extract)
+        self.horizontalLayout_24.setSpacing(0)
+        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
+        self.horizontalLayout_24.setContentsMargins(-1, 5, -1, 5)
+        self.frame_pages_extract = QFrame(self.frame_options_extract)
+        self.frame_pages_extract.setObjectName(u"frame_pages_extract")
+        self.frame_pages_extract.setFrameShape(QFrame.StyledPanel)
+        self.frame_pages_extract.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.frame_pages_extract)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.verticalLayout_23.setContentsMargins(9, 9, 50, 9)
+        Ui_MainWindow.comboBox_extractPages = QComboBox(self.frame_pages_extract)
+        self.comboBox_extractPages.addItem("")
+        self.comboBox_extractPages.addItem("")
+        self.comboBox_extractPages.setObjectName(u"comboBox_extractPages")
+        self.comboBox_extractPages.setMinimumSize(QSize(0, 0))
+        self.comboBox_extractPages.setMaximumSize(QSize(16777215, 33))
+        font8 = QFont()
+        font8.setFamily(u"Segoe UI")
+        font8.setPointSize(9)
+        self.comboBox_extractPages.setFont(font8)
+        self.comboBox_extractPages.setStyleSheet(u"border: 2px solid rgb(64, 71, 88);\n"
+"border-radius: 5px;	\n"
+"background-color:#2E3342;")
+
+        self.verticalLayout_23.addWidget(self.comboBox_extractPages)
+
+        Ui_MainWindow.lineEdit_intPages_extract = QLineEdit(self.frame_pages_extract)
+        self.lineEdit_intPages_extract.setObjectName(u"lineEdit_intPages_extract")
+        self.lineEdit_intPages_extract.setMinimumSize(QSize(200, 28))
+        self.lineEdit_intPages_extract.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_intPages_extract.setFont(font6)
+        self.lineEdit_intPages_extract.setStyleSheet(u"background-color: rgb(27, 29, 35);\n"
+"border-radius: 5px;\n"
+"border: 2px solid rgb(27, 29, 35);\n"
+"padding-left: 10px;")
+
+        self.verticalLayout_23.addWidget(self.lineEdit_intPages_extract)
+
+
+        self.horizontalLayout_24.addWidget(self.frame_pages_extract, 0, Qt.AlignHCenter)
+
+        Ui_MainWindow.frame__checkbox_extract = QFrame(self.frame_options_extract)
+        self.frame__checkbox_extract.setObjectName(u"frame__checkbox_extract")
+        self.frame__checkbox_extract.setFrameShape(QFrame.StyledPanel)
+        self.frame__checkbox_extract.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.frame__checkbox_extract)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.verticalLayout_25.setContentsMargins(9, 9, 50, 9)
+        Ui_MainWindow.checkBox_split = QCheckBox(self.frame__checkbox_extract)
+        self.checkBox_split.setObjectName(u"checkBox_split")
+        self.checkBox_split.setFont(font6)
+        self.checkBox_split.setStyleSheet(u"QCheckBox::indicator {\n"
+"   border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 9px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.verticalLayout_25.addWidget(self.checkBox_split)
+
+        self.checkBox_extract = QCheckBox(self.frame__checkbox_extract)
+        self.checkBox_extract.setObjectName(u"checkBox_extract")
+        self.checkBox_extract.setFont(font6)
+        self.checkBox_extract.setStyleSheet(u"QCheckBox::indicator {\n"
+"   border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 9px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.verticalLayout_25.addWidget(self.checkBox_extract)
+
+
+        self.horizontalLayout_24.addWidget(self.frame__checkbox_extract, 0, Qt.AlignHCenter)
+
+
+        self.verticalLayout_13.addWidget(self.frame_options_extract, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
         self.frame_drop_extract = QFrame(self.frame_main_extract)
         self.frame_drop_extract.setObjectName(u"frame_drop_extract")
@@ -1356,7 +1406,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_intDpi_ocr, 0, 0, 1, 1, Qt.AlignLeft)
 
-        self.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
+        Ui_MainWindow.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
         self.lineEdit_intDpi_ocr.setObjectName(u"lineEdit_intDpi_ocr")
         self.lineEdit_intDpi_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_intDpi_ocr.setMaximumSize(QSize(50, 16777215))
@@ -1414,7 +1464,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_ocr)
 
-        self.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_outputPath_ocr.setObjectName(u"lineEdit_outputPath_ocr")
         self.lineEdit_outputPath_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_outputPath_ocr.setMaximumSize(QSize(360, 16777215))
@@ -1435,7 +1485,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_ocr)
 
-        self.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_filename_ocr.setObjectName(u"lineEdit_filename_ocr")
         self.lineEdit_filename_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_ocr.setMaximumSize(QSize(360, 16777215))
@@ -1554,7 +1604,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QGridLayout(self.frame_keywords)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(5, 5, 9, 5)
-        self.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
         self.lineEdit_moveto_search.setObjectName(u"lineEdit_moveto_search")
         self.lineEdit_moveto_search.setMinimumSize(QSize(0, 30))
         self.lineEdit_moveto_search.setMaximumSize(QSize(16777215, 16777215))
@@ -1620,7 +1670,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.pushButton_run_search, 0, 0, 1, 1)
 
-        self.lineEdit_else_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_else_search = QLineEdit(self.frame_keywords)
         self.lineEdit_else_search.setObjectName(u"lineEdit_else_search")
         self.lineEdit_else_search.setMinimumSize(QSize(0, 30))
         self.lineEdit_else_search.setMaximumSize(QSize(16777215, 16777215))
@@ -1651,7 +1701,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.label_keywords_search, 1, 1, 1, 1, Qt.AlignHCenter)
 
-        self.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
         self.lineEdit_keywords_search.setObjectName(u"lineEdit_keywords_search")
         self.lineEdit_keywords_search.setMinimumSize(QSize(230, 30))
         self.lineEdit_keywords_search.setMaximumSize(QSize(16777215, 16777215))
@@ -1765,7 +1815,7 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_search)
 
-        self.lineEdit_outputPath_search = QLineEdit(self.frame_output)
+        Ui_MainWindow.lineEdit_outputPath_search = QLineEdit(self.frame_output)
         self.lineEdit_outputPath_search.setObjectName(u"lineEdit_outputPath_search")
         self.lineEdit_outputPath_search.setMinimumSize(QSize(220, 30))
         self.lineEdit_outputPath_search.setMaximumSize(QSize(250, 16777215))
@@ -1786,7 +1836,7 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_search)
 
-        self.lineEdit_filename_search = QLineEdit(self.frame_output)
+        Ui_MainWindow.lineEdit_filename_search = QLineEdit(self.frame_output)
         self.lineEdit_filename_search.setObjectName(u"lineEdit_filename_search")
         self.lineEdit_filename_search.setMinimumSize(QSize(230, 30))
         self.lineEdit_filename_search.setMaximumSize(QSize(250, 16777215))
@@ -1831,7 +1881,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setHorizontalSpacing(20)
         self.gridLayout_4.setContentsMargins(5, 5, 9, 5)
-        self.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpaces_search.setObjectName(u"checkBox_ignoreSpaces_search")
         self.checkBox_ignoreSpaces_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreSpaces_search.setFont(font)
@@ -1845,7 +1895,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreSpaces_search, 0, 1, 1, 1)
 
-        self.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignorePontuation_search.setObjectName(u"checkBox_ignorePontuation_search")
         self.checkBox_ignorePontuation_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignorePontuation_search.setFont(font)
@@ -1859,7 +1909,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignorePontuation_search, 2, 0, 1, 1)
 
-        self.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreFirstPage_search.setObjectName(u"checkBox_ignoreFirstPage_search")
         self.checkBox_ignoreFirstPage_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreFirstPage_search.setFont(font)
@@ -1873,7 +1923,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreFirstPage_search, 1, 1, 1, 1)
 
-        self.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_onlyPages_search.setObjectName(u"checkBox_onlyPages_search")
         self.checkBox_onlyPages_search.setMinimumSize(QSize(0, 20))
         self.checkBox_onlyPages_search.setFont(font)
@@ -1887,7 +1937,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_onlyPages_search, 0, 0, 1, 1)
 
-        self.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpecialChar_search.setObjectName(u"checkBox_ignoreSpecialChar_search")
         self.checkBox_ignoreSpecialChar_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreSpecialChar_search.setFont(font)
@@ -1998,7 +2048,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.frame_vbuttons, 0, Qt.AlignLeft)
 
-        self.tabWidget = QTabWidget(self.frame_tab)
+        Ui_MainWindow.tabWidget = QTabWidget(self.frame_tab)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setFont(font8)
         self.tabWidget.setStyleSheet(u"QTabBar::tab {\n"
@@ -2166,7 +2216,7 @@ class Ui_MainWindow(object):
         self.gridLayout_7 = QGridLayout(self.frame_input_zip)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.gridLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
+        Ui_MainWindow.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
         self.lineEdit_rootDirectory_zip.setObjectName(u"lineEdit_rootDirectory_zip")
         self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(260, 30))
         self.lineEdit_rootDirectory_zip.setMaximumSize(QSize(16777215, 16777215))
@@ -2243,7 +2293,7 @@ class Ui_MainWindow(object):
         self.formLayout_7 = QFormLayout(self.frame_output_zip)
         self.formLayout_7.setObjectName(u"formLayout_7")
         self.formLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
+        Ui_MainWindow.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
         self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
         self.lineEdit_filename_zip.setMinimumSize(QSize(0, 30))
         self.lineEdit_filename_zip.setMaximumSize(QSize(360, 16777215))
@@ -2273,7 +2323,7 @@ class Ui_MainWindow(object):
 
         self.formLayout_7.setWidget(3, QFormLayout.FieldRole, self.label_tags_zip)
 
-        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
+        Ui_MainWindow.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
         self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
         self.lineEdit_outputPath_zip.setMinimumSize(QSize(360, 30))
         self.lineEdit_outputPath_zip.setMaximumSize(QSize(360, 16777215))
@@ -2481,7 +2531,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2514,18 +2564,20 @@ class Ui_MainWindow(object):
         self.label_tags_merge.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis:#year #month #day #time #origin", None))
         self.pushButton_outputPath_merge.setText("")
         self.label_drop_merge.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
-        self.label_description_extract.setText(QCoreApplication.translate("MainWindow", u"EXTRAIR P\u00c1GINAS", None))
+        self.label_description_extract.setText(QCoreApplication.translate("MainWindow", u"EXTRAIR P\u00c1GINAS OU DIVIDIR ARQUIVOS PDF", None))
         self.pushButton_run_extract.setText("")
         self.pushButton_selectFiles_extract.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
-        self.comboBox_extractPages.setItemText(0, QCoreApplication.translate("MainWindow", u"P\u00e1ginas indicadas", None))
-        self.comboBox_extractPages.setItemText(1, QCoreApplication.translate("MainWindow", u"A cada n p\u00e1ginas", None))
-
-        self.lineEdit_intPages_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: 3, 3-5", None))
         self.pushButton_outputPath_extract.setText("")
         self.lineEdit_outputPath_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin,#pages", None))
         self.label_tags_extract.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day\n"
 "#time #pages #origin", None))
+        self.comboBox_extractPages.setItemText(0, QCoreApplication.translate("MainWindow", u"P\u00e1ginas indicadas", None))
+        self.comboBox_extractPages.setItemText(1, QCoreApplication.translate("MainWindow", u"A cada n p\u00e1ginas", None))
+
+        self.lineEdit_intPages_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: 3, 7-8, 11-14", None))
+        self.checkBox_split.setText(QCoreApplication.translate("MainWindow", u"Dividir arquivo", None))
+        self.checkBox_extract.setText(QCoreApplication.translate("MainWindow", u"Extrair no mesmo arquivo", None))
         self.label_drop_extract.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
         self.label_description_ocr.setText(QCoreApplication.translate("MainWindow", u"ESCANEAR ARQUIVOS PDF", None))
         self.pushButton_selectFiles_ocr.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))

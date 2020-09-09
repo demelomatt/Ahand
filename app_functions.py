@@ -35,13 +35,6 @@ class PDFfunctions(QThread):
         self.ui = Ui_MainWindow()
 
     sender = None
-    data = []
-    csvPaths = []
-    inputPdfPaths_ocr = []
-    inputPdfPaths_merge = []
-    inputPdfPaths_extract = []
-    inputPdfPaths_zip = []
-    inputPdfPaths_search = []
     
     def __del__(self):
         self.wait()
@@ -53,7 +46,7 @@ class PDFfunctions(QThread):
 
         try:
             if self.sender == 'pushButton_run_ocr':
-                inputPdfPaths = PDFfunctions.inputPdfPaths_ocr
+                inputPdfPaths = UIFunctions.inputPdfPaths_ocr
                 lineEdit_outputPath = self.ui.lineEdit_outputPath_ocr.text()
 
                 goForward = self.emptyData(inputPdfPaths,lineEdit_outputPath)
@@ -61,7 +54,7 @@ class PDFfunctions(QThread):
                     functionValue = PDFfunctions.ocrPDF(self,inputPdfPaths,lineEdit_outputPath,self.ui.lineEdit_filename_ocr.text(),self.ui.lineEdit_intDpi_ocr.text())
 
             elif self.sender == 'pushButton_run_merge':
-                inputPdfPaths = PDFfunctions.inputPdfPaths_merge
+                inputPdfPaths = UIFunctions.inputPdfPaths_merge
                 lineEdit_outputPath = self.ui.lineEdit_outputPath_merge.text()
 
                 goForward = self.emptyData(inputPdfPaths,lineEdit_outputPath,2)
@@ -69,13 +62,13 @@ class PDFfunctions(QThread):
                     functionValue = PDFfunctions.merge(self,inputPdfPaths,lineEdit_outputPath,self.ui.lineEdit_filename_merge.text())
 
             elif self.sender == 'pushButton_run_extract':
-                inputPdfPaths = PDFfunctions.inputPdfPaths_extract
+                inputPdfPaths = UIFunctions.inputPdfPaths_extract
                 lineEdit_outputPath = self.ui.lineEdit_outputPath_extract.text()
                 pages = self.ui.lineEdit_intPages_extract.text()
 
                 goForward = self.emptyData(inputPdfPaths,lineEdit_outputPath,pages=pages)
                 if goForward:
-                    functionValue = PDFfunctions.extract(self,inputPdfPaths,pages,lineEdit_outputPath,self.ui.lineEdit_filename_extract.text())
+                    functionValue = PDFfunctions.extractOrSplit(self,inputPdfPaths,pages,lineEdit_outputPath,self.ui.lineEdit_filename_extract.text())
 
             elif self.sender == 'pushButton_run_zip':
                 inputPdfPaths = self.ui.lineEdit_rootDirectory_zip.text()
@@ -86,7 +79,7 @@ class PDFfunctions(QThread):
                     functionValue = PDFfunctions.zipCompress(self,inputPdfPaths,lineEdit_outputPath,self.ui.lineEdit_filename_zip.text())
                 
             else:
-                inputPdfPaths = PDFfunctions.inputPdfPaths_search
+                inputPdfPaths = UIFunctions.inputPdfPaths_search
                 lineEdit_outputPath = self.ui.lineEdit_outputPath_search.text()
 
                 lineEdit_keywords_search = self.ui.lineEdit_keywords_search.text().lstrip().rstrip()
@@ -98,7 +91,7 @@ class PDFfunctions(QThread):
             
         except Exception as e:
             if str(e) == "'NoneType' object has no attribute 'rowCount'":
-                self.emit(SIGNAL('dialog(QString)'), "Remova os espaços entre as vírgulas no campo 'Procurar por Expressões'")
+                self.emit(SIGNAL('dialog(QString)'), "Uma ou mais tabelas não foram encontradas. Verifique a ortografia.")
                 
             else:
                 self.emit(SIGNAL('dialog(QString)'), str(e))
@@ -136,82 +129,9 @@ class PDFfunctions(QThread):
             return 0
 
         return 1
-
-    def dropPdf(self,pdfPath):
-        pageID = self.ui.stackedWidget.currentIndex()
-        if pageID == 0:
-            label = self.ui.label_drop_merge
-            PdfInputName = PDFfunctions.inputPdfPaths_merge
-            lineEdit_output = self.ui.lineEdit_outputPath_merge
-            lineEdit_filename = self.ui.lineEdit_filename_merge
-
-        elif pageID == 1:
-            label = self.ui.label_drop_extract
-            PdfInputName = PDFfunctions.inputPdfPaths_extract
-            lineEdit_output = self.ui.lineEdit_outputPath_extract
-            lineEdit_filename = self.ui.lineEdit_filename_extract
-
-        elif pageID == 2:
-            label = self.ui.label_drop_ocr
-            PdfInputName = PDFfunctions.inputPdfPaths_ocr
-            lineEdit_output = self.ui.lineEdit_outputPath_ocr
-            lineEdit_filename = self.ui.lineEdit_filename_ocr
         
-        elif pageID == 3:
-            label = self.ui.label_drop_search
-            PdfInputName = PDFfunctions.inputPdfPaths_search
-            lineEdit_output = self.ui.lineEdit_outputPath_search
-            lineEdit_filename = self.ui.lineEdit_filename_search
-
-        else:
-            return
-
-        PdfInputName.clear()
-        for path in pdfPath:
-            if path not in PdfInputName:
-                PdfInputName.append(path)
-
-        splitext = os.path.splitext(PdfInputName[0])[0]
-        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
-
-        if len(PdfInputName) == 1 and pageID:
-            lineEdit_filename.setText(basename)
-        elif not pageID:
-            lineEdit_filename.setText(basename)
-        lineEdit_output.setText(os.path.dirname(pdfPath[0]))
-
-        listPdfFiles = []
-        for path in PdfInputName:
-            listPdfFiles.append(os.path.basename(path))
-        stringPdfFiles = ",".join(listPdfFiles)
-        stringPdfFiles = stringPdfFiles.replace(",","\n")
-
-        label.setStyleSheet(u"border-radius: 7px;border: 2px dashed rgb(112, 117, 125)")
-        font7 = QFont()
-        font7.setFamily(u"Segoe UI")
-        font7.setPointSize(10)
-        font7.setBold(True)
-        font7.setWeight(75)
-
-        font8 = QFont()
-        font8.setFamily(u"Segoe UI")
-        font8.setPointSize(12)
-        font8.setBold(True)
-        font8.setWeight(75)
-
-        lenFilesName  = "{} arquivo(s) selecionado(s).".format(len(PdfInputName))
-        
-        if pageID == 3:
-            label.setFont(font8)
-            label.setText(lenFilesName)
-
-        else:
-            label.setFont(font7)
-            label.setText(lenFilesName + "\n\n" + stringPdfFiles)
-        
-
     def buttonSelectCsvFiles(self):
-        PDFfunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
+        UIFunctions.csvPaths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivo csv', QtCore.QDir.currentPath(), 'csv files (*.csv)',options=QFileDialog.DontUseNativeDialog)[0]
         PDFfunctions.importFromCSV(self)
 
     def moveFiles(self,fromPath,toPath): 
@@ -266,9 +186,14 @@ class PDFfunctions(QThread):
         name = []
         delimiter = "_"
         if type(pages) == int:
-            pages = str(pages + 1)
+            pages = (str(pages + 1))
+        
+        elif len(pages) > 1:
+            pages = ",".join(pages)
+
         else:
-            pages = str(pages)
+            pages = str(pages[0])
+        
 
         # Verificar se foi informada somente uma página ou uma lista de páginas. 
         # Caso seja lista, é retornado o primeiro e o último índice.
@@ -326,18 +251,29 @@ class PDFfunctions(QThread):
         # Retorna o nome final do arquivo.
         return finalName
 
+    def extractOrSplit(self,paths,pages,outputDirectory,name):
+        if self.ui.checkBox_split.isChecked():
+            self.split(paths,pages,outputDirectory,name)
+            return 1
+
+        else:
+            self.extract(paths,pages,outputDirectory,name)
+            return 1
+            
     def extract(self,paths,pages,outputDirectory,name):
     # Extrair páginas indicadas de PDF.
     # paths recebe os caminhos dos arquivos a trabalhar.
     # pages recebe as páginas a serem exportadas ou "allpages" para extrair todas as páginas.
     # outputDirectory recebe o diretório de saída do arquivo.
     # name são os parâmetros da função rename ou então uma string. 
-
         start_time = time.time()
         feedbackMsg = feedbackMsg = "Extraindo páginas..."
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
 
-        pages = pages.split(",")
+        try:
+            pages = pages.split(",")
+        except:
+            pass
 
         if name == "":
             name = "#origin,#pages"
@@ -361,28 +297,28 @@ class PDFfunctions(QThread):
                             page = int(page)
                             page -= 1
                             # Exportar página.
-                            pdf_writer = PdfFileWriter()
                             pdf_writer.addPage(pdf_reader.getPage(page))
 
                         except:
                             pageList = page.split("-")
                             firstPage = int(pageList[0]) - 1
                             lastPage = int(pageList[1])
-                            pdf_writer = PdfFileWriter()
                             for number in range(firstPage,lastPage):
                                 pdf_writer.addPage(pdf_reader.getPage(number))
 
-                        if name:
-                            outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
-                        else:
-                            outputFile = outputDirectory
+                    if name:
+                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pages)
+                    else:
+                        outputFile = outputDirectory
                 else:
                     page = int(pages[0])
                     pdf_writer = PdfFileWriter()
+                    pageNumbers = []
                     for number in range(0,totalPages,page):
                         pdf_writer.addPage(pdf_reader.getPage(number))
+                        pageNumbers.append(str(number + 1))
                     if name:
-                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pages)
+                        outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pageNumbers)
                     else:
                         outputFile = outputDirectory
             
@@ -393,6 +329,82 @@ class PDFfunctions(QThread):
         feedbackMsg = feedbackMsg = "Páginas extraídas em %.2f segundos." % (time.time() - start_time)
         self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
         return 1
+
+    def split(self,paths,pages,outputDirectory,name):
+        start_time = time.time()
+        feedbackMsg = feedbackMsg = "Divindo arquivo..."
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+
+        pages = pages.split(",")
+
+        if name == "":
+            name = "#origin,#pages"
+
+        # Para cada arquivo.
+        for path in paths:
+            splitext = os.path.splitext(path)[0]
+            basename = os.path.basename(splitext)
+
+            # Abrir arquivo.
+            with open(path, 'rb') as infile:
+                pdf_reader = PdfFileReader(infile)
+                pdf_writer = PdfFileWriter()
+                totalPages = pdf_reader.getNumPages()
+
+                if not self.ui.comboBox_extractPages.currentIndex():
+                    for page in pages:
+                        try:
+                            page = int(page)
+                            page -= 1
+                            # Exportar página.
+                            pdf_writer = PdfFileWriter()
+                            pdf_writer.addPage(pdf_reader.getPage(page))
+                            if name:
+                                outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,page)
+                            else:
+                                outputFile = outputDirectory
+                            with open(outputFile, 'wb') as outfile:
+                                pdf_writer.write(outfile)
+                                outfile.close()
+
+                        except:
+                            pageList = page.split("-")
+                            firstPage = int(pageList[0]) - 1
+                            lastPage = int(pageList[1])
+                            pdf_writer = PdfFileWriter()
+                            for number in range(firstPage,lastPage):
+                                pdf_writer.addPage(pdf_reader.getPage(number))
+
+                            if name:
+                                outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,[page])
+                            else:
+                                outputFile = outputDirectory
+                            with open(outputFile, 'wb') as outfile:
+                                pdf_writer.write(outfile)
+                                outfile.close()
+                
+                else:
+                    page = int(pages[0])
+                    
+                    for n in range(0,totalPages,page):
+                        nextn = n + page
+                        pdf_writer = PdfFileWriter()
+                        pageNumbers = [str(n+1) + str("-") + str(nextn)]
+                        for i in range(n,nextn):
+                            pdf_writer.addPage(pdf_reader.getPage(i))
+                            
+                        if name:
+                            outputFile = PDFfunctions.rename(self,name,outputDirectory,basename,pageNumbers)
+                        else:
+                            outputFile = outputDirectory
+                        with open(outputFile, 'wb') as outfile:
+                            pdf_writer.write(outfile)
+                            outfile.close()
+
+        feedbackMsg = feedbackMsg = "Arquivos divididos em %.2f segundos." % (time.time() - start_time)
+        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+        return 1
+
 
     def merge(self,paths, outputDirectory, name):
     # Juntar vários arquivos PDF em um único arquivo.
@@ -446,8 +458,12 @@ class PDFfunctions(QThread):
             counterPages = 0
             splitext = os.path.splitext(path)[0]
             basename = os.path.basename(splitext) # Nome do arquivo sem extensão e diretório.
-            
-            pages = convert_from_path(path,200,poppler_path="poppler\\bin",fmt="jpeg",use_pdftocairo=True) # biblioteca pdf2img
+            try:
+                pagedpi = int(self.ui.lineEdit_intDpi_ocr.text())
+            except:
+                pagedpi = 200
+             
+            pages = convert_from_path(path,dpi=pagedpi,poppler_path="poppler\\bin",fmt="jpeg",use_pdftocairo=True) # biblioteca pdf2img
             
             counterFiles+=1
 
@@ -538,120 +554,119 @@ class PDFfunctions(QThread):
                 interpreter = None
 
                 # Para cada página do arquivo.
-                try:
-                    for page in PDFPage.create_pages(doc):
-                        if moveOnlyPages:
-                            queryFound = []
-                            keywordsFound = []
-                            export = False # Reseta a variável que verifica se a página foi exportada
-                        
-                        rowIDs = [] # Reseta a lista que a armazena o nome da tabela e a linha onde a palavra foi encontrada
-                        
-                        if export:
-                            break
-                        
-                        #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
-                        counterPages += 1
-                        output_string = StringIO()
-                        device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
-                        interpreter = PDFPageInterpreter(rsrcmgr, device)
-                        interpreter.process_page(page)
-                        text = output_string.getvalue()
+                for page in PDFPage.create_pages(doc):
+                
+                    if moveOnlyPages:
+                        queryFound = []
+                        keywordsFound = []
+                        export = False # Reseta a variável que verifica se a página foi exportada
+                    
+                    rowIDs = [] # Reseta a lista que a armazena o nome da tabela e a linha onde a palavra foi encontrada
+                    
+                    if export:
+                        break
+                    
+                    #counterKeywords = 0 # Reseta o contador para quantidade de palavras a ser pesquisada.
+                    counterPages += 1
+                    output_string = StringIO()
+                    device = TextConverter(rsrcmgr, output_string, laparams=LAParams())
+                    interpreter = PDFPageInterpreter(rsrcmgr, device)
+                    interpreter.process_page(page)
+                    text = output_string.getvalue()
 
-                        # Para cada query a ser executada
-                        for query in queryKeywordList:
-                            # Se as palavras da query ainda não foram encontradas
-                            if query not in queryFound:
-                                
-                                keywords = [] # Reseta a lista das palavras a pesquisar
-                                if export:
-                                    break
-                                # Recebe o nome da lineEdit e extrai o nome da tabela e coluna com as palavras a serem pesquisadas
-                                # Localiza a tabela com o nome dado
-                                tableKeywordList = query.split(":")
-                                tableName = tableKeywordList[0]
-                                columnID = int(tableKeywordList[1]) - 1
-                                tableWidgetObject = "tableWidget " + tableName
-                                tableWidgt = self.ui.tabWidget.findChild(QTableWidget, tableWidgetObject)
-                                totalRows = tableWidgt.rowCount() # Total de linhas
-
-                                # Verificar se alguma linha deve ser ignorada
-                                for i in range(totalRows):
-                                    if not (ignoreFirstPage and not i):
-                                        keywords.append(tableWidgt.item(i,columnID).text())
+                    # Para cada query a ser executada
+                    for query in queryKeywordList:
+                        # Se as palavras da query ainda não foram encontradas
+                        if query not in queryFound:
                             
-                            # Para cada palavra.
-                                for rowNumber, keyword in enumerate(keywords):
+                            keywords = [] # Reseta a lista das palavras a pesquisar
+                            if export:
+                                break
+                            # Recebe o nome da lineEdit e extrai o nome da tabela e coluna com as palavras a serem pesquisadas
+                            # Localiza a tabela com o nome dado
+                            tableKeywordList = query.split(":")
+                            tableName = tableKeywordList[0]
+                            columnID = int(tableKeywordList[1]) - 1
+                            tableWidgetObject = "tableWidget " + tableName
+                            tableWidgt = self.ui.tabWidget.findChild(QTableWidget, tableWidgetObject)
+                            totalRows = tableWidgt.rowCount() # Total de linhas
 
-                                    # Verifica se a primeira linha deve ser ignorada. Se sim, é adicionado + 1
-                                    if ignoreFirstPage:
-                                        rowId = rowNumber + 1
-                                    else:
-                                        rowId = rowNumber
-                                        
-                                    #counterKeywords += 1
-                                    oldKeyword = keyword # Salva a palavra antiga antes da modificação.
-                                    IsAscii = self.ui.checkBox_ignoreSpecialChar_search.checkState()
-                                    ignoreSpaces = self.ui.checkBox_ignoreSpaces_search.checkState()
-                                    ignorePontuation = self.ui.checkBox_ignorePontuation_search.checkState()
-                                    text,keyword = PDFfunctions.regex(self,text,keyword,IsAscii,ignoreSpaces,ignorePontuation)
+                            # Verificar se alguma linha deve ser ignorada
+                            for i in range(totalRows):
+                                if not (ignoreFirstPage and not i):
+                                    keywords.append(tableWidgt.item(i,columnID).text())
+                        
+                        # Para cada palavra.
+                            for rowNumber, keyword in enumerate(keywords):
+
+                                # Verifica se a primeira linha deve ser ignorada. Se sim, é adicionado + 1
+                                if ignoreFirstPage:
+                                    rowId = rowNumber + 1
+                                else:
+                                    rowId = rowNumber
                                     
-                                    # Pesquisar por palavra
-                                    if re.search(keyword,text,re.IGNORECASE):
-                                        feedbackMsg = "Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles)
-                                        self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+                                #counterKeywords += 1
+                                oldKeyword = keyword # Salva a palavra antiga antes da modificação.
+                                IsAscii = self.ui.checkBox_ignoreSpecialChar_search.checkState()
+                                ignoreSpaces = self.ui.checkBox_ignoreSpaces_search.checkState()
+                                ignorePontuation = self.ui.checkBox_ignorePontuation_search.checkState()
+                                text,keyword = PDFfunctions.regex(self,text,keyword,IsAscii,ignoreSpaces,ignorePontuation)
+                                
+                                # Pesquisar por palavra
+                                if re.search(keyword,text,re.IGNORECASE):
+                                    feedbackMsg = "Expressão '{}' encontrada na página {} do arquivo {}.".format(oldKeyword,counterPages,counterFiles)
+                                    self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
 
-                                        # Se a palavra já não foi encontrada
-                                        if oldKeyword not in keywordsFound:
-                                            keywordsFound.append(oldKeyword) # Adiciona a palavra encontrada a uma lista 
-                                            queryFound.append(query) # Adiciona a query executada a uma lista para que não seja repetida
-                                            rowIDs.append(tableName + ":" + str(rowId)) # Adiciona o nome da tabela e linha onde foi encontrada a palavra em uma lista
-                                        
-                                        # Verifica qual é a linha da tabela que contém o nome da pasta para qual será exportada
-                                        if tableName == tableNameMoveToColumn:
-                                            rowIDMoveToColumn = rowId
+                                    # Se a palavra já não foi encontrada
+                                    if oldKeyword not in keywordsFound:
+                                        keywordsFound.append(oldKeyword) # Adiciona a palavra encontrada a uma lista 
+                                        queryFound.append(query) # Adiciona a query executada a uma lista para que não seja repetida
+                                        rowIDs.append(tableName + ":" + str(rowId)) # Adiciona o nome da tabela e linha onde foi encontrada a palavra em uma lista
+                                    
+                                    # Verifica qual é a linha da tabela que contém o nome da pasta para qual será exportada
+                                    if tableName == tableNameMoveToColumn:
+                                        rowIDMoveToColumn = rowId
 
-                                    # Se todas as querys foram executadas e foi encontrado palavras
-                                    if len(keywordsFound) == len(queryKeywordList):
-                                        # Verifica se somente as páginas ou todo o arquivo será movido.
-                                        folder = tableWidgtMoveTo.item(rowIDMoveToColumn,columnIDMoveToColumn).text() # Nome da pasta
-                                        folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
-                                        finalOutputDirectory = outputDirectory + "/" + folder # Caminho do diretório
-                                        PDFfunctions.createDirectory(self,finalOutputDirectory)
-                                        finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)
-                                        if moveOnlyPages:
-                                            PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
-                                        else:
-                                            in_file.close()
-                                            PDFfunctions.moveFiles(self,path,finalName)
-                                        export = True
-                                        break
-                                            
-                                    # Se nenhuma das palavras foi encontrada na página/arquivo
+                                # Se todas as querys foram executadas e foi encontrado palavras
+                                if len(keywordsFound) == len(queryKeywordList):
+                                    # Verifica se somente as páginas ou todo o arquivo será movido.
+                                    folder = tableWidgtMoveTo.item(rowIDMoveToColumn,columnIDMoveToColumn).text() # Nome da pasta
+                                    folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
+                                    finalOutputDirectory = outputDirectory + "/" + folder # Caminho do diretório
+                                    PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                    finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)
+                                    if moveOnlyPages:
+                                        self.ui.comboBox_extractPages.setCurrentIndex(0)
+                                        PDFfunctions.extract(self,[path],[counterPages],finalName,0)
                                     else:
-                                        folderNotFound = self.ui.lineEdit_else_search.text().lstrip().rstrip()
-                                        if (folderNotFound != '' and (rowId == len(keywords) and query == queryKeywordList[-1])):
-                                            finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
-                                            PDFfunctions.createDirectory(self,finalOutputDirectory)
-                                            if moveOnlyPages:
-                                                feedbackMsg = "Expressões não encontradas nesta página"
+                                        in_file.close()
+                                        PDFfunctions.moveFiles(self,path,finalName)
+                                    export = True
+                                    break
+                                        
+                                # Se nenhuma das palavras foi encontrada na página/arquivo
+                                else:
+                                    folderNotFound = self.ui.lineEdit_else_search.text().lstrip().rstrip()
+                                    if (folderNotFound != '' and (rowId == len(keywords) and query == queryKeywordList[-1])):
+                                        finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
+                                        PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                        if moveOnlyPages:
+                                            feedbackMsg = "Expressões não encontradas nesta página"
+                                            self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+                                            finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
+                                            self.ui.comboBox_extractPages.setCurrentIndex(0)
+                                            PDFfunctions.extract(self,[path],[counterPages],finalName,0)
+                                            export = True
+                                            break # prosseguir para o próximo arquivo
+                                        else:
+                                            if counterPages == totalPages:
+                                                feedbackMsg = "Expressões não encontradas neste arquivo."
                                                 self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-                                                finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
-                                                PDFfunctions.extractPages(self,[path],[counterPages],finalName,0)
+                                                finalName = finalOutputDirectory + basename + ".pdf"
+                                                in_file.close()
+                                                PDFfunctions.moveFiles(self,path,finalName)
                                                 export = True
-                                                break # prosseguir para o próximo arquivo
-                                            else:
-                                                if counterPages == totalPages:
-                                                    feedbackMsg = "Expressões não encontradas neste arquivo."
-                                                    self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-                                                    finalName = finalOutputDirectory + basename + ".pdf"
-                                                    in_file.close()
-                                                    PDFfunctions.moveFiles(self,path,finalName)
-                                                    export = True
-                                                    break # prosseguir para o próximo arquivo   
-                except:
-                    pass    
-
+                                                break # prosseguir para o próximo arquivo   
                 # Fecha os objetos abertos.
                     output_string.close()
                     device.close()
@@ -664,7 +679,7 @@ class PDFfunctions(QThread):
     def importFromCSV(self):
         # Importar dados de arquivo csv
         self.ui.label_drop_csv.setParent(None)
-        csvPaths = PDFfunctions.csvPaths
+        csvPaths = UIFunctions.csvPaths
 
         # Para cada arquivo
         for path in csvPaths:
@@ -674,8 +689,15 @@ class PDFfunctions(QThread):
                 csvFile = codecs.open(csvPath, encoding = "utf-8")
                 dialect = csv.Sniffer().sniff(csvFile.read(), delimiters=";,") # Verificar delimitadores
             except:
-                csvFile = codecs.open(csvPath)
-                dialect = csv.Sniffer().sniff(csvFile.read(), delimiters=";,")
+                try:
+                    csvFile = codecs.open(csvPath)
+                    dialect = csv.Sniffer().sniff(csvFile.read(), delimiters=";,")
+                except:
+                    self.emit(SIGNAL('dialog(QString)'), "Não foi possível determinar os delimitadores do arquivo {}.".format(os.path.basename(os.path.splitext(csvPath)[0])))
+                    feedbackMsg = ""
+                    self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
+                    return 0
+
             csvFile.seek(0)
             reader = csv.reader(csvFile, dialect) # Ler dados
             list_of_rows = list(reader) # Salvar dados

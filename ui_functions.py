@@ -25,9 +25,12 @@ class UIFunctions(Ui_MainWindow):
     GLOBAL_STATE = 0
     GLOBAL_TITLE_BAR = True
 
-    outputName = ''
-    outputPath = ''
-    inputPaths = []
+    csvPaths = []
+    inputPdfPaths_ocr = []
+    inputPdfPaths_merge = []
+    inputPdfPaths_extract = []
+    inputPdfPaths_zip = []
+    inputPdfPaths_search = []
 
     ########################################################################
     ## START - GUI FUNCTIONS
@@ -230,33 +233,83 @@ class UIFunctions(Ui_MainWindow):
 
         lineEditOutput.setText(QFileDialog.getExistingDirectory(self,msg,QtCore.QDir.currentPath(),QFileDialog.DontUseNativeDialog))
 
-    def buttonSelectPdfFiles(self,lineEdit_filename,lineEdit_output,label,PdfInputName):
+    def buttonSelectPdfFiles(self):
         # Selecionar arquivos PDF e salvar caminho
         # lineEdit recebe o QWidget lineEdit para armazenar o nome do arquivo sem a extensão
         # label recebe o QWidget para armazenar a quantidade de arquivos selecionados
 
-        # Abre arquivos e salva caminho 
-        PdfInputName.clear()
-        PdfInputName = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
-        # Setar texto
-        label.setText("{} arquivos selecionados.".format(len(PdfInputName)))
-        try:
-            lineEdit_output.setText(os.path.dirname(PdfInputName[0]))
-        
-            # Verificar se o lineEdit receberá algum nome
-            pageID = self.ui.stackedWidget.currentIndex()
-            
-            splitext = os.path.splitext(PdfInputName[0])[0]
-            basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
+        # Abre arquivos e salva caminho
+        paths = QFileDialog.getOpenFileNames(self, 'Selecionar arquivos pdf', QtCore.QDir.currentPath(), 'pdf files (*.pdf)',options=QFileDialog.DontUseNativeDialog)[0]
+        if paths != []:
+            UIFunctions.dropPdf(self,paths)
 
-            if len(PdfInputName) == 1 and pageID:
-                lineEdit_filename.setText(basename)
-            elif not pageID:
-                lineEdit_filename.setText(basename)
-            else:
-                lineEdit_filename.setText("")
-        except:
-            pass
+    def dropPdf(self,paths):
+        pageID = self.ui.stackedWidget.currentIndex()
+        
+        if pageID == 0:
+            label = self.ui.label_drop_merge
+            UIFunctions.inputPdfPaths_merge = paths
+            lineEdit_output = self.ui.lineEdit_outputPath_merge
+            lineEdit_filename = self.ui.lineEdit_filename_merge
+
+        elif pageID == 1:
+            label = self.ui.label_drop_extract
+            UIFunctions.inputPdfPaths_extract = paths
+            lineEdit_output = self.ui.lineEdit_outputPath_extract
+            lineEdit_filename = self.ui.lineEdit_filename_extract
+
+        elif pageID == 2:
+            label = self.ui.label_drop_ocr
+            UIFunctions.inputPdfPaths_ocr = paths
+            lineEdit_output = self.ui.lineEdit_outputPath_ocr
+            lineEdit_filename = self.ui.lineEdit_filename_ocr
+        
+        elif pageID == 3:
+            label = self.ui.label_drop_search
+            UIFunctions.inputPdfPaths_search = paths
+            lineEdit_output = self.ui.lineEdit_outputPath_search
+            lineEdit_filename = self.ui.lineEdit_filename_search
+        else:
+            return
+
+        splitext = os.path.splitext(paths[0])[0]
+        basename = os.path.basename(splitext) # Nome do arquivo original sem a extensão e diretório.
+
+        if not pageID:
+            lineEdit_filename.setText(basename)
+
+
+        lineEdit_output.setText(os.path.dirname(paths[0]))
+
+        listPdfFiles = []
+        for path in paths:
+            listPdfFiles.append(os.path.basename(path))
+        stringPdfFiles = ",".join(listPdfFiles)
+        stringPdfFiles = stringPdfFiles.replace(",","\n")
+
+        label.setStyleSheet(u"border-radius: 7px;border: 2px dashed rgb(112, 117, 125)")
+        font7 = QFont()
+        font7.setFamily(u"Segoe UI")
+        font7.setPointSize(10)
+        font7.setBold(True)
+        font7.setWeight(75)
+
+        font8 = QFont()
+        font8.setFamily(u"Segoe UI")
+        font8.setPointSize(12)
+        font8.setBold(True)
+        font8.setWeight(75)
+
+        # Setar texto
+        lenFilesName  = "{} arquivo(s) selecionado(s).".format(len(paths))
+
+        if pageID == 3:
+            label.setFont(font8)
+            label.setText(lenFilesName)
+
+        else:
+            label.setFont(font7)
+            label.setText(lenFilesName + "\n\n" + stringPdfFiles)
 
     def label_drop_csv(self):
         if not self.ui.tabWidget.count():
