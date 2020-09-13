@@ -137,9 +137,12 @@ class UIFunctions(Ui_MainWindow):
 
         if isTopMenu:
             self.ui.layout_menus.addWidget(button)
+
         else:
             self.ui.layout_menu_bottom.addWidget(button)
             self.ui.layout_menu_bottom.setAlignment(Qt.AlignBottom|Qt.AlignVCenter)
+        
+
 
     ## ==> SELECT/DESELECT MENU
     ########################################################################
