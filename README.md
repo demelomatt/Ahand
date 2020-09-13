@@ -1,5 +1,5 @@
 # Ahand
-![logoahand](logofull.png)
+![logoahand](Ahand_Logo.png)
 Descrição:
     Projeto para automação de rotinas que envolvem arquivos PDF.
     Com Ahand é possível:
