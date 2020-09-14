@@ -48,15 +48,15 @@ class MainWindow(QMainWindow):
         ########################################################################
 
         ## ==> TOGGLE MENU SIZE
-        self.ui.pushButton_toggle_menu.clicked.connect(lambda: UIFunctions.toggleMenu(self, 220, True))
+        self.ui.pushButton_toggle_menu.clicked.connect(lambda: UIFunctions.toggleMenu(self, 200, True))
         ## ==> END ##
 
         ## ==> ADD CUSTOM MENUS
         self.ui.stackedWidget.setMinimumWidth(20)
-        UIFunctions.addNewMenu(self, "Mesclar", "pushButton_merge", "url(:/24x24/icons/24x24/merge.png)", True)
+        UIFunctions.addNewMenu(self, "Combinar", "pushButton_merge", "url(:/24x24/icons/24x24/merge.png)", True)
         UIFunctions.addNewMenu(self, "Extrair", "pushButton_extract", "url(:/24x24/icons/24x24/split.png)", True)
         UIFunctions.addNewMenu(self, "Escanear", "pushButton_scan", "url(:/24x24/icons/24x24/scanner.png)", True)
-        UIFunctions.addNewMenu(self, "Procurar padrões", "pushButton_search", "url(:/24x24/icons/24x24/search.png)", True)
+        UIFunctions.addNewMenu(self, "Classificar", "pushButton_search", "url(:/24x24/icons/24x24/search.png)", True)
         UIFunctions.addNewMenu(self, "Compactar", "pushButton_zip", "url(:/24x24/icons/24x24/zip.png)", True)
         UIFunctions.addNewMenu(self, "Créditos", "pushButton_credits", "url(:/24x24/icons/24x24/info.png)",isTopMenu = False)
         UIFunctions.addNewMenu(self, "Ajuda", "pushButton_help", "url(:/24x24/icons/24x24/question.png)",isTopMenu = False)
@@ -206,7 +206,7 @@ class MainWindow(QMainWindow):
         if pushButton_Widget.objectName() == "pushButton_merge":
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_merge)
             UIFunctions.resetStyle(self, "pushButton_merge")
-            UIFunctions.labelPage(self, "Mesclar")
+            UIFunctions.labelPage(self, "Combinar")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
             UIFunctions.inputPaths = []
 
@@ -238,7 +238,7 @@ class MainWindow(QMainWindow):
         if pushButton_Widget.objectName() == "pushButton_search":
             self.ui.stackedWidget.setCurrentWidget(self.ui.page_search)
             UIFunctions.resetStyle(self, "pushButton_search")
-            UIFunctions.labelPage(self, "Procurar padrões")
+            UIFunctions.labelPage(self, "Classificar")
             pushButton_Widget.setStyleSheet(UIFunctions.selectMenu(pushButton_Widget.styleSheet()))
             UIFunctions.inputPaths = []
 

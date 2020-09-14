@@ -651,8 +651,9 @@ class PDFfunctions(QThread):
                                     # Se todas as querys foram executadas e foi encontrado palavras
                                     if len(keywordsFound) == len(queryKeywordList):
                                         # Verifica se somente as páginas ou todo o arquivo será movido.
+                                        test = PDFfunctions.rename(self,self.ui.lineEdit_moveto_search.text(),'',ext='',rowIDS = rowIDs)
                                         folder = tableWidgtMoveTo.item(rowIDMoveToColumn,columnIDMoveToColumn).text() # Nome da pasta
-                                        folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
+                                        #folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
                                         finalOutputDirectory = outputDirectory + "/" + folder # Caminho do diretório
                                         PDFfunctions.createDirectory(self,finalOutputDirectory)
                                         finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)

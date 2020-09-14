@@ -10,7 +10,7 @@ class Style():
         border-left: 28px solid rgb(27, 29, 35);
         background-color: rgb(27, 29, 35);
         text-align: left;
-        padding-left: 45px;
+        padding-left: 55px;
     }
     QPushButton[Active=true] {
         background-image: ICON_REPLACE;
@@ -21,7 +21,7 @@ class Style():
         border-right: 5px solid rgb(44, 49, 60);
         background-color: rgb(27, 29, 35);
         text-align: left;
-        padding-left: 45px;
+        padding-left: 55px;
     }
     QPushButton:hover {
         background-color: rgb(33, 37, 43);

@@ -83,10 +83,10 @@ class UIFunctions(Ui_MainWindow):
             # GET WIDTH
             width = self.ui.frame_left_menu.width()
             maxExtend = maxWidth
-            standard = 70
+            standard = 80
 
             # SET MAX WIDTH
-            if width == 70:
+            if width == 80:
                 widthExtended = maxExtend
             else:
                 widthExtended = standard
@@ -127,7 +127,7 @@ class UIFunctions(Ui_MainWindow):
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(button.sizePolicy().hasHeightForWidth())
         button.setSizePolicy(sizePolicy3)
-        button.setMinimumSize(QSize(0, 70))
+        button.setMinimumSize(QSize(0, 80))
         button.setLayoutDirection(Qt.LeftToRight)
         button.setFont(font)
         button.setStyleSheet(Style.style_bt_standard.replace('ICON_REPLACE', icon))
@@ -327,8 +327,8 @@ class UIFunctions(Ui_MainWindow):
             self.ui.label_drop_csv.setFont(font8)
             self.ui.label_drop_csv.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n""color: rgb(112, 117, 125);")
             
-            self.ui.label_drop_csv.setMinimumSize(QSize(0, 100))
-            self.ui.label_drop_csv.setMaximumSize(QSize(9999, 300))
+            self.ui.label_drop_csv.setMinimumSize(QSize(0, 80))
+            self.ui.label_drop_csv.setMaximumSize(QSize(9999, 400))
 
             self.ui.label_drop_csv.setText("ARRASTE E SOLTE ARQUIVOS CSV AQUI")
             self.ui.verticalLayout_7.addWidget(self.ui.label_drop_csv,Qt.AlignCenter)

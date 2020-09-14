@@ -368,7 +368,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.frame_toggle = QFrame(self.frame_top)
         self.frame_toggle.setObjectName(u"frame_toggle")
-        self.frame_toggle.setMaximumSize(QSize(70, 16777215))
+        self.frame_toggle.setMaximumSize(QSize(80, 16777215))
         self.frame_toggle.setStyleSheet(u"background-color: rgb(27, 29, 35);")
         self.frame_toggle.setFrameShape(QFrame.NoFrame)
         self.frame_toggle.setFrameShadow(QFrame.Raised)
@@ -615,8 +615,8 @@ class Ui_MainWindow(object):
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.frame_left_menu.sizePolicy().hasHeightForWidth())
         self.frame_left_menu.setSizePolicy(sizePolicy4)
-        self.frame_left_menu.setMinimumSize(QSize(0, 0))
-        self.frame_left_menu.setMaximumSize(QSize(70, 16777215))
+        self.frame_left_menu.setMinimumSize(QSize(80, 0))
+        self.frame_left_menu.setMaximumSize(QSize(80, 16777215))
         self.frame_left_menu.setLayoutDirection(Qt.LeftToRight)
         self.frame_left_menu.setStyleSheet(u"background-color: rgb(27, 29, 35);")
         self.frame_left_menu.setFrameShape(QFrame.NoFrame)
@@ -643,9 +643,9 @@ class Ui_MainWindow(object):
         self.frame_extra_menus.setFrameShape(QFrame.StyledPanel)
         self.frame_extra_menus.setFrameShadow(QFrame.Raised)
         self.layout_menu_bottom = QVBoxLayout(self.frame_extra_menus)
-        self.layout_menu_bottom.setSpacing(10)
+        self.layout_menu_bottom.setSpacing(5)
         self.layout_menu_bottom.setObjectName(u"layout_menu_bottom")
-        self.layout_menu_bottom.setContentsMargins(0, 0, 0, 25)
+        self.layout_menu_bottom.setContentsMargins(0, 0, 0, 9)
 
         self.verticalLayout_5.addWidget(self.frame_extra_menus)
 
@@ -674,12 +674,16 @@ class Ui_MainWindow(object):
         self.stackedWidget.setStyleSheet(u"background: transparent;")
         self.page_merge = QWidget()
         self.page_merge.setObjectName(u"page_merge")
+        sizePolicy.setHeightForWidth(self.page_merge.sizePolicy().hasHeightForWidth())
+        self.page_merge.setSizePolicy(sizePolicy)
         self.verticalLayout_24 = QVBoxLayout(self.page_merge)
         self.verticalLayout_24.setSpacing(0)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.verticalLayout_24.setContentsMargins(9, 9, 9, 9)
         self.frame_main_merge = QFrame(self.page_merge)
         self.frame_main_merge.setObjectName(u"frame_main_merge")
+        sizePolicy.setHeightForWidth(self.frame_main_merge.sizePolicy().hasHeightForWidth())
+        self.frame_main_merge.setSizePolicy(sizePolicy)
         self.frame_main_merge.setFrameShape(QFrame.StyledPanel)
         self.frame_main_merge.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_main_merge)
@@ -688,6 +692,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setContentsMargins(5, 5, 5, 5)
         self.frame_home = QFrame(self.frame_main_merge)
         self.frame_home.setObjectName(u"frame_home")
+        sizePolicy.setHeightForWidth(self.frame_home.sizePolicy().hasHeightForWidth())
+        self.frame_home.setSizePolicy(sizePolicy)
         self.frame_home.setMinimumSize(QSize(0, 0))
         self.frame_home.setMaximumSize(QSize(16777215, 16777215))
         self.frame_home.setStyleSheet(u"")
@@ -698,6 +704,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_21.setContentsMargins(5, 5, 5, 5)
         self.frame_merge = QFrame(self.frame_home)
         self.frame_merge.setObjectName(u"frame_merge")
+        sizePolicy4.setHeightForWidth(self.frame_merge.sizePolicy().hasHeightForWidth())
+        self.frame_merge.setSizePolicy(sizePolicy4)
         self.frame_merge.setMinimumSize(QSize(0, 0))
         self.frame_merge.setFrameShape(QFrame.StyledPanel)
         self.frame_merge.setFrameShadow(QFrame.Raised)
@@ -717,7 +725,7 @@ class Ui_MainWindow(object):
         self.label_description_merge.setMinimumSize(QSize(0, 0))
         font3 = QFont()
         font3.setFamily(u"Segoe UI")
-        font3.setPointSize(11)
+        font3.setPointSize(14)
         font3.setBold(True)
         font3.setWeight(75)
         self.label_description_merge.setFont(font3)
@@ -730,7 +738,7 @@ class Ui_MainWindow(object):
 
         self.frame_top_page_merge = QFrame(self.frame_merge)
         self.frame_top_page_merge.setObjectName(u"frame_top_page_merge")
-        self.frame_top_page_merge.setMinimumSize(QSize(0, 150))
+        self.frame_top_page_merge.setMinimumSize(QSize(750, 180))
         self.frame_top_page_merge.setMaximumSize(QSize(16777215, 16777215))
         self.frame_top_page_merge.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
@@ -754,11 +762,11 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.frame_input_merge)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(6)
-        self.gridLayout.setContentsMargins(9, 5, 0, 5)
+        self.gridLayout.setContentsMargins(5, 5, 5, 5)
         self.pushButton_run_merge = QPushButton(self.frame_input_merge)
         self.pushButton_run_merge.setObjectName(u"pushButton_run_merge")
-        self.pushButton_run_merge.setMinimumSize(QSize(40, 0))
-        self.pushButton_run_merge.setMaximumSize(QSize(40, 30))
+        self.pushButton_run_merge.setMinimumSize(QSize(50, 35))
+        self.pushButton_run_merge.setMaximumSize(QSize(16777215, 16777215))
         self.pushButton_run_merge.setAutoFillBackground(False)
         self.pushButton_run_merge.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
@@ -782,9 +790,12 @@ class Ui_MainWindow(object):
 
         self.pushButton_selectFiles_merge = QPushButton(self.frame_input_merge)
         self.pushButton_selectFiles_merge.setObjectName(u"pushButton_selectFiles_merge")
-        self.pushButton_selectFiles_merge.setMinimumSize(QSize(160, 30))
+        self.pushButton_selectFiles_merge.setMinimumSize(QSize(180, 35))
         self.pushButton_selectFiles_merge.setMaximumSize(QSize(16777215, 16777215))
-        self.pushButton_selectFiles_merge.setFont(font)
+        font5 = QFont()
+        font5.setFamily(u"Segoe UI")
+        font5.setPointSize(12)
+        self.pushButton_selectFiles_merge.setFont(font5)
         self.pushButton_selectFiles_merge.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -818,66 +829,9 @@ class Ui_MainWindow(object):
         self.formLayout_3 = QFormLayout(self.frame_output_merge)
         self.formLayout_3.setObjectName(u"formLayout_3")
         self.formLayout_3.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
-        self.lineEdit_outputPath_merge.setObjectName(u"lineEdit_outputPath_merge")
-        self.lineEdit_outputPath_merge.setMinimumSize(QSize(0, 30))
-        self.lineEdit_outputPath_merge.setMaximumSize(QSize(360, 16777215))
-        font5 = QFont()
-        font5.setFamily(u"Segoe UI")
-        font5.setPointSize(12)
-        self.lineEdit_outputPath_merge.setFont(font5)
-        self.lineEdit_outputPath_merge.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_merge)
-
-        self.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
-        self.lineEdit_filename_merge.setObjectName(u"lineEdit_filename_merge")
-        self.lineEdit_filename_merge.setMinimumSize(QSize(330, 30))
-        self.lineEdit_filename_merge.setMaximumSize(QSize(360, 16777215))
-        self.lineEdit_filename_merge.setFont(font5)
-        self.lineEdit_filename_merge.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_merge)
-
-        self.label_tags_merge = QLabel(self.frame_output_merge)
-        self.label_tags_merge.setObjectName(u"label_tags_merge")
-        self.label_tags_merge.setMinimumSize(QSize(0, 0))
-        self.label_tags_merge.setMaximumSize(QSize(16777215, 16777215))
-        font6 = QFont()
-        font6.setFamily(u"Segoe UI")
-        font6.setPointSize(11)
-        self.label_tags_merge.setFont(font6)
-        self.label_tags_merge.setStyleSheet(u"color: rgb(112, 117, 125);")
-
-        self.formLayout_3.setWidget(3, QFormLayout.FieldRole, self.label_tags_merge)
-
         self.pushButton_outputPath_merge = QPushButton(self.frame_output_merge)
         self.pushButton_outputPath_merge.setObjectName(u"pushButton_outputPath_merge")
-        self.pushButton_outputPath_merge.setMinimumSize(QSize(40, 30))
+        self.pushButton_outputPath_merge.setMinimumSize(QSize(50, 35))
         self.pushButton_outputPath_merge.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -898,6 +852,48 @@ class Ui_MainWindow(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_merge)
 
+        self.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
+        self.lineEdit_outputPath_merge.setObjectName(u"lineEdit_outputPath_merge")
+        self.lineEdit_outputPath_merge.setMinimumSize(QSize(370, 35))
+        self.lineEdit_outputPath_merge.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_outputPath_merge.setFont(font5)
+        self.lineEdit_outputPath_merge.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_merge)
+
+        self.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
+        self.lineEdit_filename_merge.setObjectName(u"lineEdit_filename_merge")
+        self.lineEdit_filename_merge.setMinimumSize(QSize(370, 35))
+        self.lineEdit_filename_merge.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_filename_merge.setFont(font5)
+        self.lineEdit_filename_merge.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_merge)
+
 
         self.horizontalLayout_23.addWidget(self.frame_output_merge, 0, Qt.AlignHCenter|Qt.AlignTop)
 
@@ -908,11 +904,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_21.addWidget(self.frame_merge, 0, Qt.AlignHCenter)
 
 
-        self.verticalLayout_17.addWidget(self.frame_home)
+        self.verticalLayout_17.addWidget(self.frame_home, 0, Qt.AlignHCenter)
 
         self.frame_drop_merge = QFrame(self.frame_main_merge)
         self.frame_drop_merge.setObjectName(u"frame_drop_merge")
-        self.frame_drop_merge.setMinimumSize(QSize(600, 200))
+        sizePolicy.setHeightForWidth(self.frame_drop_merge.sizePolicy().hasHeightForWidth())
+        self.frame_drop_merge.setSizePolicy(sizePolicy)
+        self.frame_drop_merge.setMinimumSize(QSize(600, 220))
         self.frame_drop_merge.setMaximumSize(QSize(16777215, 16777215))
         self.frame_drop_merge.setFrameShape(QFrame.StyledPanel)
         self.frame_drop_merge.setFrameShadow(QFrame.Raised)
@@ -921,14 +919,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setContentsMargins(5, 9, 5, -1)
         self.label_drop_merge = QLabel(self.frame_drop_merge)
         self.label_drop_merge.setObjectName(u"label_drop_merge")
-        self.label_drop_merge.setMinimumSize(QSize(640, 0))
-        self.label_drop_merge.setMaximumSize(QSize(640, 16777215))
-        font7 = QFont()
-        font7.setFamily(u"Segoe UI")
-        font7.setPointSize(12)
-        font7.setBold(True)
-        font7.setWeight(75)
-        self.label_drop_merge.setFont(font7)
+        sizePolicy4.setHeightForWidth(self.label_drop_merge.sizePolicy().hasHeightForWidth())
+        self.label_drop_merge.setSizePolicy(sizePolicy4)
+        self.label_drop_merge.setMinimumSize(QSize(750, 0))
+        self.label_drop_merge.setMaximumSize(QSize(16777215, 16777215))
+        font6 = QFont()
+        font6.setFamily(u"Segoe UI")
+        font6.setPointSize(12)
+        font6.setBold(True)
+        font6.setWeight(75)
+        self.label_drop_merge.setFont(font6)
         self.label_drop_merge.setStyleSheet(u"border-radius: 7px;\n"
 "border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
@@ -940,7 +940,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.addWidget(self.frame_drop_merge, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
-        self.verticalLayout_24.addWidget(self.frame_main_merge, 0, Qt.AlignTop)
+        self.verticalLayout_24.addWidget(self.frame_main_merge, 0, Qt.AlignHCenter|Qt.AlignTop)
 
         self.stackedWidget.addWidget(self.page_merge)
         self.page_extract = QWidget()
@@ -956,15 +956,17 @@ class Ui_MainWindow(object):
         self.frame_main_extract.setFrameShape(QFrame.StyledPanel)
         self.frame_main_extract.setFrameShadow(QFrame.Raised)
         self.verticalLayout_13 = QVBoxLayout(self.frame_main_extract)
+        self.verticalLayout_13.setSpacing(9)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(-1, -1, -1, 9)
         self.frame_extract_main = QFrame(self.frame_main_extract)
         self.frame_extract_main.setObjectName(u"frame_extract_main")
-        self.frame_extract_main.setMaximumSize(QSize(710, 16777215))
+        self.frame_extract_main.setMaximumSize(QSize(16777215, 16777215))
         self.frame_extract_main.setFrameShape(QFrame.StyledPanel)
         self.frame_extract_main.setFrameShadow(QFrame.Raised)
         self.verticalLayout_20 = QVBoxLayout(self.frame_extract_main)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.verticalLayout_20.setContentsMargins(9, 9, 9, 9)
+        self.verticalLayout_20.setContentsMargins(9, 5, 9, 5)
         self.frame_description_extract = QFrame(self.frame_extract_main)
         self.frame_description_extract.setObjectName(u"frame_description_extract")
         self.frame_description_extract.setMinimumSize(QSize(0, 0))
@@ -986,8 +988,8 @@ class Ui_MainWindow(object):
 
         self.frame_top_page_extract = QFrame(self.frame_extract_main)
         self.frame_top_page_extract.setObjectName(u"frame_top_page_extract")
-        self.frame_top_page_extract.setMinimumSize(QSize(690, 0))
-        self.frame_top_page_extract.setMaximumSize(QSize(690, 16777215))
+        self.frame_top_page_extract.setMinimumSize(QSize(750, 160))
+        self.frame_top_page_extract.setMaximumSize(QSize(750, 16777215))
         self.frame_top_page_extract.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
 "border-top: 3px solid rgb(85, 170, 255);")
@@ -1014,11 +1016,11 @@ class Ui_MainWindow(object):
         self.frame_input_extract.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_22 = QHBoxLayout(self.frame_input_extract)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.horizontalLayout_22.setContentsMargins(9, 0, 9, 0)
+        self.horizontalLayout_22.setContentsMargins(5, 0, 5, 5)
         self.pushButton_run_extract = QPushButton(self.frame_input_extract)
         self.pushButton_run_extract.setObjectName(u"pushButton_run_extract")
-        self.pushButton_run_extract.setMinimumSize(QSize(40, 0))
-        self.pushButton_run_extract.setMaximumSize(QSize(40, 30))
+        self.pushButton_run_extract.setMinimumSize(QSize(50, 35))
+        self.pushButton_run_extract.setMaximumSize(QSize(50, 16777215))
         self.pushButton_run_extract.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1039,9 +1041,9 @@ class Ui_MainWindow(object):
 
         self.pushButton_selectFiles_extract = QPushButton(self.frame_input_extract)
         self.pushButton_selectFiles_extract.setObjectName(u"pushButton_selectFiles_extract")
-        self.pushButton_selectFiles_extract.setMinimumSize(QSize(160, 30))
-        self.pushButton_selectFiles_extract.setMaximumSize(QSize(150, 16777215))
-        self.pushButton_selectFiles_extract.setFont(font)
+        self.pushButton_selectFiles_extract.setMinimumSize(QSize(180, 35))
+        self.pushButton_selectFiles_extract.setMaximumSize(QSize(180, 16777215))
+        self.pushButton_selectFiles_extract.setFont(font5)
         self.pushButton_selectFiles_extract.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1078,7 +1080,8 @@ class Ui_MainWindow(object):
         self.formLayout_5.setContentsMargins(9, 9, 9, 9)
         self.pushButton_outputPath_extract = QPushButton(self.frame_output_extract)
         self.pushButton_outputPath_extract.setObjectName(u"pushButton_outputPath_extract")
-        self.pushButton_outputPath_extract.setMinimumSize(QSize(40, 30))
+        self.pushButton_outputPath_extract.setMinimumSize(QSize(50, 35))
+        self.pushButton_outputPath_extract.setMaximumSize(QSize(16777215, 16777215))
         self.pushButton_outputPath_extract.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1099,7 +1102,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_outputPath_extract.setObjectName(u"lineEdit_outputPath_extract")
-        self.lineEdit_outputPath_extract.setMinimumSize(QSize(360, 30))
+        self.lineEdit_outputPath_extract.setMinimumSize(QSize(370, 35))
         self.lineEdit_outputPath_extract.setMaximumSize(QSize(16777215, 16777215))
         self.lineEdit_outputPath_extract.setFont(font5)
         self.lineEdit_outputPath_extract.setStyleSheet(u"QLineEdit {\n"
@@ -1120,7 +1123,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_filename_extract.setObjectName(u"lineEdit_filename_extract")
-        self.lineEdit_filename_extract.setMinimumSize(QSize(360, 30))
+        self.lineEdit_filename_extract.setMinimumSize(QSize(370, 35))
         self.lineEdit_filename_extract.setMaximumSize(QSize(16777215, 16777215))
         self.lineEdit_filename_extract.setFont(font5)
         self.lineEdit_filename_extract.setStyleSheet(u"QLineEdit {\n"
@@ -1139,27 +1142,19 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_extract)
 
-        self.label_tags_extract = QLabel(self.frame_output_extract)
-        self.label_tags_extract.setObjectName(u"label_tags_extract")
-        self.label_tags_extract.setMinimumSize(QSize(0, 0))
-        self.label_tags_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.label_tags_extract.setFont(font6)
-        self.label_tags_extract.setStyleSheet(u"color: rgb(112, 117, 125);")
-
-        self.formLayout_5.setWidget(3, QFormLayout.FieldRole, self.label_tags_extract)
-
 
         self.horizontalLayout_25.addWidget(self.frame_output_extract, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
-        self.verticalLayout_20.addWidget(self.frame_top_page_extract, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+        self.verticalLayout_20.addWidget(self.frame_top_page_extract, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
         self.verticalLayout_13.addWidget(self.frame_extract_main)
 
         self.frame_options_extract = QFrame(self.frame_main_extract)
         self.frame_options_extract.setObjectName(u"frame_options_extract")
-        self.frame_options_extract.setMinimumSize(QSize(690, 0))
+        self.frame_options_extract.setMinimumSize(QSize(750, 130))
+        self.frame_options_extract.setMaximumSize(QSize(750, 16777215))
         self.frame_options_extract.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;")
         self.frame_options_extract.setFrameShape(QFrame.StyledPanel)
@@ -1167,24 +1162,21 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24 = QHBoxLayout(self.frame_options_extract)
         self.horizontalLayout_24.setSpacing(0)
         self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
-        self.horizontalLayout_24.setContentsMargins(-1, 5, -1, 5)
+        self.horizontalLayout_24.setContentsMargins(-1, 9, -1, 9)
         self.frame_pages_extract = QFrame(self.frame_options_extract)
         self.frame_pages_extract.setObjectName(u"frame_pages_extract")
         self.frame_pages_extract.setFrameShape(QFrame.StyledPanel)
         self.frame_pages_extract.setFrameShadow(QFrame.Raised)
         self.verticalLayout_23 = QVBoxLayout(self.frame_pages_extract)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.verticalLayout_23.setContentsMargins(9, 9, 50, 9)
+        self.verticalLayout_23.setContentsMargins(9, 9, 40, 9)
         self.comboBox_extractPages = QComboBox(self.frame_pages_extract)
         self.comboBox_extractPages.addItem("")
         self.comboBox_extractPages.addItem("")
         self.comboBox_extractPages.setObjectName(u"comboBox_extractPages")
-        self.comboBox_extractPages.setMinimumSize(QSize(0, 0))
-        self.comboBox_extractPages.setMaximumSize(QSize(16777215, 33))
-        font8 = QFont()
-        font8.setFamily(u"Segoe UI")
-        font8.setPointSize(9)
-        self.comboBox_extractPages.setFont(font8)
+        self.comboBox_extractPages.setMinimumSize(QSize(180, 35))
+        self.comboBox_extractPages.setMaximumSize(QSize(180, 35))
+        self.comboBox_extractPages.setFont(font5)
         self.comboBox_extractPages.setStyleSheet(u"border: 2px solid rgb(64, 71, 88);\n"
 "border-radius: 5px;	\n"
 "background-color:#2E3342;")
@@ -1193,9 +1185,9 @@ class Ui_MainWindow(object):
 
         self.lineEdit_intPages_extract = QLineEdit(self.frame_pages_extract)
         self.lineEdit_intPages_extract.setObjectName(u"lineEdit_intPages_extract")
-        self.lineEdit_intPages_extract.setMinimumSize(QSize(200, 28))
+        self.lineEdit_intPages_extract.setMinimumSize(QSize(0, 35))
         self.lineEdit_intPages_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_intPages_extract.setFont(font6)
+        self.lineEdit_intPages_extract.setFont(font5)
         self.lineEdit_intPages_extract.setStyleSheet(u"background-color: rgb(27, 29, 35);\n"
 "border-radius: 5px;\n"
 "border: 2px solid rgb(27, 29, 35);\n"
@@ -1212,10 +1204,10 @@ class Ui_MainWindow(object):
         self.frame__checkbox_extract.setFrameShadow(QFrame.Raised)
         self.verticalLayout_25 = QVBoxLayout(self.frame__checkbox_extract)
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
-        self.verticalLayout_25.setContentsMargins(9, 9, 50, 9)
+        self.verticalLayout_25.setContentsMargins(0, 9, 100, 9)
         self.checkBox_split = QCheckBox(self.frame__checkbox_extract)
         self.checkBox_split.setObjectName(u"checkBox_split")
-        self.checkBox_split.setFont(font6)
+        self.checkBox_split.setFont(font5)
         self.checkBox_split.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1228,7 +1220,7 @@ class Ui_MainWindow(object):
 
         self.checkBox_extract = QCheckBox(self.frame__checkbox_extract)
         self.checkBox_extract.setObjectName(u"checkBox_extract")
-        self.checkBox_extract.setFont(font6)
+        self.checkBox_extract.setFont(font5)
         self.checkBox_extract.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1243,26 +1235,27 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.addWidget(self.frame__checkbox_extract, 0, Qt.AlignHCenter)
 
 
-        self.verticalLayout_13.addWidget(self.frame_options_extract, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+        self.verticalLayout_13.addWidget(self.frame_options_extract, 0, Qt.AlignHCenter)
 
         self.frame_drop_extract = QFrame(self.frame_main_extract)
         self.frame_drop_extract.setObjectName(u"frame_drop_extract")
-        self.frame_drop_extract.setMinimumSize(QSize(690, 200))
+        self.frame_drop_extract.setMinimumSize(QSize(750, 0))
         self.frame_drop_extract.setMaximumSize(QSize(16777215, 16777215))
         self.frame_drop_extract.setFrameShape(QFrame.StyledPanel)
         self.frame_drop_extract.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_18 = QHBoxLayout(self.frame_drop_extract)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.horizontalLayout_18.setContentsMargins(5, 20, 5, -1)
+        self.horizontalLayout_18.setContentsMargins(9, 9, 9, -1)
         self.label_drop_extract = QLabel(self.frame_drop_extract)
         self.label_drop_extract.setObjectName(u"label_drop_extract")
-        self.label_drop_extract.setMinimumSize(QSize(680, 180))
-        self.label_drop_extract.setFont(font7)
+        self.label_drop_extract.setMinimumSize(QSize(750, 140))
+        self.label_drop_extract.setMaximumSize(QSize(16777215, 16777215))
+        self.label_drop_extract.setFont(font6)
         self.label_drop_extract.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
         self.label_drop_extract.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_18.addWidget(self.label_drop_extract)
+        self.horizontalLayout_18.addWidget(self.label_drop_extract, 0, Qt.AlignVCenter)
 
 
         self.verticalLayout_13.addWidget(self.frame_drop_extract, 0, Qt.AlignHCenter)
@@ -1312,7 +1305,7 @@ class Ui_MainWindow(object):
 
         self.frame_top_page_ocr = QFrame(self.frame_ocr)
         self.frame_top_page_ocr.setObjectName(u"frame_top_page_ocr")
-        self.frame_top_page_ocr.setMinimumSize(QSize(0, 150))
+        self.frame_top_page_ocr.setMinimumSize(QSize(750, 180))
         self.frame_top_page_ocr.setMaximumSize(QSize(16777215, 16777215))
         self.frame_top_page_ocr.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
@@ -1340,12 +1333,12 @@ class Ui_MainWindow(object):
         self.frame_input_ocr.setFrameShadow(QFrame.Raised)
         self.gridLayout_5 = QGridLayout(self.frame_input_ocr)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.gridLayout_5.setContentsMargins(9, 5, 9, 5)
+        self.gridLayout_5.setContentsMargins(5, 5, 5, 5)
         self.pushButton_selectFiles_ocr = QPushButton(self.frame_input_ocr)
         self.pushButton_selectFiles_ocr.setObjectName(u"pushButton_selectFiles_ocr")
-        self.pushButton_selectFiles_ocr.setMinimumSize(QSize(160, 30))
-        self.pushButton_selectFiles_ocr.setMaximumSize(QSize(150, 16777215))
-        self.pushButton_selectFiles_ocr.setFont(font)
+        self.pushButton_selectFiles_ocr.setMinimumSize(QSize(180, 30))
+        self.pushButton_selectFiles_ocr.setMaximumSize(QSize(16777215, 35))
+        self.pushButton_selectFiles_ocr.setFont(font5)
         self.pushButton_selectFiles_ocr.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1366,8 +1359,8 @@ class Ui_MainWindow(object):
 
         self.pushButton_run_ocr = QPushButton(self.frame_input_ocr)
         self.pushButton_run_ocr.setObjectName(u"pushButton_run_ocr")
-        self.pushButton_run_ocr.setMinimumSize(QSize(40, 0))
-        self.pushButton_run_ocr.setMaximumSize(QSize(40, 30))
+        self.pushButton_run_ocr.setMinimumSize(QSize(50, 35))
+        self.pushButton_run_ocr.setMaximumSize(QSize(40, 16777215))
         self.pushButton_run_ocr.setAutoFillBackground(False)
         self.pushButton_run_ocr.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
@@ -1392,7 +1385,7 @@ class Ui_MainWindow(object):
 
         self.frame_dpi_ocr = QFrame(self.frame_left_ocr)
         self.frame_dpi_ocr.setObjectName(u"frame_dpi_ocr")
-        self.frame_dpi_ocr.setMinimumSize(QSize(0, 0))
+        self.frame_dpi_ocr.setMinimumSize(QSize(140, 0))
         self.frame_dpi_ocr.setFont(font4)
         self.frame_dpi_ocr.setFrameShape(QFrame.StyledPanel)
         self.frame_dpi_ocr.setFrameShadow(QFrame.Raised)
@@ -1402,15 +1395,16 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(20, 0, 20, 9)
         self.label_intDpi_ocr = QLabel(self.frame_dpi_ocr)
         self.label_intDpi_ocr.setObjectName(u"label_intDpi_ocr")
-        self.label_intDpi_ocr.setFont(font)
+        self.label_intDpi_ocr.setMinimumSize(QSize(0, 0))
+        self.label_intDpi_ocr.setFont(font5)
 
-        self.gridLayout_2.addWidget(self.label_intDpi_ocr, 0, 0, 1, 1, Qt.AlignLeft)
+        self.gridLayout_2.addWidget(self.label_intDpi_ocr, 0, 0, 1, 1, Qt.AlignHCenter)
 
         self.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
         self.lineEdit_intDpi_ocr.setObjectName(u"lineEdit_intDpi_ocr")
         self.lineEdit_intDpi_ocr.setMinimumSize(QSize(0, 30))
-        self.lineEdit_intDpi_ocr.setMaximumSize(QSize(50, 16777215))
-        self.lineEdit_intDpi_ocr.setFont(font)
+        self.lineEdit_intDpi_ocr.setMaximumSize(QSize(55, 16777215))
+        self.lineEdit_intDpi_ocr.setFont(font5)
         self.lineEdit_intDpi_ocr.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1425,7 +1419,7 @@ class Ui_MainWindow(object):
 "	border: 2px solid rgb(85, 170, 255);\n"
 "}")
 
-        self.gridLayout_2.addWidget(self.lineEdit_intDpi_ocr, 0, 1, 1, 1, Qt.AlignRight)
+        self.gridLayout_2.addWidget(self.lineEdit_intDpi_ocr, 0, 1, 1, 1, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
         self.verticalLayout_28.addWidget(self.frame_dpi_ocr, 0, Qt.AlignLeft|Qt.AlignTop)
@@ -1445,7 +1439,7 @@ class Ui_MainWindow(object):
         self.formLayout_6.setContentsMargins(9, 5, 9, 5)
         self.pushButton_outputPath_ocr = QPushButton(self.frame_output_ocr)
         self.pushButton_outputPath_ocr.setObjectName(u"pushButton_outputPath_ocr")
-        self.pushButton_outputPath_ocr.setMinimumSize(QSize(40, 30))
+        self.pushButton_outputPath_ocr.setMinimumSize(QSize(50, 35))
         self.pushButton_outputPath_ocr.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1466,8 +1460,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_outputPath_ocr.setObjectName(u"lineEdit_outputPath_ocr")
-        self.lineEdit_outputPath_ocr.setMinimumSize(QSize(0, 30))
-        self.lineEdit_outputPath_ocr.setMaximumSize(QSize(360, 16777215))
+        self.lineEdit_outputPath_ocr.setMinimumSize(QSize(370, 35))
+        self.lineEdit_outputPath_ocr.setMaximumSize(QSize(16777215, 16777215))
         self.lineEdit_outputPath_ocr.setFont(font5)
         self.lineEdit_outputPath_ocr.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
@@ -1487,8 +1481,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_filename_ocr.setObjectName(u"lineEdit_filename_ocr")
-        self.lineEdit_filename_ocr.setMinimumSize(QSize(0, 30))
-        self.lineEdit_filename_ocr.setMaximumSize(QSize(360, 16777215))
+        self.lineEdit_filename_ocr.setMinimumSize(QSize(370, 35))
+        self.lineEdit_filename_ocr.setMaximumSize(QSize(16777215, 16777215))
         self.lineEdit_filename_ocr.setFont(font5)
         self.lineEdit_filename_ocr.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
@@ -1506,15 +1500,6 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_ocr)
 
-        self.label_tags_ocr = QLabel(self.frame_output_ocr)
-        self.label_tags_ocr.setObjectName(u"label_tags_ocr")
-        self.label_tags_ocr.setMinimumSize(QSize(0, 0))
-        self.label_tags_ocr.setMaximumSize(QSize(16777215, 16777215))
-        self.label_tags_ocr.setFont(font6)
-        self.label_tags_ocr.setStyleSheet(u"color: rgb(112, 117, 125);")
-
-        self.formLayout_6.setWidget(3, QFormLayout.FieldRole, self.label_tags_ocr)
-
 
         self.horizontalLayout_28.addWidget(self.frame_output_ocr, 0, Qt.AlignHCenter|Qt.AlignTop)
 
@@ -1527,7 +1512,7 @@ class Ui_MainWindow(object):
         self.frame_drop_ocr = QFrame(self.frame_main_ocr)
         self.frame_drop_ocr.setObjectName(u"frame_drop_ocr")
         self.frame_drop_ocr.setMinimumSize(QSize(0, 200))
-        self.frame_drop_ocr.setMaximumSize(QSize(690, 16777215))
+        self.frame_drop_ocr.setMaximumSize(QSize(16777215, 16777215))
         self.frame_drop_ocr.setFrameShape(QFrame.StyledPanel)
         self.frame_drop_ocr.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_19 = QHBoxLayout(self.frame_drop_ocr)
@@ -1535,9 +1520,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.setContentsMargins(5, 0, 5, -1)
         self.label_drop_ocr = QLabel(self.frame_drop_ocr)
         self.label_drop_ocr.setObjectName(u"label_drop_ocr")
-        self.label_drop_ocr.setMinimumSize(QSize(680, 0))
+        self.label_drop_ocr.setMinimumSize(QSize(750, 0))
         self.label_drop_ocr.setMaximumSize(QSize(16777215, 16777215))
-        self.label_drop_ocr.setFont(font7)
+        self.label_drop_ocr.setFont(font6)
         self.label_drop_ocr.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
         self.label_drop_ocr.setAlignment(Qt.AlignCenter)
@@ -1556,10 +1541,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_12 = QVBoxLayout(self.page_search)
         self.verticalLayout_12.setSpacing(16)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(30, 5, 30, 5)
+        self.verticalLayout_12.setContentsMargins(25, 5, 20, 5)
         self.frame_top_page_search = QFrame(self.page_search)
         self.frame_top_page_search.setObjectName(u"frame_top_page_search")
-        self.frame_top_page_search.setMinimumSize(QSize(840, 0))
+        self.frame_top_page_search.setMinimumSize(QSize(860, 0))
         self.frame_top_page_search.setMaximumSize(QSize(840, 16777215))
         self.frame_top_page_search.setFrameShape(QFrame.StyledPanel)
         self.frame_top_page_search.setFrameShadow(QFrame.Raised)
@@ -1584,7 +1569,7 @@ class Ui_MainWindow(object):
 
         self.frame_middle = QFrame(self.frame_top_page_search)
         self.frame_middle.setObjectName(u"frame_middle")
-        self.frame_middle.setMinimumSize(QSize(840, 0))
+        self.frame_middle.setMinimumSize(QSize(860, 0))
         self.frame_middle.setMaximumSize(QSize(840, 16777215))
         self.frame_middle.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
@@ -1606,9 +1591,9 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setContentsMargins(5, 5, 9, 5)
         self.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
         self.lineEdit_moveto_search.setObjectName(u"lineEdit_moveto_search")
-        self.lineEdit_moveto_search.setMinimumSize(QSize(0, 30))
+        self.lineEdit_moveto_search.setMinimumSize(QSize(0, 35))
         self.lineEdit_moveto_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_moveto_search.setFont(font6)
+        self.lineEdit_moveto_search.setFont(font5)
         self.lineEdit_moveto_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1630,7 +1615,7 @@ class Ui_MainWindow(object):
         self.label_else_search.setObjectName(u"label_else_search")
         self.label_else_search.setMinimumSize(QSize(200, 0))
         self.label_else_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_else_search.setFont(font6)
+        self.label_else_search.setFont(font5)
         self.label_else_search.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_else_search.setAlignment(Qt.AlignCenter)
 
@@ -1639,7 +1624,7 @@ class Ui_MainWindow(object):
         self.label_moveto_search = QLabel(self.frame_keywords)
         self.label_moveto_search.setObjectName(u"label_moveto_search")
         self.label_moveto_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_moveto_search.setFont(font6)
+        self.label_moveto_search.setFont(font5)
         self.label_moveto_search.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_moveto_search.setAlignment(Qt.AlignCenter)
 
@@ -1647,9 +1632,9 @@ class Ui_MainWindow(object):
 
         self.pushButton_run_search = QPushButton(self.frame_keywords)
         self.pushButton_run_search.setObjectName(u"pushButton_run_search")
-        self.pushButton_run_search.setMinimumSize(QSize(120, 30))
+        self.pushButton_run_search.setMinimumSize(QSize(120, 35))
         self.pushButton_run_search.setMaximumSize(QSize(16777215, 16777215))
-        self.pushButton_run_search.setFont(font)
+        self.pushButton_run_search.setFont(font5)
         self.pushButton_run_search.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1672,9 +1657,9 @@ class Ui_MainWindow(object):
 
         self.lineEdit_else_search = QLineEdit(self.frame_keywords)
         self.lineEdit_else_search.setObjectName(u"lineEdit_else_search")
-        self.lineEdit_else_search.setMinimumSize(QSize(0, 30))
+        self.lineEdit_else_search.setMinimumSize(QSize(0, 35))
         self.lineEdit_else_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_else_search.setFont(font6)
+        self.lineEdit_else_search.setFont(font5)
         self.lineEdit_else_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1695,7 +1680,7 @@ class Ui_MainWindow(object):
         self.label_keywords_search.setObjectName(u"label_keywords_search")
         self.label_keywords_search.setMinimumSize(QSize(0, 0))
         self.label_keywords_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_keywords_search.setFont(font6)
+        self.label_keywords_search.setFont(font5)
         self.label_keywords_search.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_keywords_search.setAlignment(Qt.AlignCenter)
 
@@ -1703,9 +1688,9 @@ class Ui_MainWindow(object):
 
         self.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
         self.lineEdit_keywords_search.setObjectName(u"lineEdit_keywords_search")
-        self.lineEdit_keywords_search.setMinimumSize(QSize(230, 30))
+        self.lineEdit_keywords_search.setMinimumSize(QSize(230, 35))
         self.lineEdit_keywords_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_keywords_search.setFont(font6)
+        self.lineEdit_keywords_search.setFont(font5)
         self.lineEdit_keywords_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1738,8 +1723,8 @@ class Ui_MainWindow(object):
         sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.frame_top_page.sizePolicy().hasHeightForWidth())
         self.frame_top_page.setSizePolicy(sizePolicy5)
-        self.frame_top_page.setMinimumSize(QSize(840, 135))
-        self.frame_top_page.setMaximumSize(QSize(840, 16777215))
+        self.frame_top_page.setMinimumSize(QSize(860, 110))
+        self.frame_top_page.setMaximumSize(QSize(860, 16777215))
         self.frame_top_page.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;")
         self.frame_top_page.setFrameShape(QFrame.StyledPanel)
@@ -1750,7 +1735,7 @@ class Ui_MainWindow(object):
         self.frame_input = QFrame(self.frame_top_page)
         self.frame_input.setObjectName(u"frame_input")
         self.frame_input.setMinimumSize(QSize(180, 0))
-        self.frame_input.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_input.setMaximumSize(QSize(170, 16777215))
         self.frame_input.setFont(font4)
         self.frame_input.setStyleSheet(u"border: 0px;")
         self.frame_input.setFrameShape(QFrame.StyledPanel)
@@ -1760,9 +1745,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setContentsMargins(9, 5, 5, 5)
         self.pushButton_selectFiles_search = QPushButton(self.frame_input)
         self.pushButton_selectFiles_search.setObjectName(u"pushButton_selectFiles_search")
-        self.pushButton_selectFiles_search.setMinimumSize(QSize(0, 30))
-        self.pushButton_selectFiles_search.setMaximumSize(QSize(160, 16777215))
-        self.pushButton_selectFiles_search.setFont(font)
+        self.pushButton_selectFiles_search.setMinimumSize(QSize(170, 35))
+        self.pushButton_selectFiles_search.setMaximumSize(QSize(120, 16777215))
+        font7 = QFont()
+        font7.setFamily(u"Segoe UI")
+        font7.setPointSize(11)
+        self.pushButton_selectFiles_search.setFont(font7)
         self.pushButton_selectFiles_search.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1782,21 +1770,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.addWidget(self.pushButton_selectFiles_search)
 
 
-        self.horizontalLayout_13.addWidget(self.frame_input, 0, Qt.AlignHCenter|Qt.AlignTop)
+        self.horizontalLayout_13.addWidget(self.frame_input, 0, Qt.AlignLeft|Qt.AlignTop)
 
         self.frame_output = QFrame(self.frame_top_page)
         self.frame_output.setObjectName(u"frame_output")
-        self.frame_output.setMinimumSize(QSize(0, 0))
-        self.frame_output.setMaximumSize(QSize(300, 16777215))
+        self.frame_output.setMinimumSize(QSize(310, 0))
+        self.frame_output.setMaximumSize(QSize(16777215, 16777215))
         self.frame_output.setStyleSheet(u"border: 0px;")
         self.frame_output.setFrameShape(QFrame.StyledPanel)
         self.frame_output.setFrameShadow(QFrame.Raised)
         self.formLayout = QFormLayout(self.frame_output)
         self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setContentsMargins(5, 5, 9, 5)
+        self.formLayout.setContentsMargins(4, 5, 14, 5)
         self.pushButton_outputPath_search = QPushButton(self.frame_output)
         self.pushButton_outputPath_search.setObjectName(u"pushButton_outputPath_search")
-        self.pushButton_outputPath_search.setMinimumSize(QSize(40, 30))
+        self.pushButton_outputPath_search.setMinimumSize(QSize(50, 35))
         self.pushButton_outputPath_search.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1817,9 +1805,9 @@ class Ui_MainWindow(object):
 
         self.lineEdit_outputPath_search = QLineEdit(self.frame_output)
         self.lineEdit_outputPath_search.setObjectName(u"lineEdit_outputPath_search")
-        self.lineEdit_outputPath_search.setMinimumSize(QSize(220, 30))
-        self.lineEdit_outputPath_search.setMaximumSize(QSize(250, 16777215))
-        self.lineEdit_outputPath_search.setFont(font6)
+        self.lineEdit_outputPath_search.setMinimumSize(QSize(0, 35))
+        self.lineEdit_outputPath_search.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_outputPath_search.setFont(font5)
         self.lineEdit_outputPath_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1838,9 +1826,9 @@ class Ui_MainWindow(object):
 
         self.lineEdit_filename_search = QLineEdit(self.frame_output)
         self.lineEdit_filename_search.setObjectName(u"lineEdit_filename_search")
-        self.lineEdit_filename_search.setMinimumSize(QSize(230, 30))
-        self.lineEdit_filename_search.setMaximumSize(QSize(250, 16777215))
-        self.lineEdit_filename_search.setFont(font6)
+        self.lineEdit_filename_search.setMinimumSize(QSize(0, 35))
+        self.lineEdit_filename_search.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_filename_search.setFont(font5)
         self.lineEdit_filename_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1857,15 +1845,6 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_search)
 
-        self.label_tags_search = QLabel(self.frame_output)
-        self.label_tags_search.setObjectName(u"label_tags_search")
-        self.label_tags_search.setMinimumSize(QSize(0, 0))
-        self.label_tags_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_tags_search.setFont(font)
-        self.label_tags_search.setStyleSheet(u"color: rgb(112, 117, 125);")
-
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.label_tags_search)
-
 
         self.horizontalLayout_13.addWidget(self.frame_output, 0, Qt.AlignHCenter|Qt.AlignTop)
 
@@ -1873,6 +1852,9 @@ class Ui_MainWindow(object):
         self.frame_checkBox_.setObjectName(u"frame_checkBox_")
         self.frame_checkBox_.setMinimumSize(QSize(0, 0))
         self.frame_checkBox_.setMaximumSize(QSize(16777215, 16777215))
+        font8 = QFont()
+        font8.setFamily(u"Segoe UI")
+        font8.setPointSize(9)
         self.frame_checkBox_.setFont(font8)
         self.frame_checkBox_.setStyleSheet(u"border: 0px;")
         self.frame_checkBox_.setFrameShape(QFrame.StyledPanel)
@@ -1880,21 +1862,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4 = QGridLayout(self.frame_checkBox_)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setHorizontalSpacing(20)
-        self.gridLayout_4.setContentsMargins(5, 5, 9, 5)
-        self.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
-        self.checkBox_ignoreSpaces_search.setObjectName(u"checkBox_ignoreSpaces_search")
-        self.checkBox_ignoreSpaces_search.setMinimumSize(QSize(0, 20))
-        self.checkBox_ignoreSpaces_search.setFont(font)
-        self.checkBox_ignoreSpaces_search.setStyleSheet(u"QCheckBox::indicator {\n"
-"   border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 9px;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.gridLayout_4.addWidget(self.checkBox_ignoreSpaces_search, 0, 1, 1, 1)
-
+        self.gridLayout_4.setContentsMargins(0, 5, 9, 5)
         self.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignorePontuation_search.setObjectName(u"checkBox_ignorePontuation_search")
         self.checkBox_ignorePontuation_search.setMinimumSize(QSize(0, 20))
@@ -1908,34 +1876,6 @@ class Ui_MainWindow(object):
 "}")
 
         self.gridLayout_4.addWidget(self.checkBox_ignorePontuation_search, 2, 0, 1, 1)
-
-        self.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
-        self.checkBox_ignoreFirstPage_search.setObjectName(u"checkBox_ignoreFirstPage_search")
-        self.checkBox_ignoreFirstPage_search.setMinimumSize(QSize(0, 20))
-        self.checkBox_ignoreFirstPage_search.setFont(font)
-        self.checkBox_ignoreFirstPage_search.setStyleSheet(u"QCheckBox::indicator {\n"
-"   border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 9px;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.gridLayout_4.addWidget(self.checkBox_ignoreFirstPage_search, 1, 1, 1, 1)
-
-        self.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
-        self.checkBox_onlyPages_search.setObjectName(u"checkBox_onlyPages_search")
-        self.checkBox_onlyPages_search.setMinimumSize(QSize(0, 20))
-        self.checkBox_onlyPages_search.setFont(font)
-        self.checkBox_onlyPages_search.setStyleSheet(u"QCheckBox::indicator {\n"
-"   border: 2px solid rgb(64, 71, 88);\n"
-"	border-radius: 9px;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.gridLayout_4.addWidget(self.checkBox_onlyPages_search, 0, 0, 1, 1)
 
         self.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpecialChar_search.setObjectName(u"checkBox_ignoreSpecialChar_search")
@@ -1952,6 +1892,48 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreSpecialChar_search, 1, 0, 1, 1)
 
+        self.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
+        self.checkBox_onlyPages_search.setObjectName(u"checkBox_onlyPages_search")
+        self.checkBox_onlyPages_search.setMinimumSize(QSize(0, 20))
+        self.checkBox_onlyPages_search.setFont(font)
+        self.checkBox_onlyPages_search.setStyleSheet(u"QCheckBox::indicator {\n"
+"   border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 9px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.gridLayout_4.addWidget(self.checkBox_onlyPages_search, 0, 0, 1, 1)
+
+        self.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
+        self.checkBox_ignoreSpaces_search.setObjectName(u"checkBox_ignoreSpaces_search")
+        self.checkBox_ignoreSpaces_search.setMinimumSize(QSize(0, 20))
+        self.checkBox_ignoreSpaces_search.setFont(font)
+        self.checkBox_ignoreSpaces_search.setStyleSheet(u"QCheckBox::indicator {\n"
+"   border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 9px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.gridLayout_4.addWidget(self.checkBox_ignoreSpaces_search, 0, 1, 1, 1)
+
+        self.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
+        self.checkBox_ignoreFirstPage_search.setObjectName(u"checkBox_ignoreFirstPage_search")
+        self.checkBox_ignoreFirstPage_search.setMinimumSize(QSize(0, 20))
+        self.checkBox_ignoreFirstPage_search.setFont(font)
+        self.checkBox_ignoreFirstPage_search.setStyleSheet(u"QCheckBox::indicator {\n"
+"   border: 2px solid rgb(64, 71, 88);\n"
+"	border-radius: 9px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.gridLayout_4.addWidget(self.checkBox_ignoreFirstPage_search, 1, 1, 1, 1)
+
 
         self.horizontalLayout_13.addWidget(self.frame_checkBox_, 0, Qt.AlignLeft|Qt.AlignTop)
 
@@ -1960,18 +1942,18 @@ class Ui_MainWindow(object):
 
         self.frame_drop_search = QFrame(self.page_search)
         self.frame_drop_search.setObjectName(u"frame_drop_search")
-        self.frame_drop_search.setMinimumSize(QSize(0, 60))
-        self.frame_drop_search.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_drop_search.setMinimumSize(QSize(0, 0))
+        self.frame_drop_search.setMaximumSize(QSize(860, 16777215))
         self.frame_drop_search.setFrameShape(QFrame.StyledPanel)
         self.frame_drop_search.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_drop_search)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_9.setContentsMargins(9, 0, 9, 0)
         self.label_drop_search = QLabel(self.frame_drop_search)
         self.label_drop_search.setObjectName(u"label_drop_search")
-        self.label_drop_search.setMinimumSize(QSize(0, 60))
-        self.label_drop_search.setMaximumSize(QSize(830, 60))
-        self.label_drop_search.setFont(font7)
+        self.label_drop_search.setMinimumSize(QSize(840, 90))
+        self.label_drop_search.setMaximumSize(QSize(16777215, 100))
+        self.label_drop_search.setFont(font6)
         self.label_drop_search.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
         self.label_drop_search.setAlignment(Qt.AlignCenter)
@@ -1979,10 +1961,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.label_drop_search)
 
 
-        self.verticalLayout_12.addWidget(self.frame_drop_search)
+        self.verticalLayout_12.addWidget(self.frame_drop_search, 0, Qt.AlignHCenter)
 
         self.frame_tab = QFrame(self.page_search)
         self.frame_tab.setObjectName(u"frame_tab")
+        self.frame_tab.setMinimumSize(QSize(860, 0))
         self.frame_tab.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;")
         self.frame_tab.setFrameShape(QFrame.StyledPanel)
@@ -2167,13 +2150,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_18 = QVBoxLayout(self.frame_main_zip)
         self.verticalLayout_18.setSpacing(30)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
-        self.verticalLayout_18.setContentsMargins(5, 5, 5, 5)
+        self.verticalLayout_18.setContentsMargins(0, 5, 0, 5)
         self.frame_zip = QFrame(self.frame_main_zip)
         self.frame_zip.setObjectName(u"frame_zip")
         self.frame_zip.setFrameShape(QFrame.StyledPanel)
         self.frame_zip.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_zip)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.frame_description_zip = QFrame(self.frame_zip)
         self.frame_description_zip.setObjectName(u"frame_description_zip")
         self.frame_description_zip.setMinimumSize(QSize(0, 0))
@@ -2195,8 +2179,8 @@ class Ui_MainWindow(object):
 
         self.frame_top_page_zip = QFrame(self.frame_zip)
         self.frame_top_page_zip.setObjectName(u"frame_top_page_zip")
-        self.frame_top_page_zip.setMinimumSize(QSize(690, 150))
-        self.frame_top_page_zip.setMaximumSize(QSize(815, 16777215))
+        self.frame_top_page_zip.setMinimumSize(QSize(750, 180))
+        self.frame_top_page_zip.setMaximumSize(QSize(16777215, 16777215))
         self.frame_top_page_zip.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;\n"
 "border-top: 3px solid rgb(85, 170, 255);")
@@ -2204,7 +2188,7 @@ class Ui_MainWindow(object):
         self.frame_top_page_zip.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_29 = QHBoxLayout(self.frame_top_page_zip)
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
-        self.horizontalLayout_29.setContentsMargins(9, 5, 9, 5)
+        self.horizontalLayout_29.setContentsMargins(0, 5, 0, 5)
         self.frame_input_zip = QFrame(self.frame_top_page_zip)
         self.frame_input_zip.setObjectName(u"frame_input_zip")
         self.frame_input_zip.setMinimumSize(QSize(0, 0))
@@ -2218,7 +2202,7 @@ class Ui_MainWindow(object):
         self.gridLayout_7.setContentsMargins(9, 5, 9, 5)
         self.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
         self.lineEdit_rootDirectory_zip.setObjectName(u"lineEdit_rootDirectory_zip")
-        self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(260, 30))
+        self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(260, 35))
         self.lineEdit_rootDirectory_zip.setMaximumSize(QSize(16777215, 16777215))
         self.lineEdit_rootDirectory_zip.setFont(font5)
         self.lineEdit_rootDirectory_zip.setStyleSheet(u"QLineEdit {\n"
@@ -2239,7 +2223,7 @@ class Ui_MainWindow(object):
 
         self.pushButton_selectRootDirectory_zip = QPushButton(self.frame_input_zip)
         self.pushButton_selectRootDirectory_zip.setObjectName(u"pushButton_selectRootDirectory_zip")
-        self.pushButton_selectRootDirectory_zip.setMinimumSize(QSize(40, 30))
+        self.pushButton_selectRootDirectory_zip.setMinimumSize(QSize(50, 35))
         self.pushButton_selectRootDirectory_zip.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2260,8 +2244,8 @@ class Ui_MainWindow(object):
 
         self.pushButton_run_zip = QPushButton(self.frame_input_zip)
         self.pushButton_run_zip.setObjectName(u"pushButton_run_zip")
-        self.pushButton_run_zip.setMinimumSize(QSize(40, 30))
-        self.pushButton_run_zip.setMaximumSize(QSize(40, 30))
+        self.pushButton_run_zip.setMinimumSize(QSize(50, 35))
+        self.pushButton_run_zip.setMaximumSize(QSize(16777215, 16777215))
         self.pushButton_run_zip.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2292,61 +2276,10 @@ class Ui_MainWindow(object):
         self.frame_output_zip.setFrameShadow(QFrame.Raised)
         self.formLayout_7 = QFormLayout(self.frame_output_zip)
         self.formLayout_7.setObjectName(u"formLayout_7")
-        self.formLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
-        self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
-        self.lineEdit_filename_zip.setMinimumSize(QSize(0, 30))
-        self.lineEdit_filename_zip.setMaximumSize(QSize(360, 16777215))
-        self.lineEdit_filename_zip.setFont(font5)
-        self.lineEdit_filename_zip.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.formLayout_7.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_zip)
-
-        self.label_tags_zip = QLabel(self.frame_output_zip)
-        self.label_tags_zip.setObjectName(u"label_tags_zip")
-        self.label_tags_zip.setMinimumSize(QSize(0, 30))
-        self.label_tags_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.label_tags_zip.setFont(font6)
-        self.label_tags_zip.setStyleSheet(u"color: rgb(112, 117, 125);")
-
-        self.formLayout_7.setWidget(3, QFormLayout.FieldRole, self.label_tags_zip)
-
-        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
-        self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
-        self.lineEdit_outputPath_zip.setMinimumSize(QSize(360, 30))
-        self.lineEdit_outputPath_zip.setMaximumSize(QSize(360, 16777215))
-        self.lineEdit_outputPath_zip.setFont(font5)
-        self.lineEdit_outputPath_zip.setStyleSheet(u"QLineEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QLineEdit:hover {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"	border: 2px solid rgb(85, 170, 255);\n"
-"}")
-
-        self.formLayout_7.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_zip)
-
+        self.formLayout_7.setContentsMargins(9, 5, 12, 5)
         self.pushButton_outputPath_zip = QPushButton(self.frame_output_zip)
         self.pushButton_outputPath_zip.setObjectName(u"pushButton_outputPath_zip")
-        self.pushButton_outputPath_zip.setMinimumSize(QSize(40, 30))
+        self.pushButton_outputPath_zip.setMinimumSize(QSize(50, 35))
         self.pushButton_outputPath_zip.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -2365,6 +2298,48 @@ class Ui_MainWindow(object):
 
         self.formLayout_7.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_zip)
 
+        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
+        self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
+        self.lineEdit_outputPath_zip.setMinimumSize(QSize(0, 35))
+        self.lineEdit_outputPath_zip.setMaximumSize(QSize(355, 16777215))
+        self.lineEdit_outputPath_zip.setFont(font5)
+        self.lineEdit_outputPath_zip.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.formLayout_7.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_zip)
+
+        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
+        self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
+        self.lineEdit_filename_zip.setMinimumSize(QSize(0, 35))
+        self.lineEdit_filename_zip.setMaximumSize(QSize(16777215, 16777215))
+        self.lineEdit_filename_zip.setFont(font5)
+        self.lineEdit_filename_zip.setStyleSheet(u"QLineEdit {\n"
+"	background-color: rgb(27, 29, 35);\n"
+"	border-radius: 5px;\n"
+"	border: 2px solid rgb(27, 29, 35);\n"
+"	padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"	border: 2px solid rgb(91, 101, 124);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"	border: 2px solid rgb(85, 170, 255);\n"
+"}")
+
+        self.formLayout_7.setWidget(1, QFormLayout.FieldRole, self.lineEdit_filename_zip)
+
 
         self.horizontalLayout_29.addWidget(self.frame_output_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
 
@@ -2373,18 +2348,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_18.addWidget(self.frame_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-        self.frame_drop_zip = QFrame(self.frame_main_zip)
-        self.frame_drop_zip.setObjectName(u"frame_drop_zip")
-        self.frame_drop_zip.setMinimumSize(QSize(600, 200))
-        self.frame_drop_zip.setMaximumSize(QSize(690, 16777215))
-        self.frame_drop_zip.setFrameShape(QFrame.StyledPanel)
-        self.frame_drop_zip.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_20 = QHBoxLayout(self.frame_drop_zip)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(5, 0, 5, -1)
-
-        self.verticalLayout_18.addWidget(self.frame_drop_zip, 0, Qt.AlignHCenter|Qt.AlignTop)
 
 
         self.verticalLayout_8.addWidget(self.frame_main_zip, 0, Qt.AlignTop)
@@ -2397,7 +2360,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setContentsMargins(30, 20, 30, -1)
         self.textBrowser_credits = QTextBrowser(self.page_credits)
         self.textBrowser_credits.setObjectName(u"textBrowser_credits")
-        self.textBrowser_credits.setFont(font)
         self.textBrowser_credits.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;")
         self.textBrowser_credits.setOpenExternalLinks(True)
@@ -2412,7 +2374,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setContentsMargins(30, 20, 30, -1)
         self.textBrowser = QTextBrowser(self.page_help)
         self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setFont(font)
         self.textBrowser.setStyleSheet(u"background-color:#343A4B;\n"
 "border-radius: 7px;")
 
@@ -2469,7 +2430,7 @@ class Ui_MainWindow(object):
         self.label_credits = QLabel(self.frame_label_bottom)
         self.label_credits.setObjectName(u"label_credits")
         self.label_credits.setMinimumSize(QSize(0, 20))
-        self.label_credits.setFont(font6)
+        self.label_credits.setFont(font7)
         self.label_credits.setStyleSheet(u"")
         self.label_credits.setOpenExternalLinks(True)
 
@@ -2520,7 +2481,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2545,13 +2506,12 @@ class Ui_MainWindow(object):
         self.pushButton_close.setText("")
         self.label_top_info_1.setText(QCoreApplication.translate("MainWindow", u"Giving you a hand for automation.", None))
         self.label_top_info_2.setText(QCoreApplication.translate("MainWindow", u"| HOME", None))
-        self.label_description_merge.setText(QCoreApplication.translate("MainWindow", u"MESCLAR ARQUIVOS PDF", None))
+        self.label_description_merge.setText(QCoreApplication.translate("MainWindow", u"COMBINAR ARQUIVOS PDF", None))
         self.pushButton_run_merge.setText("")
         self.pushButton_selectFiles_merge.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
+        self.pushButton_outputPath_merge.setText("")
         self.lineEdit_outputPath_merge.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_merge.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
-        self.label_tags_merge.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis:#year #month #day #time #origin", None))
-        self.pushButton_outputPath_merge.setText("")
         self.label_drop_merge.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
         self.label_description_extract.setText(QCoreApplication.translate("MainWindow", u"EXTRAIR P\u00c1GINAS OU DIVIDIR ARQUIVOS PDF", None))
         self.pushButton_run_extract.setText("")
@@ -2559,8 +2519,6 @@ class Ui_MainWindow(object):
         self.pushButton_outputPath_extract.setText("")
         self.lineEdit_outputPath_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_extract.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin,#pages", None))
-        self.label_tags_extract.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day\n"
-"#time #pages #origin", None))
         self.comboBox_extractPages.setItemText(0, QCoreApplication.translate("MainWindow", u"P\u00e1ginas indicadas", None))
         self.comboBox_extractPages.setItemText(1, QCoreApplication.translate("MainWindow", u"A cada n p\u00e1ginas", None))
 
@@ -2576,9 +2534,8 @@ class Ui_MainWindow(object):
         self.pushButton_outputPath_ocr.setText("")
         self.lineEdit_outputPath_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
-        self.label_tags_ocr.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis:#year #month #day #time #origin", None))
         self.label_drop_ocr.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
-        self.label_description_search.setText(QCoreApplication.translate("MainWindow", u"ORGANIZAR ARQUIVOS PDF PROCURANDO POR EXPRESS\u00d5ES REGULARES", None))
+        self.label_description_search.setText(QCoreApplication.translate("MainWindow", u"CLASSIFICAR ARQUIVOS PDF", None))
         self.lineEdit_moveto_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Tabela1:2", None))
         self.label_else_search.setText(QCoreApplication.translate("MainWindow", u"Se n\u00e3o encontrar mover para pasta", None))
         self.label_moveto_search.setText(QCoreApplication.translate("MainWindow", u"Mover para pasta", None))
@@ -2591,13 +2548,11 @@ class Ui_MainWindow(object):
         self.pushButton_outputPath_search.setText("")
         self.lineEdit_outputPath_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
-        self.label_tags_search.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day\n"
-"#time #pages #origin", None))
-        self.checkBox_ignoreSpaces_search.setText(QCoreApplication.translate("MainWindow", u"Ignorar espa\u00e7os", None))
         self.checkBox_ignorePontuation_search.setText(QCoreApplication.translate("MainWindow", u"Ignorar pontua\u00e7\u00e3o", None))
-        self.checkBox_ignoreFirstPage_search.setText(QCoreApplication.translate("MainWindow", u"Ignorar primeira linha", None))
-        self.checkBox_onlyPages_search.setText(QCoreApplication.translate("MainWindow", u"Mover apenas p\u00e1ginas", None))
         self.checkBox_ignoreSpecialChar_search.setText(QCoreApplication.translate("MainWindow", u"Ignorar acentos", None))
+        self.checkBox_onlyPages_search.setText(QCoreApplication.translate("MainWindow", u"Mover apenas p\u00e1ginas", None))
+        self.checkBox_ignoreSpaces_search.setText(QCoreApplication.translate("MainWindow", u"Ignorar espa\u00e7os", None))
+        self.checkBox_ignoreFirstPage_search.setText(QCoreApplication.translate("MainWindow", u"Ignorar primeira linha", None))
         self.label_drop_search.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
         self.pushButton_addTable_search.setText("")
         self.pushButton_deleteTable_search.setText("")
@@ -2607,172 +2562,98 @@ class Ui_MainWindow(object):
         self.lineEdit_rootDirectory_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio raiz", None))
         self.pushButton_selectRootDirectory_zip.setText("")
         self.pushButton_run_zip.setText("")
-        self.lineEdit_filename_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
-        self.label_tags_zip.setText(QCoreApplication.translate("MainWindow", u"Tags dispon\u00edveis: #year #month #day #time #origin", None))
-        self.lineEdit_outputPath_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.pushButton_outputPath_zip.setText("")
+        self.lineEdit_outputPath_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
+        self.lineEdit_filename_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
         self.textBrowser_credits.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Ahand: Giving you a hand for automation.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Copyright (C) 2020  Matheus Melo</spa"
-                        "n></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/demelomatt/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/demelomatt/</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-typ"
-                        "e:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.gnu.org/licenses/\"><span style=\" font-family:'MS Shell Dlg "
-                        "2'; text-decoration: underline; color:#70757d;\">https://www.gnu.org/licenses/</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">User interface created with QT Creator.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.qt.io/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://www.qt.io/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';"
-                        "\">Licensed under LGPLv3 conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">QT Python binaries by Pyside.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.qt.io/qt-for-python/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://www.qt.io/qt-for-python/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under LGPLv3 con"
-                        "ditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">PySide Base by Wanderson Magalhaes.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Wanderson-Magalhaes/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/Wanderson-Magalhaes/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under MIT License condit"
-                        "ions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">OCR engine by Tesseract.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/tesseract-ocr/tesseract/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/tesseract-ocr/tesseract/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under Apache License 2.0 condi"
-                        "tions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Tesseract installer for Windows by UB-Mannheim.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/UB-Mannheim/tesseract/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/UB-Mannheim/tesseract/</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-""
-                        "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Python-tesseract wrapper by pytesseract.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/madmaze/pytesseract/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/madmaze/pytesseract/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under Apache License 2.0 conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br />"
-                        "</p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Python Imaging Library by Pillow</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/python-pillow/Pillow/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/python-pillow/Pillow/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under the open source PIL Software License conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS S"
-                        "hell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Convert PDF to a PIL Image object by pdf2image.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Belval/pdf2image/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/Belval/pdf2image/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under MIT License conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'M"
-                        "S Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">PDF rendering library by Poppler.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://poppler.freedesktop.org/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://poppler.freedesktop.org/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under GPLv3 conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /><"
-                        "/p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Poppler Windows binaries by oschwartz10612.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/oschwartz10612/poppler-windows/releases/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/oschwartz10612/poppler-windows/releases/</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">P"
-                        "ython PDF toolkit by PYPDF2.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/mstamy2/PyPDF2/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/mstamy2/PyPDF2/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under BSD License conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Extracts the text fr"
-                        "om a PDF page by pdfminer.six.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/pdfminer/pdfminer.six/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://github.com/pdfminer/pdfminer.six/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under MIT License conditions.</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Soun"
-                        "d-playing interface for Windows by winsound.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://docs.python.org/3/library/winsound.html\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://docs.python.org/3/library/winsound.html</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Icons by Flaticon.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.flaticon.com/\"><span s"
-                        "tyle=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://www.flaticon.com/</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Sound Effects by Freesound.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://freesound.org/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://freesound.org/</span></a></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:"
-                        "0px; font-family:'MS Shell Dlg 2';\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Developed with Python.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span style=\" font-family:'MS Shell Dlg 2'; text-decoration: underline; color:#70757d;\">https://www.python.org/</span></a></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">Licensed under PSF LICENSE conditions.</span></p></body></html>", None))
-        self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\">Tags:</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\""
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Ahand: Giving you a hand for automation.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Copyright (C) 2020  Matheus Melo</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-botto"
+                        "m:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/demelomatt/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/demelomatt/</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent"
+                        ":0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.gnu.org/licenses/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://www.gnu.org/licenses/</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px"
+                        "; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">User interface created with QT Creator.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.qt.io/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://www.qt.io/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under LGPLv3 conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size"
+                        ":10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">QT Python binaries by Pyside.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.qt.io/qt-for-python/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://www.qt.io/qt-for-python/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under LGPLv3 conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0"
+                        "px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">PySide Base by Wanderson Magalhaes.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Wanderson-Magalhaes/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/Wanderson-Magalhaes/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under MIT License conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                        "text-indent:0px;\"><span style=\" font-size:10pt;\">OCR engine by Tesseract.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/tesseract-ocr/tesseract/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/tesseract-ocr/tesseract/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under Apache License 2.0 conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Tes"
+                        "seract installer for Windows by UB-Mannheim.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/UB-Mannheim/tesseract/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/UB-Mannheim/tesseract/</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Python-tesseract wrapper by pytesseract.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/madmaze/pytesseract/\"><span style=\" font-size:"
+                        "10pt; text-decoration: underline; color:#70757d;\">https://github.com/madmaze/pytesseract/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under Apache License 2.0 conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Python Imaging Library by Pillow</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/python-pillow/Pillow/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">htt"
+                        "ps://github.com/python-pillow/Pillow/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under the open source PIL Software License conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Convert PDF to a PIL Image object by pdf2image.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Belval/pdf2image/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/Belval/p"
+                        "df2image/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under MIT License conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">PDF rendering library by Poppler.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://poppler.freedesktop.org/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://poppler.freedesktop.org/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; m"
+                        "argin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under GPLv3 conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Poppler Windows binaries by oschwartz10612.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/oschwartz10612/poppler-windows/releases/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/oschwartz10612/poppler-windows/releases/</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-to"
+                        "p:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Python PDF toolkit by PYPDF2.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/mstamy2/PyPDF2/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/mstamy2/PyPDF2/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under BSD License conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-inde"
+                        "nt:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Extracts the text from a PDF page by pdfminer.six.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/pdfminer/pdfminer.six/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://github.com/pdfminer/pdfminer.six/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under MIT License conditions.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\""
                         "><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">Tags s\u00e3o padr\u00f5es que voc\u00ea pode usar para renomear os arquivos.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Tags dispon\u00edveis:</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-botto"
-                        "m:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	#origin = Nome original do arquivo.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	#pages = P\u00e1gina extra\u00edda.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	#year = Ano atual.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	#month = M\u00eas atual.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'"
-                        "MS Shell Dlg 2'; font-size:11pt;\">	#day = Dia atual.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	#time = Hor\u00e1rio atual.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Exemplo:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Arquivo de entrada: C:\\Downloads\\myfile.pdf</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-r"
-                        "ight:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Nome do arquivo: #origin,Nome qualquer,#pages,#year,#month,#day,#time</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Arquivo de sa\u00edda: C:\\Downloads\\myfile_Nome qualquer_4_2020_09_10_23_05_50.pdf</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inde"
-                        "nt:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\">Mesclar arquivos PDF:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt; text-decoration: underline;\">Entrada</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt; font-weight:600;\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">Selecionar ao menos 2 arquivos para mesclar.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0;"
-                        " text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar diret\u00f3rio de sa\u00edda.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar nome do arquivo.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt; text-decoration: underline;\">Sa\u00edda</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">: um arquivo.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margi"
-                        "n-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt; text-decoration: underline;\">Exemplo</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">:</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Arquivos: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf</span></p>\n"
-"<p style=\" margin-top:0px; mar"
-                        "gin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Diret\u00f3rio de sa\u00edda: C:\\Downloads\\</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Nome do arquivo: #origin, MERGED</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Resultado: C:\\Downloads\\file1_MERGED.pdf</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                        "text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\">Extrair p\u00e1ginas ou dividir arquivos PDF:</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:12pt;\">	</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt; text-decoration: underline;\">Entrada</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; m"
-                        "argin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar ao menos 1 arquivo.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar diret\u00f3rio de sa\u00edda.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar nome do arquivo.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar uma op\u00e7\u00e3o da caixa de sele\u00e7\u00e3o.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inde"
-                        "nt:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Selecionar uma op\u00e7\u00e3o da lista.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Caixa de sele\u00e7\u00e3o:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Dividir arquivo: A partir de um arquivo, gera outros arquivos com as p\u00e1ginas indicadas.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; f"
-                        "ont-size:11pt;\">	Extrair no mesmo arquivo: A partir de um arquivo, gera um \u00fanico arquivo com as p\u00e1ginas indicadas.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	Lista:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	P\u00e1ginas indicadas: N\u00famero inteiro ou intervalo. Ex: 2, 4-7, 9-17</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:11pt;\">	A cada n p"
-                        "\u00e1ginas: N\u00famero inteiro com o padr\u00e3o que as p\u00e1ginas dever\u00e3o ser extra\u00eddas. Ex: 5</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:12pt;\">	</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:12pt;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';\"><br /></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Sound-playing interface for Windows by winsound.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://docs.python.org/3/library/winsound.html\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://docs.python.org/3/library/winsound.html</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Icons by Flaticon.</span></p>\n"
+"<p align=\"center\" style=\" margi"
+                        "n-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.flaticon.com/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://www.flaticon.com/</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Sound Effects by Freesound.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://freesound.org/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://freesound.org/</span></a></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-to"
+                        "p:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Developed with Python.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://www.python.org/</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under PSF LICENSE conditions.</span></p></body></html>", None))
         self.label_feedback.setText(QCoreApplication.translate("MainWindow", u"Pesquisando por palavra...", None))
         self.label_credits.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><a href=\"https://github.com/demelomatt/\"><span style=\" color:#70757d;\">https://github.com/demelomatt/</span></a></p></body></html>", None))
         self.label_version.setText(QCoreApplication.translate("MainWindow", u"v1.1.0", None))
