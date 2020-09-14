@@ -2,14 +2,20 @@
 ![logoahand](Ahand_Logo.png)
 
 Descrição:
-    Projeto para automação de rotinas que envolvem arquivos PDF.
-    Com Ahand é possível:
+    Ahand (Give me a hand) é um programa para otimização de processos que envolvam arquivos PDF. Com Ahand é possível:
+    
     Combinar arquivos PDF.
+    
     Extrair páginas de arquivos PDF.
+    
     Dividir arquivos PDF.
-    Escanear arquivos PDF, transformando em um PDF pesquisável, através da tecnologia OCR.
-    Classificar arquivos PDF, procurando por um conjunto de palavras.
-    Compactar arquivos PDF contidos em subspastas de uma pasta raiz.
+    
+    Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.
+    
+    Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
+    
+    Compactar arquivos PDF contidos em subpastas de uma pasta raiz.
+    
     
 Licença:
     Código licenciado sob as condições da GPL3.
