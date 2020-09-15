@@ -227,7 +227,8 @@ class UIFunctions(Ui_MainWindow):
         # Deletar tabela
         currentTabIndex = self.ui.tabWidget.currentIndex()
         self.ui.tabWidget.removeTab(currentTabIndex)
-        UIFunctions.label_drop_csv(self)
+        if currentTabIndex >= 0:
+            UIFunctions.label_drop_csv(self)
 
     def buttonSelectPath(self,lineEditOutput,msg):
         # Selecionar pasta de saída e salvar caminho

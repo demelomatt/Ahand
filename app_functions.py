@@ -85,7 +85,7 @@ class PDFfunctions(QThread):
                 lineEdit_keywords_search = self.ui.lineEdit_keywords_search.text().lstrip().rstrip()
                 lineEdit_moveto_search = self.ui.lineEdit_moveto_search.text().lstrip().rstrip()
 
-                goForward = self.emptyData(inputPdfPaths,lineEdit_outputPath,keywords=lineEdit_keywords_search,moveto=lineEdit_moveto_search)
+                goForward = self.emptyData(inputPdfPaths,lineEdit_outputPath,keywords=lineEdit_keywords_search)
                 if goForward:
                     functionValue = PDFfunctions.searchPattern(self,inputPdfPaths,lineEdit_outputPath,self.ui.lineEdit_filename_search.text())
             
@@ -175,7 +175,7 @@ class PDFfunctions(QThread):
 
         return string, keyword
 
-    def rename(self,arguments,outputDirectory,basename='',pages=0,ext='.pdf',keywords='',group='',rowIDs=[]):
+    def rename(self,arguments,outputDirectory,basename='',pages=0,ext='.pdf',rowIDs=[],delimiter="_"):
     # Renomear arquivos PDF. arguments deve receber algum dos parâmetros em dic ou então uma string.
     # outputDirectory recebe o diretório de saída do arquivo.
     # basename recebe o nome do arquivo sem a extensão e diretório.
@@ -184,7 +184,7 @@ class PDFfunctions(QThread):
     # keywords e group são parâmetros definidos somente para a função searchPattern.
 
         name = []
-        delimiter = "_"
+        delimiter = delimiter
         if type(pages) == int:
             pages = (str(pages + 1))
         
@@ -216,6 +216,8 @@ class PDFfunctions(QThread):
         for argument in arguments:
             # Adiciona argumentos ao nome.
             noSpaceArgument = re.sub('[ ]+', '', argument)
+            noSpaceArgument = noSpaceArgument.replace('\n','')
+            noSpaceArgument = noSpaceArgument.replace('\t','')
             try:
                 name.append(dic[re.sub('[ ]+', '', noSpaceArgument)]) # Remover espaços e procurar palavra no dicionário
             except:
@@ -405,7 +407,11 @@ class PDFfunctions(QThread):
                             nextn = n + page
                             pdf_reader = PdfFileReader(infile,strict = False)
                             pdf_writer = PdfFileWriter()
-                            pageNumbers = [str(n+1) + str("-") + str(nextn)]
+                            if page == 1:
+                                pageNumbers = [str(n+1)]
+                            else:
+                                pageNumbers = [str(n+1) + str("-") + str(nextn)]
+
                             for i in range(n,nextn):
                                 pdf_writer.addPage(pdf_reader.getPage(i))
                                 
@@ -532,16 +538,6 @@ class PDFfunctions(QThread):
 
         ignoreFirstPage = self.ui.checkBox_ignoreFirstPage_search.checkState()  
 
-        # Recebe o nome da lineEdit e extrai o nome da tabela e coluna para onde o arquivo será exportado
-        # Localiza a tabela com o nome dado
-        queryMoveToColumn = self.ui.lineEdit_moveto_search.text().lstrip().rstrip()
-        queryMoveToColumnList = queryMoveToColumn.split(",")
-        tableMoveToColumnList = queryMoveToColumnList[0].split(":")
-        tableNameMoveToColumn = tableMoveToColumnList[0]
-        columnIDMoveToColumn = int(tableMoveToColumnList[1]) - 1
-        rowIDMoveToColumn = 0
-        tableWidgetObjectMoveTo = "tableWidget " + tableNameMoveToColumn
-        tableWidgtMoveTo = self.ui.tabWidget.findChild(QTableWidget, tableWidgetObjectMoveTo)
         
         # Recebe o nome da lineEdit com a query a ser executada e atribui a uma lista
         queryKeyword = self.ui.lineEdit_keywords_search.text().lstrip().rstrip()
@@ -561,12 +557,12 @@ class PDFfunctions(QThread):
             basename = os.path.basename(splitext)
             
             # Verificar quantidade de páginas do arquivo
-            pdf_reader = PdfFileReader(path,strict = False)
+            pdf_reader = PdfFileReader(path)
             totalPages = pdf_reader.getNumPages()
             moveOnlyPages = self.ui.checkBox_onlyPages_search.checkState() # moveOnlyPages é um boolean que indica se será movido somente as páginas que contem as palavras informadas ou o arquivo todo.
 
             # Abrir arquivo
-            with open(r"{}".format(path), 'rb') as in_file:
+            with open(path, 'rb') as in_file:
                 parser = PDFParser(in_file)
                 doc = PDFDocument(parser)
                 rsrcmgr = PDFResourceManager()
@@ -643,20 +639,13 @@ class PDFfunctions(QThread):
                                             keywordsFound.append(oldKeyword) # Adiciona a palavra encontrada a uma lista 
                                             queryFound.append(query) # Adiciona a query executada a uma lista para que não seja repetida
                                             rowIDs.append(tableName + ":" + str(rowId)) # Adiciona o nome da tabela e linha onde foi encontrada a palavra em uma lista
-                                        
-                                        # Verifica qual é a linha da tabela que contém o nome da pasta para qual será exportada
-                                        if tableName == tableNameMoveToColumn:
-                                            rowIDMoveToColumn = rowId
 
                                     # Se todas as querys foram executadas e foi encontrado palavras
                                     if len(keywordsFound) == len(queryKeywordList):
                                         # Verifica se somente as páginas ou todo o arquivo será movido.
-                                        test = PDFfunctions.rename(self,self.ui.lineEdit_moveto_search.text(),'',ext='',rowIDS = rowIDs)
-                                        folder = tableWidgtMoveTo.item(rowIDMoveToColumn,columnIDMoveToColumn).text() # Nome da pasta
-                                        #folder = PDFfunctions.regex(self,folder,folder,False,False,True)[0] # Remover pontuação
-                                        finalOutputDirectory = outputDirectory + "/" + folder # Caminho do diretório
-                                        PDFfunctions.createDirectory(self,finalOutputDirectory)
-                                        finalName = PDFfunctions.rename(self,name,finalOutputDirectory,basename,counterPages,'.pdf',keywordsFound,folder,rowIDs)
+                                        folder = PDFfunctions.rename(self,self.ui.lineEdit_moveto_search.text(),outputDirectory,ext='',rowIDs=rowIDs,delimiter="/")
+                                        PDFfunctions.createDirectory(self,folder)
+                                        finalName = PDFfunctions.rename(self,name,folder,basename,counterPages,'.pdf',rowIDs)
                                         if moveOnlyPages:
                                             self.ui.comboBox_extractPages.setCurrentIndex(0)
                                             PDFfunctions.extract(self,[path],[counterPages],finalName,0)
@@ -670,12 +659,12 @@ class PDFfunctions(QThread):
                                     else:
                                         folderNotFound = self.ui.lineEdit_else_search.text().lstrip().rstrip()
                                         if (folderNotFound != '' and (rowId == len(keywords) and query == queryKeywordList[-1])):
-                                            finalOutputDirectory = outputDirectory + "/" + folderNotFound + "/"
-                                            PDFfunctions.createDirectory(self,finalOutputDirectory)
+                                            folder = outputDirectory + "/" + folderNotFound + "/"
+                                            PDFfunctions.createDirectory(self,folder)
                                             if moveOnlyPages:
                                                 feedbackMsg = "Expressões não encontradas nesta página"
                                                 self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-                                                finalName = finalOutputDirectory + basename + "_page_" + str(counterPages) + ".pdf"
+                                                finalName = folder + basename + "_page_" + str(counterPages) + ".pdf"
                                                 self.ui.comboBox_extractPages.setCurrentIndex(0)
                                                 PDFfunctions.extract(self,[path],[counterPages],finalName,0)
                                                 export = True
@@ -684,12 +673,13 @@ class PDFfunctions(QThread):
                                                 if counterPages == totalPages:
                                                     feedbackMsg = "Expressões não encontradas neste arquivo."
                                                     self.emit(SIGNAL('feedback(QString)'), feedbackMsg)
-                                                    finalName = finalOutputDirectory + basename + ".pdf"
+                                                    finalName = folder + basename + ".pdf"
                                                     in_file.close()
                                                     PDFfunctions.moveFiles(self,path,finalName)
                                                     export = True
                                                     break # prosseguir para o próximo arquivo   
-                except:
+                except Exception as e:
+                    print(e)
                     pass
                 # Fecha os objetos abertos.
                     output_string.close()
@@ -702,12 +692,13 @@ class PDFfunctions(QThread):
 
     def importFromCSV(self):
         # Importar dados de arquivo csv
-        self.ui.label_drop_csv.setParent(None)
+    
         csvPaths = UIFunctions.csvPaths
 
         # Para cada arquivo
         for path in csvPaths:
             csvPath = "".join(path)
+            self.ui.label_drop_csv.setParent(None)
             # Verificar codificação
             try:
                 csvFile = codecs.open(csvPath, encoding = "utf-8")
@@ -820,6 +811,10 @@ class PDFfunctions(QThread):
                 for column_key, column_data in (enumerate(row_data)):
                     # Escrever item
                     tableWidgt.setItem(row_key,column_key,QtWidgets.QTableWidgetItem(str(column_data)))
+
+            tableWidgt.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+            tableWidgt.resizeColumnsToContents()
+
         return 
 
     def zipCompress(self,rootDirectory,outputDirectory,name): 

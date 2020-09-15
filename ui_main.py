@@ -715,6 +715,9 @@ class Ui_MainWindow(object):
         self.frame_description_merge = QFrame(self.frame_merge)
         self.frame_description_merge.setObjectName(u"frame_description_merge")
         self.frame_description_merge.setMinimumSize(QSize(0, 0))
+        font3 = QFont()
+        font3.setPointSize(13)
+        self.frame_description_merge.setFont(font3)
         self.frame_description_merge.setFrameShape(QFrame.StyledPanel)
         self.frame_description_merge.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.frame_description_merge)
@@ -723,12 +726,12 @@ class Ui_MainWindow(object):
         self.label_description_merge = QLabel(self.frame_description_merge)
         self.label_description_merge.setObjectName(u"label_description_merge")
         self.label_description_merge.setMinimumSize(QSize(0, 0))
-        font3 = QFont()
-        font3.setFamily(u"Segoe UI")
-        font3.setPointSize(14)
-        font3.setBold(True)
-        font3.setWeight(75)
-        self.label_description_merge.setFont(font3)
+        font4 = QFont()
+        font4.setFamily(u"Segoe UI")
+        font4.setPointSize(13)
+        font4.setBold(True)
+        font4.setWeight(75)
+        self.label_description_merge.setFont(font4)
         self.label_description_merge.setStyleSheet(u"")
 
         self.horizontalLayout_14.addWidget(self.label_description_merge, 0, Qt.AlignHCenter)
@@ -753,9 +756,9 @@ class Ui_MainWindow(object):
         self.frame_input_merge.setObjectName(u"frame_input_merge")
         self.frame_input_merge.setMinimumSize(QSize(0, 0))
         self.frame_input_merge.setMaximumSize(QSize(16777215, 16777215))
-        font4 = QFont()
-        font4.setFamily(u"Segoe UI")
-        self.frame_input_merge.setFont(font4)
+        font5 = QFont()
+        font5.setFamily(u"Segoe UI")
+        self.frame_input_merge.setFont(font5)
         self.frame_input_merge.setStyleSheet(u"border: 0px;")
         self.frame_input_merge.setFrameShape(QFrame.StyledPanel)
         self.frame_input_merge.setFrameShadow(QFrame.Raised)
@@ -792,10 +795,10 @@ class Ui_MainWindow(object):
         self.pushButton_selectFiles_merge.setObjectName(u"pushButton_selectFiles_merge")
         self.pushButton_selectFiles_merge.setMinimumSize(QSize(180, 35))
         self.pushButton_selectFiles_merge.setMaximumSize(QSize(16777215, 16777215))
-        font5 = QFont()
-        font5.setFamily(u"Segoe UI")
-        font5.setPointSize(12)
-        self.pushButton_selectFiles_merge.setFont(font5)
+        font6 = QFont()
+        font6.setFamily(u"Segoe UI")
+        font6.setPointSize(12)
+        self.pushButton_selectFiles_merge.setFont(font6)
         self.pushButton_selectFiles_merge.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -852,11 +855,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_merge)
 
-        self.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_outputPath_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_outputPath_merge.setObjectName(u"lineEdit_outputPath_merge")
         self.lineEdit_outputPath_merge.setMinimumSize(QSize(370, 35))
         self.lineEdit_outputPath_merge.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_outputPath_merge.setFont(font5)
+        self.lineEdit_outputPath_merge.setFont(font6)
         self.lineEdit_outputPath_merge.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -873,11 +876,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_merge)
 
-        self.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
+        Ui_MainWindow.lineEdit_filename_merge = QLineEdit(self.frame_output_merge)
         self.lineEdit_filename_merge.setObjectName(u"lineEdit_filename_merge")
         self.lineEdit_filename_merge.setMinimumSize(QSize(370, 35))
         self.lineEdit_filename_merge.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_filename_merge.setFont(font5)
+        self.lineEdit_filename_merge.setFont(font6)
         self.lineEdit_filename_merge.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -923,12 +926,12 @@ class Ui_MainWindow(object):
         self.label_drop_merge.setSizePolicy(sizePolicy4)
         self.label_drop_merge.setMinimumSize(QSize(750, 0))
         self.label_drop_merge.setMaximumSize(QSize(16777215, 16777215))
-        font6 = QFont()
-        font6.setFamily(u"Segoe UI")
-        font6.setPointSize(12)
-        font6.setBold(True)
-        font6.setWeight(75)
-        self.label_drop_merge.setFont(font6)
+        font7 = QFont()
+        font7.setFamily(u"Segoe UI")
+        font7.setPointSize(12)
+        font7.setBold(True)
+        font7.setWeight(75)
+        self.label_drop_merge.setFont(font7)
         self.label_drop_merge.setStyleSheet(u"border-radius: 7px;\n"
 "border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
@@ -978,7 +981,7 @@ class Ui_MainWindow(object):
         self.label_description_extract = QLabel(self.frame_description_extract)
         self.label_description_extract.setObjectName(u"label_description_extract")
         self.label_description_extract.setMinimumSize(QSize(0, 0))
-        self.label_description_extract.setFont(font3)
+        self.label_description_extract.setFont(font4)
         self.label_description_extract.setStyleSheet(u"")
 
         self.horizontalLayout_16.addWidget(self.label_description_extract, 0, Qt.AlignLeft)
@@ -1010,7 +1013,7 @@ class Ui_MainWindow(object):
         self.frame_input_extract.setObjectName(u"frame_input_extract")
         self.frame_input_extract.setMinimumSize(QSize(230, 0))
         self.frame_input_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_input_extract.setFont(font4)
+        self.frame_input_extract.setFont(font5)
         self.frame_input_extract.setStyleSheet(u"border: 0px;")
         self.frame_input_extract.setFrameShape(QFrame.StyledPanel)
         self.frame_input_extract.setFrameShadow(QFrame.Raised)
@@ -1043,7 +1046,7 @@ class Ui_MainWindow(object):
         self.pushButton_selectFiles_extract.setObjectName(u"pushButton_selectFiles_extract")
         self.pushButton_selectFiles_extract.setMinimumSize(QSize(180, 35))
         self.pushButton_selectFiles_extract.setMaximumSize(QSize(180, 16777215))
-        self.pushButton_selectFiles_extract.setFont(font5)
+        self.pushButton_selectFiles_extract.setFont(font6)
         self.pushButton_selectFiles_extract.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1100,11 +1103,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_extract)
 
-        self.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
+        Ui_MainWindow.lineEdit_outputPath_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_outputPath_extract.setObjectName(u"lineEdit_outputPath_extract")
         self.lineEdit_outputPath_extract.setMinimumSize(QSize(370, 35))
         self.lineEdit_outputPath_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_outputPath_extract.setFont(font5)
+        self.lineEdit_outputPath_extract.setFont(font6)
         self.lineEdit_outputPath_extract.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1121,11 +1124,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_5.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_extract)
 
-        self.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
+        Ui_MainWindow.lineEdit_filename_extract = QLineEdit(self.frame_output_extract)
         self.lineEdit_filename_extract.setObjectName(u"lineEdit_filename_extract")
         self.lineEdit_filename_extract.setMinimumSize(QSize(370, 35))
         self.lineEdit_filename_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_filename_extract.setFont(font5)
+        self.lineEdit_filename_extract.setFont(font6)
         self.lineEdit_filename_extract.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1170,24 +1173,24 @@ class Ui_MainWindow(object):
         self.verticalLayout_23 = QVBoxLayout(self.frame_pages_extract)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.verticalLayout_23.setContentsMargins(9, 9, 40, 9)
-        self.comboBox_extractPages = QComboBox(self.frame_pages_extract)
+        Ui_MainWindow.comboBox_extractPages = QComboBox(self.frame_pages_extract)
         self.comboBox_extractPages.addItem("")
         self.comboBox_extractPages.addItem("")
         self.comboBox_extractPages.setObjectName(u"comboBox_extractPages")
         self.comboBox_extractPages.setMinimumSize(QSize(180, 35))
         self.comboBox_extractPages.setMaximumSize(QSize(180, 35))
-        self.comboBox_extractPages.setFont(font5)
+        self.comboBox_extractPages.setFont(font6)
         self.comboBox_extractPages.setStyleSheet(u"border: 2px solid rgb(64, 71, 88);\n"
 "border-radius: 5px;	\n"
 "background-color:#2E3342;")
 
         self.verticalLayout_23.addWidget(self.comboBox_extractPages)
 
-        self.lineEdit_intPages_extract = QLineEdit(self.frame_pages_extract)
+        Ui_MainWindow.lineEdit_intPages_extract = QLineEdit(self.frame_pages_extract)
         self.lineEdit_intPages_extract.setObjectName(u"lineEdit_intPages_extract")
         self.lineEdit_intPages_extract.setMinimumSize(QSize(0, 35))
         self.lineEdit_intPages_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_intPages_extract.setFont(font5)
+        self.lineEdit_intPages_extract.setFont(font6)
         self.lineEdit_intPages_extract.setStyleSheet(u"background-color: rgb(27, 29, 35);\n"
 "border-radius: 5px;\n"
 "border: 2px solid rgb(27, 29, 35);\n"
@@ -1205,9 +1208,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_25 = QVBoxLayout(self.frame__checkbox_extract)
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.verticalLayout_25.setContentsMargins(0, 9, 100, 9)
-        self.checkBox_split = QCheckBox(self.frame__checkbox_extract)
+        Ui_MainWindow.checkBox_split = QCheckBox(self.frame__checkbox_extract)
         self.checkBox_split.setObjectName(u"checkBox_split")
-        self.checkBox_split.setFont(font5)
+        self.checkBox_split.setFont(font6)
         self.checkBox_split.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1218,9 +1221,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_25.addWidget(self.checkBox_split)
 
-        self.checkBox_extract = QCheckBox(self.frame__checkbox_extract)
+        Ui_MainWindow.checkBox_extract = QCheckBox(self.frame__checkbox_extract)
         self.checkBox_extract.setObjectName(u"checkBox_extract")
-        self.checkBox_extract.setFont(font5)
+        self.checkBox_extract.setFont(font6)
         self.checkBox_extract.setStyleSheet(u"QCheckBox::indicator {\n"
 "   border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 9px;\n"
@@ -1250,7 +1253,7 @@ class Ui_MainWindow(object):
         self.label_drop_extract.setObjectName(u"label_drop_extract")
         self.label_drop_extract.setMinimumSize(QSize(750, 140))
         self.label_drop_extract.setMaximumSize(QSize(16777215, 16777215))
-        self.label_drop_extract.setFont(font6)
+        self.label_drop_extract.setFont(font7)
         self.label_drop_extract.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
         self.label_drop_extract.setAlignment(Qt.AlignCenter)
@@ -1295,7 +1298,7 @@ class Ui_MainWindow(object):
         self.label_description_ocr = QLabel(self.frame_description_ocr)
         self.label_description_ocr.setObjectName(u"label_description_ocr")
         self.label_description_ocr.setMinimumSize(QSize(0, 0))
-        self.label_description_ocr.setFont(font3)
+        self.label_description_ocr.setFont(font4)
         self.label_description_ocr.setStyleSheet(u"")
 
         self.horizontalLayout_27.addWidget(self.label_description_ocr, 0, Qt.AlignLeft)
@@ -1327,7 +1330,7 @@ class Ui_MainWindow(object):
         self.frame_input_ocr.setObjectName(u"frame_input_ocr")
         self.frame_input_ocr.setMinimumSize(QSize(230, 0))
         self.frame_input_ocr.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_input_ocr.setFont(font4)
+        self.frame_input_ocr.setFont(font5)
         self.frame_input_ocr.setStyleSheet(u"border: 0px;")
         self.frame_input_ocr.setFrameShape(QFrame.StyledPanel)
         self.frame_input_ocr.setFrameShadow(QFrame.Raised)
@@ -1338,7 +1341,7 @@ class Ui_MainWindow(object):
         self.pushButton_selectFiles_ocr.setObjectName(u"pushButton_selectFiles_ocr")
         self.pushButton_selectFiles_ocr.setMinimumSize(QSize(180, 30))
         self.pushButton_selectFiles_ocr.setMaximumSize(QSize(16777215, 35))
-        self.pushButton_selectFiles_ocr.setFont(font5)
+        self.pushButton_selectFiles_ocr.setFont(font6)
         self.pushButton_selectFiles_ocr.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1386,7 +1389,7 @@ class Ui_MainWindow(object):
         self.frame_dpi_ocr = QFrame(self.frame_left_ocr)
         self.frame_dpi_ocr.setObjectName(u"frame_dpi_ocr")
         self.frame_dpi_ocr.setMinimumSize(QSize(140, 0))
-        self.frame_dpi_ocr.setFont(font4)
+        self.frame_dpi_ocr.setFont(font5)
         self.frame_dpi_ocr.setFrameShape(QFrame.StyledPanel)
         self.frame_dpi_ocr.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame_dpi_ocr)
@@ -1396,15 +1399,15 @@ class Ui_MainWindow(object):
         self.label_intDpi_ocr = QLabel(self.frame_dpi_ocr)
         self.label_intDpi_ocr.setObjectName(u"label_intDpi_ocr")
         self.label_intDpi_ocr.setMinimumSize(QSize(0, 0))
-        self.label_intDpi_ocr.setFont(font5)
+        self.label_intDpi_ocr.setFont(font6)
 
         self.gridLayout_2.addWidget(self.label_intDpi_ocr, 0, 0, 1, 1, Qt.AlignHCenter)
 
-        self.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
+        Ui_MainWindow.lineEdit_intDpi_ocr = QLineEdit(self.frame_dpi_ocr)
         self.lineEdit_intDpi_ocr.setObjectName(u"lineEdit_intDpi_ocr")
         self.lineEdit_intDpi_ocr.setMinimumSize(QSize(0, 30))
         self.lineEdit_intDpi_ocr.setMaximumSize(QSize(55, 16777215))
-        self.lineEdit_intDpi_ocr.setFont(font5)
+        self.lineEdit_intDpi_ocr.setFont(font6)
         self.lineEdit_intDpi_ocr.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1458,11 +1461,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_ocr)
 
-        self.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_outputPath_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_outputPath_ocr.setObjectName(u"lineEdit_outputPath_ocr")
         self.lineEdit_outputPath_ocr.setMinimumSize(QSize(370, 35))
         self.lineEdit_outputPath_ocr.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_outputPath_ocr.setFont(font5)
+        self.lineEdit_outputPath_ocr.setFont(font6)
         self.lineEdit_outputPath_ocr.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1479,11 +1482,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_6.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_ocr)
 
-        self.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
+        Ui_MainWindow.lineEdit_filename_ocr = QLineEdit(self.frame_output_ocr)
         self.lineEdit_filename_ocr.setObjectName(u"lineEdit_filename_ocr")
         self.lineEdit_filename_ocr.setMinimumSize(QSize(370, 35))
         self.lineEdit_filename_ocr.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_filename_ocr.setFont(font5)
+        self.lineEdit_filename_ocr.setFont(font6)
         self.lineEdit_filename_ocr.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1522,7 +1525,7 @@ class Ui_MainWindow(object):
         self.label_drop_ocr.setObjectName(u"label_drop_ocr")
         self.label_drop_ocr.setMinimumSize(QSize(750, 0))
         self.label_drop_ocr.setMaximumSize(QSize(16777215, 16777215))
-        self.label_drop_ocr.setFont(font6)
+        self.label_drop_ocr.setFont(font7)
         self.label_drop_ocr.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
         self.label_drop_ocr.setAlignment(Qt.AlignCenter)
@@ -1541,7 +1544,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_12 = QVBoxLayout(self.page_search)
         self.verticalLayout_12.setSpacing(16)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(25, 5, 20, 5)
+        self.verticalLayout_12.setContentsMargins(14, 5, 20, 5)
         self.frame_top_page_search = QFrame(self.page_search)
         self.frame_top_page_search.setObjectName(u"frame_top_page_search")
         self.frame_top_page_search.setMinimumSize(QSize(860, 0))
@@ -1560,7 +1563,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30.setContentsMargins(5, 5, 5, 5)
         self.label_description_search = QLabel(self.frame_description_search)
         self.label_description_search.setObjectName(u"label_description_search")
-        self.label_description_search.setFont(font3)
+        self.label_description_search.setFont(font4)
 
         self.horizontalLayout_30.addWidget(self.label_description_search, 0, Qt.AlignLeft)
 
@@ -1589,11 +1592,11 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QGridLayout(self.frame_keywords)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(5, 5, 9, 5)
-        self.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_moveto_search = QLineEdit(self.frame_keywords)
         self.lineEdit_moveto_search.setObjectName(u"lineEdit_moveto_search")
         self.lineEdit_moveto_search.setMinimumSize(QSize(0, 35))
         self.lineEdit_moveto_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_moveto_search.setFont(font5)
+        self.lineEdit_moveto_search.setFont(font6)
         self.lineEdit_moveto_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1615,7 +1618,7 @@ class Ui_MainWindow(object):
         self.label_else_search.setObjectName(u"label_else_search")
         self.label_else_search.setMinimumSize(QSize(200, 0))
         self.label_else_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_else_search.setFont(font5)
+        self.label_else_search.setFont(font6)
         self.label_else_search.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_else_search.setAlignment(Qt.AlignCenter)
 
@@ -1624,7 +1627,7 @@ class Ui_MainWindow(object):
         self.label_moveto_search = QLabel(self.frame_keywords)
         self.label_moveto_search.setObjectName(u"label_moveto_search")
         self.label_moveto_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_moveto_search.setFont(font5)
+        self.label_moveto_search.setFont(font6)
         self.label_moveto_search.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_moveto_search.setAlignment(Qt.AlignCenter)
 
@@ -1634,7 +1637,7 @@ class Ui_MainWindow(object):
         self.pushButton_run_search.setObjectName(u"pushButton_run_search")
         self.pushButton_run_search.setMinimumSize(QSize(120, 35))
         self.pushButton_run_search.setMaximumSize(QSize(16777215, 16777215))
-        self.pushButton_run_search.setFont(font5)
+        self.pushButton_run_search.setFont(font6)
         self.pushButton_run_search.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1655,11 +1658,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.pushButton_run_search, 0, 0, 1, 1)
 
-        self.lineEdit_else_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_else_search = QLineEdit(self.frame_keywords)
         self.lineEdit_else_search.setObjectName(u"lineEdit_else_search")
         self.lineEdit_else_search.setMinimumSize(QSize(0, 35))
         self.lineEdit_else_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_else_search.setFont(font5)
+        self.lineEdit_else_search.setFont(font6)
         self.lineEdit_else_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1680,17 +1683,17 @@ class Ui_MainWindow(object):
         self.label_keywords_search.setObjectName(u"label_keywords_search")
         self.label_keywords_search.setMinimumSize(QSize(0, 0))
         self.label_keywords_search.setMaximumSize(QSize(16777215, 16777215))
-        self.label_keywords_search.setFont(font5)
+        self.label_keywords_search.setFont(font6)
         self.label_keywords_search.setStyleSheet(u"color: rgb(112, 117, 125);")
         self.label_keywords_search.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_3.addWidget(self.label_keywords_search, 1, 1, 1, 1, Qt.AlignHCenter)
 
-        self.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
+        Ui_MainWindow.lineEdit_keywords_search = QLineEdit(self.frame_keywords)
         self.lineEdit_keywords_search.setObjectName(u"lineEdit_keywords_search")
         self.lineEdit_keywords_search.setMinimumSize(QSize(230, 35))
         self.lineEdit_keywords_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_keywords_search.setFont(font5)
+        self.lineEdit_keywords_search.setFont(font6)
         self.lineEdit_keywords_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1736,7 +1739,7 @@ class Ui_MainWindow(object):
         self.frame_input.setObjectName(u"frame_input")
         self.frame_input.setMinimumSize(QSize(180, 0))
         self.frame_input.setMaximumSize(QSize(170, 16777215))
-        self.frame_input.setFont(font4)
+        self.frame_input.setFont(font5)
         self.frame_input.setStyleSheet(u"border: 0px;")
         self.frame_input.setFrameShape(QFrame.StyledPanel)
         self.frame_input.setFrameShadow(QFrame.Raised)
@@ -1747,10 +1750,10 @@ class Ui_MainWindow(object):
         self.pushButton_selectFiles_search.setObjectName(u"pushButton_selectFiles_search")
         self.pushButton_selectFiles_search.setMinimumSize(QSize(170, 35))
         self.pushButton_selectFiles_search.setMaximumSize(QSize(120, 16777215))
-        font7 = QFont()
-        font7.setFamily(u"Segoe UI")
-        font7.setPointSize(11)
-        self.pushButton_selectFiles_search.setFont(font7)
+        font8 = QFont()
+        font8.setFamily(u"Segoe UI")
+        font8.setPointSize(11)
+        self.pushButton_selectFiles_search.setFont(font8)
         self.pushButton_selectFiles_search.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
 "	border-radius: 5px;	\n"
@@ -1803,11 +1806,11 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_search)
 
-        self.lineEdit_outputPath_search = QLineEdit(self.frame_output)
+        Ui_MainWindow.lineEdit_outputPath_search = QLineEdit(self.frame_output)
         self.lineEdit_outputPath_search.setObjectName(u"lineEdit_outputPath_search")
         self.lineEdit_outputPath_search.setMinimumSize(QSize(0, 35))
         self.lineEdit_outputPath_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_outputPath_search.setFont(font5)
+        self.lineEdit_outputPath_search.setFont(font6)
         self.lineEdit_outputPath_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1824,11 +1827,11 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_search)
 
-        self.lineEdit_filename_search = QLineEdit(self.frame_output)
+        Ui_MainWindow.lineEdit_filename_search = QLineEdit(self.frame_output)
         self.lineEdit_filename_search.setObjectName(u"lineEdit_filename_search")
         self.lineEdit_filename_search.setMinimumSize(QSize(0, 35))
         self.lineEdit_filename_search.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_filename_search.setFont(font5)
+        self.lineEdit_filename_search.setFont(font6)
         self.lineEdit_filename_search.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -1852,10 +1855,10 @@ class Ui_MainWindow(object):
         self.frame_checkBox_.setObjectName(u"frame_checkBox_")
         self.frame_checkBox_.setMinimumSize(QSize(0, 0))
         self.frame_checkBox_.setMaximumSize(QSize(16777215, 16777215))
-        font8 = QFont()
-        font8.setFamily(u"Segoe UI")
-        font8.setPointSize(9)
-        self.frame_checkBox_.setFont(font8)
+        font9 = QFont()
+        font9.setFamily(u"Segoe UI")
+        font9.setPointSize(9)
+        self.frame_checkBox_.setFont(font9)
         self.frame_checkBox_.setStyleSheet(u"border: 0px;")
         self.frame_checkBox_.setFrameShape(QFrame.StyledPanel)
         self.frame_checkBox_.setFrameShadow(QFrame.Raised)
@@ -1863,7 +1866,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setHorizontalSpacing(20)
         self.gridLayout_4.setContentsMargins(0, 5, 9, 5)
-        self.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignorePontuation_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignorePontuation_search.setObjectName(u"checkBox_ignorePontuation_search")
         self.checkBox_ignorePontuation_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignorePontuation_search.setFont(font)
@@ -1877,7 +1880,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignorePontuation_search, 2, 0, 1, 1)
 
-        self.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreSpecialChar_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpecialChar_search.setObjectName(u"checkBox_ignoreSpecialChar_search")
         self.checkBox_ignoreSpecialChar_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreSpecialChar_search.setFont(font)
@@ -1892,7 +1895,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreSpecialChar_search, 1, 0, 1, 1)
 
-        self.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_onlyPages_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_onlyPages_search.setObjectName(u"checkBox_onlyPages_search")
         self.checkBox_onlyPages_search.setMinimumSize(QSize(0, 20))
         self.checkBox_onlyPages_search.setFont(font)
@@ -1906,7 +1909,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_onlyPages_search, 0, 0, 1, 1)
 
-        self.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreSpaces_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreSpaces_search.setObjectName(u"checkBox_ignoreSpaces_search")
         self.checkBox_ignoreSpaces_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreSpaces_search.setFont(font)
@@ -1920,7 +1923,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.checkBox_ignoreSpaces_search, 0, 1, 1, 1)
 
-        self.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
+        Ui_MainWindow.checkBox_ignoreFirstPage_search = QCheckBox(self.frame_checkBox_)
         self.checkBox_ignoreFirstPage_search.setObjectName(u"checkBox_ignoreFirstPage_search")
         self.checkBox_ignoreFirstPage_search.setMinimumSize(QSize(0, 20))
         self.checkBox_ignoreFirstPage_search.setFont(font)
@@ -1953,7 +1956,7 @@ class Ui_MainWindow(object):
         self.label_drop_search.setObjectName(u"label_drop_search")
         self.label_drop_search.setMinimumSize(QSize(840, 90))
         self.label_drop_search.setMaximumSize(QSize(16777215, 100))
-        self.label_drop_search.setFont(font6)
+        self.label_drop_search.setFont(font7)
         self.label_drop_search.setStyleSheet(u"border: 4px dashed rgb(112, 117, 125);\n"
 "color: rgb(112, 117, 125);")
         self.label_drop_search.setAlignment(Qt.AlignCenter)
@@ -2031,9 +2034,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.frame_vbuttons, 0, Qt.AlignLeft)
 
-        self.tabWidget = QTabWidget(self.frame_tab)
+        Ui_MainWindow.tabWidget = QTabWidget(self.frame_tab)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setFont(font8)
+        self.tabWidget.setFont(font9)
         self.tabWidget.setStyleSheet(u"QTabBar::tab {\n"
 "    background: rgb(39, 44, 54);\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2064,7 +2067,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_Table = QHBoxLayout(self.tab)
         self.horizontalLayout_Table.setObjectName(u"horizontalLayout_Table")
         self.horizontalLayout_Table.setContentsMargins(5, 0, 0, 0)
-        self.tableWidget = QTableWidget(self.tab)
+        Ui_MainWindow.tableWidget = QTableWidget(self.tab)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setStyleSheet(u"QTableWidget {	\n"
 "	background-color: rgb(39, 44, 54);\n"
@@ -2169,7 +2172,7 @@ class Ui_MainWindow(object):
         self.label_description_zip = QLabel(self.frame_description_zip)
         self.label_description_zip.setObjectName(u"label_description_zip")
         self.label_description_zip.setMinimumSize(QSize(0, 0))
-        self.label_description_zip.setFont(font3)
+        self.label_description_zip.setFont(font4)
         self.label_description_zip.setStyleSheet(u"")
 
         self.horizontalLayout_21.addWidget(self.label_description_zip, 0, Qt.AlignLeft)
@@ -2193,18 +2196,18 @@ class Ui_MainWindow(object):
         self.frame_input_zip.setObjectName(u"frame_input_zip")
         self.frame_input_zip.setMinimumSize(QSize(0, 0))
         self.frame_input_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.frame_input_zip.setFont(font4)
+        self.frame_input_zip.setFont(font5)
         self.frame_input_zip.setStyleSheet(u"border: 0px;")
         self.frame_input_zip.setFrameShape(QFrame.StyledPanel)
         self.frame_input_zip.setFrameShadow(QFrame.Raised)
         self.gridLayout_7 = QGridLayout(self.frame_input_zip)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.gridLayout_7.setContentsMargins(9, 5, 9, 5)
-        self.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
+        Ui_MainWindow.lineEdit_rootDirectory_zip = QLineEdit(self.frame_input_zip)
         self.lineEdit_rootDirectory_zip.setObjectName(u"lineEdit_rootDirectory_zip")
         self.lineEdit_rootDirectory_zip.setMinimumSize(QSize(260, 35))
         self.lineEdit_rootDirectory_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_rootDirectory_zip.setFont(font5)
+        self.lineEdit_rootDirectory_zip.setFont(font6)
         self.lineEdit_rootDirectory_zip.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -2298,11 +2301,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_7.setWidget(0, QFormLayout.LabelRole, self.pushButton_outputPath_zip)
 
-        self.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
+        Ui_MainWindow.lineEdit_outputPath_zip = QLineEdit(self.frame_output_zip)
         self.lineEdit_outputPath_zip.setObjectName(u"lineEdit_outputPath_zip")
         self.lineEdit_outputPath_zip.setMinimumSize(QSize(0, 35))
         self.lineEdit_outputPath_zip.setMaximumSize(QSize(355, 16777215))
-        self.lineEdit_outputPath_zip.setFont(font5)
+        self.lineEdit_outputPath_zip.setFont(font6)
         self.lineEdit_outputPath_zip.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -2319,11 +2322,11 @@ class Ui_MainWindow(object):
 
         self.formLayout_7.setWidget(0, QFormLayout.FieldRole, self.lineEdit_outputPath_zip)
 
-        self.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
+        Ui_MainWindow.lineEdit_filename_zip = QLineEdit(self.frame_output_zip)
         self.lineEdit_filename_zip.setObjectName(u"lineEdit_filename_zip")
         self.lineEdit_filename_zip.setMinimumSize(QSize(0, 35))
         self.lineEdit_filename_zip.setMaximumSize(QSize(16777215, 16777215))
-        self.lineEdit_filename_zip.setFont(font5)
+        self.lineEdit_filename_zip.setFont(font6)
         self.lineEdit_filename_zip.setStyleSheet(u"QLineEdit {\n"
 "	background-color: rgb(27, 29, 35);\n"
 "	border-radius: 5px;\n"
@@ -2374,8 +2377,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setContentsMargins(30, 20, 30, -1)
         self.textBrowser = QTextBrowser(self.page_help)
         self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setStyleSheet(u"background-color:#343A4B;\n"
-"border-radius: 7px;")
+        self.textBrowser.setStyleSheet(u"QTextBrowser {\n"
+"background-color:#343A4B;\n"
+"border-radius: 7px;\n"
+"padding-left: 20px;\n"
+"padding-top: 20px;\n"
+"padding-bottom: 20px;\n"
+"}\n"
+"")
 
         self.horizontalLayout_15.addWidget(self.textBrowser)
 
@@ -2397,7 +2406,7 @@ class Ui_MainWindow(object):
         self.label_feedback.setObjectName(u"label_feedback")
         self.label_feedback.setMinimumSize(QSize(0, 0))
         self.label_feedback.setMaximumSize(QSize(16777215, 16777215))
-        self.label_feedback.setFont(font5)
+        self.label_feedback.setFont(font6)
 
         self.verticalLayout_16.addWidget(self.label_feedback, 0, Qt.AlignVCenter)
 
@@ -2430,7 +2439,7 @@ class Ui_MainWindow(object):
         self.label_credits = QLabel(self.frame_label_bottom)
         self.label_credits.setObjectName(u"label_credits")
         self.label_credits.setMinimumSize(QSize(0, 20))
-        self.label_credits.setFont(font7)
+        self.label_credits.setFont(font8)
         self.label_credits.setStyleSheet(u"")
         self.label_credits.setOpenExternalLinks(True)
 
@@ -2481,7 +2490,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(6)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2506,7 +2515,7 @@ class Ui_MainWindow(object):
         self.pushButton_close.setText("")
         self.label_top_info_1.setText(QCoreApplication.translate("MainWindow", u"Giving you a hand for automation.", None))
         self.label_top_info_2.setText(QCoreApplication.translate("MainWindow", u"| HOME", None))
-        self.label_description_merge.setText(QCoreApplication.translate("MainWindow", u"COMBINAR ARQUIVOS PDF", None))
+        self.label_description_merge.setText(QCoreApplication.translate("MainWindow", u"UNIR ARQUIVOS PDF", None))
         self.pushButton_run_merge.setText("")
         self.pushButton_selectFiles_merge.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
         self.pushButton_outputPath_merge.setText("")
@@ -2526,7 +2535,7 @@ class Ui_MainWindow(object):
         self.checkBox_split.setText(QCoreApplication.translate("MainWindow", u"Dividir arquivo", None))
         self.checkBox_extract.setText(QCoreApplication.translate("MainWindow", u"Extrair no mesmo arquivo", None))
         self.label_drop_extract.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
-        self.label_description_ocr.setText(QCoreApplication.translate("MainWindow", u"ESCANEAR ARQUIVOS PDF", None))
+        self.label_description_ocr.setText(QCoreApplication.translate("MainWindow", u"ESCANEAR ARQUIVOS PDF (OCR)", None))
         self.pushButton_selectFiles_ocr.setText(QCoreApplication.translate("MainWindow", u"Selecionar arquivos", None))
         self.pushButton_run_ocr.setText("")
         self.label_intDpi_ocr.setText(QCoreApplication.translate("MainWindow", u"DPI:", None))
@@ -2535,10 +2544,10 @@ class Ui_MainWindow(object):
         self.lineEdit_outputPath_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
         self.lineEdit_filename_ocr.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
         self.label_drop_ocr.setText(QCoreApplication.translate("MainWindow", u"ARRASTE E SOLTE ARQUIVOS PDF AQUI", None))
-        self.label_description_search.setText(QCoreApplication.translate("MainWindow", u"CLASSIFICAR ARQUIVOS PDF", None))
+        self.label_description_search.setText(QCoreApplication.translate("MainWindow", u"ORGANIZAR ARQUIVOS PDF", None))
         self.lineEdit_moveto_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: Tabela1:2", None))
         self.label_else_search.setText(QCoreApplication.translate("MainWindow", u"Se n\u00e3o encontrar mover para pasta", None))
-        self.label_moveto_search.setText(QCoreApplication.translate("MainWindow", u"Mover para pasta", None))
+        self.label_moveto_search.setText(QCoreApplication.translate("MainWindow", u"Criar subpastas", None))
         self.pushButton_run_search.setText(QCoreApplication.translate("MainWindow", u"Executar", None))
         self.lineEdit_else_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ex: N\u00e3o encontrado", None))
         self.label_keywords_search.setText(QCoreApplication.translate("MainWindow", u"Procurar por express\u00f5es", None))
@@ -2558,13 +2567,13 @@ class Ui_MainWindow(object):
         self.pushButton_deleteTable_search.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
-        self.label_description_zip.setText(QCoreApplication.translate("MainWindow", u"CRIAR FICHEIRO ZIP DE ARQUIVOS PDF DE UM DIRET\u00d3RIO", None))
+        self.label_description_zip.setText(QCoreApplication.translate("MainWindow", u"CRIAR FICHEIRO ZIP DE ARQUIVOS PDF", None))
         self.lineEdit_rootDirectory_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio raiz", None))
         self.pushButton_selectRootDirectory_zip.setText("")
         self.pushButton_run_zip.setText("")
         self.pushButton_outputPath_zip.setText("")
         self.lineEdit_outputPath_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Selecionar diret\u00f3rio de sa\u00edda", None))
-        self.lineEdit_filename_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo: #origin", None))
+        self.lineEdit_filename_zip.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome do arquivo ZIP: #origin", None))
         self.textBrowser_credits.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -2654,6 +2663,432 @@ class Ui_MainWindow(object):
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Developed with Python.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://www.python.org/\"><span style=\" font-size:10pt; text-decoration: underline; color:#70757d;\">https://www.python.org/</span></a></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Licensed under PSF LICENSE conditions.</span></p></body></html>", None))
+        self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt; font-weight:600;\">Descri\u00e7\u00e3o:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt; font-weight:600;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Ahand (Give me a hand) \u00e9 um programa para otimiza"
+                        "\u00e7\u00e3o de processos que envolvam arquivos PDF.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Com Ahand \u00e9 poss\u00edvel:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Unir arquivos PDF.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0"
+                        "px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Extrair p\u00e1ginas de arquivos PDF.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Dividir arquivos PDF.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Escanear arquivos PDF atrav\u00e9s do reconhecimento \u00f3ptico de caracteres (OCR), transformando em um PDF pesquis\u00e1vel.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; "
+                        "-qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Compactar arquivos PDF contidos em subpastas de uma pasta raiz.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">    </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt; font-weight:600;\">Nomenclatura dos arquivos:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Dentro do programa, existem tags, "
+                        "elas s\u00e3o vari\u00e1veis que abrangem alguns padr\u00f5es bastante usados na hora de renomear um arquivo. As tags s\u00e3o indicadas por #.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#origin</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = Nome original do arquivo.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#year</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = Ano atual.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                        "text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#month</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = M\u00eas atual.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#day</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = Dia atual.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#hour</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = Hora atual.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#minutes</span><span style=\" font-family:'Sego"
+                        "e UI'; font-size:11pt;\"> = Minutos atuais.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#seconds</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = Segundos atuais</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#time</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = Hora, minutos e segundos atuais.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-weight:600;\">#pages</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> = P\u00e1gina(s) exportadas do arquivo. Dispon\u00edvel apenas para as fun\u00e7\u00f5"
+                        "es Separar/Dividir e Organizar(caso a caixa de sele\u00e7\u00e3o &quot;Mover apenas p\u00e1ginas esteja marcada&quot;).</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Por padr\u00e3o, caso o campo de nome esteja vazio, os arquivos s\u00e3o salvos com a tag #origin, com exce\u00e7\u00e3o da fun\u00e7\u00e3o Separar/Dividir, que utiliza as tags #origin,#pages.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Para utilizar um conjunto de tags, \u00e9 necess\u00e1rio delimitar por v\u00edrgulas.</span></p>\n"
+"<p style=\"-qt-paragra"
+                        "ph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Veja um exemplo de nomenclatura de um arquivo:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Arquivos de entrada: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Extrair p\u00e1gina indicada: </span><span style=\" font-family:'"
+                        "Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">3</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Diret\u00f3rio de sa\u00edda: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Nome do arquivo: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">#origin,#pages,Contas a pagar,#year,#month,#day</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; fon"
+                        "t-style:italic; color:#a0a0a0;\">C:\\Downloads\\file1_3_Contas a pagar_2020_10_14, C:\\Downloads\\file2_3_Contas a pagar_2020_10_14</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Note que voc\u00ea pode utilizar tags e texto em conjunto, mas eles devem ser delimitados por v\u00edrgula.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt;"
+                        " font-weight:600;\">Unir arquivos PDF:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Arquivos de entrada: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Diret\u00f3rio de sa\u00edda: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margi"
+                        "n-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Nome do arquivo: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">merged</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\merged.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt; font-weight:600;\">Extrair p\u00e1ginas ou dividir arquivos PDF:</span></p"
+                        ">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Lista - P\u00e1ginas indicadas: Extrair ou dividir nas p\u00e1ginas indicadas.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Lista - A cada n p\u00e1ginas: Extrair ou dividir a cada &quot;n&quot; p\u00e1ginas.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caixa de sele\u00e7\u00e3o - Dividir arquivo: Atrav\u00e9s de um arquivo, outros s\u00e3o gerados, os dividindo nas p\u00e1ginas indicadas.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+                        "font-family:'Segoe UI'; font-size:11pt;\">Caixa de sele\u00e7\u00e3o - Extrair no mesmo arquivo: As p\u00e1ginas indicadas s\u00e3o extra\u00eddas em um mesmo arquivo.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplos:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Arquivo de entrada:</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\"> C:\\Downloads\\file.pdf</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; t"
+                        "ext-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Diret\u00f3rio de sa\u00edda: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Nome do arquivo: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">#origin,#pages</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo 1:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px;"
+                        " margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Lista = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">P\u00e1ginas indicadas</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caixa de sele\u00e7\u00e3o = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Dividir arquivo</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">P\u00e1ginas = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">3,7-8,11-16</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inden"
+                        "t:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file_3.pdf, C:\\Downloads\\file_7-8.pdf, C:\\Downloads\\file_11-16.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo 2:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Lista = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">P\u00e1ginas indicadas</span></p>\n"
+"<p style=\" margin-top"
+                        ":0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caixa de sele\u00e7\u00e3o = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Extrair no mesmo arquivo</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">P\u00e1ginas = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">3,7-8,11-16</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file_3,7-8,11-16.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-to"
+                        "p:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo 3:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Lista = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">A cada n p\u00e1ginas</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caixa de sele\u00e7\u00e3o = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Dividir arquivo</span></p>\n"
+"<p style="
+                        "\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">P\u00e1ginas = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">4</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file_1-4.pdf, C:\\Downloads\\file_5-8.pdf, C:\\Downloads\\file_9-12.pdf, C:\\Downloads\\file_13-16.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; tex"
+                        "t-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo 4:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Lista = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">A cada n p\u00e1ginas</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caixa de sele\u00e7\u00e3o = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Extrair no mesmo arquivo</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">P\u00e1ginas = </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-"
+                        "style:italic; color:#a0a0a0;\">4</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file_4,8,12,16.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt; font-weight:600;\">Escanear arquivos PDF (OCR):</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo:</span></p>\n"
+""
+                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Arquivos de entrada: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Diret\u00f3rio de sa\u00edda: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Nome do arquivo: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">#origin,OCR</span></p>\n"
+"<p st"
+                        "yle=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">DPI: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">200</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Resultado: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\file1_OCR.pdf, C:\\Downloads\\file2_OCR.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-siz"
+                        "e:11pt;\">Note que quanto maior o DPI, maior o tamanho da imagem.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caso o reconhecimento \u00f3ptico de caracteres (OCR) n\u00e3o atinja um resultado satisfat\u00f3rio, experimente alterar o DPI.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt; font-weight:600;\">Organizar arquivos PDF:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Voc\u00ea"
+                        " pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Suponhamos que voc\u00ea seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano atual, mat\u00e9ria, tema do trabalho e nome do aluno:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Primeiro, certifique-se de que o documento PDF seja pesquis\u00e1vel, isto \u00e9, contenha texto. Caso seja uma imagem escaneada, utilize a fun\u00e7\u00e3o &quo"
+                        "t;Escanear arquivos PDF&quot; antes de proceder.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Importe os arquivos PDF que voc\u00ea deseja organizar.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Selecione o diret\u00f3rio de sa\u00edda. Como exemplo ser\u00e1 &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:Desktop\\</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">&quot;</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">- Importe um ou mais arquivos CSV com a tabela que cont\u00e9m as palavras a pesquisar"
+                        " (voc\u00ea pode gerar o arquivo com um editor de planilhas, como o Excel).</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Alunos.csv</span>  </p>\n"
+"<table border=\"0\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;\" cellspacing=\"2\" cellpadding=\"0\"><thead>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-botto"
+                        "m-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Nome do aluno</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">N\u00famero de chamada</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-t"
+                        "op-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Turma</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Escola</span>    </p></td>\n"
+"<td style=\" vertical-align:top; paddin"
+                        "g-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Mun\u00edcipio</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -"
+                        "qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Cidade</span>    </p></td></tr></thead>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Bianca Helena Cavalcanti</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-"
+                        "style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">1</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">2C</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border"
+                        "-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Durvalino Grion Prof</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Adamantina</span>    </p></td>\n"
+"<"
+                        "td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; mar"
+                        "gin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Catarina Jaqueline Nunes</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">3</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-c"
+                        "olor:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">1A</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Alice Maciel Sanches Professora</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; bord"
+                        "er-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Santo Anast\u00e1cio</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-fa"
+                        "mily:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Clara Emanuelly Luiza Carvalho</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-s"
+                        "tyle:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">6</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">2B</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-colo"
+                        "r:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Ferdinando Ienny</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Ouro Verde</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-ri"
+                        "ght:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-blo"
+                        "ck-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Francisco Edson Gon\u00e7alves</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">11</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-"
+                        "style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">3D</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Jadyr Salles Professor Etec</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border"
+                        "-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Porto Ferreira</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+""
+                        "<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Gabriela Emanuelly Baptista</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top"
+                        ":0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">15</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">3E</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000"
+                        "; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Durvalino Grion Prof</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Adamantina</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; bor"
+                        "der-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'S"
+                        "egoe UI';\">Julio Jorge Arag\u00e3o</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">21</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+""
+                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">2F</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Ferdinando Ienny</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-colo"
+                        "r:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Ouro Verde</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-to"
+                        "p:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Pietra Giovanna Joana Almada</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text"
+                        "-indent:0px;\"><span style=\" font-family:'Segoe UI';\">32</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">1C</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; borde"
+                        "r-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Djalma Forjaz Doutor</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Porto Ferreira</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; bor"
+                        "der-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Silvana Stefany Mirella Nascimento</span>    </p></td>\n"
+"<td style"
+                        "=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">37</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; m"
+                        "argin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">1C</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Alice Maciel Sanches Professora</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-s"
+                        "tyle:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Santo Anast\u00e1cio</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px;"
+                        " border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">T\u00e2nia Allana Monteiro</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:"
+                        "'Segoe UI';\">40</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">3C</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" mar"
+                        "gin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Santo Antonio</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Santo Ant\u00f4nio De Posse</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bott"
+                        "om-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">S\u00e3o Paulo</span>  </p></td></tr></table>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">(Todos os dados referentes a alunos foram gerados aleatoriamente).</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Mat\u00e9rias.csv</span>  </p>\n"
+"<table border=\"0\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;\" cellspacing=\"2\" cellpadding=\"0\"><thead>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Tema</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; pa"
+                        "dding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Mat\u00e9ria</span>    </p></td></tr></thead>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-i"
+                        "ndent:0px;\"><span style=\" font-family:'Segoe UI';\">Deslocamento escalar</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Cinem\u00e1tica</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-st"
+                        "yle:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Energia potencial el\u00e9trica</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">El\u00e9trica</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px"
+                        "; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Leis de Newton</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Din\u00e2mica</"
+                        "span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Trajet\u00f3ria</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p sty"
+                        "le=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Cinem\u00e1tica</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Lentes convergentes</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#00"
+                        "0000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u00d3ptica</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Movimento e repouso</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:"
+                        "5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Cinem\u00e1tica</span>    </p></td></tr>\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-righ"
+                        "t:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">Campo el\u00e9trico</span>    </p></td>\n"
+"<td style=\" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">El\u00e9trica</span>  </p></td></tr></table>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
+                        "indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Iremos procurar pelo nome de todos os alunos, que se encontra na tabela </span><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;\">Alunos</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> coluna </span><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;\">1</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">, junto a todos os temas de trabalho, que se encontra na tabela </span><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;\">Mat\u00e9rias</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> coluna </span><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;\">1</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">.</span></p>\n"
+"<p style=\" marg"
+                        "in-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Ent\u00e3o temos a defini\u00e7\u00e3o </span><span style=\" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;\">tabela:coluna</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Sendo assim, o campo &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Procurar por express\u00f5es</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">&quot; recebe o seguinte valor: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#"
+                        "a0a0a0;\">Alunos:1,Mat\u00e9rias:1</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Se houver mais de um conjunto tabela:coluna, eles devem ser delimitados por v\u00edrgulas, como no exemplo acima.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Note que se o valor de uma linha for localizado, temos acesso a todos os valores das outras colunas adjacentes nessa tabela.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'"
+                        "Segoe UI'; font-size:11pt;\">Como por exemplo, se dentro do arquivo conter o nome &quot;Bianca Helena Cavalcanti&quot;, podemos pedir para o programa retornar o valor da coluna 3, que para essa linha \u00e9 &quot;2C&quot;.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Dessa forma, temos acesso a valores que n\u00e3o necessariamente precisam estar dentro do arquivo.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Com isso em mente:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; "
+                        "-qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Iremos informar o destino que queremos exportar o arquivo caso as condi\u00e7\u00f5es forem satisfeitas:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Queremos criar uma \u00e1rvore de diret\u00f3rio nesse modelo: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">diret\u00f3rio_de_sa\u00edda\\ano_atual\\escola\\turma\\mat\u00e9ria\\tema_do_trabalho\\</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-"
+                        "size:11pt;\">Ent\u00e3o iremos informar em qual tabela e coluna esses valores se encontram.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Sendo assim, o campo &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Criar subpastas</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">&quot; recebe o seguinte valor: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">#year,Alunos:4,Alunos:3,Mat\u00e9rias:2,Mat\u00e9rias:1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\""
+                        " font-family:'Segoe UI'; font-size:11pt;\">Caso as condi\u00e7\u00f5es n\u00e3o sejam satisfeitas dentro de um arquivo, podemos indicar um diret\u00f3rio para mov\u00ea-lo.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Sendo assim, o campo &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Se n\u00e3o encontrar mover para pasta</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">&quot; recebe o seguinte valor: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">N\u00e3o encontrado</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Caso vazio, os arquivos em que n\u00e3o foram encontradas todas as palavras n\u00e3o ser\u00e3"
+                        "o movidos.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Agora, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Sendo assim, o campo &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Nome do arquivo</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">&quot; recebe o seguinte valor: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Alunos:1</span"
+                        "></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">H\u00e1 ainda algumas caixas de sele\u00e7\u00e3o:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Mover apenas p\u00e1ginas:</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> Se marcado, ir\u00e1 procurar pelas palavras dentro de cada p\u00e1"
+                        "gina e exporta-la caso os requisitos sejam satisfeitos. \u00datil quando cada p\u00e1gina representa um arquivo, como uma nota fiscal. Caso contr\u00e1rio, as palavras ser\u00e3o pesquisadas dentro de todo o arquivo.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Ignorar primeira linha:</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> Marcar caso a primeira linha seja cabe\u00e7alho e voc\u00ea n\u00e3o queira pesquisa-la dentro do arquivo.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Ignorar acentos:</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> Realizar pesquisa desconsiderando acentos. Marcar para maior precis\u00e3o.</"
+                        "span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Ignorar pontua\u00e7\u00e3o:</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> Realizar pesquisa desconsiderando pontua\u00e7\u00e3o tais como &quot;.,;/?!&quot;. Marcar para maior precis\u00e3o.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Ignorar espa\u00e7os:</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\"> Realizar pesquisa desconsiderando espa\u00e7os. Marcar para maior precis\u00e3o.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11"
+                        "pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Para este exemplo, iremos desmarcar apenas a op\u00e7\u00e3o &quot;Mover apenas p\u00e1ginas&quot;.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Ent\u00e3o, como exemplo de resultado, caso ambas as palavras &quot;Bianca Helena Cavalcanti&quot; e &quot;Deslocamento escalar&quot; sejam encontradas no arquivo, temos:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-famil"
+                        "y:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:Desktop\\2020\\Durvalino Grion Prof\\2C\\Cinem\u00e1tica\\Deslocamento escalar\\Bianca Helena Cavalcanti.pdf</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Se em vez de criar uma \u00e1rvore de diret\u00f3rio </span><span style=\" font-family:'Segoe UI','sans-serif'; font-size:11pt;\">quis\u00e9ssemos </span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">apenas renomear o arquivo, bastava informar os valores no campo &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Nome do arquivo</span><span style=\" font-family:'Segoe UI'; font-size:11pt"
+                        ";\">&quot; e deixar o campo &quot;</span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">Criar subpastas</span><span style=\" font-family:'Segoe UI'; font-size:11pt;\">&quot; vazio.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Ent\u00e3o, como exemplo de resultado, temos:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:Desktop\\2020_Durvalino Grion Prof_2C_Cinem\u00e1tica_Deslocamento escalar_Bianca Helena Cavalcanti.pdf</span></p>\n"
+"<p style=\"-"
+                        "qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:14pt; font-weight:600;\">Criar ficheiro ZIP de arquivos PDF:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Exemplo:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Diret\u00f3rio raiz: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\root\\</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-"
+                        "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Subpastas contidas no diret\u00f3rio raiz: Janeiro,Fevereiro,Mar\u00e7o</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Diret\u00f3rio de sa\u00edda: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\output\\</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Nome do arquivo ZIP: </span><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">#origin,#year</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-fa"
+                        "mily:'Segoe UI'; font-size:11pt;\">Resultado: </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;\">C:\\Downloads\\output\\Janeiro_2020.zip, C:\\Downloads\\output\\Fevereiro_2020.zip, C:\\Downloads\\output\\Mar\u00e7o_2020.zip</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:11pt;\">Portanto, todos os arquivos PDF contidos nas subpastas Janeiro,Fevereiro,Mar\u00e7o ser\u00e3o compactados.</span></p></body></html>", None))
         self.label_feedback.setText(QCoreApplication.translate("MainWindow", u"Pesquisando por palavra...", None))
         self.label_credits.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><a href=\"https://github.com/demelomatt/\"><span style=\" color:#70757d;\">https://github.com/demelomatt/</span></a></p></body></html>", None))
         self.label_version.setText(QCoreApplication.translate("MainWindow", u"v1.1.0", None))
