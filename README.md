@@ -1,863 +1,471 @@
-# Ahand
-![logoahand](Ahand_Logo.png)
+ p, li { white-space: pre-wrap; } 
 
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Descrição:</span>
+Descrição:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Ahand (Give me a hand) é um programa para otimização de processos que envolvam arquivos PDF.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Com Ahand é possível:</span>
+Ahand (Give me a hand) é um programa para otimização de processos que envolvam arquivos PDF.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Unir arquivos PDF.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Extrair páginas de arquivos PDF.</span>
+Com Ahand é possível:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Dividir arquivos PDF.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.</span>
+\- Unir arquivos PDF.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.</span>
+\- Extrair páginas de arquivos PDF.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Compactar arquivos PDF contidos em subpastas de uma pasta raiz.</span>
+\- Dividir arquivos PDF.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;"></span>
+\- Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.
 
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Nomenclatura dos arquivos:</span>
+\- Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Dentro do programa, existem tags, elas são variáveis que abrangem alguns padrões bastante usados na hora de renomear um arquivo. As tags são indicadas por #.</span>
+\- Compactar arquivos PDF contidos em subpastas de uma pasta raiz.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#origin</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Nome original do arquivo.</span>
+Nomenclatura dos arquivos:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#year</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Ano atual.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#month</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Mês atual.</span>
+Dentro do programa, existem tags, elas são variáveis que abrangem alguns padrões bastante usados na hora de renomear um arquivo. As tags são indicadas por #.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#day</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Dia atual.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#hour</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Hora atual.</span>
+#origin = Nome original do arquivo.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#minutes</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Minutos atuais.</span>
+#year = Ano atual.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#seconds</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Segundos atuais</span>
+#month = Mês atual.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#time</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Hora, minutos e segundos atuais.</span>
+#day = Dia atual.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#pages</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">= Página(s) exportadas do arquivo. Disponível apenas para as funções Separar/Dividir e Organizar(caso a caixa de seleção "Mover apenas páginas esteja marcada").</span>
+#hour = Hora atual.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Por padrão, caso o campo de nome esteja vazio, os arquivos são salvos com a tag #origin, com exceção da função Separar/Dividir, que utiliza as tags #origin,#pages.</span>
+#minutes = Minutos atuais.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Para utilizar um conjunto de tags, é necessário delimitar por vírgulas.</span>
+#seconds = Segundos atuais
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Veja um exemplo de nomenclatura de um arquivo:</span>
+#time = Hora, minutos e segundos atuais.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivos de entrada:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1.pdf, C:\Downloads\file2.pdf</span>
+#pages = Página(s) exportadas do arquivo. Disponível apenas para as funções Separar/Dividir e Organizar(caso a caixa de seleção "Mover apenas páginas esteja marcada").
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Extrair página indicada:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">3</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads</span>
+Por padrão, caso o campo de nome esteja vazio, os arquivos são salvos com a tag #origin, com exceção da função Separar/Dividir, que utiliza as tags #origin,#pages.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,#pages,Contas a pagar,#year,#month,#day</span>
+Para utilizar um conjunto de tags, é necessário delimitar por vírgulas.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1_3_Contas a pagar_2020_10_14, C:\Downloads\file2_3_Contas a pagar_2020_10_14</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Note que você pode utilizar tags e texto em conjunto, mas eles devem ser delimitados por vírgula.</span>
+Veja um exemplo de nomenclatura de um arquivo:
 
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Unir arquivos PDF:</span>
+Arquivos de entrada: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo:</span>
+Extrair página indicada: 3
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivos de entrada:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1.pdf, C:\Downloads\file2.pdf</span>
+Diretório de saída: C:\\Downloads
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\</span>
+Nome do arquivo: #origin,#pages,Contas a pagar,#year,#month,#day
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">merged</span>
+Resultado: C:\\Downloads\\file1\_3\_Contas a pagar\_2020\_10\_14, C:\\Downloads\\file2\_3\_Contas a pagar\_2020\_10\_14
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\merged.pdf</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Extrair páginas ou dividir arquivos PDF:</span>
+Note que você pode utilizar tags e texto em conjunto, mas eles devem ser delimitados por vírgula.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista - Páginas indicadas: Extrair ou dividir nas páginas indicadas.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista - A cada n páginas: Extrair ou dividir a cada "n" páginas.</span>
+Unir arquivos PDF:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção - Dividir arquivo: Através de um arquivo, outros são gerados, os dividindo nas páginas indicadas.</span>
+Exemplo:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção - Extrair no mesmo arquivo: As páginas indicadas são extraídas em um mesmo arquivo.</span>
+Arquivos de entrada: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplos:</span>
+Diretório de saída: C:\\Downloads\\
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivo de entrada:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file.pdf</span>
+Nome do arquivo: merged
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\</span>
+Resultado: C:\\Downloads\\merged.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,#pages</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 1:</span>
+Extrair páginas ou dividir arquivos PDF:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Páginas indicadas</span>
+Lista - Páginas indicadas: Extrair ou dividir nas páginas indicadas.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Dividir arquivo</span>
+Lista - A cada n páginas: Extrair ou dividir a cada "n" páginas.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">3,7-8,11-16</span>
+Caixa de seleção - Dividir arquivo: Através de um arquivo, outros são gerados, os dividindo nas páginas indicadas.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_3.pdf, C:\Downloads\file_7-8.pdf, C:\Downloads\file_11-16.pdf</span>
+Caixa de seleção - Extrair no mesmo arquivo: As páginas indicadas são extraídas em um mesmo arquivo.
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 2:</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Páginas indicadas</span>
+Exemplos:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Extrair no mesmo arquivo</span>
+Arquivo de entrada: C:\\Downloads\\file.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">3,7-8,11-16</span>
+Diretório de saída: C:\\Downloads\\
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_3,7-8,11-16.pdf</span>
+Nome do arquivo: #origin,#pages
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 3:</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">A cada n páginas</span>
+Exemplo 1:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Dividir arquivo</span>
+Lista = Páginas indicadas
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">4</span>
+Caixa de seleção = Dividir arquivo
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_1-4.pdf, C:\Downloads\file_5-8.pdf, C:\Downloads\file_9-12.pdf, C:\Downloads\file_13-16.pdf</span>
+Páginas = 3,7-8,11-16
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 4:</span>
+Resultado: C:\\Downloads\\file\_3.pdf, C:\\Downloads\\file\_7-8.pdf, C:\\Downloads\\file\_11-16.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">A cada n páginas</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Extrair no mesmo arquivo</span>
+Exemplo 2:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas =</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">4</span>
+Lista = Páginas indicadas
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_4,8,12,16.pdf</span>
+Caixa de seleção = Extrair no mesmo arquivo
 
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Escanear arquivos PDF (OCR):</span>
+Páginas = 3,7-8,11-16
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo:</span>
+Resultado: C:\\Downloads\\file\_3,7-8,11-16.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivos de entrada:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1.pdf, C:\Downloads\file2.pdf</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\</span>
+Exemplo 3:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,OCR</span>
+Lista = A cada n páginas
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">DPI:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">200</span>
+Caixa de seleção = Dividir arquivo
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1_OCR.pdf, C:\Downloads\file2_OCR.pdf</span>
+Páginas = 4
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Note que quanto maior o DPI, maior o tamanho da imagem.</span>
+Resultado: C:\\Downloads\\file\_1-4.pdf, C:\\Downloads\\file\_5-8.pdf, C:\\Downloads\\file\_9-12.pdf, C:\\Downloads\\file\_13-16.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caso o reconhecimento óptico de caracteres (OCR) não atinja um resultado satisfatório, experimente alterar o DPI.</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Organizar arquivos PDF:</span>
+Exemplo 4:
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Você pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.</span>
+Lista = A cada n páginas
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Suponhamos que você seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano atual, matéria, tema do trabalho e nome do aluno:</span>
+Caixa de seleção = Extrair no mesmo arquivo
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Primeiro, certifique-se de que o documento PDF seja pesquisável, isto é, contenha texto. Caso seja uma imagem escaneada, utilize a função "Escanear arquivos PDF" antes de proceder.</span>
+Páginas = 4
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Importe os arquivos PDF que você deseja organizar.</span>
+Resultado: C:\\Downloads\\file\_4,8,12,16.pdf
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Selecione o diretório de saída. Como exemplo será "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:Desktop\</span><span style=" font-family:'Segoe UI'; font-size:11pt;">"</span>
+  
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">- Importe um ou mais arquivos CSV com a tabela que contém as palavras a pesquisar (você pode gerar o arquivo com um editor de planilhas, como o Excel).</span>
+Escanear arquivos PDF (OCR):
 
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Alunos.csv</span>
+Exemplo:
 
-<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;" cellspacing="2" cellpadding="0">
+Arquivos de entrada: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf
 
-<thead>
+Diretório de saída: C:\\Downloads\\
 
-<tr>
+Nome do arquivo: #origin,OCR
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+DPI: 200
 
-<span style=" font-family:'Segoe UI';">Nome do aluno</span>
+Resultado: C:\\Downloads\\file1\_OCR.pdf, C:\\Downloads\\file2\_OCR.pdf
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Note que quanto maior o DPI, maior o tamanho da imagem.
 
-<span style=" font-family:'Segoe UI';">Número de chamada</span>
+Caso o reconhecimento óptico de caracteres (OCR) não atinja um resultado satisfatório, experimente alterar o DPI.
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Organizar arquivos PDF:
 
-<span style=" font-family:'Segoe UI';">Turma</span>
+Você pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
 
-</td>
+Suponhamos que você seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano atual, matéria, tema do trabalho e nome do aluno:
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">Escola</span>
+\- Primeiro, certifique-se de que o documento PDF seja pesquisável, isto é, contenha texto. Caso seja uma imagem escaneada, utilize a função "Escanear arquivos PDF" antes de proceder.
 
-</td>
+\- Importe os arquivos PDF que você deseja organizar.
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+\- Selecione o diretório de saída. Como exemplo será "C:Desktop\\"
 
-<span style=" font-family:'Segoe UI';">Munícipio</span>
+\- Importe um ou mais arquivos CSV com a tabela que contém as palavras a pesquisar (você pode gerar o arquivo com um editor de planilhas, como o Excel).
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Alunos.csv
 
-<span style=" font-family:'Segoe UI';">Cidade</span>
+Nome do aluno
 
-</td>
+Número de chamada
 
-</tr>
+Turma
 
-</thead>
+Escola
 
-<tbody>
+Munícipio
 
-<tr>
+Cidade
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Bianca Helena Cavalcanti
 
-<span style=" font-family:'Segoe UI';">Bianca Helena Cavalcanti</span>
+1
 
-</td>
+2C
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Durvalino Grion Prof
 
-<span style=" font-family:'Segoe UI';">1</span>
+Adamantina
 
-</td>
+São Paulo
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Catarina Jaqueline Nunes
 
-<span style=" font-family:'Segoe UI';">2C</span>
+3
 
-</td>
+1A
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Alice Maciel Sanches Professora
 
-<span style=" font-family:'Segoe UI';">Durvalino Grion Prof</span>
+Santo Anastácio
 
-</td>
+São Paulo
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Clara Emanuelly Luiza Carvalho
 
-<span style=" font-family:'Segoe UI';">Adamantina</span>
+6
 
-</td>
+2B
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Ferdinando Ienny
 
-<span style=" font-family:'Segoe UI';">São Paulo</span>
+Ouro Verde
 
-</td>
+São Paulo
 
-</tr>
+Francisco Edson Gonçalves
 
-<tr>
+11
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+3D
 
-<span style=" font-family:'Segoe UI';">Catarina Jaqueline Nunes</span>
+Jadyr Salles Professor Etec
 
-</td>
+Porto Ferreira
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+São Paulo
 
-<span style=" font-family:'Segoe UI';">3</span>
+Gabriela Emanuelly Baptista
 
-</td>
+15
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+3E
 
-<span style=" font-family:'Segoe UI';">1A</span>
+Durvalino Grion Prof
 
-</td>
+Adamantina
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+São Paulo
 
-<span style=" font-family:'Segoe UI';">Alice Maciel Sanches Professora</span>
+Julio Jorge Aragão
 
-</td>
+21
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+2F
 
-<span style=" font-family:'Segoe UI';">Santo Anastácio</span>
+Ferdinando Ienny
 
-</td>
+Ouro Verde
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+São Paulo
 
-<span style=" font-family:'Segoe UI';">São Paulo</span>
+Pietra Giovanna Joana Almada
 
-</td>
+32
 
-</tr>
+1C
 
-<tr>
+Djalma Forjaz Doutor
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Porto Ferreira
 
-<span style=" font-family:'Segoe UI';">Clara Emanuelly Luiza Carvalho</span>
+São Paulo
 
-</td>
+Silvana Stefany Mirella Nascimento
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+37
 
-<span style=" font-family:'Segoe UI';">6</span>
+1C
 
-</td>
+Alice Maciel Sanches Professora
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Santo Anastácio
 
-<span style=" font-family:'Segoe UI';">2B</span>
+São Paulo
 
-</td>
+Tânia Allana Monteiro
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+40
 
-<span style=" font-family:'Segoe UI';">Ferdinando Ienny</span>
+3C
 
-</td>
+Santo Antonio
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Santo Antônio De Posse
 
-<span style=" font-family:'Segoe UI';">Ouro Verde</span>
+São Paulo
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+(Todos os dados referentes a alunos foram gerados aleatoriamente).
 
-<span style=" font-family:'Segoe UI';">São Paulo</span>
+  
 
-</td>
+Matérias.csv
 
-</tr>
+Tema
 
-<tr>
+Matéria
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Deslocamento escalar
 
-<span style=" font-family:'Segoe UI';">Francisco Edson Gonçalves</span>
+Cinemática
 
-</td>
+Energia potencial elétrica
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Elétrica
 
-<span style=" font-family:'Segoe UI';">11</span>
+Leis de Newton
 
-</td>
+Dinâmica
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Trajetória
 
-<span style=" font-family:'Segoe UI';">3D</span>
+Cinemática
 
-</td>
+Lentes convergentes
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Óptica
 
-<span style=" font-family:'Segoe UI';">Jadyr Salles Professor Etec</span>
+Movimento e repouso
 
-</td>
+Cinemática
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Campo elétrico
 
-<span style=" font-family:'Segoe UI';">Porto Ferreira</span>
+Elétrica
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">São Paulo</span>
+Iremos procurar pelo nome de todos os alunos, que se encontra na tabela Alunos coluna 1, junto a todos os temas de trabalho, que se encontra na tabela Matérias coluna 1.
 
-</td>
+Então temos a definição tabela:coluna
 
-</tr>
+  
 
-<tr>
+Sendo assim, o campo "Procurar por expressões" recebe o seguinte valor: Alunos:1,Matérias:1
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Se houver mais de um conjunto tabela:coluna, eles devem ser delimitados por vírgulas, como no exemplo acima.
 
-<span style=" font-family:'Segoe UI';">Gabriela Emanuelly Baptista</span>
+  
 
-</td>
+Note que se o valor de uma linha for localizado, temos acesso a todos os valores das outras colunas adjacentes nessa tabela.
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Como por exemplo, se dentro do arquivo conter o nome "Bianca Helena Cavalcanti", podemos pedir para o programa retornar o valor da coluna 3, que para essa linha é "2C".
 
-<span style=" font-family:'Segoe UI';">15</span>
+Dessa forma, temos acesso a valores que não necessariamente precisam estar dentro do arquivo.
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Com isso em mente:
 
-<span style=" font-family:'Segoe UI';">3E</span>
+Iremos informar o destino que queremos exportar o arquivo caso as condições forem satisfeitas:
 
-</td>
+Queremos criar uma árvore de diretório nesse modelo: diretório\_de\_saída\\ano\_atual\\escola\\turma\\matéria\\tema\_do\_trabalho\\
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">Durvalino Grion Prof</span>
+Então iremos informar em qual tabela e coluna esses valores se encontram.
 
-</td>
+Sendo assim, o campo "Criar subpastas" recebe o seguinte valor: #year,Alunos:4,Alunos:3,Matérias:2,Matérias:1
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">Adamantina</span>
+Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.
 
-</td>
+Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Não encontrado
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Caso vazio, os arquivos em que não foram encontradas todas as palavras não serão movidos.
 
-<span style=" font-family:'Segoe UI';">São Paulo</span>
+  
 
-</td>
+Agora, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.
 
-</tr>
+Sendo assim, o campo "Nome do arquivo" recebe o seguinte valor: Alunos:1
 
-<tr>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Há ainda algumas caixas de seleção:
 
-<span style=" font-family:'Segoe UI';">Julio Jorge Aragão</span>
+  
 
-</td>
+Mover apenas páginas: Se marcado, irá procurar pelas palavras dentro de cada página e exporta-la caso os requisitos sejam satisfeitos. Útil quando cada página representa um arquivo, como uma nota fiscal. Caso contrário, as palavras serão pesquisadas dentro de todo o arquivo.
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Ignorar primeira linha: Marcar caso a primeira linha seja cabeçalho e você não queira pesquisa-la dentro do arquivo.
 
-<span style=" font-family:'Segoe UI';">21</span>
+Ignorar acentos: Realizar pesquisa desconsiderando acentos. Marcar para maior precisão.
 
-</td>
+Ignorar pontuação: Realizar pesquisa desconsiderando pontuação tais como ".,;/?!". Marcar para maior precisão.
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Ignorar espaços: Realizar pesquisa desconsiderando espaços. Marcar para maior precisão.
 
-<span style=" font-family:'Segoe UI';">2F</span>
+  
 
-</td>
+Para este exemplo, iremos desmarcar apenas a opção "Mover apenas páginas".
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">Ferdinando Ienny</span>
+Então, como exemplo de resultado, caso ambas as palavras "Bianca Helena Cavalcanti" e "Deslocamento escalar" sejam encontradas no arquivo, temos:
 
-</td>
+C:Desktop\\2020\\Durvalino Grion Prof\\2C\\Cinemática\\Deslocamento escalar\\Bianca Helena Cavalcanti.pdf
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">Ouro Verde</span>
+Se em vez de criar uma árvore de diretório quiséssemos apenas renomear o arquivo, bastava informar os valores no campo "Nome do arquivo" e deixar o campo "Criar subpastas" vazio.
 
-</td>
+  
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Então, como exemplo de resultado, temos:
 
-<span style=" font-family:'Segoe UI';">São Paulo</span>
+C:Desktop\\2020\_Durvalino Grion Prof\_2C\_Cinemática\_Deslocamento escalar\_Bianca Helena Cavalcanti.pdf
 
-</td>
+  
 
-</tr>
+Criar ficheiro ZIP de arquivos PDF:
 
-<tr>
+Exemplo:
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Diretório raiz: C:\\Downloads\\root\\
 
-<span style=" font-family:'Segoe UI';">Pietra Giovanna Joana Almada</span>
+Subpastas contidas no diretório raiz: Janeiro,Fevereiro,Março
 
-</td>
+Diretório de saída: C:\\Downloads\\output\\
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+Nome do arquivo ZIP: #origin,#year
 
-<span style=" font-family:'Segoe UI';">32</span>
+Resultado:
 
-</td>
+C:\\Downloads\\output\\Janeiro\_2020.zip, C:\\Downloads\\output\\Fevereiro\_2020.zip, C:\\Downloads\\output\\Março\_2020.zip
 
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
+  
 
-<span style=" font-family:'Segoe UI';">1C</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Djalma Forjaz Doutor</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Porto Ferreira</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">São Paulo</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Silvana Stefany Mirella Nascimento</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">37</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">1C</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Alice Maciel Sanches Professora</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Santo Anastácio</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">São Paulo</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Tânia Allana Monteiro</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">40</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">3C</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Santo Antonio</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Santo Antônio De Posse</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">São Paulo</span>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">(Todos os dados referentes a alunos foram gerados aleatoriamente).</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Matérias.csv</span>
-
-<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;" cellspacing="2" cellpadding="0">
-
-<thead>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Tema</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Matéria</span>
-
-</td>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Deslocamento escalar</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Cinemática</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Energia potencial elétrica</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Elétrica</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Leis de Newton</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Dinâmica</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Trajetória</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Cinemática</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Lentes convergentes</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Óptica</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Movimento e repouso</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Cinemática</span>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Campo elétrico</span>
-
-</td>
-
-<td style=" vertical-align:top; padding-left:5; padding-right:5; padding-top:10; padding-bottom:10; border-top:1px; border-right:1px; border-bottom:1px; border-left:1px; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid;">
-
-<span style=" font-family:'Segoe UI';">Elétrica</span>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Iremos procurar pelo nome de todos os alunos, que se encontra na tabela</span> <span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">Alunos</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">coluna</span> <span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">1</span><span style=" font-family:'Segoe UI'; font-size:11pt;">, junto a todos os temas de trabalho, que se encontra na tabela</span> <span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">Matérias</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">coluna</span> <span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">1</span><span style=" font-family:'Segoe UI'; font-size:11pt;">.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Então temos a definição</span> <span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">tabela:coluna</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Procurar por expressões</span><span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Alunos:1,Matérias:1</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Se houver mais de um conjunto tabela:coluna, eles devem ser delimitados por vírgulas, como no exemplo acima.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Note que se o valor de uma linha for localizado, temos acesso a todos os valores das outras colunas adjacentes nessa tabela.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Como por exemplo, se dentro do arquivo conter o nome "Bianca Helena Cavalcanti", podemos pedir para o programa retornar o valor da coluna 3, que para essa linha é "2C".</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Dessa forma, temos acesso a valores que não necessariamente precisam estar dentro do arquivo.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Com isso em mente:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Iremos informar o destino que queremos exportar o arquivo caso as condições forem satisfeitas:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Queremos criar uma árvore de diretório nesse modelo:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">diretório_de_saída\ano_atual\escola\turma\matéria\tema_do_trabalho\</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Então iremos informar em qual tabela e coluna esses valores se encontram.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Criar subpastas</span><span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#year,Alunos:4,Alunos:3,Matérias:2,Matérias:1</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Se não encontrar mover para pasta</span><span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Não encontrado</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Caso vazio, os arquivos em que não foram encontradas todas as palavras não serão movidos.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Agora, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Nome do arquivo</span><span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Alunos:1</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Há ainda algumas caixas de seleção:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Mover apenas páginas:</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">Se marcado, irá procurar pelas palavras dentro de cada página e exporta-la caso os requisitos sejam satisfeitos. Útil quando cada página representa um arquivo, como uma nota fiscal. Caso contrário, as palavras serão pesquisadas dentro de todo o arquivo.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar primeira linha:</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">Marcar caso a primeira linha seja cabeçalho e você não queira pesquisa-la dentro do arquivo.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar acentos:</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">Realizar pesquisa desconsiderando acentos. Marcar para maior precisão.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar pontuação:</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">Realizar pesquisa desconsiderando pontuação tais como ".,;/?!". Marcar para maior precisão.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar espaços:</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">Realizar pesquisa desconsiderando espaços. Marcar para maior precisão.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Para este exemplo, iremos desmarcar apenas a opção "Mover apenas páginas".</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Então, como exemplo de resultado, caso ambas as palavras "Bianca Helena Cavalcanti" e "Deslocamento escalar" sejam encontradas no arquivo, temos:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:Desktop\2020\Durvalino Grion Prof\2C\Cinemática\Deslocamento escalar\Bianca Helena Cavalcanti.pdf</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Se em vez de criar uma árvore de diretório</span> <span style=" font-family:'Segoe UI','sans-serif'; font-size:11pt;">quiséssemos</span> <span style=" font-family:'Segoe UI'; font-size:11pt;">apenas renomear o arquivo, bastava informar os valores no campo "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Nome do arquivo</span><span style=" font-family:'Segoe UI'; font-size:11pt;">" e deixar o campo "</span><span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Criar subpastas</span><span style=" font-family:'Segoe UI'; font-size:11pt;">" vazio.</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Então, como exemplo de resultado, temos:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:Desktop\2020_Durvalino Grion Prof_2C_Cinemática_Deslocamento escalar_Bianca Helena Cavalcanti.pdf</span>
-
-<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Criar ficheiro ZIP de arquivos PDF:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório raiz:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\root\</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Subpastas contidas no diretório raiz: Janeiro,Fevereiro,Março</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\output\</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo ZIP:</span> <span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,#year</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado:</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\output\Janeiro_2020.zip, C:\Downloads\output\Fevereiro_2020.zip, C:\Downloads\output\Março_2020.zip</span>
-
-<span style=" font-family:'Segoe UI'; font-size:11pt;">Portanto, todos os arquivos PDF contidos nas subpastas Janeiro,Fevereiro,Março serão compactados.</span>
-
-Licença:
-    Código licenciado sob as condições da GPL3.
-    https://www.gnu.org/licenses/
-    
-Documentação:
-
-User interface created with QT Creator.
-https://www.qt.io/
-Licensed under LGPLv3 conditions.
-
-QT Python binaries by Pyside.
-https://www.qt.io/qt-for-python/
-Licensed under LGPLv3 conditions.
-
-PySide Base by Wanderson Magalhaes.
-https://github.com/Wanderson-Magalhaes/
-Licensed under MIT License conditions.
-
-OCR engine by Tesseract.
-https://github.com/tesseract-ocr/tesseract/
-Licensed under Apache License 2.0 conditions.
-
-Tesseract installer for Windows by UB-Mannheim.
-https://github.com/UB-Mannheim/tesseract/
-
-Python-tesseract wrapper by pytesseract.
-https://github.com/madmaze/pytesseract/
-Licensed under Apache License 2.0 conditions.
-
-Python Imaging Library by Pillow
-https://github.com/python-pillow/Pillow/
-Licensed under the open source PIL Software License conditions.
-
-Convert PDF to a PIL Image object by pdf2image.
-https://github.com/Belval/pdf2image/
-Licensed under MIT License conditions.
-
-PDF rendering library by Poppler.
-https://poppler.freedesktop.org/
-Licensed under GPLv3 conditions.
-
-Poppler Windows binaries by oschwartz10612.
-https://github.com/oschwartz10612/poppler-windows/releases/
-
-Python PDF toolkit by PYPDF2.
-https://github.com/mstamy2/PyPDF2/
-Licensed under BSD License conditions.
-
-Extracts the text from a PDF page by pdfminer.six.
-https://github.com/pdfminer/pdfminer.six/
-Licensed under MIT License conditions.
-
-Sound-playing interface for Windows by winsound.
-https://docs.python.org/3/library/winsound.html
-
-Icons by Flaticon.
-https://www.flaticon.com/
-
-Sound Effects by Freesound.
-https://freesound.org/
-
-Developed with Python.
-https://www.python.org/
-Licensed under PSF LICENSE conditions.
+Portanto, todos os arquivos PDF contidos nas subpastas Janeiro,Fevereiro,Março serão compactados.
