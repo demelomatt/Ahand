@@ -23,7 +23,7 @@ As tags são:
 #minutes = Minutos atuais.
 #seconds = Segundos atuais
 #time = Hora, minutos e segundos atuais.
-#pages = Página(s) exportadas do arquivo. Disponível apenas para as funções Separar/Dividir e Organizar
+#pages = Página(s) exportadas do arquivo. Disponível apenas para as funções Separar/Dividir e Organizar(caso a caixa de seleção "Mover apenas páginas esteja marcada").
 
 Por padrão, caso o campo de nome esteja vazio, os arquivos são salvos com a tag #origin, com exceção da função Separar/Dividir, que utiliza as tags #origin,#pages.
 Para utilizar um conjunto de tags, é necessário delimitar por vírgulas.
@@ -44,6 +44,7 @@ Suponhamos que você seja um professor e queira organizar os trabalhos enviados 
 
 - Primeiro, certifique-se de que o documento PDF seja pesquisável, isto é, contenha texto. Caso seja uma imagem escaneada, utilize a função "Escanear arquivos PDF" antes de proceder.
 - Importe os arquivos PDF que você deseja organizar.
+- Selecione o diretório de saída. Como exemplo será "C:Desktop\"
 - Importe um ou mais arquivos CSV com o banco de dados que contém as palavras a pesquisar (você pode gerar o banco de dados com um editor de planilhas, como o Excel).
 
 Alunos.csv
@@ -83,17 +84,35 @@ Dessa forma, temos acesso a valores que não necessariamente precisam estar dent
 
 Com isso em mente:
 Iremos informar o destino que queremos exportar o arquivo caso as condições forem satisfeitas:
-Queremos criar uma árvore de diretório nesse modelo: escola/turma/ano_atual/matéria/tema_do_trabalho/
+Queremos criar uma árvore de diretório nesse modelo: diretório_de_saída\ano_atual\escola\turma\matéria\tema_do_trabalho\
 
 Então iremos informar em qual tabela e coluna esses valores se encontram.
-Sendo assim, o campo "Mover para pasta" recebe o seguinte valor: Alunos:4,Alunos:3,#year,Matérias:2,Matérias:1
+Sendo assim, o campo "Mover para pasta" recebe o seguinte valor: #year,Alunos:4,Alunos:3,Matérias:2,Matérias:1
 
 Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.
 Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Não encontrado
 Caso vazio, os arquivos em que não foram encontradas todas as palavras não serão movidos.
 
-Por fim, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.
-Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Alunos:1
+Agora, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.
+Sendo assim, o campo "Nome do arquivo" recebe o seguinte valor: Alunos:1
+
+Há ainda algumas caixas de seleção:
+
+Mover apenas páginas: Se marcado, irá procurar pelas palavras dentro de cada página e exporta-la caso os requisitos sejam satisfeitos. Útil quando cada página representa um arquivo, como uma nota fiscal. Caso contrário, as palavras serão pesquisadas dentro de todo o arquivo.
+Ignorar primeira linha: Marcar caso a primeira linha seja cabeçalho e você não queira pesquisa-la dentro do arquivo.
+Ignorar acentos: Realizar pesquisa desconsiderando acentos. Marcar para maior precisão.
+Ignorar pontuação: Realizar pesquisa desconsiderando pontuação tais como ".,;/?!". Marcar para maior precisão.
+Ignorar espaços: Realizar pesquisa desconsiderando espaços. Marcar para maior precisão.
+
+Para este exemplo, iremos desmarcar apenas a opção "Mover apenas páginas".
+
+Então, como exemplo de resultado, caso ambas as palavras "Bianca Helena Cavalcanti" e "Deslocamento escalar" sejam encontradas no arquivo, temos:
+C:Desktop\2020\Durvalino Grion Prof\2C\Cinemática\Deslocamento escalar\Bianca Helena Cavalcanti.pdf
+
+Se em vez de criar uma árvore de diretório quisessemos apenas renomear o arquivo, bastava informar os valores no campo "Nome do arquivo" e deixar o campo "Mover para pasta" vazio.
+
+Então, como exemplo de resultado, temos:
+C:Desktop\2020_Durvalino Grion Prof_2C_Cinemática_Deslocamento escalar_Bianca Helena Cavalcanti.pdf
 
 Licença:
     Código licenciado sob as condições da GPL3.
