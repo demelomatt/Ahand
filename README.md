@@ -4,7 +4,7 @@
 Descrição:
     Ahand (Give me a hand) é um programa para otimização de processos que envolvam arquivos PDF. Com Ahand é possível:
     
-    Combinar arquivos PDF.
+    Unir arquivos PDF.
     Extrair páginas de arquivos PDF.
     Dividir arquivos PDF.
     Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.
@@ -37,6 +37,60 @@ Nome do arquivo: #origin,#pages,Contas a pagar,#year,#month,#day
 Resultado: C:\Downloads\file1_3_Contas a pagar_2020_10_14,C:\Downloads\file2_3_Contas a pagar_2020_10_14
 
 Note que você pode utilizar tags e texto em conjunto, mas eles devem ser delimitados por vírgula.
+
+Unir arquivos PDF:
+Exemplo:
+Arquivos de entrada: C:\Downloads\file1.pdf,C:\Downloads\file2.pdf
+Diretório de saída: C:\Downloads\
+Nome do arquivo: merged
+Resultado: C:\Downloads\merged.pdf
+
+Extrair páginas ou dividir arquivos PDF:
+Lista - Páginas indicadas: Extrair ou dividir nas páginas indicadas.
+Lista - A cada n páginas: Extrair ou dividir a cada "n" páginas.
+Caixa de seleção - Dividir arquivo: Através de um arquivo, outros são gerados, os dividindo nas páginas indicadas.
+Caixa de seleção - Extrair no mesmo arquivo: As páginas indicadas são extraídas em um mesmo arquivo.
+
+Exemplos:
+Arquivo de entrada: C:\Downloads\file.pdf
+Diretório de saída: C:\Downloads\
+Nome do arquivo: #origin,#pages
+
+Exemplo 1:
+Lista = Páginas indicadas
+Caixa de seleção = Dividir arquivo
+Páginas = 3,7-8,11-16
+Resultado: C:\Downloads\file_3.pdf,C:\Downloads\file_7-8.pdf,C:\Downloads\file_11-16.pdf
+
+Exemplo 2:
+Lista = Páginas indicadas
+Caixa de seleção = Extrair no mesmo arquivo
+Páginas = 3,7-8,11-16
+Resultado: C:\Downloads\file_3,7-8,11-16.pdf
+
+Exemplo 3:
+Lista = A cada n páginas
+Caixa de seleção = Dividir arquivo
+Páginas = 4
+Resultado: C:\Downloads\file_1-4.pdf,C:\Downloads\file_5-8.pdf,C:\Downloads\file_9-12.pdf,C:\Downloads\file_13-16.pdf
+
+Exemplo 4:
+Lista = A cada n páginas
+Caixa de seleção = Extrair no mesmo arquivo
+Páginas = 4
+Resultado: C:\Downloads\file_4,8,12,16.pdf
+
+Escanear arquivos PDF (OCR):
+Exemplo:
+Arquivos de entrada: C:\Downloads\file1.pdf,C:\Downloads\file2.pdf
+Diretório de saída: C:\Downloads\
+Nome do arquivo: #origin,OCR
+DPI: 200
+Resultado: C:\Downloads\file1_OCR.pdf,C:\Downloads\file2_OCR.pdf
+
+Note que quanto maior o DPI, maior o tamanho da imagem.
+Caso o reconhecimento óptico de caracteres (OCR) não atinja um resultado satisfatório, experimente alterar o DPI.
+
 
 Função Organizar arquivos PDF:
 Você pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
@@ -87,7 +141,7 @@ Iremos informar o destino que queremos exportar o arquivo caso as condições fo
 Queremos criar uma árvore de diretório nesse modelo: diretório_de_saída\ano_atual\escola\turma\matéria\tema_do_trabalho\
 
 Então iremos informar em qual tabela e coluna esses valores se encontram.
-Sendo assim, o campo "Mover para pasta" recebe o seguinte valor: #year,Alunos:4,Alunos:3,Matérias:2,Matérias:1
+Sendo assim, o campo "Criar subpastas" recebe o seguinte valor: #year,Alunos:4,Alunos:3,Matérias:2,Matérias:1
 
 Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.
 Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Não encontrado
@@ -109,10 +163,20 @@ Para este exemplo, iremos desmarcar apenas a opção "Mover apenas páginas".
 Então, como exemplo de resultado, caso ambas as palavras "Bianca Helena Cavalcanti" e "Deslocamento escalar" sejam encontradas no arquivo, temos:
 C:Desktop\2020\Durvalino Grion Prof\2C\Cinemática\Deslocamento escalar\Bianca Helena Cavalcanti.pdf
 
-Se em vez de criar uma árvore de diretório quisessemos apenas renomear o arquivo, bastava informar os valores no campo "Nome do arquivo" e deixar o campo "Mover para pasta" vazio.
+Se em vez de criar uma árvore de diretório quisessemos apenas renomear o arquivo, bastava informar os valores no campo "Nome do arquivo" e deixar o campo "Criar subpastas" vazio.
 
 Então, como exemplo de resultado, temos:
 C:Desktop\2020_Durvalino Grion Prof_2C_Cinemática_Deslocamento escalar_Bianca Helena Cavalcanti.pdf
+
+Criar ficheiro ZIP de arquivos PDF:
+Exemplo:
+Diretório raiz: C:\Downloads\root\
+Subpastas contidas no diretório raiz: Janeiro,Fevereiro,Março
+Diretório de saída: C:\Downloads\output\
+Nome do arquivo ZIP: #origin,#year
+Resultado: C:\Downloads\output\Janeiro_2020.zip,C:\Downloads\output\Fevereiro_2020.zip,C:\Downloads\output\Março_2020.zip
+
+Portanto, todos os arquivos PDF contidos nas subpastas Janeiro,Fevereiro,Março serão compactados.
 
 Licença:
     Código licenciado sob as condições da GPL3.
