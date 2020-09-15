@@ -40,7 +40,7 @@ Note que você pode utilizar tags e texto em conjunto, mas eles devem ser delimi
 
 Função Organizar arquivos PDF:
 Você pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
-Suponhamos que você seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano, matéria, tema do trabalho e nome do aluno:
+Suponhamos que você seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano atual, matéria, tema do trabalho e nome do aluno:
 
 - Primeiro, certifique-se de que o documento PDF seja pesquisável, isto é, contenha texto. Caso seja uma imagem escaneada, utilize a função "Escanear arquivos PDF" antes de proceder.
 - Importe os arquivos PDF que você deseja organizar.
@@ -58,6 +58,7 @@ Alunos.csv
 | Pietra Giovanna Joana Almada       | 32                | 1C    | Djalma Forjaz Doutor            | Porto Ferreira         | São Paulo |
 | Silvana Stefany Mirella Nascimento | 37                | 1C    | Alice Maciel Sanches Professora | Santo Anastácio        | São Paulo |
 | Tânia Allana Monteiro              | 40                | 3C    | Santo Antonio                   | Santo Antônio De Posse | São Paulo |
+(Todos os dados referentes a alunos foram gerados aleatoriamente).
 
 Matérias.csv
 | Tema                       | Matéria    |
@@ -70,7 +71,29 @@ Matérias.csv
 | Movimento e repouso        | Cinemática |
 | Campo elétrico             | Elétrica   |
 
-(Todos os dados referentes a alunos foram gerados aleatoriamente).
+Iremos procurar pelo nome de todos os alunos, que se encontra na tabela Alunos coluna 1, junto a todos os temas de trabalho, que se encontra na tabela Matérias coluna 1.
+Então temos a definição tabela:coluna
+
+Sendo assim, o campo "Procurar por expressões" recebe o seguinte valor: Alunos:1,Matérias:1
+Se houver mais de um conjunto tabela:coluna, eles devem ser delimitados por vírgulas, como no exemplo acima.
+
+Note que se o valor de uma linha for localizado, temos acesso a todos os valores das outras colunas adjacentes nessa tabela.
+Como por exemplo, se dentro do arquivo conter o nome "Bianca Helena Cavalcanti", podemos pedir para o programa retornar o valor da coluna 3, que para essa linha é "2C".
+Dessa forma, temos acesso a valores que não necessariamente precisam estar dentro do arquivo.
+
+Com isso em mente:
+Iremos informar o destino que queremos exportar o arquivo caso as condições forem satisfeitas:
+Queremos criar uma árvore de diretório nesse modelo: escola/turma/ano_atual/matéria/tema_do_trabalho/
+
+Então iremos informar em qual tabela e coluna esses valores se encontram.
+Sendo assim, o campo "Mover para pasta" recebe o seguinte valor: Alunos:4,Alunos:3,#year,Matérias:2,Matérias:1
+
+Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.
+Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Não encontrado
+Caso vazio, os arquivos em que não foram encontradas todas as palavras não serão movidos.
+
+Por fim, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.
+Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Alunos:1
 
 Licença:
     Código licenciado sob as condições da GPL3.
