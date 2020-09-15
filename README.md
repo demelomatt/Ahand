@@ -1,471 +1,506 @@
- p, li { white-space: pre-wrap; } 
+<meta name="qrichtext" content="1">
 
-Descrição:
+<style type="text/css"> p, li { white-space: pre-wrap; } </style>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Descrição:</span>
 
-Ahand (Give me a hand) é um programa para otimização de processos que envolvam arquivos PDF.
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Ahand (Give me a hand) é um programa para otimização de processos que envolvam arquivos PDF.</span>
 
-Com Ahand é possível:
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Com Ahand é possível:</span>
 
-\- Unir arquivos PDF.
+<br>
 
-\- Extrair páginas de arquivos PDF.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Unir arquivos PDF.</span>
 
-\- Dividir arquivos PDF.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Extrair páginas de arquivos PDF.</span>
 
-\- Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Dividir arquivos PDF.</span>
 
-\- Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.</span>
 
-\- Compactar arquivos PDF contidos em subpastas de uma pasta raiz.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.</span>
 
-Nomenclatura dos arquivos:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Compactar arquivos PDF contidos em subpastas de uma pasta raiz.</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">¨NBSP;</span>
 
-Dentro do programa, existem tags, elas são variáveis que abrangem alguns padrões bastante usados na hora de renomear um arquivo. As tags são indicadas por #.
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Nomenclatura dos arquivos:</span>
 
-  
+<br>
 
-#origin = Nome original do arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Dentro do programa, existem tags, elas são variáveis que abrangem alguns padrões bastante usados na hora de renomear um arquivo. As tags são indicadas por #.</span>
 
-#year = Ano atual.
+<br>
 
-#month = Mês atual.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#origin</span>
 
-#day = Dia atual.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Nome original do arquivo.</span>
 
-#hour = Hora atual.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#year</span>
 
-#minutes = Minutos atuais.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Ano atual.</span>
 
-#seconds = Segundos atuais
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#month</span>
 
-#time = Hora, minutos e segundos atuais.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Mês atual.</span>
 
-#pages = Página(s) exportadas do arquivo. Disponível apenas para as funções Separar/Dividir e Organizar(caso a caixa de seleção "Mover apenas páginas esteja marcada").
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#day</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Dia atual.</span>
 
-Por padrão, caso o campo de nome esteja vazio, os arquivos são salvos com a tag #origin, com exceção da função Separar/Dividir, que utiliza as tags #origin,#pages.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#hour</span>
 
-Para utilizar um conjunto de tags, é necessário delimitar por vírgulas.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Hora atual.</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#minutes</span>
 
-Veja um exemplo de nomenclatura de um arquivo:
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Minutos atuais.</span>
 
-Arquivos de entrada: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#seconds</span>
 
-Extrair página indicada: 3
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Segundos atuais</span>
 
-Diretório de saída: C:\\Downloads
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#time</span>
 
-Nome do arquivo: #origin,#pages,Contas a pagar,#year,#month,#day
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Hora, minutos e segundos atuais.</span>
 
-Resultado: C:\\Downloads\\file1\_3\_Contas a pagar\_2020\_10\_14, C:\\Downloads\\file2\_3\_Contas a pagar\_2020\_10\_14
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-weight:600;">#pages</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> = Página(s) exportadas do arquivo. Disponível apenas para as funções Separar/Dividir e Organizar(caso a caixa de seleção "Mover apenas páginas esteja marcada").</span>
 
-Note que você pode utilizar tags e texto em conjunto, mas eles devem ser delimitados por vírgula.
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Por padrão, caso o campo de nome esteja vazio, os arquivos são salvos com a tag #origin, com exceção da função Separar/Dividir, que utiliza as tags #origin,#pages.</span>
 
-Unir arquivos PDF:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Para utilizar um conjunto de tags, é necessário delimitar por vírgulas.</span>
 
-Exemplo:
+<br>
 
-Arquivos de entrada: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Veja um exemplo de nomenclatura de um arquivo:</span>
 
-Diretório de saída: C:\\Downloads\\
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivos de entrada: </span>
 
-Nome do arquivo: merged
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1.pdf, C:\Downloads\file2.pdf</span>
 
-Resultado: C:\\Downloads\\merged.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Extrair página indicada: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">3</span>
 
-Extrair páginas ou dividir arquivos PDF:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída: </span>
 
-Lista - Páginas indicadas: Extrair ou dividir nas páginas indicadas.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads</span>
 
-Lista - A cada n páginas: Extrair ou dividir a cada "n" páginas.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo: </span>
 
-Caixa de seleção - Dividir arquivo: Através de um arquivo, outros são gerados, os dividindo nas páginas indicadas.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,#pages,Contas a pagar,#year,#month,#day</span>
 
-Caixa de seleção - Extrair no mesmo arquivo: As páginas indicadas são extraídas em um mesmo arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1_3_Contas a pagar_2020_10_14, C:\Downloads\file2_3_Contas a pagar_2020_10_14</span>
 
-Exemplos:
+<br>
 
-Arquivo de entrada: C:\\Downloads\\file.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Note que você pode utilizar tags e texto em conjunto, mas eles devem ser delimitados por vírgula.</span>
 
-Diretório de saída: C:\\Downloads\\
+<br>
 
-Nome do arquivo: #origin,#pages
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Unir arquivos PDF:</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo:</span>
 
-Exemplo 1:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivos de entrada: </span>
 
-Lista = Páginas indicadas
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1.pdf, C:\Downloads\file2.pdf</span>
 
-Caixa de seleção = Dividir arquivo
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída: </span>
 
-Páginas = 3,7-8,11-16
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\</span>
 
-Resultado: C:\\Downloads\\file\_3.pdf, C:\\Downloads\\file\_7-8.pdf, C:\\Downloads\\file\_11-16.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">merged</span>
 
-Exemplo 2:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-Lista = Páginas indicadas
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\merged.pdf</span>
 
-Caixa de seleção = Extrair no mesmo arquivo
+<br>
 
-Páginas = 3,7-8,11-16
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Extrair páginas ou dividir arquivos PDF:</span>
 
-Resultado: C:\\Downloads\\file\_3,7-8,11-16.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista - Páginas indicadas: Extrair ou dividir nas páginas indicadas.</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista - A cada n páginas: Extrair ou dividir a cada "n" páginas.</span>
 
-Exemplo 3:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção - Dividir arquivo: Através de um arquivo, outros são gerados, os dividindo nas páginas indicadas.</span>
 
-Lista = A cada n páginas
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção - Extrair no mesmo arquivo: As páginas indicadas são extraídas em um mesmo arquivo.</span>
 
-Caixa de seleção = Dividir arquivo
+<br>
 
-Páginas = 4
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplos:</span>
 
-Resultado: C:\\Downloads\\file\_1-4.pdf, C:\\Downloads\\file\_5-8.pdf, C:\\Downloads\\file\_9-12.pdf, C:\\Downloads\\file\_13-16.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivo de entrada:</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;"> C:\Downloads\file.pdf</span>
 
-Exemplo 4:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída: </span>
 
-Lista = A cada n páginas
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\</span>
 
-Caixa de seleção = Extrair no mesmo arquivo
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo: </span>
 
-Páginas = 4
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,#pages</span>
 
-Resultado: C:\\Downloads\\file\_4,8,12,16.pdf
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 1:</span>
 
-Escanear arquivos PDF (OCR):
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista = </span>
 
-Exemplo:
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Páginas indicadas</span>
 
-Arquivos de entrada: C:\\Downloads\\file1.pdf, C:\\Downloads\\file2.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção = </span>
 
-Diretório de saída: C:\\Downloads\\
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Dividir arquivo</span>
 
-Nome do arquivo: #origin,OCR
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas = </span>
 
-DPI: 200
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">3,7-8,11-16</span>
 
-Resultado: C:\\Downloads\\file1\_OCR.pdf, C:\\Downloads\\file2\_OCR.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_3.pdf, C:\Downloads\file_7-8.pdf, C:\Downloads\file_11-16.pdf</span>
 
-Note que quanto maior o DPI, maior o tamanho da imagem.
+<br>
 
-Caso o reconhecimento óptico de caracteres (OCR) não atinja um resultado satisfatório, experimente alterar o DPI.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 2:</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista = </span>
 
-Organizar arquivos PDF:
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Páginas indicadas</span>
 
-Você pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção = </span>
 
-Suponhamos que você seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano atual, matéria, tema do trabalho e nome do aluno:
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Extrair no mesmo arquivo</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas = </span>
 
-\- Primeiro, certifique-se de que o documento PDF seja pesquisável, isto é, contenha texto. Caso seja uma imagem escaneada, utilize a função "Escanear arquivos PDF" antes de proceder.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">3,7-8,11-16</span>
 
-\- Importe os arquivos PDF que você deseja organizar.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-\- Selecione o diretório de saída. Como exemplo será "C:Desktop\\"
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_3,7-8,11-16.pdf</span>
 
-\- Importe um ou mais arquivos CSV com a tabela que contém as palavras a pesquisar (você pode gerar o arquivo com um editor de planilhas, como o Excel).
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 3:</span>
 
-Alunos.csv
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista = </span>
 
-Nome do aluno
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">A cada n páginas</span>
 
-Número de chamada
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção = </span>
 
-Turma
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Dividir arquivo</span>
 
-Escola
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas = </span>
 
-Munícipio
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">4</span>
 
-Cidade
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-Bianca Helena Cavalcanti
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_1-4.pdf, C:\Downloads\file_5-8.pdf, C:\Downloads\file_9-12.pdf, C:\Downloads\file_13-16.pdf</span>
 
-1
+<br>
 
-2C
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo 4:</span>
 
-Durvalino Grion Prof
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Lista = </span>
 
-Adamantina
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">A cada n páginas</span>
 
-São Paulo
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caixa de seleção = </span>
 
-Catarina Jaqueline Nunes
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Extrair no mesmo arquivo</span>
 
-3
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Páginas = </span>
 
-1A
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">4</span>
 
-Alice Maciel Sanches Professora
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-Santo Anastácio
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file_4,8,12,16.pdf</span>
 
-São Paulo
+<br>
 
-Clara Emanuelly Luiza Carvalho
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Escanear arquivos PDF (OCR):</span>
 
-6
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo:</span>
 
-2B
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Arquivos de entrada: </span>
 
-Ferdinando Ienny
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1.pdf, C:\Downloads\file2.pdf</span>
 
-Ouro Verde
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída: </span>
 
-São Paulo
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\</span>
 
-Francisco Edson Gonçalves
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo: </span>
 
-11
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,OCR</span>
 
-3D
+<span style=" font-family:'Segoe UI'; font-size:11pt;">DPI: </span>
 
-Jadyr Salles Professor Etec
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">200</span>
 
-Porto Ferreira
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
 
-São Paulo
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\file1_OCR.pdf, C:\Downloads\file2_OCR.pdf</span>
 
-Gabriela Emanuelly Baptista
+<br>
 
-15
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Note que quanto maior o DPI, maior o tamanho da imagem.</span>
 
-3E
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caso o reconhecimento óptico de caracteres (OCR) não atinja um resultado satisfatório, experimente alterar o DPI.</span>
 
-Durvalino Grion Prof
+<br>
 
-Adamantina
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Organizar arquivos PDF:</span>
 
-São Paulo
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Você pode organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.</span>
 
-Julio Jorge Aragão
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Suponhamos que você seja um professor e queira organizar os trabalhos enviados por seus alunos por escola, turma, ano atual, matéria, tema do trabalho e nome do aluno:</span>
 
-21
+<br>
 
-2F
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Primeiro, certifique-se de que o documento PDF seja pesquisável, isto é, contenha texto. Caso seja uma imagem escaneada, utilize a função "Escanear arquivos PDF" antes de proceder.</span>
 
-Ferdinando Ienny
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Importe os arquivos PDF que você deseja organizar.</span>
 
-Ouro Verde
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Selecione o diretório de saída. Como exemplo será "</span>
 
-São Paulo
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:Desktop\</span>
 
-Pietra Giovanna Joana Almada
+<span style=" font-family:'Segoe UI'; font-size:11pt;">"</span>
 
-32
+<span style=" font-family:'Segoe UI'; font-size:11pt;">- Importe um ou mais arquivos CSV com a tabela que contém as palavras a pesquisar (você pode gerar o arquivo com um editor de planilhas, como o Excel).</span>
 
-1C
+<br>
 
-Djalma Forjaz Doutor
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Alunos.csv</span>
 
-Porto Ferreira
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
 
-São Paulo
+<br>
 
-Silvana Stefany Mirella Nascimento
+<span style=" font-family:'Segoe UI'; font-size:11pt;">(Todos os dados referentes a alunos foram gerados aleatoriamente).</span>
 
-37
+<br>
 
-1C
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Matérias.csv</span>
 
-Alice Maciel Sanches Professora
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
+|  |
 
-Santo Anastácio
+<br>
 
-São Paulo
+<br>
 
-Tânia Allana Monteiro
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Iremos procurar pelo nome de todos os alunos, que se encontra na tabela </span>
 
-40
+<span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">Alunos</span>
 
-3C
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> coluna </span>
 
-Santo Antonio
+<span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">1</span>
 
-Santo Antônio De Posse
+<span style=" font-family:'Segoe UI'; font-size:11pt;">, junto a todos os temas de trabalho, que se encontra na tabela </span>
 
-São Paulo
+<span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">Matérias</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> coluna </span>
 
-(Todos os dados referentes a alunos foram gerados aleatoriamente).
+<span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">1</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">.</span>
 
-Matérias.csv
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Então temos a definição </span>
 
-Tema
+<span style=" font-family:'Segoe UI'; font-size:11pt; color:#a0a0a0;">tabela:coluna</span>
 
-Matéria
+<br>
 
-Deslocamento escalar
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span>
 
-Cinemática
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Procurar por expressões</span>
 
-Energia potencial elétrica
+<span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor: </span>
 
-Elétrica
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Alunos:1,Matérias:1</span>
 
-Leis de Newton
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Se houver mais de um conjunto tabela:coluna, eles devem ser delimitados por vírgulas, como no exemplo acima.</span>
 
-Dinâmica
+<br>
 
-Trajetória
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Note que se o valor de uma linha for localizado, temos acesso a todos os valores das outras colunas adjacentes nessa tabela.</span>
 
-Cinemática
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Como por exemplo, se dentro do arquivo conter o nome "Bianca Helena Cavalcanti", podemos pedir para o programa retornar o valor da coluna 3, que para essa linha é "2C".</span>
 
-Lentes convergentes
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Dessa forma, temos acesso a valores que não necessariamente precisam estar dentro do arquivo.</span>
 
-Óptica
+<br>
 
-Movimento e repouso
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Com isso em mente:</span>
 
-Cinemática
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Iremos informar o destino que queremos exportar o arquivo caso as condições forem satisfeitas:</span>
 
-Campo elétrico
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Queremos criar uma árvore de diretório nesse modelo: </span>
 
-Elétrica
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">diretório_de_saída\ano_atual\escola\turma\matéria\tema_do_trabalho\</span>
 
-  
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Então iremos informar em qual tabela e coluna esses valores se encontram.</span>
 
-Iremos procurar pelo nome de todos os alunos, que se encontra na tabela Alunos coluna 1, junto a todos os temas de trabalho, que se encontra na tabela Matérias coluna 1.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span>
 
-Então temos a definição tabela:coluna
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Criar subpastas</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor: </span>
 
-Sendo assim, o campo "Procurar por expressões" recebe o seguinte valor: Alunos:1,Matérias:1
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#year,Alunos:4,Alunos:3,Matérias:2,Matérias:1</span>
 
-Se houver mais de um conjunto tabela:coluna, eles devem ser delimitados por vírgulas, como no exemplo acima.
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.</span>
 
-Note que se o valor de uma linha for localizado, temos acesso a todos os valores das outras colunas adjacentes nessa tabela.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span>
 
-Como por exemplo, se dentro do arquivo conter o nome "Bianca Helena Cavalcanti", podemos pedir para o programa retornar o valor da coluna 3, que para essa linha é "2C".
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Se não encontrar mover para pasta</span>
 
-Dessa forma, temos acesso a valores que não necessariamente precisam estar dentro do arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Não encontrado</span>
 
-Com isso em mente:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Caso vazio, os arquivos em que não foram encontradas todas as palavras não serão movidos.</span>
 
-Iremos informar o destino que queremos exportar o arquivo caso as condições forem satisfeitas:
+<br>
 
-Queremos criar uma árvore de diretório nesse modelo: diretório\_de\_saída\\ano\_atual\\escola\\turma\\matéria\\tema\_do\_trabalho\\
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Agora, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Sendo assim, o campo "</span>
 
-Então iremos informar em qual tabela e coluna esses valores se encontram.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Nome do arquivo</span>
 
-Sendo assim, o campo "Criar subpastas" recebe o seguinte valor: #year,Alunos:4,Alunos:3,Matérias:2,Matérias:1
+<span style=" font-family:'Segoe UI'; font-size:11pt;">" recebe o seguinte valor: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Alunos:1</span>
 
-Caso as condições não sejam satisfeitas dentro de um arquivo, podemos indicar um diretório para movê-lo.
+<br>
 
-Sendo assim, o campo "Se não encontrar mover para pasta" recebe o seguinte valor: Não encontrado
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Há ainda algumas caixas de seleção:</span>
 
-Caso vazio, os arquivos em que não foram encontradas todas as palavras não serão movidos.
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Mover apenas páginas:</span>
 
-Agora, iremos informar o nome do arquivo, neste caso queremos o nome do aluno.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> Se marcado, irá procurar pelas palavras dentro de cada página e exporta-la caso os requisitos sejam satisfeitos. Útil quando cada página representa um arquivo, como uma nota fiscal. Caso contrário, as palavras serão pesquisadas dentro de todo o arquivo.</span>
 
-Sendo assim, o campo "Nome do arquivo" recebe o seguinte valor: Alunos:1
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar primeira linha:</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> Marcar caso a primeira linha seja cabeçalho e você não queira pesquisa-la dentro do arquivo.</span>
 
-Há ainda algumas caixas de seleção:
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar acentos:</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> Realizar pesquisa desconsiderando acentos. Marcar para maior precisão.</span>
 
-Mover apenas páginas: Se marcado, irá procurar pelas palavras dentro de cada página e exporta-la caso os requisitos sejam satisfeitos. Útil quando cada página representa um arquivo, como uma nota fiscal. Caso contrário, as palavras serão pesquisadas dentro de todo o arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar pontuação:</span>
 
-Ignorar primeira linha: Marcar caso a primeira linha seja cabeçalho e você não queira pesquisa-la dentro do arquivo.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> Realizar pesquisa desconsiderando pontuação tais como ".,;/?!". Marcar para maior precisão.</span>
 
-Ignorar acentos: Realizar pesquisa desconsiderando acentos. Marcar para maior precisão.
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Ignorar espaços:</span>
 
-Ignorar pontuação: Realizar pesquisa desconsiderando pontuação tais como ".,;/?!". Marcar para maior precisão.
+<span style=" font-family:'Segoe UI'; font-size:11pt;"> Realizar pesquisa desconsiderando espaços. Marcar para maior precisão.</span>
 
-Ignorar espaços: Realizar pesquisa desconsiderando espaços. Marcar para maior precisão.
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Para este exemplo, iremos desmarcar apenas a opção "Mover apenas páginas".</span>
 
-Para este exemplo, iremos desmarcar apenas a opção "Mover apenas páginas".
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Então, como exemplo de resultado, caso ambas as palavras "Bianca Helena Cavalcanti" e "Deslocamento escalar" sejam encontradas no arquivo, temos:</span>
 
-Então, como exemplo de resultado, caso ambas as palavras "Bianca Helena Cavalcanti" e "Deslocamento escalar" sejam encontradas no arquivo, temos:
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:Desktop\2020\Durvalino Grion Prof\2C\Cinemática\Deslocamento escalar\Bianca Helena Cavalcanti.pdf</span>
 
-C:Desktop\\2020\\Durvalino Grion Prof\\2C\\Cinemática\\Deslocamento escalar\\Bianca Helena Cavalcanti.pdf
+<br>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Se em vez de criar uma árvore de diretório </span>
 
-Se em vez de criar uma árvore de diretório quiséssemos apenas renomear o arquivo, bastava informar os valores no campo "Nome do arquivo" e deixar o campo "Criar subpastas" vazio.
+<span style=" font-family:'Segoe UI','sans-serif'; font-size:11pt;">quiséssemos </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt;">apenas renomear o arquivo, bastava informar os valores no campo "</span>
 
-Então, como exemplo de resultado, temos:
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Nome do arquivo</span>
 
-C:Desktop\\2020\_Durvalino Grion Prof\_2C\_Cinemática\_Deslocamento escalar\_Bianca Helena Cavalcanti.pdf
+<span style=" font-family:'Segoe UI'; font-size:11pt;">" e deixar o campo "</span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">Criar subpastas</span>
 
-Criar ficheiro ZIP de arquivos PDF:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">" vazio.</span>
 
-Exemplo:
+<br>
 
-Diretório raiz: C:\\Downloads\\root\\
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Então, como exemplo de resultado, temos:</span>
 
-Subpastas contidas no diretório raiz: Janeiro,Fevereiro,Março
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:Desktop\2020_Durvalino Grion Prof_2C_Cinemática_Deslocamento escalar_Bianca Helena Cavalcanti.pdf</span>
 
-Diretório de saída: C:\\Downloads\\output\\
+<br>
 
-Nome do arquivo ZIP: #origin,#year
+<span style=" font-family:'Segoe UI'; font-size:14pt; font-weight:600;">Criar ficheiro ZIP de arquivos PDF:</span>
 
-Resultado:
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Exemplo:</span>
 
-C:\\Downloads\\output\\Janeiro\_2020.zip, C:\\Downloads\\output\\Fevereiro\_2020.zip, C:\\Downloads\\output\\Março\_2020.zip
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório raiz: </span>
 
-  
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\root\</span>
 
-Portanto, todos os arquivos PDF contidos nas subpastas Janeiro,Fevereiro,Março serão compactados.
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Subpastas contidas no diretório raiz: Janeiro,Fevereiro,Março</span>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Diretório de saída: </span>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\output\</span>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Nome do arquivo ZIP: </span>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">#origin,#year</span>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Resultado: </span>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt; font-style:italic; color:#a0a0a0;">C:\Downloads\output\Janeiro_2020.zip, C:\Downloads\output\Fevereiro_2020.zip, C:\Downloads\output\Março_2020.zip</span>
+
+<br>
+
+<span style=" font-family:'Segoe UI'; font-size:11pt;">Portanto, todos os arquivos PDF contidos nas subpastas Janeiro,Fevereiro,Março serão compactados.</span>
+
