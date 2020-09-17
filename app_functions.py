@@ -223,7 +223,7 @@ class PDFfunctions(QThread):
             except:
                 try:
                     # Verificar se é uma tabela
-                    queryList = noSpaceArgument.split(":")
+                    queryList = argument.split(":")
                     tableName = queryList[0]
                     columnID = int(queryList[1]) - 1
                     tableWidgetObject = "tableWidget " + tableName
