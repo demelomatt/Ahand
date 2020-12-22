@@ -10,6 +10,9 @@ Com Ahand é possível:
 - Escanear arquivos PDF através do reconhecimento óptico de caracteres (OCR), transformando em um PDF pesquisável.
 - Organizar arquivos PDF de acordo com as frases ou palavras encontradas dentro do arquivo.
 - Compactar arquivos PDF contidos em subpastas de uma pasta raiz.
+
+Dependências para rodar:
+Microsoft Visual C++ Redistributable Package
     
 Nomenclatura dos arquivos:
 
