@@ -14,7 +14,8 @@ Com Ahand é possível:
 Dependências para rodar:
 Microsoft Visual C++ Redistributable Package
 
-<iframe  title="Ahand trailer" width="480" height="390" src="https://www.youtube.com/watch?v=-g8CP6u7npE?autoplay=1" frameborder="0" allowfullscreen></iframe>
+[![Ahand trailer](https://img.youtube.com/vi/-g8CP6u7npE/0.jpg)](https://www.youtube.com/watch?v=-g8CP6u7npE)
+
     
 Nomenclatura dos arquivos:
 
